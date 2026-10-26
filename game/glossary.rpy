@@ -234,6 +234,10 @@ init -10 python:
     ]
 
     GLOSS = {e["id"]: e for e in GLOSSARY}
+    GLOSS_CAT_COLORS = dict((c[0], c[2]) for c in GLOSS_CATS)
+    for _e in GLOSSARY:
+        _e["cat_color"] = GLOSS_CAT_COLORS.get(_e["cat"], "#FFFFFF")
+        _e["masked"] = _e["term"][0] + "·" * min(len(_e["term"]) - 1, 9)
 
     ## One big case-insensitive regex; one named group per entry. Entries with
     ## longer patterns go first so "governance token" beats "governance".
@@ -548,29 +552,29 @@ screen glossary():
                     xsize 470
                     ysize 640
                     padding (14, 14)
-                    viewport:
+                    vpgrid:
+                        id "gloss_vp"
+                        cols 1
+                        spacing 2
                         scrollbars "vertical"
                         vscrollbar_unscrollable "hide"
-                        mousewheel True
+                        mousewheel "change"
                         draggable True
                         yinitial (sel_idx / float(max(1, len(entries) - 1)))
-                        vbox:
-                            spacing 2
-                            for e in entries:
-                                $ eid = e["id"]
-                                $ ccol = dict((c[0], c[2]) for c in GLOSS_CATS)[e["cat"]]
-                                if eid in persistent.gloss_found:
-                                    textbutton (e["term"] + ("  {color=#FFFF55}NEW{/color}" if eid not in persistent.gloss_read and eid != cur else "")):
-                                        style "gloss_item"
-                                        text_color ccol
-                                        selected cur == eid
-                                        action Function(gloss_select, eid)
-                                else:
-                                    textbutton gloss_masked(e["term"]):
-                                        style "gloss_item"
-                                        text_color "#555555"
-                                        selected cur == eid
-                                        action Function(gloss_select, eid)
+                        for e in entries:
+                            $ eid = e["id"]
+                            if eid in persistent.gloss_found:
+                                textbutton (e["term"] + ("  {color=#FFFF55}NEW{/color}" if eid not in persistent.gloss_read and eid != cur else "")):
+                                    style "gloss_item"
+                                    text_color e["cat_color"]
+                                    selected cur == eid
+                                    action Function(gloss_select, eid)
+                            else:
+                                textbutton e["masked"]:
+                                    style "gloss_item"
+                                    text_color "#555555"
+                                    selected cur == eid
+                                    action Function(gloss_select, eid)
 
                 ## Entry detail
                 frame:
@@ -585,11 +589,13 @@ screen glossary():
                             text "Words in {color=#FFFF55}yellow{/color} in the story are glossary terms. Click one to look it up. Every term you meet is added here — and entries link to more entries." color "#AAAAAA" size 24
                     elif cur in persistent.gloss_found:
                         $ e = GLOSS[cur]
-                        $ ccol = dict((c[0], c[2]) for c in GLOSS_CATS)[e["cat"]]
+                        $ ccol = e["cat_color"]
                         viewport:
+                            id "gloss_detail_vp"
                             scrollbars "vertical"
                             vscrollbar_unscrollable "hide"
-                            mousewheel True
+                            mousewheel "change"
+                            draggable True
                             vbox:
                                 spacing 16
                                 if persistent._gloss_fresh == cur:
@@ -626,10 +632,12 @@ style gloss_item is button
 style gloss_item_text is button_text
 style gloss_item:
     xfill True
+    ysize 38
     padding (10, 4)
     selected_background "#0000AA"
     hover_background "#000060"
 style gloss_item_text:
     size 24
+    yalign 0.5
     hover_color "#FFFFFF"
     selected_color "#FFFFFF"
