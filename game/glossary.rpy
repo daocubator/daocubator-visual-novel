@@ -6,7 +6,7 @@
 #      say_menu_text_filter wraps matches in {a=gloss:id} links; the character
 #      callback unlocks them when the line is actually shown (the filter itself
 #      must stay pure: Ren'Py also runs it during prediction and lint).
-#   2. LINK — glossary entries link to each other. Following a ◇ link to an
+#   2. LINK — glossary entries link to each other. Following a † link to an
 #      undiscovered entry unlocks it. Some terms are ONLY reachable this way.
 #
 # Entry body markup:  <id>  or  <id|display text>   (converted to {a=gloss:id}).
@@ -326,13 +326,13 @@ init -10 python:
                 for m in _GLOSS_MARKUP_RE.finditer(text)]
 
     def gloss_render_body(text, found):
-        """Entry body → Ren'Py text. Undiscovered targets get a ◇ and magenta."""
+        """Entry body → Ren'Py text. Undiscovered targets get a † after and magenta."""
         def rep(m):
             gid = m.group(1)
             disp = m.group(2) or GLOSS[gid]["term"]
             if gid in found:
                 return "{a=gloss:%s}%s{/a}" % (gid, disp)
-            return "{a=gloss:%s}{color=#FF55FF}◇%s{/color}{/a}" % (gid, disp)
+            return "{a=gloss:%s}{color=#FF55FF}%s†{/color}{/a}" % (gid, disp)
         return _GLOSS_MARKUP_RE.sub(rep, text)
 
     GLOSS_RANKS = [
@@ -522,7 +522,7 @@ screen glossary():
                 text "[n_found]/[n_total] TERMS" color "#FFFF55" size 26
                 text gloss_bar(n_found, n_total) color "#55FFFF" size 22 yalign 0.5
                 text "RANK: " + gloss_rank(n_found) color "#FF55FF" size 26
-                text "◇ via links: %d" % gloss_link_count() color "#AAAAAA" size 22 yalign 0.5
+                text "† via links: %d" % gloss_link_count() color "#AAAAAA" size 22 yalign 0.5
 
             ## Category tabs
             hbox:
@@ -599,15 +599,15 @@ screen glossary():
                                 null height 4
                                 text gloss_render_body(e["text"], persistent.gloss_found) color "#FFFFFF" size 28 substitute False
                                 null height 8
-                                text "{color=#FF55FF}◇{/color} = not discovered yet. Follow it to unlock." color "#777777" size 18
+                                text "{color=#FF55FF}†{/color} = not discovered yet. Follow it to unlock." color "#777777" size 18
                     else:
                         $ e = GLOSS[cur]
                         vbox:
                             spacing 16
-                            text "◇ UNDISCOVERED ◇" color "#FF55FF" size 36
+                            text "† UNDISCOVERED †" color "#FF55FF" size 36
                             text gloss_masked(e["term"]) color "#555555" size 44 substitute False
                             text "Category: " + GLOSS_CAT_NAMES[e["cat"]] color "#AAAAAA" size 22
-                            text "Keep playing to meet this term in the story — or find a {color=#FF55FF}◇ link{/color} to it inside another entry." color "#FFFFFF" size 26
+                            text "Keep playing to meet this term in the story — or find a {color=#FF55FF}† link{/color} to it inside another entry." color "#FFFFFF" size 26
 
 style gloss_tab is button
 style gloss_tab_text is button_text

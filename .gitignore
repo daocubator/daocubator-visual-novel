@@ -35,3 +35,11 @@
 /game/_autotest.rpy
 /web-build.zip
 /*.zip
+
+# Environment Variables & Secrets
+.env
+.env.*
+*.env
+*.key
+credentials.json
+.env
