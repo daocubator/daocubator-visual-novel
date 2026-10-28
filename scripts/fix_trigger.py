@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Rewrite an exported Cloud Build trigger YAML to use a user-managed service account.
+"""Rewrite a described/exported Cloud Build trigger YAML to use a user-managed service account.
 
 Usage: fix_trigger.py trigger.yaml projects/<proj>/serviceAccounts/<email>
 """
@@ -15,6 +15,8 @@ except ImportError:
 path, sa = sys.argv[1], sys.argv[2]
 d = yaml.safe_load(open(path))
 d["serviceAccount"] = sa
+for k in ("createTime", "updateTime", "resourceName"):  # output-only fields
+    d.pop(k, None)
 # A user-specified service account requires explicit logging on inline builds.
 if isinstance(d.get("build"), dict):
     d["build"].setdefault("options", {})["logging"] = "CLOUD_LOGGING_ONLY"

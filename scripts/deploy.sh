@@ -56,7 +56,7 @@ if [ "$SETUP" = 1 ]; then
 
   echo "==> GCP: fixing build trigger service account"
   TMP="$(mktemp -d)"; FIXED=0
-  for LOC in "$REGION" global; do
+  for LOC in global "$REGION"; do
     gcloud builds triggers list --project "$PROJECT" --region "$LOC" --format=json > "$TMP/list.json" 2>/dev/null || continue
     IDS="$(python3 - "$TMP/list.json" "$SERVICE" <<'PY'
 import json, sys
@@ -66,7 +66,7 @@ for t in json.load(open(sys.argv[1])):
 PY
 )"
     for ID in $IDS; do
-      gcloud builds triggers export "$ID" --project "$PROJECT" --region "$LOC" --destination "$TMP/t.yaml"
+      gcloud builds triggers describe "$ID" --project "$PROJECT" --region "$LOC" --format=yaml > "$TMP/t.yaml"
       python3 scripts/fix_trigger.py "$TMP/t.yaml" "projects/$PROJECT/serviceAccounts/$BUILDER"
       gcloud builds triggers import --project "$PROJECT" --region "$LOC" --source "$TMP/t.yaml"
       echo "    updated trigger $ID ($LOC)"; FIXED=1
