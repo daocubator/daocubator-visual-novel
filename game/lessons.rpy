@@ -87,8 +87,8 @@ screen lesson_popup(lid):
         xalign 0.5
         yalign 0.5
         xsize 1200
-        background "#000080"
-        padding (40, 30)
+        background Frame("gui/frame.png", gui.frame_borders)
+        padding (44, 34)
         vbox:
             spacing 18
             text "◆ LESSON LEARNED ◆" color "#FFFF55" size 34 xalign 0.5

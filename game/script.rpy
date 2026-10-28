@@ -87,8 +87,8 @@ screen stats_hud():
     frame:
         xalign 0.5
         ypos 0
-        background "#000000cc"
-        padding (20, 8)
+        background Frame("gui/notify.png", gui.notify_frame_borders)
+        padding (36, 8)
         hbox:
             spacing 28
             text "DAY [day]" color "#FFFFFF" size 22 yalign 0.5
@@ -177,7 +177,7 @@ screen experience_select():
         xalign 0.5
         yalign 0.5
         xsize 1560
-        background "#000080"
+        background Frame("gui/frame.png", gui.frame_borders)
         padding (50, 40)
         vbox:
             spacing 26
@@ -209,9 +209,9 @@ screen experience_select():
 style xp_card is button
 style xp_card:
     xsize 700
-    padding (32, 28)
-    background "#00002a"
-    hover_background "#0000AA"
+    padding (36, 32)
+    background Frame("gui/button/slot_idle_background.png", gui.slot_button_borders)
+    hover_background Frame("gui/button/slot_hover_background.png", gui.slot_button_borders)
 style xp_card_title is text:
     size 34
 style xp_card_body is text:

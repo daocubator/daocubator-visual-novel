@@ -1,0 +1,72 @@
+#!/usr/bin/env bash
+# =============================================================================
+# pre-commit hook — filename safety check
+# Blocks commits that contain filenames which would break on Windows or other
+# systems due to:
+#   1. Illegal characters  ( : * ? " < > | \ )
+#   2. Filename component longer than MAX_FILENAME chars
+#   3. Full repo-relative path longer than MAX_PATH chars
+#
+# Install:  git config core.hooksPath .githooks
+#   (already configured for this repo — see README or run the above manually)
+# =============================================================================
+
+RED='\033[0;31m'
+YELLOW='\033[1;33m'
+GREEN='\033[0;32m'
+RESET='\033[0m'
+
+# Limits (conservative — well under Windows MAX_PATH of 260)
+MAX_FILENAME=100   # max chars for the bare filename (no directory)
+MAX_PATH=200       # max chars for the full repo-relative path
+
+# Characters illegal on Windows filesystems (ERE — works on macOS BSD grep)
+ILLEGAL_PATTERN='[:*?"<>|]'
+
+errors=()
+
+# Inspect only files staged for this commit (added, copied, renamed, modified)
+while IFS= read -r -d '' file; do
+  basename="${file##*/}"
+
+  # 1. Illegal characters
+  if echo "$basename" | grep -qE "$ILLEGAL_PATTERN"; then
+    bad_chars=$(echo "$basename" | grep -oE '[:*?"<>|]' | sort -u | tr -d '\n')
+    errors+=("  ❌  Illegal character(s) '$bad_chars'  →  $file")
+  fi
+
+  # 2. Filename component length
+  fname_len=${#basename}
+  if (( fname_len > MAX_FILENAME )); then
+    errors+=("  ❌  Filename too long (${fname_len} chars, max ${MAX_FILENAME})  →  $file")
+  fi
+
+  # 3. Full path length
+  path_len=${#file}
+  if (( path_len > MAX_PATH )); then
+    errors+=("  ❌  Full path too long (${path_len} chars, max ${MAX_PATH})  →  $file")
+  fi
+
+done < <(git diff --cached --name-only -z --diff-filter=ACMR)
+
+# --- Report ---
+if (( ${#errors[@]} > 0 )); then
+  echo ""
+  echo -e "${RED}╔══════════════════════════════════════════════════════════════╗${RESET}"
+  echo -e "${RED}║         ✋  Commit blocked — filename problem(s)             ║${RESET}"
+  echo -e "${RED}╚══════════════════════════════════════════════════════════════╝${RESET}"
+  echo ""
+  for msg in "${errors[@]}"; do
+    echo -e "${RED}${msg}${RESET}"
+  done
+  echo ""
+  echo -e "${YELLOW}Fix: rename the file(s) and re-stage before committing.${RESET}"
+  echo -e "${YELLOW}  • Remove colons and other special characters from filenames.${RESET}"
+  echo -e "${YELLOW}  • Keep filenames under ${MAX_FILENAME} characters.${RESET}"
+  echo -e "${YELLOW}  • Keep full paths under ${MAX_PATH} characters.${RESET}"
+  echo ""
+  exit 1
+fi
+
+echo -e "${GREEN}✅  Filename check passed.${RESET}"
+exit 0

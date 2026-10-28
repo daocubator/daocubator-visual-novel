@@ -1,4 +1,4 @@
-﻿################################################################################
+################################################################################
 ## Initialization
 ################################################################################
 
@@ -25,33 +25,33 @@ define config.check_conflicting_properties = True
 ## The colors of text in the interface.
 
 ## An accent color used throughout the interface to label and highlight text.
-define gui.accent_color = '#00cc99'
+define gui.accent_color = '#D4AF37'
 
 ## The color used for a text button when it is neither selected nor hovered.
-define gui.idle_color = '#888888'
+define gui.idle_color = '#A0B0C4'
 
 ## The small color is used for small text, which needs to be brighter/darker to
 ## achieve the same effect.
-define gui.idle_small_color = '#aaaaaa'
+define gui.idle_small_color = '#8A99AC'
 
 ## The color that is used for buttons and bars that are hovered.
-define gui.hover_color = '#66e0c1'
+define gui.hover_color = '#FFE57F'
 
 ## The color used for a text button when it is selected but not focused. A
 ## button is selected if it is the current screen or preference value.
-define gui.selected_color = '#ffffff'
+define gui.selected_color = '#FFFFFF'
 
 ## The color used for a text button when it cannot be selected.
-define gui.insensitive_color = '#8888887f'
+define gui.insensitive_color = '#64748B7F'
 
 ## Colors used for the portions of bars that are not filled in. These are not
 ## used directly, but are used when re-generating bar image files.
-define gui.muted_color = '#00513d'
-define gui.hover_muted_color = '#007a5b'
+define gui.muted_color = '#152033'
+define gui.hover_muted_color = '#253550'
 
 ## The colors used for dialogue and menu choice text.
-define gui.text_color = '#ffffff'
-define gui.interface_text_color = '#ffffff'
+define gui.text_color = '#F8FAFC'
+define gui.interface_text_color = '#F1F5F9'
 
 
 ## Fonts and Font Sizes ########################################################
@@ -120,7 +120,7 @@ define gui.namebox_height = None
 
 ## The borders of the box containing the character's name, in left, top, right,
 ## bottom order.
-define gui.namebox_borders = Borders(5, 5, 5, 5)
+define gui.namebox_borders = Borders(24, 6, 24, 6)
 
 ## If True, the background of the namebox will be tiled, if False, the
 ## background of the namebox will be scaled.
@@ -211,9 +211,9 @@ define gui.choice_button_borders = Borders(150, 8, 150, 8)
 define gui.choice_button_text_font = gui.text_font
 define gui.choice_button_text_size = gui.text_size
 define gui.choice_button_text_xalign = 0.5
-define gui.choice_button_text_idle_color = '#888888'
-define gui.choice_button_text_hover_color = "#ffffff"
-define gui.choice_button_text_insensitive_color = '#8888887f'
+define gui.choice_button_text_idle_color = '#E2E8F0'
+define gui.choice_button_text_hover_color = "#FFE57F"
+define gui.choice_button_text_insensitive_color = '#64748B7F'
 
 
 ## File Slot Buttons ###########################################################
@@ -284,7 +284,7 @@ define gui.main_menu_text_xalign = 1.0
 ## components when an overlay or window is not present.
 
 ## Generic frames.
-define gui.frame_borders = Borders(6, 6, 6, 6)
+define gui.frame_borders = Borders(16, 16, 16, 16)
 
 ## The frame that is used as part of the confirm screen.
 define gui.confirm_frame_borders = Borders(60, 60, 60, 60)
@@ -293,7 +293,7 @@ define gui.confirm_frame_borders = Borders(60, 60, 60, 60)
 define gui.skip_frame_borders = Borders(24, 8, 75, 8)
 
 ## The frame that is used as part of the notify screen.
-define gui.notify_frame_borders = Borders(24, 8, 60, 8)
+define gui.notify_frame_borders = Borders(24, 8, 24, 8)
 
 ## Should frame backgrounds be tiled?
 define gui.frame_tile = False

@@ -6,7 +6,7 @@
 #      say_menu_text_filter wraps matches in {a=gloss:id} links; the character
 #      callback unlocks them when the line is actually shown (the filter itself
 #      must stay pure: Ren'Py also runs it during prediction and lint).
-#   2. LINK — glossary entries link to each other. Following a ◇ link to an
+#   2. LINK — glossary entries link to each other. Following a † link to an
 #      undiscovered entry unlocks it. Some terms are ONLY reachable this way.
 #
 # Entry body markup:  <id>  or  <id|display text>   (converted to {a=gloss:id}).
@@ -234,6 +234,10 @@ init -10 python:
     ]
 
     GLOSS = {e["id"]: e for e in GLOSSARY}
+    GLOSS_CAT_COLORS = dict((c[0], c[2]) for c in GLOSS_CATS)
+    for _e in GLOSSARY:
+        _e["cat_color"] = GLOSS_CAT_COLORS.get(_e["cat"], "#FFFFFF")
+        _e["masked"] = _e["term"][0] + "·" * min(len(_e["term"]) - 1, 9)
 
     ## One big case-insensitive regex; one named group per entry. Entries with
     ## longer patterns go first so "governance token" beats "governance".
@@ -326,13 +330,13 @@ init -10 python:
                 for m in _GLOSS_MARKUP_RE.finditer(text)]
 
     def gloss_render_body(text, found):
-        """Entry body → Ren'Py text. Undiscovered targets get a ◇ and magenta."""
+        """Entry body → Ren'Py text. Undiscovered targets get a † after and magenta."""
         def rep(m):
             gid = m.group(1)
             disp = m.group(2) or GLOSS[gid]["term"]
             if gid in found:
                 return "{a=gloss:%s}%s{/a}" % (gid, disp)
-            return "{a=gloss:%s}{color=#FF55FF}◇%s{/color}{/a}" % (gid, disp)
+            return "{a=gloss:%s}{color=#FF55FF}%s†{/color}{/a}" % (gid, disp)
         return _GLOSS_MARKUP_RE.sub(rep, text)
 
     GLOSS_RANKS = [
@@ -481,8 +485,8 @@ screen gloss_toast(names, n):
     frame at gloss_toast_appear:
         xalign 1.0
         ypos 70
-        background "#000080ee"
-        padding (24, 12)
+        background Frame("gui/notify.png", gui.notify_frame_borders)
+        padding (32, 14)
         vbox:
             spacing 4
             text ("◆ NEW TERM ◆" if len(names) == 1 else "◆ %d NEW TERMS ◆" % len(names)) color "#FFFF55" size 22
@@ -522,7 +526,7 @@ screen glossary():
                 text "[n_found]/[n_total] TERMS" color "#FFFF55" size 26
                 text gloss_bar(n_found, n_total) color "#55FFFF" size 22 yalign 0.5
                 text "RANK: " + gloss_rank(n_found) color "#FF55FF" size 26
-                text "◇ via links: %d" % gloss_link_count() color "#AAAAAA" size 22 yalign 0.5
+                text "† via links: %d" % gloss_link_count() color "#AAAAAA" size 22 yalign 0.5
 
             ## Category tabs
             hbox:
@@ -544,37 +548,37 @@ screen glossary():
 
                 ## Term list
                 frame:
-                    background "#00002acc"
+                    background Frame("gui/button/slot_idle_background.png", gui.slot_button_borders)
                     xsize 470
                     ysize 640
-                    padding (10, 10)
-                    viewport:
+                    padding (14, 14)
+                    vpgrid:
+                        id "gloss_vp"
+                        cols 1
+                        spacing 2
                         scrollbars "vertical"
                         vscrollbar_unscrollable "hide"
-                        mousewheel True
+                        mousewheel "change"
                         draggable True
                         yinitial (sel_idx / float(max(1, len(entries) - 1)))
-                        vbox:
-                            spacing 2
-                            for e in entries:
-                                $ eid = e["id"]
-                                $ ccol = dict((c[0], c[2]) for c in GLOSS_CATS)[e["cat"]]
-                                if eid in persistent.gloss_found:
-                                    textbutton (e["term"] + ("  {color=#FFFF55}NEW{/color}" if eid not in persistent.gloss_read and eid != cur else "")):
-                                        style "gloss_item"
-                                        text_color ccol
-                                        selected cur == eid
-                                        action Function(gloss_select, eid)
-                                else:
-                                    textbutton gloss_masked(e["term"]):
-                                        style "gloss_item"
-                                        text_color "#555555"
-                                        selected cur == eid
-                                        action Function(gloss_select, eid)
+                        for e in entries:
+                            $ eid = e["id"]
+                            if eid in persistent.gloss_found:
+                                textbutton (e["term"] + ("  {color=#FFFF55}NEW{/color}" if eid not in persistent.gloss_read and eid != cur else "")):
+                                    style "gloss_item"
+                                    text_color e["cat_color"]
+                                    selected cur == eid
+                                    action Function(gloss_select, eid)
+                            else:
+                                textbutton e["masked"]:
+                                    style "gloss_item"
+                                    text_color "#555555"
+                                    selected cur == eid
+                                    action Function(gloss_select, eid)
 
                 ## Entry detail
                 frame:
-                    background "#000080"
+                    background Frame("gui/frame.png", gui.frame_borders)
                     xsize 880
                     ysize 640
                     padding (36, 28)
@@ -585,11 +589,13 @@ screen glossary():
                             text "Words in {color=#FFFF55}yellow{/color} in the story are glossary terms. Click one to look it up. Every term you meet is added here — and entries link to more entries." color "#AAAAAA" size 24
                     elif cur in persistent.gloss_found:
                         $ e = GLOSS[cur]
-                        $ ccol = dict((c[0], c[2]) for c in GLOSS_CATS)[e["cat"]]
+                        $ ccol = e["cat_color"]
                         viewport:
+                            id "gloss_detail_vp"
                             scrollbars "vertical"
                             vscrollbar_unscrollable "hide"
-                            mousewheel True
+                            mousewheel "change"
+                            draggable True
                             vbox:
                                 spacing 16
                                 if persistent._gloss_fresh == cur:
@@ -599,37 +605,39 @@ screen glossary():
                                 null height 4
                                 text gloss_render_body(e["text"], persistent.gloss_found) color "#FFFFFF" size 28 substitute False
                                 null height 8
-                                text "{color=#FF55FF}◇{/color} = not discovered yet. Follow it to unlock." color "#777777" size 18
+                                text "{color=#FF55FF}†{/color} = not discovered yet. Follow it to unlock." color "#777777" size 18
                     else:
                         $ e = GLOSS[cur]
                         vbox:
                             spacing 16
-                            text "◇ UNDISCOVERED ◇" color "#FF55FF" size 36
+                            text "† UNDISCOVERED †" color "#FF55FF" size 36
                             text gloss_masked(e["term"]) color "#555555" size 44 substitute False
                             text "Category: " + GLOSS_CAT_NAMES[e["cat"]] color "#AAAAAA" size 22
-                            text "Keep playing to meet this term in the story — or find a {color=#FF55FF}◇ link{/color} to it inside another entry." color "#FFFFFF" size 26
+                            text "Keep playing to meet this term in the story — or find a {color=#FF55FF}† link{/color} to it inside another entry." color "#FFFFFF" size 26
 
 style gloss_tab is button
 style gloss_tab_text is button_text
 style gloss_tab:
-    background "#00002a"
-    selected_background "#0000AA"
-    hover_background "#000060"
-    padding (12, 6)
+    background Frame("gui/button/idle_background.png", gui.button_borders)
+    selected_background Frame("gui/button/hover_background.png", gui.button_borders)
+    hover_background Frame("gui/button/hover_background.png", gui.button_borders)
+    padding (14, 8)
 style gloss_tab_text:
     size 20
-    color "#AAAAAA"
-    selected_color "#FFFFFF"
+    color "#94A3B8"
+    selected_color "#FFE57F"
     hover_color "#FFFFFF"
 
 style gloss_item is button
 style gloss_item_text is button_text
 style gloss_item:
     xfill True
+    ysize 38
     padding (10, 4)
     selected_background "#0000AA"
     hover_background "#000060"
 style gloss_item_text:
     size 24
+    yalign 0.5
     hover_color "#FFFFFF"
     selected_color "#FFFFFF"

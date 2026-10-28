@@ -37,9 +37,10 @@ Status legend: ⬜ needed · 🟨 placeholder generated (scripted PIL, in `game/
 
 ## UI / GUI
 
-- Title screen logo + animated bg (cherry blossoms × token geometry — from daoromance) ⬜
-- Textbox, namebox, choice buttons, frame (PC-98 skin over Ren'Py defaults) 🟨 (recolored defaults)
-- Lesson Learned popup frame ⬜ · Codex screen ⬜ · Stats sidebar icons (Vibes/Treasury/Security/Morale/Burnout) 🟨 (text glyphs)
+- Title screen key visual (Tree of life × token geometry × cherry blossoms) 🎨 mixed media (v1 generated)
+- Textbox, namebox, choice buttons, frame (Asya mixed-media gold leaf & dark glass skin) 🎨 mixed media live in `game/gui/`
+- Lesson Learned popup frame · Codex / Glossary screens · Stats HUD banner 🎨 gold-trimmed dark glass live
+- Sliders, scrollbars, checkboxes, radio buttons, slot cards, window icon 🎨 complete in `game/gui/`
 - Ending cards ×8 ⬜
 
 ## Audio (all ⬜, v1 ships silent or with CC0 chiptune)

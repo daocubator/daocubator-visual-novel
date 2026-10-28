@@ -30,12 +30,22 @@
 
 # Generated Ren'Py web build (regenerate: see WEB.md). Large WASM/data blobs.
 /web-build/
+
 # Stray test/log artifacts
 /autotest_*.txt
 /game/_autotest.rpy
 /web-build.zip
 /*.zip
+
+# macOS
+.DS_Store
 prototypes/.DS_Store
 game/.DS_Store
 vault/.DS_Store
-.DS_Store
+
+# Environment variables & secrets
+.env
+.env.*
+*.env
+*.key
+credentials.json
