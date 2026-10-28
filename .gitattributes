@@ -45,3 +45,6 @@
 *.7z        binary
 *.tar       binary
 *.gz        binary
+
+# --- Prebuilt web build: never normalise line endings or mangle bytes ---
+web-build/** -text
