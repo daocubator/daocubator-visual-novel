@@ -1,0 +1,17 @@
+# Cloud Build context for Cloud Run. Do not include .gitignore:
+# that file ignores web-build/, which is the only thing this image serves.
+.git
+.github
+**/.DS_Store
+.vscode
+.claude
+/vault/
+/research/
+/research-points-to-tokens/
+/prototypes/
+/game/
+/build/
+*.md
+*.zip
+# Ren'Py loads this package at startup. The rule above would 404 it.
+!web-build/game.zip

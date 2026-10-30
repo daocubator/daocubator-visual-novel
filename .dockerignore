@@ -1,0 +1,5 @@
+# Send only what the image needs to the build context.
+*
+!Dockerfile
+!scripts/serve_web.py
+!web-build/

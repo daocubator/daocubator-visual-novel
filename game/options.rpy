@@ -194,6 +194,7 @@ init python:
     ## game — keep them out of every distribution (incl. the public web zip).
     build.classify('vault/**', None)
     build.classify('research/**', None)
+    build.classify('research-points-to-tokens/**', None)
     build.classify('prototypes/**', None)
     build.classify('scripts/**', None)
     build.classify('build/**', None)
@@ -201,6 +202,9 @@ init python:
     build.classify('*.zip', None)
     build.classify('*.md', None)
     build.classify('*.txt', None)
+    build.classify('Dockerfile', None)
+    build.classify('.dockerignore', None)
+    build.classify('.gcloudignore', None)
     build.classify('game/saves/**', None)
 
     ## To archive files, classify them as 'archive'.

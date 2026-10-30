@@ -28,18 +28,25 @@
 # Ren'Py per-run log in the game dir
 /game/log.txt
 
-# Generated Ren'Py web build (regenerate: see WEB.md). Large WASM/data blobs.
-/web-build/
+# NOTE: /web-build/ is intentionally TRACKED. Cloud Run's push-to-main auto build
+# has no Ren'Py SDK, so the Dockerfile serves this prebuilt output.
+# Regenerate + commit it with: ./scripts/deploy.sh
+
 # Stray test/log artifacts
 /autotest_*.txt
 /game/_autotest.rpy
 /web-build.zip
 /*.zip
-
-# Environment Variables & Secrets
-.env
-.env.*
-*.env
-*.key
-credentials.json
+
+# macOS
+.DS_Store
+prototypes/.DS_Store
+game/.DS_Store
+vault/.DS_Store
+
+# Environment variables & secrets
 .env
+.env.*
+*.env
+*.key
+credentials.json
