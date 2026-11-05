@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DAOCUBATOR — Background Prompts & Scene Reference</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background-color: #0b0f19;
+      color: #f1f5f9;
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+  </style>
+</head>
+<body class="antialiased p-6 md:p-10">
+  <div class="max-w-6xl mx-auto space-y-6">
+
+    <!-- Header -->
+    <div class="bg-[#111827] border border-[#1f2937] rounded-xl p-6 shadow-lg">
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+        <div>
+          <div class="text-xs uppercase tracking-widest text-amber-400 font-mono mb-1">
+            vault/06 Assets/background_prompts.html · 1920×1080 (16:9)
+          </div>
+          <h1 class="text-2xl md:text-3xl font-bold text-white">
+            Get Rich Together — Background Art Brief &amp; Prompt History
+          </h1>
+          <p class="text-sm text-slate-400 mt-1.5 max-w-3xl">
+            Human-readable reference for all 8 narrative backgrounds (49 total scene calls across Chapters 1–5 &amp; 8 endings) plus 2 full-screen GUI menu backdrops. Includes side-by-side previews of v1 &amp; v0, narrative meaning, 24k gold sprite lighting profiles, scene-by-scene breakdowns, and every prompt tried.
+          </p>
+        </div>
+        <div class="flex flex-wrap gap-2 shrink-0">
+          <span class="px-3 py-1.5 rounded-lg border border-amber-500/30 text-amber-300 text-xs font-mono bg-amber-500/10">
+            8 Scene BGs
+          </span>
+          <span class="px-3 py-1.5 rounded-lg border border-cyan-500/30 text-cyan-300 text-xs font-mono bg-cyan-500/10">
+            49 Script Calls
+          </span>
+          <span class="px-3 py-1.5 rounded-lg border border-purple-500/30 text-purple-300 text-xs font-mono bg-purple-500/10">
+            2 GUI Backdrops
+          </span>
+        </div>
+      </div>
+
+      <!-- Staging & Style History Summary -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mt-5 pt-5 border-t border-[#1f2937]">
+        <div class="bg-[#0b0f19] border border-[#1f2937] rounded-lg p-4">
+          <h2 class="text-sm font-semibold text-amber-300 mb-1.5">Staging &amp; Composition Constraints</h2>
+          <ul class="text-xs text-slate-400 space-y-1.5 list-disc list-inside">
+            <li><strong class="text-slate-200">Ren'Py Auto-Naming:</strong> Files in <code class="font-mono text-amber-200">game/images/</code> must be named <code class="font-mono text-amber-200">bg &lt;id&gt;.png</code> (with a space) to match <code class="font-mono text-amber-200">scene bg &lt;id&gt;</code>.</li>
+            <li><strong class="text-slate-200">Sprite Clearance:</strong> Upper 2/3 of frame holds waist-up 3D polished 24k gold character sculptures at <code class="font-mono">xalign 0.18</code> (left), <code class="font-mono">0.50</code> (center), and <code class="font-mono">0.82</code> (right).</li>
+            <li><strong class="text-slate-200">Textbox Overlay:</strong> Bottom <code class="font-mono">277px</code> is covered by dark-glass <code class="font-mono">game/gui/textbox.png</code>.</li>
+            <li><strong class="text-slate-200">Value Contrast:</strong> Mid-ground needs controlled value contrast so bright specular gold silhouettes read cleanly without visual clutter.</li>
+          </ul>
+        </div>
+
+        <div class="bg-[#0b0f19] border border-[#1f2937] rounded-lg p-4">
+          <h2 class="text-sm font-semibold text-amber-300 mb-1.5">Visual Directions Tried So Far</h2>
+          <div class="text-xs text-slate-400 space-y-1.5">
+            <div><strong class="text-slate-200">1. v0 Prototype (Retrodiffusion):</strong> 90s PC-98 pixel art URLs in <code class="font-mono">startupfounders98/app.js</code> (never rendered to bitmaps).</div>
+            <div><strong class="text-slate-200">2. v0 Scripted PC-98 Placeholders:</strong> PIL 16-color ordered-Bayer dithered geometry + CRT scanlines (<code class="font-mono">placeholders_backup/</code>).</div>
+            <div><strong class="text-slate-200">3. Artist Test (Victorian Junk-Journal):</strong> Pressed roses, skeleton keys, wax seals (<code class="font-mono">moodboard/artist_examples/naughtyartist_example.jpg</code>). Rejected as too antique/mystery.</div>
+            <div><strong class="text-slate-200">4. v1 Mixed-Media (Asya Moodboard):</strong> Acrylic washes + gold leaf PCB traces (<code class="font-mono">generated_backgrounds/</code>). Busy gold circuit overlays compete with the new 3D 24k gold sprites &amp; predate Asya's 7-Board Corpus (<code class="font-mono">research/seven-boards-abdrahman.html</code>).</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Filter & Search Controls -->
+    <div class="bg-[#111827] border border-[#1f2937] rounded-xl p-4 shadow-lg flex flex-col md:flex-row gap-3 items-stretch md:items-center justify-between sticky top-2 z-20">
+      <div class="flex flex-wrap gap-1.5" id="bg-pills">
+        <button onclick="setFilter('all')" data-filter="all" class="filter-btn px-3 py-1.5 rounded-lg text-xs font-medium border border-amber-500 bg-amber-500 text-slate-950 font-semibold">
+          All (8 + 2 GUI)
+        </button>
+      </div>
+      <div class="flex items-center gap-2">
+        <input
+          id="search-input"
+          type="text"
+          oninput="renderCards()"
+          placeholder="Search scenes, characters, prompts, chapters..."
+          class="w-full md:w-72 px-3 py-1.5 text-xs rounded-lg bg-[#0b0f19] border border-[#374151] text-slate-100 placeholder-slate-500 focus:outline-none focus:border-amber-400"
+        />
+      </div>
+    </div>
+
+    <!-- Cards Container -->
+    <div id="cards-container" class="space-y-6"></div>
+
+  </div>
+
+  <script>
+    const DATA = {
+      backgrounds: [
+        {
+          id: "conference",
+          title: "Crypto-Conference Hall & Pitch Stage",
+          filename: "bg conference.png",
+          renpy_tag: "scene bg conference",
+          uses: 13,
+          v1_img: "generated_backgrounds/bg conference.png",
+          v0_img: "placeholders_backup/bg conference.png",
+          chapters: ["Ch1", "Ch2", "Ch3", "Ch5", "Endings"],
+          characters: ["alex", "vera", "atlas", "maya"],
+          what_it_represents: "The public, formal, high-stakes arena. Crypto-conference hall, pitch stage, mixer floor, and constitutional assembly room where money, power, legal liability, and governance votes collide in public view.",
+          what_to_depict: "Crypto-conference hall / pitch stage — big presentation screen with DAO/ETH banners or network emblems, stage spotlights, tiered seating in shadow. Open foreground stage to frame 1–3 speaking character sprites.",
+          lighting: {
+            rgb: [1.02, 0.98, 0.92],
+            bright: "+0.01",
+            contrast: "1.04×",
+            note: "Crisp warm stage spotlights"
+          },
+          scenes: [
+            { id: "Ch1.5", file: "game/ch1_genesis.rpy:82", beat: "Meet Alex", summary: "Alex critiques your unallocated tokenomics draft at a DeFi conference and pitches joining as treasury lead." },
+            { id: "Ch1.6", file: "game/ch1_genesis.rpy:98", beat: "Vera at the mixer — the legal wrapper", summary: "At an after-hours mixer, ex-union organizer Vera asks 'Who's liable when this goes wrong?' and offers the $15k Swiss Verein legal wrapper." },
+            { id: "Ch2.2", file: "game/ch2_tge.rpy:14", beat: "Treasury composition — KEYSTONE", summary: "Maya and Alex debate holding 90% native token vs. a 30–50% stablecoin barbell." },
+            { id: "Ch2.3", file: "game/ch2_tge.rpy:36", beat: "Atlas's 500 ETH offer — KEYSTONE", summary: "Atlas offers 500 ETH 'no strings attached' while Alex whispers an aside about whale leverage." },
+            { id: "Ch2.4 (label)", file: "game/ch2_tge.rpy:62", beat: "Route beat — Record Label 360 deal", summary: "Alex presents a major distributor's cross-collateralized 360 advance offer." },
+            { id: "Ch2.7", file: "game/ch2_tge.rpy:150", beat: "Vera's counteroffer", summary: "Vera offers patient angel capital (20 ETH, no board seat, monthly truth dinner) as an alternative to Atlas." },
+            { id: "Ch3.2", file: "game/ch3_governance.rpy:14", beat: "Proposal #17 — KEYSTONE", summary: "Public governance crisis as Proposal #17 ('Redistribute founder tokens to the community') hits 35% support." },
+            { id: "Ch3.7", file: "game/ch3_governance.rpy:130", beat: "Alex's quiet dinner", summary: "If loyal, Alex discloses that Atlas bought them dinner and offered an 'advisory role'." },
+            { id: "Ch5.2", file: "game/ch5_resolution.rpy:20", beat: "The regulator letter", summary: "A paper envelope from a financial regulator arrives questioning the token event (payoff of Ch1.6 Swiss Verein choice)." },
+            { id: "Ch5.4", file: "game/ch5_resolution.rpy:53", beat: "The acquisition offer", summary: "BigCorp sends a formal acquisition offer ('Exploring Strategic Alignment') to buy out the tired collective." },
+            { id: "Ch5.6", file: "game/ch5_resolution.rpy:95", beat: "The reform vote — KEYSTONE", summary: "The Constitutional Vote on Day 90: Full Decentralization vs. Balanced Governance vs. Benevolent Leadership." },
+            { id: "Ending", file: "game/endings.rpy:54", beat: "🤝 ENDING: THE ACQUI-HIRE", summary: "Papers sign smoothly; everyone gets jobs at BigCorp and the mission statement gets a redirect notice." },
+            { id: "Ending", file: "game/endings.rpy:85", beat: "🏛️ ENDING: FOUNDER'S CAPTURE", summary: "Founders kept control of everything except the point; polite performative votes in a centralized hall." }
+          ],
+          prompts: [
+            {
+              era: "v0 Prototype (Retrodiffusion)",
+              source: "prototypes/startupfounders98/app.js",
+              text: "pixel art corporate boardroom conference table projector screen intimidating 90s aesthetic"
+            },
+            {
+              era: "v0 Scripted PC-98 Placeholder",
+              source: "scripts/generate_placeholders.py",
+              text: "Ordered Bayer dither gradient from blue (#0000AA) to deep blue (#000080), black stage screen with bright cyan border (#55FFFF), dark gray stage floor, and black silhouettes of audience heads."
+            },
+            {
+              era: "v1 Mixed-Media (Asya Moodboard)",
+              source: "vault/06 Assets/generated_backgrounds/bg conference.png",
+              refs: ["Asya Abjad Mixed Media Calligraphy (Theme.jpg)", "Circuit Board / Linework Board (UI.png)"],
+              text: "A visual novel background of a high-stakes crypto conference hall and illuminated presentation stage. The stage has a glowing presentation screen displaying abstract golden DAO network graphs and decentralized emblems. Stage lighting spotlights cast dramatic warm golden and cyan beams across the stage. Tiered auditorium rows with silhouettes of seated audience members are visible in the dim background. The stage foreground is open and ready for a speaker. Mixed media art style: richly textured abstract painting, layered acrylic washes with rich crimson, amber, and deep charcoal, distressed gold leaf accents, fine golden circuit board traces running across structural pillars, collage paper textures with raw tactile edges. High-stakes, grand, theatrical atmosphere."
+            }
+          ]
+        },
+        {
+          id: "discord",
+          title: "Stylized Discord Server (2–3 AM)",
+          filename: "bg discord.png",
+          renpy_tag: "scene bg discord",
+          uses: 8,
+          v1_img: "generated_backgrounds/bg discord.png",
+          v0_img: "placeholders_backup/bg discord.png",
+          chapters: ["Ch1", "Ch2", "Ch3", "Ch4", "Ch5", "Endings"],
+          characters: ["jordan", "maya", "spectre"],
+          what_it_represents: "The digital town square at 2–3 AM. Where community hype, memes, governance apathy, operational leaks, phishing links, and factional arguments happen in real time.",
+          what_to_depict: "Stylized Discord server / online community space at 2–3 AM — channel/member rail, active chat stream, dark nocturnal glow. The online collective space.",
+          lighting: {
+            rgb: [0.95, 0.92, 1.08],
+            bright: "0.00",
+            contrast: "1.05×",
+            note: "Neon cyan/magenta server ambiance"
+          },
+          scenes: [
+            { id: "Ch1.4", file: "game/ch1_genesis.rpy:65", beat: "Meet Jordan", summary: "Jordan introduces the blowing-up Discord server and asks how to handle trolls, quiet quitters, and onboarding." },
+            { id: "Ch2.1", file: "game/ch2_tge.rpy:8", beat: "TGE eve", summary: "Ten thousand members flood the server before the Token Generation Event—believers and vultures cheering alike." },
+            { id: "Ch2.4 (collective)", file: "game/ch2_tge.rpy:96", beat: "Route beat — Viral Drop Overfunding Paradox", summary: "Jordan celebrates the drop hitting 300% of goal while Maya realizes unit economics are negative $15 per unit." },
+            { id: "Ch2.6", file: "game/ch2_tge.rpy:131", beat: "The shared doc incident", summary: "Jordan reports that mod pixel_pal pasted the multisig seed phrase into the team Notion 'just temporarily' for six hours." },
+            { id: "Ch3.1", file: "game/ch3_governance.rpy:8", beat: "Honeymoon's over", summary: "Voter turnout drops to 6.3% while Jordan is buried under 400 DMs a day and loud non-contributors complain about the logo." },
+            { id: "Ch4a.3", file: "game/ch4_attack.rpy:80", beat: "Ice phishing — plan B", summary: "Members report weird token approval popups on the live mint site after a stolen CDN key injects malicious script." },
+            { id: "Ch5.3", file: "game/ch5_resolution.rpy:33", beat: "The green partnership", summary: "A carbon-credit protocol pitches a 'regenerative culture partnership' that turns out to be 2011 junk hydro credits." },
+            { id: "Ending", file: "game/endings.rpy:95", beat: "🐌 ENDING: DEATH BY DEMOCRACY", summary: "47 proposals pending, 4.1% turnout; the server becomes a beautifully governed ghost town with perfect process and no pulse." }
+          ],
+          prompts: [
+            {
+              era: "v0 Scripted PC-98 Placeholder",
+              source: "scripts/generate_placeholders.py",
+              text: "Ordered Bayer dither gradient from black (#000000) to deep blue (#000080), left server rail in dark gray (#555555) with colored circular server icons, and deep-blue chat message boxes outlined in cyan (#00AAAA)."
+            },
+            {
+              era: "v1 Mixed-Media (Asya Moodboard)",
+              source: "vault/06 Assets/generated_backgrounds/bg discord.png",
+              refs: ["Circuit Board / Linework Board (UI.png)", "Theme Spiral Slice (Theme.jpg)"],
+              text: "A visual novel background of a stylized late-night online community chatroom and Discord interface at 3 AM. A dark sleek interface abstractly depicting a channel sidebar, active glowing chat stream columns, message cards, and online member nodes. Atmospheric dark glow with deep midnight charcoal, luminous neon cyan and magenta watercolor bleeds, soft luminous ambient glow from active discussions. Mixed media art style: rich textured watercolor and acrylic washes on dark textured handmade paper, distressed gold leaf circuit board traces connecting community nodes like a constellation network, torn paper collage edges, fine calligraphic marks and subtle digital glitch textures. Mysterious, vibrant, nocturnal online community space."
+            }
+          ]
+        },
+        {
+          id: "coworking",
+          title: "Startup Coworking Office",
+          filename: "bg coworking.png",
+          renpy_tag: "scene bg coworking",
+          uses: 7,
+          v1_img: "generated_backgrounds/bg coworking.png",
+          v0_img: "placeholders_backup/bg coworking.png",
+          chapters: ["Ch1", "Ch2", "Ch3", "Ch4", "Ch5", "Endings"],
+          characters: ["maya", "jordan"],
+          what_it_represents: "The physical workshop where the core team actually builds, argues over equity, ships product, counts casualties the morning after the attack, and settles into sustainable work.",
+          what_to_depict: "Startup co-working office — wooden desks, monitors, architectural whiteboard, loft window with daylight. Grounded, human workspace.",
+          lighting: {
+            rgb: [1.00, 0.99, 0.96],
+            bright: "0.00",
+            contrast: "1.00×",
+            note: "Warm natural daylight studio"
+          },
+          scenes: [
+            { id: "Ch1.1–1.3", file: "game/ch1_genesis.rpy:8", beat: "Cold open, Meet Maya & Equity Split — KEYSTONE", summary: "Day 1 after quitting BigCorp: choosing the venture type, recruiting Maya, and negotiating the co-founder equity split (50/50 vs. 60/40 vs. 4-year vesting with 1-year cliff)." },
+            { id: "Ch1.9", file: "game/ch1_genesis.rpy:157", beat: "Chapter 1 close — Genesis", summary: "The Genesis Block is complete and the collective is born." },
+            { id: "Ch2.4 (streetwear)", file: "game/ch2_tge.rpy:81", beat: "Route beat — Streetwear Full Collection vs. One Hoodie", summary: "Jordan pitches an 8-piece cut-and-sew collection that risks a fulfillment and chargeback death spiral." },
+            { id: "Ch3.4", file: "game/ch3_governance.rpy:58", beat: "Maya's 3x offer — KEYSTONE", summary: "Exhausted after eight months of deferred salary, Maya reveals a competitor offered her 3x salary—testing whether you have vesting or dead equity." },
+            { id: "Ch4.5", file: "game/ch4_attack.rpy:176", beat: "Morning-after triage", summary: "Day-after casualty accounting in the office after surviving the Chapter 4 attack." },
+            { id: "Ch5.1", file: "game/ch5_resolution.rpy:8", beat: "After the storm (Day 90)", summary: "Day 90 check-in at the workspace with Maya and Jordan before the final resolution beats." },
+            { id: "Ending", file: "game/endings.rpy:115", beat: "🌱 ENDING: THE SUSTAINABLE COLLECTIVE", summary: "No unicorn, no monument—artists paid on time, decisions made in the open, a boring resilient treasury, and a founder who sleeps well." }
+          ],
+          prompts: [
+            {
+              era: "v0 Prototype (Retrodiffusion)",
+              source: "prototypes/startupfounders98/app.js",
+              text: "pixel art trendy coworking space open plan bean bags monitors 90s aesthetic / pixel art startup office interior desks computers whiteboard windows 90s aesthetic"
+            },
+            {
+              era: "v0 Scripted PC-98 Placeholder",
+              source: "scripts/generate_placeholders.py",
+              text: "Ordered Bayer dither gradient from deep blue (#000080) to black (#000000), dark gray floor, brown desks with cyan-bordered monitors, and a bright-cyan framed window on the right."
+            },
+            {
+              era: "v1 Mixed-Media (Asya Moodboard)",
+              source: "vault/06 Assets/generated_backgrounds/bg coworking.png",
+              refs: ["Asya Abstract Painting Canvas (Theme.jpg)", "Organic Solarpunk Architecture (Environments.png)"],
+              text: "A visual novel background of a startup co-working office space where a tech team builds together. Wooden desks with multiple computer monitors, open laptops showing code and charts, coffee cups, notebooks, an architectural whiteboard covered with diagrams and sticky notes, lush indoor houseplants, and wide loft windows with warm natural sunlight streaming across the room. Mixed media art style: rich textured abstract painting surfaces, layered acrylic and gouache washes, raw torn handmade paper collage elements, distressed gold leaf accents with subtle organic circuit board traces, earthy terracotta, warm ochre, soft olive green, and slate tones. Collaborative, vibrant, creative atmosphere."
+            }
+          ]
+        },
+        {
+          id: "blockchain",
+          title: "Abstract On-Chain Visualization ('The Chain')",
+          filename: "bg blockchain.png",
+          renpy_tag: "scene bg blockchain",
+          uses: 7,
+          v1_img: "generated_backgrounds/bg blockchain.png",
+          v0_img: "placeholders_backup/bg blockchain.png",
+          chapters: ["Prologue", "Ch1", "Ch2", "Ch4", "Endings"],
+          characters: ["atlas", "maya", "alex", "spectre", "vera"],
+          what_it_represents: "'The Chain.' The immutable, impersonal protocol layer where tokens are minted, whale wallets accumulate in silence, 51% governance attacks execute without mercy, and treasury death spirals play out mathematically.",
+          what_to_depict: "Abstract on-chain visualization — glowing node graph, cryptographic edges and blocks, high-contrast cyber/protocol space.",
+          lighting: {
+            rgb: [0.88, 0.98, 1.06],
+            bright: "-0.02",
+            contrast: "1.10×",
+            note: "High-contrast cyber node glow"
+          },
+          scenes: [
+            { id: "Prologue", file: "game/script.rpy:152", beat: "2026 Cold Open & Name Entry", summary: "Opening narration ('NounsDAO. MakerDAO. The Aragon crisis. ConstitutionDAO...') and player name entry before jumping to Chapter 1." },
+            { id: "Ch1.8", file: "game/ch1_genesis.rpy:137", beat: "Token design ceremony + Atlas mint-night foreshadow", summary: "Setting initial token allocation (Founder Split vs. Merit vs. 60% Community Treasury) and witnessing Atlas's anonymous whale deposit materialize from shadow." },
+            { id: "Ch2.8", file: "game/ch2_tge.rpy:164", beat: "Launch night (TGE)", summary: "The token goes live, governance activates, and someone makes a shrine to the genesis block number." },
+            { id: "Ch4.0", file: "game/ch4_attack.rpy:18", beat: "Day 60 — The Attack intro & Spectre's warning", summary: "'Something is wrong with the chain the way something can be wrong with a house at night.' Spectre gives an earned warning before routing to the attack vector." },
+            { id: "Ch4b", file: "game/ch4_attack.rpy:99", beat: "51% Attack / Governance Capture — KEYSTONE", summary: "Red Alert: Atlas's 11 wallets cross 45% of governance tokens and submit a 'Treasury Diversification Initiative' containing a hidden drain function." },
+            { id: "Ch4c", file: "game/ch4_attack.rpy:145", beat: "Treasury Death Spiral crash", summary: "Market drops 40% in a week, and the 90%-native-token treasury loses 70% of its purchasing power right before Thursday payroll." },
+            { id: "Ending", file: "game/endings.rpy:75", beat: "💀 ENDING: THE HOSTILE TAKEOVER", summary: "The treasury address updates one last time; whoever holds the keys posts a single 'gg' before archiving the forum." }
+          ],
+          prompts: [
+            {
+              era: "v0 Scripted PC-98 Placeholder",
+              source: "scripts/generate_placeholders.py",
+              text: "Ordered Bayer dither gradient from black (#000000) to deep blue (#000080) with a 12-node elliptical ring connected by cyan chords (#00AAAA) and alternating bright magenta (#FF55FF) and bright cyan (#55FFFF) square nodes."
+            },
+            {
+              era: "v1 Mixed-Media (Asya Moodboard)",
+              source: "vault/06 Assets/generated_backgrounds/bg blockchain.png",
+              refs: ["Circuit Board / Linework Board (UI.png)", "Theme Spiral Slice (Theme.jpg)"],
+              text: "A visual novel background of an abstract blockchain network and cryptographic ledger visualization. Glowing geometric node clusters and cryptographic blocks floating in deep space, connected by radiant cyan, electric magenta, and gold conductive data threads. Sacred geometry spirals, mathematical mesh grids, and hash data rings. Mixed media art style: cosmic deep indigo and black textured canvas, rich impasto oil paint texture, shimmering distressed gold leaf foil circuit pathways, luminous translucent resin layers, tactile torn parchment collage elements. Hypnotic, monumental, cyber-organic."
+            }
+          ]
+        },
+        {
+          id: "apartment",
+          title: "Late-Night Founder Apartment (2:47 AM)",
+          filename: "bg apartment.png",
+          renpy_tag: "scene bg apartment",
+          uses: 7,
+          v1_img: "generated_backgrounds/bg apartment.png",
+          v0_img: "placeholders_backup/bg apartment.png",
+          chapters: ["Ch1", "Ch2", "Ch3", "Ch4", "Ch5"],
+          characters: ["spectre", "jordan", "maya"],
+          what_it_represents: "The private, isolated, exhausted founder headspace at 1:00–4:00 AM. Where encrypted zero-day warnings arrive, where burnout stares back from the mirror, where late-night phishing mistakes happen, and where Jordan calls when neither of you can sleep.",
+          what_to_depict: "Late-night apartment at 3 AM — desk with laptop glow, mug, rain/city lights through a dark window. Intimate, quiet, exhausted atmosphere.",
+          lighting: {
+            rgb: [0.84, 0.93, 1.08],
+            bright: "-0.05",
+            contrast: "1.06×",
+            note: "2:47 AM cool midnight monitor glow"
+          },
+          scenes: [
+            { id: "Ch1.7", file: "game/ch1_genesis.rpy:117", beat: "Spectre's 2:47 AM encrypted DM", summary: "An anonymous hooded account messages you at 2:47 AM about a reentrancy vulnerability in your unlaunched mint contract." },
+            { id: "Ch2.5", file: "game/ch2_tge.rpy:114", beat: "Spectre's audit ask", summary: "72 hours before launch, Spectre asks for 20 ETH and admin access to run a proper smart-contract audit." },
+            { id: "Ch3.5", file: "game/ch3_governance.rpy:99", beat: "Spectre's wallet clusters warning", summary: "Spectre flags 11 fresh wallets buying governance tokens in a coordinated drip pattern with identical gas habits." },
+            { id: "Ch3.6", file: "game/ch3_governance.rpy:113", beat: "4:11 AM Burnout mirror", summary: "At 4:11 AM, you re-read your own launch-day post ('We're going to do this sustainably') and choose whether to step back, power through, or confide in someone." },
+            { id: "Ch4a.1", file: "game/ch4_attack.rpy:44", beat: "1:14 AM — The odd transaction setup", summary: "Late at night, a routine vendor invoice payout is queued on a mysteriously auto-updated browser wallet extension." },
+            { id: "Ch5.5", file: "game/ch5_resolution.rpy:76", beat: "Jordan's 3:00 AM call", summary: "On the eve of the final vote, an exhausted Jordan calls at 3 AM to ask honestly: 'Was it worth it?'" },
+            { id: "Forced Rest", file: "game/script.rpy:125", beat: "Burnout collapse / Forced rest (Burnout >= 80)", summary: "Triggered if Burnout hits 80 at chapter close: your hands won't stop shaking at 3 AM and Maya/Jordan lock you out of the multisig for 72 hours." }
+          ],
+          prompts: [
+            {
+              era: "v0 Scripted PC-98 Placeholder",
+              source: "scripts/generate_placeholders.py",
+              text: "Ordered Bayer dither gradient from black (#000000) to magenta (#AA00AA), right window showing yellow city building lights on deep blue, brown couch, and bright-cyan glowing laptop screen."
+            },
+            {
+              era: "v1 Mixed-Media (Asya Moodboard)",
+              source: "vault/06 Assets/generated_backgrounds/bg apartment.png",
+              refs: ["Asya Abstract Painting Canvas (Theme.jpg)", "Circuit Board / Linework Board (UI.png)"],
+              text: "A visual novel background of a late-night apartment room at 3 AM. A messy work desk with an illuminated laptop casting soft blue and cyan light, a warm ceramic coffee mug, sticky notes, and headphones. A large window overlooks a dark rainy cityscape with soft warm glowing bokeh lights and reflections. Mixed media art style: richly textured abstract painting surfaces, layered acrylic and gouache washes, distressed gold leaf accents, earthy warm ochre and terracotta mixed with deep indigo and midnight teal, textured handmade paper collage details, fine golden conductive circuit-like filament lines subtly woven through the textures. Atmospheric, introspective, exhausted yet beautiful."
+            }
+          ]
+        },
+        {
+          id: "factionmap",
+          title: "Governance Constellation & Faction Map",
+          filename: "bg factionmap.png",
+          renpy_tag: "scene bg factionmap",
+          uses: 4,
+          v1_img: "generated_backgrounds/bg factionmap.png",
+          v0_img: "placeholders_backup/bg factionmap.png",
+          chapters: ["Ch3", "Endings"],
+          characters: ["jordan", "alex", "maya"],
+          what_it_represents: "The strategic war-room view of governance power. More diagram/table than physical room: visualizes how token voting power concentrates (top 10% holding 76.2% of power) and how the collective fractures into three competing blocks (Decentralists, Pragmatists, Opportunists).",
+          what_to_depict: "Governance dashboard / tactical diagram — three faction spheres/circles (Decentralists / Pragmatists / Opportunists), voting power pie charts, delegation flows. Also serves as the backdrop for the end-of-run recap screen.",
+          lighting: {
+            rgb: [0.96, 0.94, 0.90],
+            bright: "-0.02",
+            contrast: "1.05×",
+            note: "War-room tactical table light"
+          },
+          scenes: [
+            { id: "Ch3.3", file: "game/ch3_governance.rpy:38", beat: "The delegation debate (76.2% pie chart)", summary: "With voter turnout falling, someone livestreams a pie chart showing the top 10% of voters hold 76.2% of power; you choose between liquid delegation, quadratic voting, or 1-token-1-vote." },
+            { id: "Ch3.8", file: "game/ch3_governance.rpy:143", beat: "Chapter 3 close — Factions harden", summary: "'The map hardens: Decentralists. Pragmatists. Opportunists. Everyone's sure they're in the first two.'" },
+            { id: "Ending", file: "game/endings.rpy:105", beat: "🌊 ENDING: THE COMMUNITY SPLIT", summary: "Three forked DAOs now share one dream, two grudges, and a fractured treasury." },
+            { id: "Recap", file: "game/endings.rpy:38", beat: "── THIS RUN ── Recap Screen (All Endings)", summary: "Plays at the end of every playthrough to list your pivotal decisions and how many of the 15 failure-mode lessons you unlocked." }
+          ],
+          prompts: [
+            {
+              era: "v0 Scripted PC-98 Placeholder",
+              source: "scripts/generate_placeholders.py",
+              text: "Ordered Bayer dither gradient from deep blue (#000080) to black (#000000) with three large overlapping faction rings in bright cyan (#55FFFF), orange (#FFAA55), and bright magenta (#FF55FF)."
+            },
+            {
+              era: "v1 Mixed-Media (Asya Moodboard)",
+              source: "vault/06 Assets/generated_backgrounds/bg factionmap.png",
+              refs: ["Circuit Board / Linework Board (UI.png)", "Theme Spiral Slice (Theme.jpg)"],
+              text: "A visual novel background of an intricate DAO governance dashboard and voting constellation map. Three distinct circular faction spheres and interlocking celestial diagram rings labeled with data readouts, token percentages, and voting weight flows. Mixed media art style: deep slate-charcoal fine art paper background, rich metallic gold leaf circuit board traces connecting decision nodes, weathered copper and patina teal washes, calligraphic ink diagrams, tactile layered paper collage with subtle geometric grid textures. Sophisticated, tactile data visualization."
+            }
+          ]
+        },
+        {
+          id: "rooftop",
+          title: "Dawn Rooftop Overlooking the City",
+          filename: "bg rooftop.png",
+          renpy_tag: "scene bg rooftop",
+          uses: 2,
+          v1_img: "generated_backgrounds/bg rooftop.png",
+          v0_img: "placeholders_backup/bg rooftop.png",
+          chapters: ["Endings"],
+          characters: ["vera", "spectre"],
+          what_it_represents: "Perspective, dawn after the long night, and historical continuity. Where Vera delivers her closing thesis across every ending ('The tools are new. The work is old. The work was always each other.') and where the Golden Ending ('Collective Prosperity') celebrates a resilient constitution.",
+          what_to_depict: "Rooftop terrace at dawn — city skyline silhouette, magenta-to-amber sunrise sky, open foreground terrace for Vera and Spectre.",
+          lighting: {
+            rgb: [1.06, 0.95, 0.88],
+            bright: "+0.03",
+            contrast: "1.04×",
+            note: "Golden hour / dawn rose-gold warmth"
+          },
+          scenes: [
+            { id: "Vera Closing", file: "game/endings.rpy:26", beat: "Shared closing beat — vera_closing(mood)", summary: "Plays in every ending (with warm, stern, or mixed delivery): Vera reflects on how governance tools change but human coordination remains the real work." },
+            { id: "Ending", file: "game/endings.rpy:125", beat: "🌕 ENDING: COLLECTIVE PROSPERITY (Golden Ending)", summary: "The constitution has calluses, the treasury has boring parts, other founders fork your governance docs—and if Spectre's relationship >= 80, Spectre almost reveals their real name at dawn." }
+          ],
+          prompts: [
+            {
+              era: "v0 Scripted PC-98 Placeholder",
+              source: "scripts/generate_placeholders.py",
+              text: "Ordered Bayer dither gradient from magenta (#AA00AA) to orange (#FFAA55), large yellow rising sun (#FFFF55), black city building silhouettes, and dark gray rooftop deck."
+            },
+            {
+              era: "v1 Mixed-Media (Asya Moodboard)",
+              source: "vault/06 Assets/generated_backgrounds/bg rooftop.png",
+              refs: ["Asya Abstract Painting Canvas (Theme.jpg)", "Organic Solarpunk Architecture (Environments.png)"],
+              text: "A visual novel background of a rooftop terrace garden overlooking an expansive modern city at the break of dawn. Dramatic sunrise sky transitioning smoothly from deep violet and magenta to glowing golden amber and warm peach. Potted rooftop greenery, wooden decking, railing overlooking a silhouetted skyline bathed in early morning sunbeams. The center and foreground terrace are spacious and open for characters to stand. Mixed media art style: expressive palette knife oil painting skies with luminous glazing, torn handmade paper collage textures, warm metallic gold leaf catching the dawn sunlight on architectural edges, earthy terracotta planters and natural wood. Inspiring, peaceful, radiant with hope."
+            }
+          ]
+        },
+        {
+          id: "signing",
+          title: "Hardware Wallet & Transaction Signing UI",
+          filename: "bg signing.png",
+          renpy_tag: "scene bg signing",
+          uses: 1,
+          v1_img: "generated_backgrounds/bg signing.png",
+          v0_img: "placeholders_backup/bg signing.png",
+          chapters: ["Ch4"],
+          characters: [],
+          what_it_represents: "The 'Verify the Hex' interactive set piece (Ch4a.2). A claustrophobic, high-tension close-up at 1:14 AM where a malware-spoofed browser UI says everything is fine ('To: Vendor Payments Ltd ✓'), and only expanding the raw hexadecimal calldata on the hardware wallet reveals the attacker's drain address.",
+          what_to_depict: "Hardware-wallet & MetaMask/web3 signing modal close-up — 'SIGN TRANSACTION?', clean summary rows vs. raw [EXPAND RAW DATA] hex block (0x4A21...9DEB vs 0x7C3f...a91E), prominent green Confirm and red Reject buttons. No character sprites are shown during this beat; the background IS the set piece.",
+          lighting: {
+            rgb: [0.90, 1.02, 0.94],
+            bright: "-0.03",
+            contrast: "1.08×",
+            note: "Hardware wallet emerald/terminal glow"
+          },
+          scenes: [
+            { id: "Ch4a.2", file: "game/ch4_attack.rpy:53", beat: "THE SET PIECE — Verify the Hex", summary: "At 1:14 AM, you must decide whether to click the big green SIGN button on a routine 12.5 ETH invoice or expand the raw hex data to catch a blind-signing malware swap." }
+          ],
+          prompts: [
+            {
+              era: "v0 Scripted PC-98 Placeholder",
+              source: "scripts/generate_placeholders.py",
+              text: "Solid black background with a centered deep-blue modal window, cyan-bordered summary header, dark-gray raw hex data bars, and bright green Confirm / bright red Reject buttons."
+            },
+            {
+              era: "v1 Mixed-Media (Asya Moodboard)",
+              source: "vault/06 Assets/generated_backgrounds/bg signing.png",
+              refs: ["Asya Abstract Painting Canvas (Theme.jpg)", "Circuit Board / Linework Board (UI.png)"],
+              text: "A visual novel background of a dramatic, tactile web3 transaction signing workstation. In the sharp foreground on a dark textured slate and wooden desk sits a physical cryptocurrency hardware wallet (matte black and brushed aluminum device with a glowing blue OLED mini-screen displaying a cryptographic recipient address and raw hex data), connected via a braided USB cable with delicate glowing gold filament accents. Next to it lie handwritten security notes on torn paper and sticky notes with warning scribbles. In the close background, an illuminated laptop screen displays the web3 signing modal with 'SIGN TRANSACTION?', summary rows, an expandable bytecode hex block, and glowing green 'Confirm' and red 'Reject' seals. Mixed media art style: rich textured abstract painting surfaces, distressed gold leaf circuit board traces radiating across the desk, deep charcoal, dark indigo, and burnished copper washes, layered paper collage edges. High-stakes, tactile, forensic cyber-security tension."
+            }
+          ]
+        },
+        {
+          id: "gui_menus",
+          title: "GUI Full-Screen Backdrops (Main Menu & Game Menu)",
+          filename: "game/gui/main_menu.png & game_menu.png",
+          renpy_tag: "gui/main_menu.png · gui/game_menu.png",
+          uses: 2,
+          v1_img: "generated_gui/main_menu.png",
+          v0_img: "generated_gui/game_menu.png",
+          v0_label: "v1 Game Menu Backdrop (generated_gui/game_menu.png)",
+          v1_label: "v1 Main Menu Key Visual (generated_gui/main_menu.png)",
+          chapters: ["Menus"],
+          characters: [],
+          what_it_represents: "Title screen key visual (`main_menu.png`) and the shared backdrop for Save, Load, Preferences, History, About, NVL, and Codex/Glossary screens (`game_menu.png`).",
+          what_to_depict: "main_menu.png needs a dark scrim on the left third so menu navigation buttons read clearly. game_menu.png needs a quiet, dark, low-contrast center so UI text and cards remain legible.",
+          lighting: {
+            rgb: [1.0, 1.0, 1.0],
+            bright: "0.00",
+            contrast: "1.00×",
+            note: "Gold leaf UI accent (#D4AF37)"
+          },
+          scenes: [
+            { id: "Main Menu", file: "game/screens.rpy:332", beat: "Title Screen Key Visual", summary: "Displayed on launch behind the 'Start', 'Load', 'Glossary', 'Preferences', 'About', and 'Quit' navigation rail." },
+            { id: "Game Menu / Codex", file: "game/glossary.rpy:176", beat: "Settings, Save/Load & DAO Codex Backdrop", summary: "Displayed behind all modal menu screens and the interactive Web3/DAO Glossary." }
+          ],
+          prompts: [
+            {
+              era: "v1 Mixed-Media Main Menu (main_menu.png)",
+              source: "vault/06 Assets/generated_gui/main_menu.png",
+              text: "An evocative visual novel title screen key visual in mixed media art style following Asya Abdrahman fine art direction. An epic central tree of life composed of intricate glowing gold leaf circuit board filament traces and mycelium root networks, connecting to floating crystalline geometric DAO governance tokens and glowing celestial network nodes. Layered paper collage textures, deep midnight navy and rich dark slate watercolor washes, distressed gold foil leafing, and delicate ink contour lines with subtle drifting sakura blossom petals. Grand, contemplative, high-end fine art aesthetic, wide panoramic composition, clean and cinematic, no typography or text."
+            },
+            {
+              era: "v1 Mixed-Media Game Menu (game_menu.png)",
+              source: "vault/06 Assets/generated_gui/game_menu.png",
+              text: "An atmospheric visual novel menu background companion piece in the same mixed media fine art style following Asya Abdrahman direction. Deep midnight blue, dark charcoal and indigo watercolor washes, layered fine paper collage textures, and delicate distressed gold leaf foil accents framing the perimeter and corners. Subtle, elegant glowing golden circuit board filament traces and node constellations around the edges and left margins, with a clean, dark, moody center suitable for displaying UI text and data screens. Quiet, contemplative, luxurious tech aesthetic. No text or logos."
+            }
+          ]
+        }
+      ]
+    };
+
+    let activeFilter = "all";
+
+    function initPills() {
+      const container = document.getElementById("bg-pills");
+      DATA.backgrounds.forEach(bg => {
+        const btn = document.createElement("button");
+        btn.setAttribute("data-filter", bg.id);
+        btn.onclick = () => setFilter(bg.id);
+        btn.className = "filter-btn px-3 py-1.5 rounded-lg text-xs font-medium border border-[#374151] bg-[#0b0f19] text-slate-300 hover:text-white transition";
+        btn.textContent = `${bg.id} (${bg.uses})`;
+        container.appendChild(btn);
+      });
+    }
+
+    function setFilter(f) {
+      activeFilter = f;
+      document.querySelectorAll(".filter-btn").forEach(btn => {
+        if (btn.getAttribute("data-filter") === f) {
+          btn.className = "filter-btn px-3 py-1.5 rounded-lg text-xs font-semibold border border-amber-500 bg-amber-500 text-slate-950 transition";
+        } else {
+          btn.className = "filter-btn px-3 py-1.5 rounded-lg text-xs font-medium border border-[#374151] bg-[#0b0f19] text-slate-300 hover:text-white transition";
+        }
+      });
+      renderCards();
+    }
+
+    function copyText(btn, text) {
+      navigator.clipboard.writeText(text);
+      const orig = btn.textContent;
+      btn.textContent = "Copied!";
+      setTimeout(() => { btn.textContent = orig; }, 1400);
+    }
+
+    function renderCards() {
+      const q = (document.getElementById("search-input").value || "").toLowerCase().trim();
+      const container = document.getElementById("cards-container");
+      container.innerHTML = "";
+
+      const filtered = DATA.backgrounds.filter(bg => {
+        if (activeFilter !== "all" && bg.id !== activeFilter) return false;
+        if (!q) return true;
+        const hay = JSON.stringify(bg).toLowerCase();
+        return hay.includes(q);
+      });
+
+      if (filtered.length === 0) {
+        container.innerHTML = `<div class="bg-[#111827] border border-[#1f2937] rounded-xl p-8 text-center text-sm text-slate-400">No backgrounds match your search filter.</div>`;
+        return;
+      }
+
+      filtered.forEach(bg => {
+        const card = document.createElement("div");
+        card.className = "bg-[#111827] border border-[#1f2937] rounded-xl p-6 shadow-lg space-y-5";
+
+        const charBadges = bg.characters.length
+          ? bg.characters.map(c => `<span class="px-2.5 py-0.5 rounded border border-amber-500/30 bg-amber-500/10 text-amber-300 text-xs font-mono capitalize">${c}</span>`).join("")
+          : `<span class="text-xs text-slate-500 italic">No character sprites on stage</span>`;
+
+        const scenesRows = bg.scenes.map(s => `
+          <tr class="border-t border-[#1f2937]">
+            <td class="py-2.5 pr-3 font-mono text-xs text-amber-300 whitespace-nowrap font-semibold">${s.id}</td>
+            <td class="py-2.5 pr-3 text-xs font-medium text-slate-200">${s.beat}<div class="font-mono text-slate-500">${s.file}</div></td>
+            <td class="py-2.5 text-xs text-slate-400">${s.summary}</td>
+          </tr>
+        `).join("");
+
+        const promptsBlocks = bg.prompts.map(p => `
+          <div class="bg-[#0b0f19] border border-[#1f2937] rounded-lg p-4 space-y-2">
+            <div class="flex items-center justify-between gap-2">
+              <div>
+                <span class="text-xs font-semibold text-amber-300">${p.era}</span>
+                <span class="text-xs font-mono text-slate-500 ml-2">(${p.source})</span>
+              </div>
+              <button
+                onclick="copyText(this, ${JSON.stringify(p.text).replace(/"/g, '&quot;')})"
+                class="px-2.5 py-1 rounded border border-[#374151] bg-[#111827] text-slate-200 text-xs hover:border-amber-400 transition shrink-0"
+              >
+                Copy Prompt
+              </button>
+            </div>
+            ${p.refs ? `<div class="text-xs text-slate-400"><strong class="text-slate-200">Visual References Fed:</strong> ${p.refs.join(" · ")}</div>` : ""}
+            <pre class="text-xs font-mono whitespace-pre-wrap leading-relaxed text-slate-300 bg-[#111827] p-3 rounded border border-[#1f2937]">${p.text}</pre>
+          </div>
+        `).join("");
+
+        const v1Label = bg.v1_label || `v1 Mixed-Media (${bg.v1_img})`;
+        const v0Label = bg.v0_label || `v0 PC-98 Placeholder (${bg.v0_img})`;
+
+        card.innerHTML = `
+          <!-- Card Header -->
+          <div class="flex flex-col md:flex-row md:items-start justify-between gap-3 pb-4 border-b border-[#1f2937]">
+            <div>
+              <div class="flex items-center gap-2.5 flex-wrap">
+                <h2 class="text-xl font-bold text-white">${bg.title}</h2>
+                <code class="px-2.5 py-0.5 rounded bg-[#0b0f19] border border-[#374151] text-amber-300 text-xs font-mono">${bg.filename}</code>
+                <code class="px-2.5 py-0.5 rounded bg-[#0b0f19] border border-[#374151] text-xs font-mono text-slate-400">${bg.renpy_tag}</code>
+              </div>
+              <p class="text-sm text-slate-300 mt-2">${bg.what_it_represents}</p>
+            </div>
+            <div class="shrink-0 flex items-center gap-2">
+              <span class="px-3 py-1 rounded-lg bg-[#0b0f19] border border-[#374151] text-cyan-300 text-xs font-mono font-semibold">
+                ${bg.uses} ${bg.uses === 1 ? 'use' : 'uses'} in script
+              </span>
+            </div>
+          </div>
+
+          <!-- Visual Previews (v1 vs v0) -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="bg-[#0b0f19] border border-[#1f2937] rounded-lg p-3 space-y-2">
+              <div class="text-xs font-mono text-slate-400">${v1Label}</div>
+              <img src="${bg.v1_img}" alt="${bg.title} v1" class="w-full aspect-video object-cover rounded border border-[#1f2937]" loading="lazy" />
+            </div>
+            <div class="bg-[#0b0f19] border border-[#1f2937] rounded-lg p-3 space-y-2">
+              <div class="text-xs font-mono text-slate-400">${v0Label}</div>
+              <img src="${bg.v0_img}" alt="${bg.title} v0" class="w-full aspect-video object-cover rounded border border-[#1f2937]" loading="lazy" />
+            </div>
+          </div>
+
+          <!-- Depict + Gold Lighting + Characters Grid -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="md:col-span-2 bg-[#0b0f19] border border-[#1f2937] rounded-lg p-4">
+              <div class="text-xs font-mono uppercase tracking-wider text-slate-400 mb-1">What to Depict</div>
+              <p class="text-xs text-slate-200 leading-relaxed">${bg.what_to_depict}</p>
+              <div class="mt-3 pt-3 border-t border-[#1f2937] flex items-center gap-2 flex-wrap">
+                <span class="text-xs text-slate-400 font-medium">Sprites commonly framed here:</span>
+                ${charBadges}
+              </div>
+            </div>
+
+            <div class="bg-[#0b0f19] border border-[#1f2937] rounded-lg p-4 flex flex-col justify-between">
+              <div>
+                <div class="text-xs font-mono uppercase tracking-wider text-slate-400 mb-1">24k Gold Sprite Room Tint</div>
+                <div class="text-xs font-medium text-amber-300 mb-2">${bg.lighting.note}</div>
+              </div>
+              <div class="space-y-1 text-xs font-mono text-slate-400">
+                <div>RGB Mul: <span class="text-slate-200">[${bg.lighting.rgb.join(", ")}]</span></div>
+                <div>Brightness: <span class="text-slate-200">${bg.lighting.bright}</span> · Contrast: <span class="text-slate-200">${bg.lighting.contrast}</span></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Scenes Table -->
+          <div>
+            <h3 class="text-xs font-mono uppercase tracking-wider text-slate-400 mb-2">
+              Scenes Where Used (${bg.scenes.length})
+            </h3>
+            <div class="overflow-x-auto bg-[#0b0f19] border border-[#1f2937] rounded-lg p-3">
+              <table class="w-full text-left border-collapse">
+                <thead>
+                  <tr class="text-xs font-mono text-slate-400">
+                    <th class="pb-2 pr-3">Beat ID</th>
+                    <th class="pb-2 pr-3">Scene / File</th>
+                    <th class="pb-2">What Happens</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  ${scenesRows}
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Prompts Tried -->
+          <div class="space-y-3">
+            <h3 class="text-xs font-mono uppercase tracking-wider text-slate-400">
+              Prompts &amp; Visual Recipes Tried (${bg.prompts.length})
+            </h3>
+            ${promptsBlocks}
+          </div>
+        `;
+
+        container.appendChild(card);
+      });
+    }
+
+    initPills();
+    renderCards();
+  </script>
+</body>
+</html>

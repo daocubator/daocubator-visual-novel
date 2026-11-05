@@ -1,0 +1,198 @@
+{
+  "total_spent_usd": 0.72,
+  "total_images": 24,
+  "generations": [
+    {
+      "timestamp": "2026-10-23T22:42:52.712536Z",
+      "character": "maya",
+      "model": "gemini-3.1-flash-image",
+      "cost_usd": 0.03,
+      "cumulative_spent_usd": 0.03,
+      "prompt_snippet": "Waist-up character portrait sprite of a sharp, brilliant female software architect named Maya, standing in a 3/4 stance ..."
+    },
+    {
+      "timestamp": "2026-10-24T01:26:40.678785Z",
+      "character": "maya",
+      "model": "gemini-3.1-flash-image",
+      "cost_usd": 0.03,
+      "cumulative_spent_usd": 0.06,
+      "prompt_snippet": "Waist-up character portrait sprite of a sharp, brilliant female software architect named Maya, standing in a poised 3/4 ..."
+    },
+    {
+      "timestamp": "2026-10-24T02:26:20.998257Z",
+      "character": "maya",
+      "model": "gemini-3.1-flash-image",
+      "cost_usd": 0.03,
+      "cumulative_spent_usd": 0.09,
+      "prompt_snippet": "Waist-up character portrait sprite of a sharp, brilliant female software architect named Maya, standing in a dynamic 3/4..."
+    },
+    {
+      "timestamp": "2026-10-24T02:29:30.377161+00:00",
+      "character": "maya (dual-ref 3/4 dropped shoulder)",
+      "model": "gemini-3.1-flash-image",
+      "cost_usd": 0.03,
+      "cumulative_spent_usd": 0.12,
+      "prompt_snippet": "Dual-ref translation of Maya into 3D gold sculpture with dynamic 3/4 dropped shoulder pose..."
+    },
+    {
+      "timestamp": "2026-10-24T03:00:31.266025Z",
+      "character": "jordan",
+      "model": "gemini-3.1-flash-image",
+      "cost_usd": 0.03,
+      "cumulative_spent_usd": 0.15,
+      "prompt_snippet": "Waist up character portrait sprite of an energetic charismatic young community organizer named Jordan, distinctive silho..."
+    },
+    {
+      "timestamp": "2026-10-24T03:16:10.853324Z",
+      "character": "jordan",
+      "model": "gemini-3.1-flash-image",
+      "cost_usd": 0.03,
+      "cumulative_spent_usd": 0.18,
+      "prompt_snippet": "Waist-up character portrait sprite of an energetic, charismatic young community organizer named Jordan, distinctive silh..."
+    },
+    {
+      "timestamp": "2026-10-24T03:26:36.504206Z",
+      "character": "jordan",
+      "model": "gemini-3.1-flash-image",
+      "cost_usd": 0.03,
+      "cumulative_spent_usd": 0.21,
+      "prompt_snippet": "Waist-up character portrait sprite of an energetic, charismatic young community organizer named Jordan, standing in a dy..."
+    },
+    {
+      "timestamp": "2026-10-24T15:04:04.231212Z",
+      "character": "jordan",
+      "model": "gemini-3.1-flash-image",
+      "cost_usd": 0.03,
+      "cumulative_spent_usd": 0.24,
+      "prompt_snippet": "Waist-up character portrait sprite of an energetic, charismatic young community organizer named Jordan, standing in a dy..."
+    },
+    {
+      "timestamp": "2026-10-24T15:16:14.242686Z",
+      "character": "jordan",
+      "model": "gemini-3.1-flash-image",
+      "cost_usd": 0.03,
+      "cumulative_spent_usd": 0.27,
+      "prompt_snippet": "Waist-up character portrait sprite of an energetic, charismatic young community organizer named Jordan, standing in a dy..."
+    },
+    {
+      "timestamp": "2026-10-25T00:13:04.994353Z",
+      "character": "jordan (magenta bg test)",
+      "model": "gemini-3.1-flash-image",
+      "cost_usd": 0.03,
+      "cumulative_spent_usd": 0.3,
+      "prompt_snippet": "Test generating Jordan on solid magenta background (#FF00FF) for chroma keying..."
+    },
+    {
+      "timestamp": "2026-10-25T05:06:57.687822Z",
+      "character": "maya",
+      "model": "gemini-3.1-flash-image",
+      "cost_usd": 0.03,
+      "cumulative_spent_usd": 0.33,
+      "prompt_snippet": "Waist-up character portrait sprite of a sharp, brilliant female software architect named Maya, distinctive silhouette re..."
+    },
+    {
+      "timestamp": "2026-10-25T16:41:59.374502Z",
+      "character": "alex",
+      "model": "gemini-3.1-flash-image",
+      "cost_usd": 0.03,
+      "cumulative_spent_usd": 0.36,
+      "prompt_snippet": "Waist-up character portrait sprite of a handsome young business executive named Alex, distinctive silhouette readable as..."
+    },
+    {
+      "timestamp": "2026-10-25T17:11:24.764784Z",
+      "character": "alex",
+      "model": "gemini-3.1-flash-image",
+      "cost_usd": 0.03,
+      "cumulative_spent_usd": 0.39,
+      "prompt_snippet": "Waist-up character portrait sprite of a handsome young business executive named Alex, distinctive silhouette readable as..."
+    },
+    {
+      "timestamp": "2026-10-25T18:59:45.782023Z",
+      "character": "alex",
+      "model": "gemini-3.1-flash-image",
+      "cost_usd": 0.03,
+      "cumulative_spent_usd": 0.42,
+      "prompt_snippet": "Waist-up character portrait sprite of a handsome young business executive named Alex, distinctive silhouette readable as..."
+    },
+    {
+      "timestamp": "2026-10-25T19:10:53.426355Z",
+      "character": "atlas",
+      "model": "gemini-3.1-flash-image",
+      "cost_usd": 0.03,
+      "cumulative_spent_usd": 0.45,
+      "prompt_snippet": "Waist-up character portrait sprite of an authoritative, imposing senior investor named Atlas, distinctive silhouette rea..."
+    },
+    {
+      "timestamp": "2026-10-25T19:17:51.284970Z",
+      "character": "atlas",
+      "model": "gemini-3.1-flash-image",
+      "cost_usd": 0.03,
+      "cumulative_spent_usd": 0.48,
+      "prompt_snippet": "Waist-up character portrait sprite of an authoritative, imposing senior investor named Atlas, distinctive silhouette rea..."
+    },
+    {
+      "timestamp": "2026-10-25T19:25:25.440027Z",
+      "character": "atlas",
+      "model": "gemini-3.1-flash-image",
+      "cost_usd": 0.03,
+      "cumulative_spent_usd": 0.51,
+      "prompt_snippet": "Waist-up character portrait sprite of an authoritative, imposing senior investor named Atlas, distinctive silhouette rea..."
+    },
+    {
+      "timestamp": "2026-10-25T23:37:23.692654Z",
+      "character": "atlas",
+      "model": "gemini-3.1-flash-image",
+      "cost_usd": 0.03,
+      "cumulative_spent_usd": 0.54,
+      "prompt_snippet": "Waist-up character portrait sprite of an authoritative, imposing senior investor named Atlas, distinctive silhouette rea..."
+    },
+    {
+      "timestamp": "2026-10-25T23:41:01.556733Z",
+      "character": "spectre",
+      "model": "gemini-3.1-flash-image",
+      "cost_usd": 0.03,
+      "cumulative_spent_usd": 0.57,
+      "prompt_snippet": "Waist-up character portrait sprite of an enigmatic, completely anonymous developer named Spectre, distinctive silhouette..."
+    },
+    {
+      "timestamp": "2026-10-25T23:43:30.936215Z",
+      "character": "vera",
+      "model": "gemini-3.1-flash-image",
+      "cost_usd": 0.03,
+      "cumulative_spent_usd": 0.6,
+      "prompt_snippet": "Waist-up character portrait sprite of an elegant, poised mature woman named Vera, distinctive silhouette readable as pur..."
+    },
+    {
+      "timestamp": "2026-10-25T23:47:16.742783Z",
+      "character": "vera",
+      "model": "gemini-3.1-flash-image",
+      "cost_usd": 0.03,
+      "cumulative_spent_usd": 0.63,
+      "prompt_snippet": "Waist-up character portrait sprite of an elegant, poised mature woman named Vera, distinctive silhouette readable as pur..."
+    },
+    {
+      "timestamp": "2026-10-25T23:53:19.744144Z",
+      "character": "vera",
+      "model": "gemini-3.1-flash-image",
+      "cost_usd": 0.03,
+      "cumulative_spent_usd": 0.66,
+      "prompt_snippet": "Waist-up character portrait sprite of an elegant, poised mature woman named Vera, distinctive silhouette readable as pur..."
+    },
+    {
+      "timestamp": "2026-10-26T00:01:19.698333Z",
+      "character": "vera",
+      "model": "gemini-3.1-flash-image",
+      "cost_usd": 0.03,
+      "cumulative_spent_usd": 0.69,
+      "prompt_snippet": "Waist-up character portrait sprite of an elegant, poised mature woman named Vera, distinctive silhouette readable as pur..."
+    },
+    {
+      "timestamp": "2026-10-26T00:05:37.079141+00:00",
+      "character": "vera",
+      "model": "gemini-3.1-flash-image",
+      "cost_usd": 0.03,
+      "cumulative_spent_usd": 0.72,
+      "prompt_snippet": "Vera neutral with dual-reference: inpainted keeper + dedicated hand grip ref..."
+    }
+  ]
+}
