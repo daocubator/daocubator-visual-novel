@@ -3,6 +3,14 @@ status: draft
 tags: [assets, art]
 ---
 
+> **Current Background Direction (Approved 2026-11-04 — Pass 3A Tea/Coffee Watercolor on Macro Canvas)**:
+> - **Human-Readable Guide**: [[Background Generation Guide]] (`vault/06 Assets/Background Generation Guide.md`)
+> - **Machine-Readable Spec**: `vault/06 Assets/background_style_spec.json`
+> - **Automated Post-Processor**: `scripts/apply_canvas_style.py`
+> - **Reference Plates**: `vault/06 Assets/style_references/`
+>
+> *(The PC-98 notes below are preserved from the earlier prototype phase.)*
+
 # Art Style Guide — PC-98
 
 The look is NEC PC-98 era Japanese PC games: 16-color palette, ordered dithering for gradients, sharp 1px pixel edges, CRT scanline overlay, anime-style portraits with dramatic 90s shading.
