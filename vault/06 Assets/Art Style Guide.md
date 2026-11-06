@@ -3,42 +3,39 @@ status: draft
 tags: [assets, art]
 ---
 
-# Art Style Guide — PC-98
+# Art Style Guide — Minimalist Rustic Line-Art & Analog Watercolor
 
-The look is NEC PC-98 era Japanese PC games: 16-color palette, ordered dithering for gradients, sharp 1px pixel edges, CRT scanline overlay, anime-style portraits with dramatic 90s shading.
+## Visual Direction
 
-## Canonical palette (from dao25's styles.css — the strictest of the three prototypes)
+Moving away from generic, overly saturated cyber-punk and heavy 3D metallic gold renders, **Get Rich Together** uses a **minimalist, high-contrast rustic line-art and analog watercolor** aesthetic:
+- **Rustic Ink Line-Art:** Crisp, expressive black and sepia ink contours (`#141210` and `#2B2520`) inspired by woodcut printmaking, botanical illustration, and rotoscoped indie graphic novels (see `research/visual references/5. Efam DAO Esphera texture overlay`).
+- **Analog & Watercolor Textures:** Warm, breathable parchment, raw canvas, and organic watercolor washes that are easy on the eyes and translate cleanly into physical merchandise, zines, and screen prints.
+- **Flat High-Contrast Backgrounds:** Clean architectural and natural silhouettes over textured paper washes—never cluttered or noisy.
 
-| Name | Hex | Use |
-|------|-----|-----|
-| black | `#000000` | backgrounds, outlines |
-| deep blue | `#000080` | night scenes, UI base |
-| blue | `#0000AA` | UI frames |
-| cyan | `#00AAAA` | Spectre, tech UI |
-| bright cyan | `#55FFFF` | Maya, highlights |
-| magenta | `#AA00AA` | Vera, shadows on pink |
-| bright magenta | `#FF55FF` | Jordan, accents |
-| pink | `#FF55AA` | warm accents |
-| orange | `#FFAA55` | Alex, skin tones |
-| brown | `#AA5500` | skin shadow, wood |
-| yellow | `#FFFF55` | Atlas, treasury/gold |
-| red | `#FF5555` | alerts, Burnout |
-| green | `#55FF55` | success, Security |
-| gray | `#AAAAAA` | body text |
-| dark gray | `#555555` | disabled, dither mix |
-| white | `#FFFFFF` | names, emphasis |
+## Core Palette
 
-Ending accents: gold `#FFD700` (golden ending), blood `#AA0000` (takeover).
+| Name | Hex | Role & Archetype Mapping |
+|------|-----|--------------------------|
+| **Charcoal Ink** | `#141210` | Primary line-art, Constellation night sky, high-contrast outlines |
+| **Warm Parchment** | `#F4EFE6` | Light canvas base, dialogue typography, clean breathing room |
+| **Sunlit Ochre** | `#E8C574` | Sanctuary walls, constellation starlight, Lesson unlocked accents |
+| **Terracotta Ember** | `#E07A5F` | **Ash El** accent color — creator warmth, acoustic resonance,woven poncho geometry |
+| **Alchemical Violet** | `#9B7EDE` | **Lay-Lay** primary accent — administrative power, apothecary potion vials |
+| **Herbal Sage** | `#528C6E` | **Lay-Lay** & Sanctuary secondary accent — medicinal herbs, botanical leaves |
+| **Cacao Turquoise** | `#2EC4B6` | **Xochtl** primary accent — ceremonial clarity, sacred water, beadwork |
+| **Cacao Bronze** | `#8C533E` | **Xochtl** secondary accent — ceremonial cacao cup, earth grounding |
+| **Crimson Alert** | `#D64545` | Worst-Case Scenario hooks, Rewind triggers, Bad Ending flashes |
 
-## Rules
+## Character & Asset Mapping
 
-1. **Never exceed the 16 colors** in final art. Gradients = ordered (Bayer) dithering between palette neighbors.
-2. Character portraits: 2/3-body, ~500×800 at 1920×1080 stage; left/center/right slots; each character owns one palette accent (see character notes' `color:` frontmatter).
-3. Backgrounds: flat perspective, detail via dithered texture, 1920×1080.
-4. UI: 2px pixel borders, cream text boxes on deep blue, blinking ▼ advance cursor.
-5. Scanline overlay at ~15% opacity, toggleable in prefs.
-6. Typography: Press Start 2P (or similar pixel font) for headers, a readable pixel font for body.
+Rather than generic avatars, the core cast is built around unmistakable visual archetypes, signature gear, and color-coded textile patterns:
 
-## Generation pipeline (future)
-
-Prototypes assumed Retrodiffusion API for pixel portraits — evaluate that vs. hand-pixel vs. SD + palette-quantize post-process. Whatever generates must end in **exact palette quantization + manual dither cleanup**. Placeholders (current): scripted PIL output, see [[Asset List]].
+1. **Ash El (The Creator / Protagonist):**
+   - **Gear:** Equipped with his acoustic-electric folk instrument (`charango` / guitar) strapped across his chest, green bead necklaces, and a feather pinned in his locs.
+   - **Pattern:** Vertical indigo/cream stripes paired with terracotta & botanical leaf line-art motifs.
+2. **Lay-Lay (The Administrator / Antagonist):**
+   - **Gear:** Equipped with glass apothecary potion vials, dried herb bundles, and an ornate administrative multisig key & ledger tablet.
+   - **Pattern:** Interlocking key-step fretwork in alchemical violet and herbal sage.
+3. **Xochtl (The Co-Creator / Shaman):**
+   - **Gear:** Holding a steaming ceremonial cacao cup; wearing a geometric beaded headband, red-and-black ceremonial face paint stripes across forehead, cheeks, and chin, and long beaded fringe earrings.
+   - **Pattern:** Horizontal rainbow-earth woven huipil stripes and black-and-white geometric zig-zag wrist cuffs.

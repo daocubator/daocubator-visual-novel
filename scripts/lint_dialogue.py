@@ -31,8 +31,9 @@ import os
 import re
 import sys
 
-SPEAKERS = ["narrator", "pc", "mod", "maya", "jordan", "alex", "vera",
-            "spectre", "atlas", "m", "j", "a", "v", "s", "w"]
+SPEAKERS = ["narrator", "pc", "mod", "ashel", "laylay", "xochtl",
+            "maya", "jordan", "alex", "vera", "spectre", "atlas",
+            "m", "j", "a", "v", "s", "w"]
 STR = r'"(?:[^"\\]|\\.)*"'
 
 # A say statement:  <speaker> "..."  [extra]

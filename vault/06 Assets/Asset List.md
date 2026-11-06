@@ -5,49 +5,34 @@ tags: [assets]
 
 # Asset List
 
-**Finding from prototype rip:** the three web prototypes contain **zero bitmap assets** — everything was CSS/emoji, with pixel art *specified* (Retrodiffusion prompts in code) but never generated. So there was nothing to extract except palettes, prompts, and layouts (captured in [[Art Style Guide]] and [[Prototype Archaeology]]). Everything below must be generated.
+Status legend: ⬜ needed · 🎨 generated & live in `game/images/` · ✅ final
 
-Status legend: ⬜ needed · 🟨 placeholder generated (scripted PIL, in `game/images/`) · ✅ final
+## Core Episodic Cast Sprites (Minimalist Rustic Line-Art & Analog Watercolor, 560×880)
 
-## Character sprites (per [[Art Style Guide]] §2)
+| Character | Archetype & Signature Gear | Color-Coded Pattern | Expressions | Status |
+|-----------|----------------------------|---------------------|-------------|--------|
+| **[[Ash El]]** (`ashel`) | The Creator / Protagonist — acoustic-electric folk instrument (`charango`/guitar), feather in locs, green bead necklaces | Terracotta `#E07A5F` & Indigo vertical stripes + botanical leaf line-art | `neutral`, `focused`, `alarmed`, `hurt`, `determined`, `proud` | 🎨 Rustic line-art & watercolor live |
+| **[[Lay-Lay]]** (`laylay`) | The Administrator / Antagonist — glass apothecary potion vials, dried herb bundles, multisig key & ledger tablet | Alchemical Violet `#9B7EDE` & Herbal Sage `#528C6E` interlocking key-fret pattern | `neutral`, `calculating`, `smirk`, `defensive`, `stern`, `alarmed` | 🎨 Rustic line-art & watercolor live |
+| **[[Xochtl]]** (`xochtl`) | The Co-Creator / Shaman — steaming ceremonial cacao cup, beaded headband, red/black ceremonial face paint stripes, beaded fringe earrings | Cacao Turquoise `#2EC4B6` & Bronze `#8C533E` rainbow-earth woven huipil + zig-zag cuffs | `neutral`, `warm`, `focused`, `stern`, `hurt`, `proud` | 🎨 Rustic line-art & watercolor live |
+
+## Ensemble / Legacy Cast Sprites (560×880)
 
 | Character | Expressions | Status |
 |-----------|-------------|--------|
-| Maya | neutral, focused, tired, proud, alarmed | 🎨 neutral live (standing in for 5 expressions) |
-| Jordan | neutral, hyped, hurt, determined, exhausted | 🎨 neutral live (standing in for 5 expressions) |
-| Alex | neutral, smirk, calculating, defensive, sincere | 🎨 neutral live (standing in for 5 expressions) |
-| Vera | neutral, wry, stern, warm | 🎨 neutral live (standing in for 4 expressions) |
-| Spectre | hooded-neutral, typing-glow, alert, almost-vulnerable | 🎨 neutral live (standing in for 4 expressions) |
-| Atlas | neutral, generous, guarded, predatory-calm | 🎨 neutral live (standing in for 4 expressions) |
+| **[[Maya]]** | `neutral`, `focused`, `tired`, `proud`, `alarmed` | 🎨 Live in `game/images/` |
+| **[[Jordan]]** | `neutral`, `hyped`, `hurt`, `determined`, `exhausted` | 🎨 Live in `game/images/` |
+| **[[Alex]]** | `neutral`, `smirk`, `calculating`, `defensive`, `sincere` | 🎨 Live in `game/images/` |
+| **[[Vera]]** | `neutral`, `wry`, `stern`, `warm` | 🎨 Live in `game/images/` |
+| **[[Spectre]]** | `neutral`, `typing`, `alert`, `vulnerable` | 🎨 Live in `game/images/` |
+| **[[Atlas]]** | `neutral`, `generous`, `guarded`, `predatory` | 🎨 Live in `game/images/` |
 
-= 28 final sprite images (6 bases × expressions).
+## Backgrounds (1920×1080 — Flat High-Contrast & Analog Watercolor Textures)
 
-## Backgrounds (1920×1080)
-
-| BG | Used in | Status |
-|----|---------|--------|
-| coworking space | Ch1 | 🎨 mixed media (v1 generated) |
-| discord server (stylized) | Ch1–5 | 🎨 mixed media (v1 generated) |
-| conference hall | Ch2, Ch5 | 🎨 mixed media (v1 generated) |
-| late-night apartment | Ch3, Ch5 | 🎨 mixed media (v1 generated) |
-| blockchain abstract (nodes, cyan/magenta) | TGE, Ch4 | 🎨 mixed media (v1 generated) |
-| rooftop (dawn) | Ch5 endings | 🎨 mixed media (v1 generated) |
-| wallet/signing UI close-up | Ch4a set piece | 🎨 mixed media (v1 generated) |
-| faction map / governance dashboard | Ch3.8 | 🎨 mixed media (v1 generated) |
-
-## UI / GUI
-
-- Title screen key visual (Tree of life × token geometry × cherry blossoms) 🎨 mixed media (v1 generated)
-- Textbox, namebox, choice buttons, frame (Asya mixed-media gold leaf & dark glass skin) 🎨 mixed media live in `game/gui/`
-- Lesson Learned popup frame · Codex / Glossary screens · Stats HUD banner 🎨 gold-trimmed dark glass live
-- Sliders, scrollbars, checkboxes, radio buttons, slot cards, window icon 🎨 complete in `game/gui/`
-- Ending cards ×8 ⬜
-
-## Audio (all ⬜, v1 ships silent or with CC0 chiptune)
-
-- Music: title, daily-life loop, tension loop, attack stinger, elegiac ending, hopeful ending, "Late Night Multisig" (Jordan's 3 a.m. scenes — name mandatory, from daoromance)
-- SFX: text blip, choice confirm, lesson popup chime, alert klaxon, coin, heartbeat (burnout)
-
-## CG / special illustrations (v2 wishlist)
-
-Launch night crowd · the signing-screen hex diff · faction map splash · per-ending card art
+| BG | Used in | Visual Description | Status |
+|----|---------|--------------------|--------|
+| `bg constellation` | World Overview | Matte charcoal ink star-chart with organic root-circuit tendrils & glowing constellation nodes (inspired by *The First Constellation*) | 🎨 Rustic line-art & analog texture live |
+| `bg sanctuary` | Ep 1, Ep 3 | Warm flat sunlit ochre wall, wooden beam shelf, vine plant, woven indigo rug, herbs & instruments (inspired by *Efam DAO Esphera*) | 🎨 Rustic line-art & analog texture live |
+| `bg treasury_fire` | Cold Open Hooks & Bad Endings | High-contrast crimson & charcoal ink wash with fractured ledger lines and burning embers | 🎨 Rustic line-art & analog texture live |
+| `bg cacao_circle` | Ep 2 (Lisbon), Ep 3 | Ceremonial cacao table with steaming cups, woven textiles, candle glow, and Lisbon presentation stage | 🎨 Rustic line-art & analog texture live |
+| `bg apothecary` | Ep 1, Ep 4 (Lay-Lay POV) | Herbal apothecary shelves with potion bottles, dried sage bundles, and a high-contrast hardware wallet signing desk | 🎨 Rustic line-art & analog texture live |
+| `bg coworking` … `bg signing` | Ensemble & Legacy Chapters | Studio, Discord, Conference, Apartment, Blockchain, Rooftop, Signing, Faction Map | 🎨 Live in `game/images/` |

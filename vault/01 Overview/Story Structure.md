@@ -3,45 +3,57 @@ status: draft
 tags: [overview, structure]
 ---
 
-# Story Structure
+# Story Structure — Episodic Constellation & Rewind Framework
 
-Five chapters over 90 in-game days. The spine is linear (chapters always occur); the **branches live inside chapters** and in the accumulated state that determines Chapter 4's attack vector and the ending. This is the "braided rope" structure: local branches that re-merge, plus persistent stat/flag consequences — cheap to write, feels reactive.
+Instead of forcing players through a single long, linear slog before learning a lesson, **Get Rich Together (DAOCUBATOR)** is structured around an interactive **World Overview Constellation** and gripping, digestible **Episodic Micro-Dramas** powered by a **Worst-Case Hook + Rewind + 3 Checkpointed Decisions** loop.
 
 ```mermaid
 flowchart TD
-    START([New Game]) --> VT{Venture type?}
-    VT -->|Record Label| C1
-    VT -->|Streetwear Brand| C1
-    VT -->|Artist Collective| C1
-    C1[Ch1: Genesis Block<br/>Day 1-7<br/>co-founders · equity · vesting · legal wrapper] --> C2
-    C2[Ch2: Token Generation Event<br/>Day 30<br/>tokenomics · treasury mix · whale money] --> C3
-    C3[Ch3: Governance Wars<br/>Day 47<br/>Proposal #17 · apathy · factions · co-founder crisis] --> ATK{Attack vector<br/>chosen by state}
-    ATK -->|Security low / opsec skipped| C4a[Ch4a: The Phish<br/>wallet spoof + front-end attack]
-    ATK -->|Whale trusted / tokens concentrated| C4b[Ch4b: The 51%<br/>governance capture]
-    ATK -->|Treasury 90% native token| C4c[Ch4c: The Spiral<br/>market crash + death spiral]
-    C4a --> C5
-    C4b --> C5
-    C4c --> C5
-    C5[Ch5: Resolution<br/>Day 90<br/>reform vote · acquisition offer] --> END{Endings ×8}
+    START([Start Game / Experience Select]) --> CONST[World Overview: The First Constellation<br/>3 Core Pillars · Animated Disaster Nodes]
+    CONST -->|Select Node| MODAL[Scenario Overview Modal<br/>OMG Disaster Hook · POV Character · 3 Target Lessons]
+    MODAL -->|Exit| CONST
+    MODAL -->|Confirm & Dive In| HOOK[Cold Open: Worst-Case Tragedy<br/>Ash El, Lay-Lay & Xochtl in explosive crisis]
+    HOOK --> REW[⏪ THE REWIND<br/>Drop into Protagonist POV before disaster strikes]
+    REW --> D1{Decision 1}
+    D1 -->|Wrong Choice| BAD1[💥 Bad Ending + Lesson Popup]
+    BAD1 -->|⏪ Instant Checkpoint Retry| D1
+    D1 -->|Sovereign Choice + Lesson| D2{Decision 2}
+    D2 -->|Wrong Choice| BAD2[💥 Bad Ending + Lesson Popup]
+    BAD2 -->|⏪ Instant Checkpoint Retry| D2
+    D2 -->|Sovereign Choice + Lesson| D3{Decision 3}
+    D3 -->|Wrong Choice| BAD3[💥 Bad Ending + Lesson Popup]
+    BAD3 -->|⏪ Instant Checkpoint Retry| D3
+    D3 -->|Sovereign Choice + Lesson| WIN[✨ Crisis Averted!<br/>Constellation Star Ignited]
+    WIN --> CONST
 ```
 
-## Chapter summaries
+## 1. The World Overview ("The First Constellation")
 
-| Ch | Title | Day | Dramatic question | Primary lessons |
-|----|-------|-----|-------------------|-----------------|
-| 1 | [[Chapter 1 - Genesis Block]] | 1–7 | Who do you build with, and on what terms? | [[The Equal Split Trap]], [[Vesting and Dead Equity]], [[The Partnership Trap]] |
-| 2 | [[Chapter 2 - Token Generation Event]] | 30 | Whose money do you take? | [[Treasury Death Spiral]], [[Predatory Recoupment]], [[The Overfunding Paradox]] |
-| 3 | [[Chapter 3 - Governance Wars]] | 47 | Who actually rules — and who's quietly leaving? | [[Voter Apathy and Delegation]], [[Burnout and Identity Fusion]] |
-| 4 | [[Chapter 4 - The Attack]] | 60 | Can the thing you built survive contact with an adversary? | [[Governance Capture]], [[Flash Loans and Time-locks]], [[Verify the Hex]], [[Ice Phishing]], [[Credential Hygiene]] |
-| 5 | [[Chapter 5 - Resolution]] | 90 | What was all this *for*? | synthesis + [[Greenwashing Trap]] (optional beat) |
+Players begin at the **World Overview Constellation**, inspired by Asya's *Primordia / First Constellation* blueprint:
+- Shows **3 Core Categories of Lessons**:
+  1. **Keys & Sovereignty (Crypto Basis & OpSec)**
+  2. **Collaboration & Co-op (Winning Together)**
+  3. **Make & Enforce Agreements (Law, Structure & Treasury)**
+- Glowing, animated constellation stars orbit each theme.
+- Clicking a star opens a **Scenario Overview Modal** showcasing an **"OMG Disaster" Hook** (e.g., *"$60,000 Sent to the Void & Stranded in Brazil"*, *"The Jealous Gatekeeper Freezes the Lisbon Showcase"*, *"Served in the Help Chat"*). Players can exit to keep exploring or confirm to jump straight into fixing the disaster.
 
-## Branch rules
+## 2. The Episodic Rewind Loop (~5 Minutes per Episode)
 
-- **Venture type** (Label / Streetwear / Collective) flavors scenes and swaps one lesson: Label → [[Predatory Recoupment]], Streetwear → [[Chargeback Death Spiral]], Collective → [[The Overfunding Paradox]].
-- **Chapter 4 vector** is *earned*, not chosen: the game picks the attack you are most vulnerable to, so consequences trace back to earlier shortcuts (Pillar P1).
-- **Relationship gates:** Spectre warns you pre-attack only if `spectre >= 60`. Vera unlocks the compromise path in Ch3 if `vera >= 40`. Maya's Ch3 burnout crisis softens if `maya >= 50` *and* player Burnout < 60.
-- **Endings** are computed from stats + flags — see [[Endings Overview]].
+Every episode follows a tight 4-beat structure:
+1. **The Hook (The Tragedy):** Drops the player directly into the nightmare outcome—**Ash El**, **Lay-Lay**, and **Xochtl** in an explosive fight as the community treasury vanishes or the project shatters.
+2. **The Rewind (`⏪`):** Rewinds the timeline to the critical days before disaster strikes.
+3. **Three Checkpointed Decisions (`D1 → D2 → D3`):**
+   - Each wrong choice immediately triggers a punchy, memorable **Bad Ending**, unlocks the **Lesson Learned** popup, and offers a **1-click Checkpoint Rewind** right back to *that exact decision* (so players learn fast and never have to replay all 3 choices from scratch).
+   - Each right choice demonstrates the sovereign solution, unlocks the **Lesson Learned**, and advances to the next decision.
+4. **Resolution:** Heals the timeline, lights up the star on the World Overview Constellation, and returns the player to choose their next episode.
 
-## Pacing model (per Vimi outline method)
+## 3. Playable Episodes in the Constellation
 
-Each chapter note contains **scene cards**: `goal / conflict / choice / consequence / lesson`. A scene earns its place only if it changes a stat, a relationship, or a flag. Target: 8–12 scene cards per chapter, ~20–30 min per playthrough, 5 playthroughs to see everything.
+| Episode | Constellation Pillar | POV Protagonist | OMG Disaster Hook | 3 Checkpointed Decisions & Lessons |
+|---------|----------------------|-----------------|-------------------|------------------------------------|
+| **Ep 1: No Keys, No Cheese** | Keys & Sovereignty | **Ash El** (The Creator) | Stranded on the Brazil sanctuary trip while $60,000 vanishes into a dead address and Lay-Lay locks the multisig. | **D1:** Rotate leaked text-file keys on-chain & set 2-of-3 multisig ([[No Keys No Cheese]], [[Credential Hygiene]])<br/>**D2:** Vet the incoming DAO co-admin before voting ([[Vetting DAO Administrators]])<br/>**D3:** Send a $1 test transaction before wiring $60,000 ([[The One Dollar Test Transaction]]) |
+| **Ep 2: The Lisbon Refusal** | Collaboration & Co-op | **Xochtl** & **Ash El** | Hours before the Lisbon presentation, Lay-Lay freezes Ash El's game payout out of jealousy, threatening to detonate the showcase. | **D1:** Separate admin ops from subjective creative veto ([[Creator vs Administrator Gatekeeping]])<br/>**D2:** Submit the deliverable under a neutral avatar to prove bias on-chain ([[Co-op Solidarity]])<br/>**D3:** Enact rotating stewardship & rest to prevent creator burnout ([[Burnout and Identity Fusion]], [[Voter Apathy and Delegation]]) |
+| **Ep 3: Blood, Cacao & Paper** | Make & Enforce Agreements | **Ash El** & **Xochtl** | A departing member claims 50% dead equity, a 360 deal traps the masters, and a regulator serves the DAO via Discord chat. | **D1:** Reject "handshake vibes" for 4-year vesting + 1-year cliff ([[Make and Enforce Agreements]], [[The Equal Split Trap]], [[Vesting and Dead Equity]])<br/>**D2:** Form a Swiss Verein / Co-op legal wrapper ([[The Partnership Trap]])<br/>**D3:** Strike 360 cross-collateralization & build a 50% stablecoin barbell ([[Predatory Recoupment]], [[Treasury Death Spiral]]) |
+| **Ep 4: Keys of the Apothecary** | Perspective Shift (Admin & Defense) | **Lay-Lay** (The Administrator) | Overwhelmed at 1:14 a.m., Lay-Lay gets baited by a predatory whale and a spoofed wallet popup that drains the apothecary treasury. | **D1:** Refuse unilateral "weekend yield" temptations & keep co-op multisig transparency ([[Governance Capture]])<br/>**D2:** Verify raw hex on the hardware screen & run a $1 test batch ([[Verify the Hex]], [[Ice Phishing]])<br/>**D3:** Use a 48-hour time-lock & community delegation to defeat a flash-loan whale attack ([[Flash Loans and Time-locks]]) |
+
+*(Note: The original 5-chapter "90-Day Founder Marathon" remains accessible from the Constellation screen as Legacy Marathon Mode.)*

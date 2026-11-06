@@ -1,4 +1,4 @@
-﻿################################################################################
+################################################################################
 ## Initialization
 ################################################################################
 
@@ -257,6 +257,8 @@ screen quick_menu():
             textbutton _("Back") action Rollback()
             textbutton _("History") action ShowMenu('history')
             textbutton _("Glossary") action ShowMenu('glossary')
+            textbutton _("Lessons") action ShowMenu('lessons_codex')
+            textbutton _("Constellation") action Jump('world_overview')
             textbutton _("Skip") action Skip() alternate Skip(fast=True, confirm=True)
             textbutton _("Auto") action Preference("auto-forward", "toggle")
             textbutton _("Save") action ShowMenu('save')
@@ -265,6 +267,7 @@ screen quick_menu():
             textbutton _("Prefs") action ShowMenu('preferences')
 
         key "g" action ShowMenu('glossary')
+        key "l" action ShowMenu('lessons_codex')
 
 
 ## This code ensures that the quick_menu screen is displayed in-game, whenever
@@ -321,6 +324,8 @@ screen navigation():
         textbutton _("Load") action ShowMenu("load")
 
         textbutton _("Glossary") action ShowMenu("glossary")
+
+        textbutton _("Lessons") action ShowMenu("lessons_codex")
 
         textbutton _("Preferences") action ShowMenu("preferences")
 

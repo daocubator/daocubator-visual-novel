@@ -2,6 +2,36 @@
 # vault: 05 Lessons/* — one LESSONS entry per lesson note; ids = note slugs
 
 define LESSONS = {
+    "no_keys_no_cheese": (
+        "NO KEYS, NO CHEESE: SOVEREIGNTY & KEY ROTATION",
+        "If someone else holds your keys 'for convenience,' they hold your agency — and if a key touches a text file, rotate it immediately.",
+        "Essential Food & Medicine / Brazil Stranding: when administrators held all the multisig keys, creators on the ground were left stranded waiting for payout. On chains like NEAR, native key rotation and a 2-of-3 multisig let you revoke a leaked private key without giving up sovereignty.",
+    ),
+    "vetting_admins": (
+        "TRUST, BUT VERIFY: VETTING DAO ADMINISTRATORS",
+        "Never vote a stranger onto your multisig or treasury council on 'good vibes' alone — verify their history and scope their permissions first.",
+        "Build Finance & Wonderland (2022): unvetted treasury administrators with past drained projects were handed signing power on a vibe check, leading to insider drains. Always run due diligence on past DAOs and require a 90-day scoped contributor agreement.",
+    ),
+    "test_transaction": (
+        "THE $1 TEST TRANSACTION RULE",
+        "Measure twice, cut once: always send a $1 test transaction and confirm receipt before wiring the real treasury.",
+        "The $60,000 Wrong-Address Disaster: a rushed $60,000 transfer was sent to a clipped wallet address, followed by days weeping on forums begging for a 'refund.' Blockchains have no undo button. A $1 test transfer confirmed by the recipient saves the other $59,999.",
+    ),
+    "creator_vs_admin": (
+        "CREATOR VS. ADMINISTRATOR GATEKEEPING",
+        "When non-creators hold unilateral payout power over creators, admiration can curdle into jealousy and gatekeeping.",
+        "The Lisbon Showcase ('Amy & Edward'): an administrator froze a star creator's game payout out of jealousy right before Lisbon. When teammate 'Jena' covertly submitted the exact same work under a different avatar, the admin approved it instantly. Separate admin ops from subjective creative veto.",
+    ),
+    "coop_solidarity": (
+        "CO-OP SOLIDARITY: WINNING TOGETHER",
+        "A true cooperative wins together by sharing both the shield and the harvest — not by pitting solo stars against solo bosses.",
+        "A century of cooperative governance shows that collectives survive when creators back each other up with peer validation, objective milestone escrow, and rotating stewardship rather than burning out in isolation.",
+    ),
+    "agreements_law": (
+        "MAKE & ENFORCE AGREEMENTS",
+        "Counter-culture values and fast innovation are no substitute for written agreements, clear deliverables, and legal armor.",
+        "Handshakes feel spiritual on day one and turn into lawsuits by day ninety. Even decentralized collectives need written vesting cliffs, clear deliverable contracts, and a legal wrapper so one bad breakup doesn't sink the sanctuary.",
+    ),
     "equal_split": (
         "THE EQUAL SPLIT TRAP",
         "Equal splits are chosen to avoid a conversation, not to be fair.",
@@ -79,29 +109,34 @@ define LESSONS = {
     ),
 }
 
+default persistent.lessons_unlocked = set()
+
 screen lesson_popup(lid):
     modal True
     zorder 100
-    add "#000000cc"
+    add "#0d0c0ae6"
     frame:
         xalign 0.5
         yalign 0.5
-        xsize 1200
+        xsize 1240
         background Frame("gui/frame.png", gui.frame_borders)
-        padding (44, 34)
+        padding (48, 38)
         vbox:
             spacing 18
-            text "◆ LESSON LEARNED ◆" color "#FFFF55" size 34 xalign 0.5
-            text LESSONS[lid][0] color "#55FFFF" size 30 xalign 0.5
-            null height 6
+            text "✦ CRYPTO-ETHICS & CO-OP LESSON UNLOCKED ✦" color "#E8C574" size 30 xalign 0.5
+            text LESSONS[lid][0] color "#E07A5F" size 32 xalign 0.5
+            null height 4
             ## __() translates first (plain mode), then terms get glossary links.
-            text gloss_say_filter(__(LESSONS[lid][1])) color "#FFFFFF" size 26
-            text gloss_say_filter(__(LESSONS[lid][2])) color "#AAAAAA" size 22
-            null height 10
-            textbutton "▶ CONTINUE" action Return() xalign 0.5 text_color "#55FF55" text_hover_color "#FFFF55"
+            text gloss_say_filter(__(LESSONS[lid][1])) color "#F4EFE6" size 26
+            text gloss_say_filter(__(LESSONS[lid][2])) color "#B8B0A4" size 22
+            null height 12
+            textbutton "▶ CONTINUE" action Return() xalign 0.5 text_color "#528C6E" text_hover_color "#E8C574"
 
 label lesson(lid):
     $ codex_seen.add(lid)
+    if persistent.lessons_unlocked is None:
+        $ persistent.lessons_unlocked = set()
+    $ persistent.lessons_unlocked.add(lid)
     $ gloss_unlock_text(__(LESSONS[lid][1]), __(LESSONS[lid][2]))
     call screen lesson_popup(lid)
     return

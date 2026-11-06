@@ -1,36 +1,36 @@
 # DAOCUBATOR / "Get Rich Together" — Visual Novel Overview
 
-*Generated from the Obsidian vault on 2026-07-17 (git ffbab1b). The vault is the source of truth — comment freely here; edits get folded back into the vault on each design pass. See vault/07 Production/Sync Workflow.md.*
+*Generated from the Obsidian vault on 2026-11-04 (git b637b35). The vault is the source of truth — comment freely here; edits get folded back into the vault on each design pass. See vault/07 Production/Sync Workflow.md.*
 
 ## Premise
 
-**DAOCUBATOR** is an educational visual novel (Ren'Py, PC-98 retro aesthetic) about why collective ventures fail — and how to build ones that don't.
+**Get Rich Together (DAOCUBATOR)** is an episodic educational visual novel (Ren'Py, minimalist rustic line-art & analog watercolor aesthetic) about why creative collectives and DAOs fail—and how to build sovereign, cooperative ones that thrive.
 
-You play a founder launching a **creative collective** in 2025: a record label, a streetwear brand, or an artist collective, structured as a DAO. Over 90 in-game days you recruit co-founders, design your token and equity, survive a governance crisis, get attacked, and decide what your collective becomes.
+Instead of a long, slow build-up, the game opens with an interactive **World Overview ("The First Constellation")** displaying the core categories of lessons and a constellation of playable crisis scenarios. Clicking any glowing constellation node reveals an **"OMG Disaster" worst-case scenario**—and lets you dive directly into the tragedy, **rewind time (`⏪`)**, and guide the characters through **~3 critical choices** where every mistake triggers a fast, darkly funny bad ending with an **instant 1-click checkpoint retry** so you learn by doing without losing momentum.
 
-Every major decision is a real, documented failure mode drawn from the research in **Research Digest**: the equal-split trap, missing vesting, mono-token treasuries, governance capture, flash-loan attacks, wallet phishing, predatory record deals, chargeback spirals, founder burnout. When you hit one, the game names the real-world case it came from (Build Finance, Beanstalk, Badger DAO, Nexus Mutual, Coolest Cooler, KlimaDAO…) in a **Lesson Learned** popup.
+### Core Cast & Real-World Backbone
 
-### Audience
+Grounded in real-world DAO post-mortems and lived experiences from collectives like *Essential Food and Medicine*, the episodic stories follow three core archetypes across shifting perspectives:
+- ****Ash El** (The Creator / Protagonist):** Visionary musician and community builder equipped with his instrument, who brings the labor, art, free health juice programs, and sanctuary trips—learning the hard way that *"no keys, no cheese."*
+- ****Lay-Lay** (The Administrator / Antagonist):** Operations and treasury manager associated with potions, herbs, and administrative keys—embodying what happens when non-creators gain un-oversighted control of multi-sig wallets or let awe curdle into jealousy.
+- ****Xochtl** (The Co-Creator / Shaman):** Ceremonial cacao practitioner and strategic protector equipped with her cacao cup—bridging ancestral reciprocity, co-op solidarity, and clever on-chain verification.
 
-- DAOcubator community members and web3-curious creatives
-- Startup founders who learn better from stories than from term-sheet blog posts
-- Visual novel players who enjoy systems-driven branching (stat meters, multiple endings)
+Alongside them appear the wider ecosystem cast (****Maya****, ****Jordan****, ****Alex****, ****Vera****, ****Spectre****, and ****Atlas****).
 
-### Why a visual novel
+### Core Educational Pillars
 
-The research explicitly recommends it: ~65% of venture failures are *people and structure* problems — co-founder conflict, incentive design, trust, exhaustion. Those are drama, not spreadsheets. A VN lets players *feel* the tempting shortcut before the delayed catastrophe lands.
-
-### Design origin
-
-Blend of three prototypes (see **Prototype Archaeology**):
-- **dao25** → the governance-story spine, chapter structure, glossary
-- **startupfounders98** → co-founder/equity/investor scenarios, Wisdom popups, chiptune audio direction
-- **daoromance** → relationship meters that matter to governance outcomes, character-driven routes (kept PG-13; trust and loyalty, not dating-sim routes)
-
-### Open questions
-
-- Final title: the existing Ren'Py project is already named **"Get Rich Together"** (kept as the in-game title for now); "DAOCUBATOR" is used as the project codename in this vault. Pick one — or "Get Rich Together, a DAOCUBATOR game".
-- Do we want the three venture types to diverge harder in later seasons (full routes per research), or stay flavor-level in v1?
+1. **Keys & Sovereignty (Crypto Basis & OpSec):**
+   - Never giving up your agency or keys to an administrator (**No Keys No Cheese**).
+   - Rotating keys on-chain (NEAR-native account key rotation & multi-sig rotation) immediately after a plaintext leak (**Credential Hygiene**).
+   - Properly vetting incoming DAO administrators before voting them in (**Vetting DAO Administrators**).
+   - Always sending a **$1 test transaction** and confirming receipt before wiring bulk funds like $60,000 (**The One Dollar Test Transaction**, **Verify the Hex**).
+2. **Collaboration & Co-op = Winning Together:**
+   - Preventing administrative gatekeeping and ego trips over creators (**Creator vs Administrator Gatekeeping** — the Lisbon showcase story).
+   - Practicing mutual defense, peer verification, and rotating stewardship (**Co-op Solidarity**, **Burnout and Identity Fusion**).
+3. **Make & Enforce Agreements (Law & Structure):**
+   - Putting founder splits, 4-year vesting cliffs, and deliverables in writing even in counter-culture collectives (**Make and Enforce Agreements**, **The Equal Split Trap**, **Vesting and Dead Equity**).
+   - Wrapping the DAO in a real legal entity so members aren't served in the help chat as a general partnership (**The Partnership Trap**).
+   - Protecting the treasury with a stablecoin barbell and fair recoupment terms (**Treasury Death Spiral**, **Predatory Recoupment**).
 
 ---
 
@@ -67,100 +67,188 @@ Warm satire. We love these people and this scene; we are honest about its absurd
 
 ---
 
-## Story Structure
+## Story Structure — Episodic Constellation & Rewind Framework
 
-Five chapters over 90 in-game days. The spine is linear (chapters always occur); the **branches live inside chapters** and in the accumulated state that determines Chapter 4's attack vector and the ending. This is the "braided rope" structure: local branches that re-merge, plus persistent stat/flag consequences — cheap to write, feels reactive.
+Instead of forcing players through a single long, linear slog before learning a lesson, **Get Rich Together (DAOCUBATOR)** is structured around an interactive **World Overview Constellation** and gripping, digestible **Episodic Micro-Dramas** powered by a **Worst-Case Hook + Rewind + 3 Checkpointed Decisions** loop.
 
 ```
 flowchart TD
-    START([New Game]) --> VT{Venture type?}
-    VT -->|Record Label| C1
-    VT -->|Streetwear Brand| C1
-    VT -->|Artist Collective| C1
-    C1[Ch1: Genesis Block<br/>Day 1-7<br/>co-founders · equity · vesting · legal wrapper] --> C2
-    C2[Ch2: Token Generation Event<br/>Day 30<br/>tokenomics · treasury mix · whale money] --> C3
-    C3[Ch3: Governance Wars<br/>Day 47<br/>Proposal #17 · apathy · factions · co-founder crisis] --> ATK{Attack vector<br/>chosen by state}
-    ATK -->|Security low / opsec skipped| C4a[Ch4a: The Phish<br/>wallet spoof + front-end attack]
-    ATK -->|Whale trusted / tokens concentrated| C4b[Ch4b: The 51%<br/>governance capture]
-    ATK -->|Treasury 90% native token| C4c[Ch4c: The Spiral<br/>market crash + death spiral]
-    C4a --> C5
-    C4b --> C5
-    C4c --> C5
-    C5[Ch5: Resolution<br/>Day 90<br/>reform vote · acquisition offer] --> END{Endings ×8}
+    START([Start Game / Experience Select]) --> CONST[World Overview: The First Constellation<br/>3 Core Pillars · Animated Disaster Nodes]
+    CONST -->|Select Node| MODAL[Scenario Overview Modal<br/>OMG Disaster Hook · POV Character · 3 Target Lessons]
+    MODAL -->|Exit| CONST
+    MODAL -->|Confirm & Dive In| HOOK[Cold Open: Worst-Case Tragedy<br/>Ash El, Lay-Lay & Xochtl in explosive crisis]
+    HOOK --> REW[⏪ THE REWIND<br/>Drop into Protagonist POV before disaster strikes]
+    REW --> D1{Decision 1}
+    D1 -->|Wrong Choice| BAD1[ Bad Ending + Lesson Popup]
+    BAD1 -->|⏪ Instant Checkpoint Retry| D1
+    D1 -->|Sovereign Choice + Lesson| D2{Decision 2}
+    D2 -->|Wrong Choice| BAD2[ Bad Ending + Lesson Popup]
+    BAD2 -->|⏪ Instant Checkpoint Retry| D2
+    D2 -->|Sovereign Choice + Lesson| D3{Decision 3}
+    D3 -->|Wrong Choice| BAD3[ Bad Ending + Lesson Popup]
+    BAD3 -->|⏪ Instant Checkpoint Retry| D3
+    D3 -->|Sovereign Choice + Lesson| WIN[✨ Crisis Averted!<br/>Constellation Star Ignited]
+    WIN --> CONST
 ```
 
-### Chapter summaries
+### 1. The World Overview ("The First Constellation")
 
-| Ch | Title | Day | Dramatic question | Primary lessons |
-|----|-------|-----|-------------------|-----------------|
-| 1 | Chapter 1 - Genesis Block | 1–7 | Who do you build with, and on what terms? | The Equal Split Trap, Vesting and Dead Equity, The Partnership Trap |
-| 2 | Chapter 2 - Token Generation Event | 30 | Whose money do you take? | Treasury Death Spiral, Predatory Recoupment, The Overfunding Paradox |
-| 3 | Chapter 3 - Governance Wars | 47 | Who actually rules — and who's quietly leaving? | Voter Apathy and Delegation, Burnout and Identity Fusion |
-| 4 | Chapter 4 - The Attack | 60 | Can the thing you built survive contact with an adversary? | Governance Capture, Flash Loans and Time-locks, Verify the Hex, Ice Phishing, Credential Hygiene |
-| 5 | Chapter 5 - Resolution | 90 | What was all this *for*? | synthesis + Greenwashing Trap (optional beat) |
+Players begin at the **World Overview Constellation**, inspired by Asya's *Primordia / First Constellation* blueprint:
+- Shows **3 Core Categories of Lessons**:
+  1. **Keys & Sovereignty (Crypto Basis & OpSec)**
+  2. **Collaboration & Co-op (Winning Together)**
+  3. **Make & Enforce Agreements (Law, Structure & Treasury)**
+- Glowing, animated constellation stars orbit each theme.
+- Clicking a star opens a **Scenario Overview Modal** showcasing an **"OMG Disaster" Hook** (e.g., *"$60,000 Sent to the Void & Stranded in Brazil"*, *"The Jealous Gatekeeper Freezes the Lisbon Showcase"*, *"Served in the Help Chat"*). Players can exit to keep exploring or confirm to jump straight into fixing the disaster.
 
-### Branch rules
+### 2. The Episodic Rewind Loop (~5 Minutes per Episode)
 
-- **Venture type** (Label / Streetwear / Collective) flavors scenes and swaps one lesson: Label → **Predatory Recoupment**, Streetwear → **Chargeback Death Spiral**, Collective → **The Overfunding Paradox**.
-- **Chapter 4 vector** is *earned*, not chosen: the game picks the attack you are most vulnerable to, so consequences trace back to earlier shortcuts (Pillar P1).
-- **Relationship gates:** Spectre warns you pre-attack only if `spectre >= 60`. Vera unlocks the compromise path in Ch3 if `vera >= 40`. Maya's Ch3 burnout crisis softens if `maya >= 50` *and* player Burnout < 60.
-- **Endings** are computed from stats + flags — see **Endings Overview**.
+Every episode follows a tight 4-beat structure:
+1. **The Hook (The Tragedy):** Drops the player directly into the nightmare outcome—**Ash El**, **Lay-Lay**, and **Xochtl** in an explosive fight as the community treasury vanishes or the project shatters.
+2. **The Rewind (`⏪`):** Rewinds the timeline to the critical days before disaster strikes.
+3. **Three Checkpointed Decisions (`D1 → D2 → D3`):**
+   - Each wrong choice immediately triggers a punchy, memorable **Bad Ending**, unlocks the **Lesson Learned** popup, and offers a **1-click Checkpoint Rewind** right back to *that exact decision* (so players learn fast and never have to replay all 3 choices from scratch).
+   - Each right choice demonstrates the sovereign solution, unlocks the **Lesson Learned**, and advances to the next decision.
+4. **Resolution:** Heals the timeline, lights up the star on the World Overview Constellation, and returns the player to choose their next episode.
 
-### Pacing model (per Vimi outline method)
+### 3. Playable Episodes in the Constellation
 
-Each chapter note contains **scene cards**: `goal / conflict / choice / consequence / lesson`. A scene earns its place only if it changes a stat, a relationship, or a flag. Target: 8–12 scene cards per chapter, ~20–30 min per playthrough, 5 playthroughs to see everything.
+| Episode | Constellation Pillar | POV Protagonist | OMG Disaster Hook | 3 Checkpointed Decisions & Lessons |
+|---------|----------------------|-----------------|-------------------|------------------------------------|
+| Ep 1: No Keys, No Cheese | Keys & Sovereignty | Ash El (The Creator) | Stranded on the Brazil sanctuary trip while $60,000 vanishes into a dead address and Lay-Lay locks the multisig. | D1: Rotate leaked text-file keys on-chain & set 2-of-3 multisig (No Keys No Cheese, Credential Hygiene)<br/>D2: Vet the incoming DAO co-admin before voting (Vetting DAO Administrators)<br/>D3: Send a $1 test transaction before wiring $60,000 (The One Dollar Test Transaction) |
+| Ep 2: The Lisbon Refusal | Collaboration & Co-op | Xochtl & Ash El | Hours before the Lisbon presentation, Lay-Lay freezes Ash El's game payout out of jealousy, threatening to detonate the showcase. | D1: Separate admin ops from subjective creative veto (Creator vs Administrator Gatekeeping)<br/>D2: Submit the deliverable under a neutral avatar to prove bias on-chain (Co-op Solidarity)<br/>D3: Enact rotating stewardship & rest to prevent creator burnout (Burnout and Identity Fusion, Voter Apathy and Delegation) |
+| Ep 3: Blood, Cacao & Paper | Make & Enforce Agreements | Ash El & Xochtl | A departing member claims 50% dead equity, a 360 deal traps the masters, and a regulator serves the DAO via Discord chat. | D1: Reject "handshake vibes" for 4-year vesting + 1-year cliff (Make and Enforce Agreements, The Equal Split Trap, Vesting and Dead Equity)<br/>D2: Form a Swiss Verein / Co-op legal wrapper (The Partnership Trap)<br/>D3: Strike 360 cross-collateralization & build a 50% stablecoin barbell (Predatory Recoupment, Treasury Death Spiral) |
+| Ep 4: Keys of the Apothecary | Perspective Shift (Admin & Defense) | Lay-Lay (The Administrator) | Overwhelmed at 1:14 a.m., Lay-Lay gets baited by a predatory whale and a spoofed wallet popup that drains the apothecary treasury. | D1: Refuse unilateral "weekend yield" temptations & keep co-op multisig transparency (Governance Capture)<br/>D2: Verify raw hex on the hardware screen & run a $1 test batch (Verify the Hex, Ice Phishing)<br/>D3: Use a 48-hour time-lock & community delegation to defeat a flash-loan whale attack (Flash Loans and Time-locks) |
+
+*(Note: The original 5-chapter "90-Day Founder Marathon" remains accessible from the Constellation screen as Legacy Marathon Mode.)*
 
 ---
 
 ## Game Systems
 
-### Core stats (the research's five-variable model)
+### 1. World Overview: The First Constellation (`game/constellation.rpy`)
 
-Straight from **Research Digest** — state vector evolves each choice; token price is coupled to Vibes × Security so failures cascade.
+When a player starts the game, they enter **The First Constellation**—an interactive star-map organized around the three core educational pillars:
+- **Pillar I: Keys & Sovereignty** (*Crypto Basis & OpSec*)
+- **Pillar II: Collaboration & Co-op** (*Winning Together vs. Gatekeeping*)
+- **Pillar III: Make & Enforce Agreements** (*Law, Structure & Treasury*)
 
-| Stat | Start | Range | Meaning | Prototype ancestor |
-|------|-------|-------|---------|--------------------|
-| Vibes | 50 | 0–100 | Public trust, brand, community energy | dao25 `community` + daoromance `trust` |
-| Treasury | 100 | 0–200 | Capital in ETH-equivalents (stable + native mix tracked as flag) | all three |
-| Security | 40 | 0–100 | Technical, legal, and opsec resilience | dao25 `security` |
-| Morale | 60 | 0–100 | Internal team alignment | startupfounders98 `morale` |
-| Burnout | 10 | 0–100 | *Player-character* exhaustion. High is bad. | startupfounders98 `stress` + solopreneur research |
+#### Interactive Constellation Nodes
+- Each playable episode orbits its pillar as an **animated, glowing constellation point**.
+- **Click to Inspect:** Clicking a node opens the **Scenario Overview Modal**, showing:
+  - The **"OMG Disaster" Hook** (the worst-case tragedy at the heart of the episode).
+  - The **POV Protagonist** (**Ash El**, **Xochtl**, or **Lay-Lay**) and supporting cast.
+  - The **3 Core Lessons** taught in the scenario (with live Codex unlock status).
+  - Actions to **Keep Exploring** (close modal) or **Dive In & Rewind the Disaster** (start episode).
 
-#### Cascade rules
-- End of each chapter: if `treasury_mix == "mono"` and Vibes dropped this chapter, Treasury takes an extra hit (token price ∝ Vibes × Security).
-- **Burnout ≥ 60:** the UI starts lying — one choice per menu shows a *slightly wrong* consequence hint (the research's "decision error rate" mechanic, rendered diegetically).
-- **Burnout ≥ 80:** forced rest scene; skip it and risk the **Burnout Crash** ending.
+### 2. The Rewind & Checkpointed 3-Choice Loop (`game/episodes.rpy`)
 
-### Relationships (0–100, start varies)
+To make sessions fast, gripping, and fun to experiment with:
+1. **Worst-Case Scenario Cold Open:** Every episode begins at the height of the disaster (e.g., $60,000 lost to a wrong wallet address while Ash El is stranded in Brazil and Lay-Lay locks the multisig).
+2. **The Rewind (`⏪`):** A visual and narrative rewind drops the player back in time before the catastrophe.
+3. **Three Checkpointed Decisions (`D1 → D2 → D3`):**
+   - **Wrong Choice → Instant Bad Ending + Lesson + Checkpoint Retry:** Picking a shortcut or trap immediately plays out the disaster, triggers the **Lesson Learned** popup (`call lesson(...)`), and presents the **Rewind Retry Modal** (`⏪ Rewind to Decision N`). Players retry *that exact choice* immediately without replaying earlier choices.
+   - **Sovereign Choice → Payoff + Lesson + Advance:** Picking the wise path plays out the cooperative/sovereign solution, unlocks the **Lesson Learned** popup, adjusts collective stats, and moves to the next decision.
+4. **Episode Complete:** Resolving all 3 decisions heals the timeline, marks the episode star as **★ RESOLVED** in `persistent.episodes_completed`, and returns to the Constellation Map.
 
-Maya 40 · Jordan 50 · Alex 30 · Vera 20 · Spectre 10 · Atlas 25
+### 3. Core Stats & Relationships
 
-Relationships are **governance capital** (Pillar P3): they gate warnings, unlock compromise branches, and convert to votes in Ch3/Ch5. They are *not* romance meters in v1 — see **Premise** open questions.
+| Stat | Start | Range | Meaning |
+|------|-------|-------|---------|
+| Vibes | 50 | 0–100 | Community trust, cultural energy, shared alignment |
+| Treasury | 100 | 0–200 | Collective funds in ETH / stablecoin equivalents |
+| Security | 40 | 0–100 | Key sovereignty, multi-sig hygiene, and legal armor |
+| Morale | 60 | 0–100 | Co-creator solidarity between Ash El, Xochtl, and the team |
+| Burnout | 10 | 0–100 | Creator exhaustion (high is dangerous) |
 
-### Flags (booleans/enums that branch late-game content)
+### 4. Lesson Learned Popups & Collectible Glossary
 
-| Flag | Set in | Effect |
-|------|--------|--------|
-| `venture` (label/streetwear/collective) | Ch1 | Scene flavor + one swapped lesson |
-| `equity` (equal/merit/vesting) | Ch1 | Ch3 co-founder crisis severity |
-| `wrapper` (none/verein) | Ch1 | Ch5 regulator beat |
-| `treasury_mix` (mono/barbell) | Ch2 | Cascade rule; Ch4c eligibility |
-| `whale_in` (bool) | Ch2 | Ch4b eligibility; Atlas scenes |
-| `opsec` (rushed/hardened) | Ch2–3 | Ch4a eligibility |
-| `veto_used` (bool) | Ch3 | Founders Capture ending eligibility |
-| `apathy` (0–3 counter) | Ch3 | Death by Democracy ending eligibility |
+- **21 Lesson Learned Popups (`game/lessons.rpy`):** Every decision teaches a documented real-world failure mode with (1) the core principle, and (2) the historical case study + real numbers.
+- **Collectible Glossary (`game/glossary.rpy`):** ~98 terms across five tabs (`BUSINESS`, `CRYPTO`, `MONEY`, `DAO`, `STATS`). Yellow underlined words in dialogue open their definition on click and unlock persistently across runs.
+- **Plain Mode (`game/tl/plain/`):** Optional B1-level plain English mode selectable at start or in Preferences.
 
-### Lesson Learned popups
+---
 
-Unified version of startupfounders98's "WISDOM UNLOCKED" + daoromance's "PROTOCOL INSIGHT": full-screen PC-98 modal after a consequence lands, with (1) the principle, (2) the real case study + real numbers, (3) link shown in the in-game Codex. Content lives in **Lessons Index** notes — **one note = one popup = one Ren'Py screen call**.
+## Ash El — The Creator
 
-### Codex (in-game glossary)
+**Role:** Visionary creator, musician, and community builder (Primary POV protagonist in Episodic Mode).
+**Voice:** Grounded, soulful, passionate about real human impact; speaks in rhythms and tangible truths ("Music, medicine, and people on the ground—that's the actual treasury").
+**Gear & Visual Motif:** Equipped with his acoustic-electric folk instrument; loc'd hair pinned with a feather; striped and botanical/geometric patterned tunic with green bead necklaces; warm terracotta and indigo rustic line-art palette.
+**Want:** To build sovereign creative sanctuaries (like *Essential Food and Medicine*) that distribute real nourishment—music, art, free health juices, and transformative community trips—without begging gatekeepers.
+**Need:** To claim digital and legal sovereignty over his own keys, agreements, and payouts instead of outsourcing the "boring admin stuff" to people who haven't earned that trust.
+**Flaw:** Trusts too easily in the name of harmony; wants to focus purely on creating and healing while letting someone else hold the digital keys ("No keys, no cheese").
+**Lessons he embodies:** **No Keys No Cheese**, **The One Dollar Test Transaction**, **Creator vs Administrator Gatekeeping**, **Make and Enforce Agreements**
 
-dao25's 8-entry glossary (DAO, TGE, 51% Attack, Governance Token, Treasury, Vesting, Whale, Fork) + new: Vesting Cliff, 83(b), Multisig, Flash Loan, Legal Wrapper, Chargeback, Recoupment. Unlocks as terms appear in dialogue.
+### Real-World Inspiration (Asya's Narrative)
 
-### Endings
+Ash El represents the visionary creators in collectives like *Essential Food and Medicine* who bring all the actual labor, art, music, and community programs (distributing free health juices, organizing sanctuary trips to Brazil and South Dakota, building interactive showcases for Lisbon), only to find themselves stranded or blocked when administrators hoard the multi-sig keys or let awe curdle into jealousy.
 
-Eight — see **Endings Overview** for triggers and order of evaluation.
+### Arc across the Constellation Episodes
+
+- **Episode 1 — "No Keys, No Cheese" (POV: Ash El):** Confronted with the nightmare of being stranded in Brazil while $60,000 vanishes and Lay-Lay holds the keys, Ash El rewinds time to rotate leaked keys on-chain, vet incoming DAO administrators, and enforce the $1 test transaction rule.
+- **Episode 2 — "The Lisbon Refusal" (POV: Xochtl & Ash El):** After working sleepless weeks on a game and music showcase for Lisbon, Ash El faces an administrative payout freeze from a jealous gatekeeper—and learns how co-op solidarity and objective milestone escrow defeat ego trips.
+- **Episode 3 — "Blood, Cacao & Paper" (POV: Ash El & Xochtl):** Learns why counter-culture collectives still need written vesting agreements, legal wrappers, and capped recoupment deals.
+- **Episode 4 — "The Keys of the Apothecary" (Co-star):** Holds the line as a co-signer alongside Xochtl when Lay-Lay is tempted by whale money and spoofed transactions.
+
+### Expressions needed
+
+`neutral`, `focused`, `alarmed`, `hurt`, `determined`, `proud`
+
+---
+
+## Lay-Lay — The Administrator
+
+**Role:** DAO Operations & Treasury Administrator / Antagonist-Archetype (also playable POV in Episode 4).
+**Voice:** Smooth, bureaucratic dressed as spiritual ("Let me handle the multisig so you creatives can stay in your flow—why are you bringing colonial legal energy into our sanctuary?").
+**Gear & Visual Motif:** Associated with administrative power, glass potion vials, and dried herb bundles paired with a digital multisig key ledger; sage green and alchemical violet rustic line-art pattern.
+**Want:** Control, status, and the intoxicating leverage of holding the treasury keys for a collective of brilliant creators.
+**Need:** Constitutional guardrails, multi-sig accountability, and separation of powers—because un-oversighted crypto-financing corrupts anyone who holds the keys alone.
+**Flaw:** Unaccustomed to instant, un-oversighted treasury power; mistakes administrative access for ownership, and lets admiration for superstar creators curdle into jealousy and gatekeeping.
+**Lessons she embodies:** **No Keys No Cheese**, **Vetting DAO Administrators**, **Creator vs Administrator Gatekeeping**, **Governance Capture**
+
+### Real-World Inspiration (Asya's Narrative)
+
+Lay-Lay synthesizes the toxic administrative power dynamic from real-world DAO post-mortems:
+1. **The Key Hoarder:** Administrators who held all the multi-sig keys while creators like Ash El were on the ground in Brazil or South Dakota, misappropriating funds or funneling money elsewhere because there were no guardrails.
+2. **The Jealous Gatekeeper (The "Amy & Edward" Story):** The administrator who became so awed by a creator's output that it curdled into jealousy, refusing to pay for the Lisbon presentation game until the exact same work was covertly submitted under a different avatar—which she approved instantly.
+
+### Arc across the Constellation Episodes
+
+- **Episode 1 — "No Keys, No Cheese":** Offers to take sole custody of the treasury after a text-file key leak and pushes an unvetted co-admin into the DAO.
+- **Episode 2 — "The Lisbon Refusal":** Freezes Ash El's Lisbon showcase payout out of personal ego, only to expose her own bias when Xochtl submits the identical work under an anonymous co-op proposal.
+- **Episode 3 — "Blood, Cacao & Paper":** Pushes for "vibes-only handshake splits" and unwrapped governance until legal and financial reality catches up.
+- **Episode 4 — "The Keys of the Apothecary" (POV: Lay-Lay):** Playable perspective episode showing how an overwhelmed administrator gets targeted by whales (Atlas) and phishing attacks—and how choosing transparency and multi-sig discipline saves both her and the collective.
+
+### Expressions needed
+
+`neutral`, `calculating`, `smirk`, `defensive`, `stern`, `alarmed`
+
+---
+
+## Xochtl — The Co-Creator & Shaman
+
+**Role:** Ceremonial space-holder, co-creator, cacao medicine practitioner, and strategic protector of the collective (POV protagonist in Episode 2 & co-protagonist across all episodes).
+**Voice:** Warm, perceptive, fiercely protective of creators; blends ancestral ceremonial wisdom with razor-sharp practical discernment ("Ceremony is about intention, hermano—and a smart contract is just an intention written in code. Read the hex before you drink the cup.").
+**Gear & Visual Motif:** Associated with cacao ceremonies and steaming ceremonial cups; beaded headband, red-and-black ceremonial face paint stripes across forehead, cheeks, and chin, beaded geometric fringe earrings, rainbow-striped woven huipil/poncho, and geometric wrist cuffs; cacao bronze and turquoise rustic line-art palette.
+**Want:** To weave indigenous/communal reciprocity, real medicine, and sovereign technology into a living co-op where creators and caregivers thrive together.
+**Need:** To bridge the gap between sacred trust and hard verification—teaching the collective that true ceremony requires clear agreements and verified transactions.
+**Flaw:** Will sometimes carry emotional mediation for the whole group until tension boils over.
+**Lessons she embodies:** **Co-op Solidarity**, **Creator vs Administrator Gatekeeping**, **The One Dollar Test Transaction**, **Make and Enforce Agreements**
+
+### Real-World Inspiration (Asya's Narrative)
+
+Xochtl embodies the grounded co-creators and community protectors (including the "Jena" archetype in the Lisbon story) who see through ego games and administrative gatekeeping. When Lay-Lay blocks Ash El's payout out of jealousy before Lisbon, Xochtl devises the brilliant co-op jujitsu move: having Ash El submit the exact same work under a neutral avatar so the funds are approved on the spot and the bias is proven beyond argument.
+
+### Arc across the Constellation Episodes
+
+- **Episode 1 — "No Keys, No Cheese":** Holds the second hardware key in the 2-of-3 co-op multisig and coordinates on-the-ground verification in Brazil for the $1 test transaction.
+- **Episode 2 — "The Lisbon Refusal" (POV: Xochtl):** Steps in when Lay-Lay freezes Ash El's payout, orchestrating the covert avatar submission that saves the Lisbon presentation and reforms the DAO's bounty constitution.
+- **Episode 3 — "Blood, Cacao & Paper" (POV: Ash El & Xochtl):** Insists that sacred work deserves sacred protection—allying with Vera to paper the 4-year vesting cliff and Swiss Verein legal wrapper.
+- **Episode 4 — "The Keys of the Apothecary":** Anchors the community stewards to outvote Atlas's hostile governance capture.
+
+### Expressions needed
+
+`neutral`, `warm`, `focused`, `stern`, `hurt`, `proud`
 
 ---
 
@@ -585,83 +673,108 @@ Evaluated in this order (first match wins), after Ch5.6 unless an early-exit end
 
 ## Lessons Index
 
-One note = one Lesson Learned popup = one entry in the in-game Codex. Union of both research versions (see **Research Digest** §6 — neither PDF is a superset).
+One note = one Lesson Learned popup = one entry in the in-game Codex. Organized by the **Three Constellation Pillars** of the World Overview (plus the Legacy 90-Day Marathon lessons).
 
-### Startup / structure (Ch1–3)
-- **The Equal Split Trap**
-- **Vesting and Dead Equity** (includes the 83(b) time bomb)
-- **The Partnership Trap**
+### Pillar I: Keys & Sovereignty (Crypto Basis & OpSec)
+- **No Keys No Cheese** — Sovereignty, non-custodial vs. custodial keys, 2-of-3 multisigs, and NEAR-style account key rotation after a text-file leak (`no_keys_no_cheese`)
+- **Vetting DAO Administrators** — Investigating incoming DAO members/admins and scoping permissions before voting them in (`vetting_admins`)
+- **The One Dollar Test Transaction** — Always sending a $1 test transaction and confirming receipt before wiring bulk funds (`test_transaction`)
+- **Credential Hygiene** — Never pasting seed phrases or private keys into shared docs (`credentials`)
+- **Verify the Hex** — Reading the hardware wallet screen instead of trusting spoofed browser extensions (`verify_hex`)
+- **Ice Phishing** — Front-end CDN security and malicious token approvals (`ice_phishing`)
 
-### Treasury & money (Ch2, Ch4c)
-- **Treasury Death Spiral**
-- **Predatory Recoupment** *(label route)*
-- **Chargeback Death Spiral** *(streetwear route)*
-- **The Overfunding Paradox** *(collective route)*
+### Pillar II: Collaboration & Co-op (Winning Together vs. Toxic Power)
+- **Creator vs Administrator Gatekeeping** — The Lisbon showcase story ("Amy & Edward / Jena"): preventing admin jealousy from freezing creator payouts (`creator_vs_admin`)
+- **Co-op Solidarity** — Collaboration & Co-op = Winning Together through peer verification and rotating stewardship (`coop_solidarity`)
+- **Burnout and Identity Fusion** — Sustainable pacing and separating personal identity from the venture (`burnout`)
+- **Voter Apathy and Delegation** — Why 6.3% turnout and unchecked delegation re-centralize power (`apathy`)
+- **Governance Capture** — How whales and insiders quietly buy control of a treasury (`capture`)
+- **Flash Loans and Time-locks** — Why instant proposal execution invites flash-borrowed attacks (`flashloan`)
 
-### Governance (Ch3–4b)
-- **Voter Apathy and Delegation**
-- **Governance Capture**
-- **Flash Loans and Time-locks**
+### Pillar III: Make & Enforce Agreements (Law, Structure & Treasury)
+- **Make and Enforce Agreements** — Why counter-culture collectives and fast innovators still need written agreements and legal armor (`agreements_law`)
+- **The Equal Split Trap** — Why 50/50 handshake splits fail when contributions diverge (`equal_split`)
+- **Vesting and Dead Equity** — 4-year vesting, 1-year cliff, and preventing departing founders from holding the cap table hostage (`vesting`)
+- **The Partnership Trap** — Unincorporated DAOs as general partnerships (CFTC v. Ooki DAO) vs. Swiss Verein / Co-op LLC wrappers (`partnership`)
+- **Treasury Death Spiral** — Why a 90% native-token treasury collapses in a bear market vs. the 50% stablecoin barbell (`death_spiral`)
+- **Predatory Recoupment** — 360 deals and cross-collateralization in music/creative contracts (`recoupment`)
+- **Chargeback Death Spiral** — Payment processor freeze thresholds and pre-order validation (`chargeback`)
+- **The Overfunding Paradox** — Why viral overfunding below unit cost bankrupts projects (`overfunding`)
+- **Greenwashing Trap** — Verifying physical assets before financializing them (`greenwash`)
 
-### OpSec (Ch2, Ch4a)
-- **Credential Hygiene**
-- **Verify the Hex**
-- **Ice Phishing**
+---
 
-### Human (Ch3, ending 2)
-- **Burnout and Identity Fusion**
+## Art Style Guide — Minimalist Rustic Line-Art & Analog Watercolor
 
-### Reputation (Ch5)
-- **Greenwashing Trap**
+### Visual Direction
+
+Moving away from generic, overly saturated cyber-punk and heavy 3D metallic gold renders, **Get Rich Together** uses a **minimalist, high-contrast rustic line-art and analog watercolor** aesthetic:
+- **Rustic Ink Line-Art:** Crisp, expressive black and sepia ink contours (`#141210` and `#2B2520`) inspired by woodcut printmaking, botanical illustration, and rotoscoped indie graphic novels (see `research/visual references/5. Efam DAO Esphera texture overlay`).
+- **Analog & Watercolor Textures:** Warm, breathable parchment, raw canvas, and organic watercolor washes that are easy on the eyes and translate cleanly into physical merchandise, zines, and screen prints.
+- **Flat High-Contrast Backgrounds:** Clean architectural and natural silhouettes over textured paper washes—never cluttered or noisy.
+
+### Core Palette
+
+| Name | Hex | Role & Archetype Mapping |
+|------|-----|--------------------------|
+| Charcoal Ink | `#141210` | Primary line-art, Constellation night sky, high-contrast outlines |
+| Warm Parchment | `#F4EFE6` | Light canvas base, dialogue typography, clean breathing room |
+| Sunlit Ochre | `#E8C574` | Sanctuary walls, constellation starlight, Lesson unlocked accents |
+| Terracotta Ember | `#E07A5F` | Ash El accent color — creator warmth, acoustic resonance,woven poncho geometry |
+| Alchemical Violet | `#9B7EDE` | Lay-Lay primary accent — administrative power, apothecary potion vials |
+| Herbal Sage | `#528C6E` | Lay-Lay & Sanctuary secondary accent — medicinal herbs, botanical leaves |
+| Cacao Turquoise | `#2EC4B6` | Xochtl primary accent — ceremonial clarity, sacred water, beadwork |
+| Cacao Bronze | `#8C533E` | Xochtl secondary accent — ceremonial cacao cup, earth grounding |
+| Crimson Alert | `#D64545` | Worst-Case Scenario hooks, Rewind triggers, Bad Ending flashes |
+
+### Character & Asset Mapping
+
+Rather than generic avatars, the core cast is built around unmistakable visual archetypes, signature gear, and color-coded textile patterns:
+
+1. **Ash El (The Creator / Protagonist):**
+   - **Gear:** Equipped with his acoustic-electric folk instrument (`charango` / guitar) strapped across his chest, green bead necklaces, and a feather pinned in his locs.
+   - **Pattern:** Vertical indigo/cream stripes paired with terracotta & botanical leaf line-art motifs.
+2. **Lay-Lay (The Administrator / Antagonist):**
+   - **Gear:** Equipped with glass apothecary potion vials, dried herb bundles, and an ornate administrative multisig key & ledger tablet.
+   - **Pattern:** Interlocking key-step fretwork in alchemical violet and herbal sage.
+3. **Xochtl (The Co-Creator / Shaman):**
+   - **Gear:** Holding a steaming ceremonial cacao cup; wearing a geometric beaded headband, red-and-black ceremonial face paint stripes across forehead, cheeks, and chin, and long beaded fringe earrings.
+   - **Pattern:** Horizontal rainbow-earth woven huipil stripes and black-and-white geometric zig-zag wrist cuffs.
 
 ---
 
 ## Asset List
 
-**Finding from prototype rip:** the three web prototypes contain **zero bitmap assets** — everything was CSS/emoji, with pixel art *specified* (Retrodiffusion prompts in code) but never generated. So there was nothing to extract except palettes, prompts, and layouts (captured in **Art Style Guide** and **Prototype Archaeology**). Everything below must be generated.
+Status legend: ⬜ needed ·  generated & live in `game/images/` · ✅ final
 
-Status legend: ⬜ needed ·  placeholder generated (scripted PIL, in `game/images/`) · ✅ final
+### Core Episodic Cast Sprites (Minimalist Rustic Line-Art & Analog Watercolor, 560×880)
 
-### Character sprites (per **Art Style Guide** §2)
+| Character | Archetype & Signature Gear | Color-Coded Pattern | Expressions | Status |
+|-----------|----------------------------|---------------------|-------------|--------|
+| Ash El (`ashel`) | The Creator / Protagonist — acoustic-electric folk instrument (`charango`/guitar), feather in locs, green bead necklaces | Terracotta `#E07A5F` & Indigo vertical stripes + botanical leaf line-art | `neutral`, `focused`, `alarmed`, `hurt`, `determined`, `proud` |  Rustic line-art & watercolor live |
+| Lay-Lay (`laylay`) | The Administrator / Antagonist — glass apothecary potion vials, dried herb bundles, multisig key & ledger tablet | Alchemical Violet `#9B7EDE` & Herbal Sage `#528C6E` interlocking key-fret pattern | `neutral`, `calculating`, `smirk`, `defensive`, `stern`, `alarmed` |  Rustic line-art & watercolor live |
+| Xochtl (`xochtl`) | The Co-Creator / Shaman — steaming ceremonial cacao cup, beaded headband, red/black ceremonial face paint stripes, beaded fringe earrings | Cacao Turquoise `#2EC4B6` & Bronze `#8C533E` rainbow-earth woven huipil + zig-zag cuffs | `neutral`, `warm`, `focused`, `stern`, `hurt`, `proud` |  Rustic line-art & watercolor live |
+
+### Ensemble / Legacy Cast Sprites (560×880)
 
 | Character | Expressions | Status |
 |-----------|-------------|--------|
-| Maya | neutral, focused, tired, proud, alarmed |  (neutral placeholder ×5 tints) |
-| Jordan | neutral, hyped, hurt, determined, exhausted |  |
-| Alex | neutral, smirk, calculating, defensive, sincere |  |
-| Vera | neutral, wry, stern, warm |  |
-| Spectre | hooded-neutral, typing-glow, alert, almost-vulnerable |  |
-| Atlas | neutral, generous, guarded, predatory-calm |  |
+| Maya | `neutral`, `focused`, `tired`, `proud`, `alarmed` |  Live in `game/images/` |
+| Jordan | `neutral`, `hyped`, `hurt`, `determined`, `exhausted` |  Live in `game/images/` |
+| Alex | `neutral`, `smirk`, `calculating`, `defensive`, `sincere` |  Live in `game/images/` |
+| Vera | `neutral`, `wry`, `stern`, `warm` |  Live in `game/images/` |
+| Spectre | `neutral`, `typing`, `alert`, `vulnerable` |  Live in `game/images/` |
+| Atlas | `neutral`, `generous`, `guarded`, `predatory` |  Live in `game/images/` |
 
-= 28 final sprite images (6 bases × expressions).
+### Backgrounds (1920×1080 — Flat High-Contrast & Analog Watercolor Textures)
 
-### Backgrounds (1920×1080)
-
-| BG | Used in | Status |
-|----|---------|--------|
-| coworking space | Ch1 |  |
-| discord server (stylized) | Ch1–5 |  |
-| conference hall | Ch2, Ch5 |  |
-| late-night apartment | Ch3, Ch5 |  |
-| blockchain abstract (nodes, cyan/magenta) | TGE, Ch4 |  |
-| rooftop (dawn) | Ch5 endings |  |
-| wallet/signing UI close-up | Ch4a set piece |  |
-| faction map / governance dashboard | Ch3.8 |  |
-
-### UI / GUI
-
-- Title screen logo + animated bg (cherry blossoms × token geometry — from daoromance) ⬜
-- Textbox, namebox, choice buttons, frame (PC-98 skin over Ren'Py defaults)  (recolored defaults)
-- Lesson Learned popup frame ⬜ · Codex screen ⬜ · Stats sidebar icons (Vibes/Treasury/Security/Morale/Burnout)  (text glyphs)
-- Ending cards ×8 ⬜
-
-### Audio (all ⬜, v1 ships silent or with CC0 chiptune)
-
-- Music: title, daily-life loop, tension loop, attack stinger, elegiac ending, hopeful ending, "Late Night Multisig" (Jordan's 3 a.m. scenes — name mandatory, from daoromance)
-- SFX: text blip, choice confirm, lesson popup chime, alert klaxon, coin, heartbeat (burnout)
-
-### CG / special illustrations (v2 wishlist)
-
-Launch night crowd · the signing-screen hex diff · faction map splash · per-ending card art
+| BG | Used in | Visual Description | Status |
+|----|---------|--------------------|--------|
+| `bg constellation` | World Overview | Matte charcoal ink star-chart with organic root-circuit tendrils & glowing constellation nodes (inspired by *The First Constellation*) |  Rustic line-art & analog texture live |
+| `bg sanctuary` | Ep 1, Ep 3 | Warm flat sunlit ochre wall, wooden beam shelf, vine plant, woven indigo rug, herbs & instruments (inspired by *Efam DAO Esphera*) |  Rustic line-art & analog texture live |
+| `bg treasury_fire` | Cold Open Hooks & Bad Endings | High-contrast crimson & charcoal ink wash with fractured ledger lines and burning embers |  Rustic line-art & analog texture live |
+| `bg cacao_circle` | Ep 2 (Lisbon), Ep 3 | Ceremonial cacao table with steaming cups, woven textiles, candle glow, and Lisbon presentation stage |  Rustic line-art & analog texture live |
+| `bg apothecary` | Ep 1, Ep 4 (Lay-Lay POV) | Herbal apothecary shelves with potion bottles, dried sage bundles, and a high-contrast hardware wallet signing desk |  Rustic line-art & analog texture live |
+| `bg coworking` … `bg signing` | Ensemble & Legacy Chapters | Studio, Discord, Conference, Apartment, Blockchain, Rooftop, Signing, Faction Map |  Live in `game/images/` |
 
 ---

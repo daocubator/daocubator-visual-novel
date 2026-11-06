@@ -19,6 +19,9 @@ init -5 python:
 
     # Map Character `name` (or image tag) to canonical sprite tag
     CHAR_TAG_MAP = {
+        "Ash El": "ashel",
+        "Lay-Lay": "laylay",
+        "Xochtl": "xochtl",
         "Maya": "maya",
         "Jordan": "jordan",
         "Alex": "alex",
@@ -27,20 +30,24 @@ init -5 python:
         "Atlas": "atlas",
     }
 
-    ALL_CHAR_TAGS = ("maya", "jordan", "alex", "vera", "spectre", "atlas")
+    ALL_CHAR_TAGS = ("ashel", "laylay", "xochtl", "maya", "jordan", "alex", "vera", "spectre", "atlas")
 
     # Room lighting profiles (r_mul, g_mul, b_mul, bright_offset, contrast_mul)
-    # Calibrated specifically for polished 24k gold sculptures so each venue
-    # reflects its ambient environment naturally.
+    # Calibrated for both rustic line-art/watercolor sprites and legacy sprites.
     ROOM_LIGHTING = {
-        "coworking":  (1.00, 0.99, 0.96,  0.00, 1.00),  # Warm natural daylight studio
-        "conference": (1.02, 0.98, 0.92,  0.01, 1.04),  # Crisp stage spotlights
-        "apartment":  (0.84, 0.93, 1.08, -0.05, 1.06),  # 2:47 AM cool midnight monitor glow
-        "discord":    (0.95, 0.92, 1.08,  0.00, 1.05),  # Neon cyan/magenta server ambiance
-        "blockchain": (0.88, 0.98, 1.06, -0.02, 1.10),  # High-contrast cyber node glow
-        "rooftop":    (1.06, 0.95, 0.88,  0.03, 1.04),  # Golden hour / dawn rose-gold warmth
-        "signing":    (0.90, 1.02, 0.94, -0.03, 1.08),  # Hardware wallet emerald/terminal glow
-        "factionmap": (0.96, 0.94, 0.90, -0.02, 1.05),  # War-room tactical table light
+        "sanctuary":     (1.02, 0.99, 0.94,  0.01, 1.02),  # Warm sunlit ochre sanctuary
+        "treasury_fire": (1.06, 0.92, 0.90, -0.02, 1.08),  # High-contrast crimson crisis light
+        "cacao_circle":  (1.03, 0.98, 0.93,  0.01, 1.02),  # Warm candle & ceremonial cacao glow
+        "apothecary":    (0.98, 1.01, 0.96,  0.00, 1.03),  # Herbal apothecary & ledger room
+        "constellation": (0.96, 0.97, 1.02,  0.00, 1.04),  # Star-chart night canvas
+        "coworking":     (1.00, 0.99, 0.96,  0.00, 1.00),  # Warm natural daylight studio
+        "conference":    (1.02, 0.98, 0.92,  0.01, 1.04),  # Crisp stage spotlights
+        "apartment":     (0.84, 0.93, 1.08, -0.05, 1.06),  # 2:47 AM cool midnight monitor glow
+        "discord":       (0.95, 0.92, 1.08,  0.00, 1.05),  # Neon cyan/magenta server ambiance
+        "blockchain":    (0.88, 0.98, 1.06, -0.02, 1.10),  # High-contrast cyber node glow
+        "rooftop":       (1.06, 0.95, 0.88,  0.03, 1.04),  # Golden hour / dawn rose-gold warmth
+        "signing":       (0.90, 1.02, 0.94, -0.03, 1.08),  # Hardware wallet emerald/terminal glow
+        "factionmap":    (0.96, 0.94, 0.90, -0.02, 1.05),  # War-room tactical table light
     }
 
     # Expression-specific subtle lighting modifiers (bright_delta, sat_mul, contrast_mul)
@@ -167,6 +174,9 @@ init -5 python:
 init 5 python:
     def _wire_speaker_callbacks():
         mapping = [
+            ("ashel", "ashel"),
+            ("laylay", "laylay"),
+            ("xochtl", "xochtl"),
             ("m", "maya"),
             ("j", "jordan"),
             ("a", "alex"),
@@ -329,6 +339,30 @@ image atlas neutral   = At("images/atlas neutral.png",   expr_neutral,   char_fo
 image atlas generous  = At("images/atlas generous.png",  expr_generous,  char_focus_and_light("atlas", "generous"))
 image atlas guarded   = At("images/atlas guarded.png",   expr_guarded,   char_focus_and_light("atlas", "guarded"))
 image atlas predatory = At("images/atlas predatory.png", expr_predatory, char_focus_and_light("atlas", "predatory"))
+
+# ASH EL (6)
+image ashel neutral    = At("images/ashel neutral.png",    expr_neutral,    char_focus_and_light("ashel", "neutral"))
+image ashel focused    = At("images/ashel focused.png",    expr_focused,    char_focus_and_light("ashel", "focused"))
+image ashel alarmed    = At("images/ashel alarmed.png",    expr_alarmed,    char_focus_and_light("ashel", "alarmed"))
+image ashel hurt       = At("images/ashel hurt.png",       expr_hurt,       char_focus_and_light("ashel", "hurt"))
+image ashel determined = At("images/ashel determined.png", expr_determined, char_focus_and_light("ashel", "determined"))
+image ashel proud      = At("images/ashel proud.png",      expr_proud,      char_focus_and_light("ashel", "proud"))
+
+# XOCHTL (6)
+image xochtl neutral   = At("images/xochtl neutral.png",   expr_neutral,    char_focus_and_light("xochtl", "neutral"))
+image xochtl warm      = At("images/xochtl warm.png",      expr_warm,       char_focus_and_light("xochtl", "warm"))
+image xochtl focused   = At("images/xochtl focused.png",   expr_focused,    char_focus_and_light("xochtl", "focused"))
+image xochtl stern     = At("images/xochtl stern.png",     expr_stern,      char_focus_and_light("xochtl", "stern"))
+image xochtl hurt      = At("images/xochtl hurt.png",      expr_hurt,       char_focus_and_light("xochtl", "hurt"))
+image xochtl proud     = At("images/xochtl proud.png",     expr_proud,      char_focus_and_light("xochtl", "proud"))
+
+# LAY-LAY (6)
+image laylay neutral     = At("images/laylay neutral.png",     expr_neutral,     char_focus_and_light("laylay", "neutral"))
+image laylay calculating = At("images/laylay calculating.png", expr_calculating, char_focus_and_light("laylay", "calculating"))
+image laylay smirk       = At("images/laylay smirk.png",       expr_smirk,       char_focus_and_light("laylay", "smirk"))
+image laylay defensive   = At("images/laylay defensive.png",   expr_defensive,   char_focus_and_light("laylay", "defensive"))
+image laylay stern       = At("images/laylay stern.png",       expr_stern,       char_focus_and_light("laylay", "stern"))
+image laylay alarmed     = At("images/laylay alarmed.png",     expr_alarmed,     char_focus_and_light("laylay", "alarmed"))
 
 
 ################################################################################

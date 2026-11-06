@@ -137,6 +137,14 @@ init -10 python:
              text="Bad software that runs secretly on your computer. Crypto malware can change what your <wallet> shows you, or swap the <address> you are paying for the attacker's."),
         dict(id="pfp", term="PFP", cat="crypto", match=[r"PFPs?"],
              text="Profile picture. In crypto, many people use an NFT or a cartoon as their PFP and never show their real face or name. Anonymous people are called 'anons'."),
+        dict(id="key_rotation", term="Key Rotation", cat="crypto", match=[r"key rotations?", r"rotat(?:e|ed|ing) (?:the )?keys?"],
+             text="Replacing an old or leaked <private_key|private key> with a brand-new one so the old key can no longer move your money. Account-model blockchains like NEAR allow native on-chain key rotation on the same account, and a <multisig> lets a <dao|DAO> swap out a compromised signer wallet."),
+        dict(id="test_transaction", term="Test Transaction", cat="crypto", match=[r"test transactions?", r"test transfers?"],
+             text="Sending a tiny amount — like 1 dollar — to an <address> first, and waiting for the recipient to confirm it arrived before sending the full amount. Because <blockchain> transfers cannot be undone, a 1-dollar test transaction prevents losing thousands of dollars to a wrong address."),
+        dict(id="custodial", term="Custodial vs. Non-Custodial", cat="crypto", match=[r"(?:non-)?custodial", r"sovereignty"],
+             text="Custodial means someone else (an exchange or an administrator) holds your <private_key|private keys> for you. Non-custodial — true digital sovereignty — means YOU hold your own keys, or share them in a <multisig>. 'No keys, no cheese': if someone else holds the keys, they control the <treasury>."),
+        dict(id="escrow", term="Escrow", cat="dao", match=[r"escrows?"],
+             text="Locking <treasury> funds in a neutral <smart_contract|smart contract> or <multisig> that releases payment automatically when agreed milestones are delivered — so an administrator's personal ego cannot freeze a creator's payout."),
 
         ## ── MONEY & DEFI ──────────────────────────────────────────────────
         dict(id="defi", term="DeFi", cat="defi", match=[r"DeFi"],

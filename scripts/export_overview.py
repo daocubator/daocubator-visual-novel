@@ -21,6 +21,9 @@ SECTIONS = [
     "01 Overview/Themes & Pillars.md",
     "01 Overview/Story Structure.md",
     "01 Overview/Game Systems.md",
+    "02 Characters/Ash El.md",
+    "02 Characters/Lay-Lay.md",
+    "02 Characters/Xochtl.md",
     "02 Characters/The Player.md",
     "02 Characters/Maya.md",
     "02 Characters/Jordan.md",
@@ -35,6 +38,7 @@ SECTIONS = [
     "03 Chapters/Chapter 5 - Resolution.md",
     "04 Endings/Endings Overview.md",
     "05 Lessons/Lessons Index.md",
+    "06 Assets/Art Style Guide.md",
     "06 Assets/Asset List.md",
 ]
 
