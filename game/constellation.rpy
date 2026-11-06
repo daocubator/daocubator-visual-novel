@@ -231,7 +231,7 @@ screen constellation_map():
                         padding (14, 6)
                         text "LESSONS: [num_lessons_done]/[len(LESSONS)]" color "#F2CC8F" size 18
                     textbutton "★ LESSONS CODEX" action ShowMenu("lessons_codex") style "constellation_nav_btn"
-                    textbutton "(?) GLOSSARY" action ShowMenu("glossary") style "constellation_nav_btn"
+                    textbutton "ˀ GLOSSARY" action ShowMenu("glossary") style "constellation_nav_btn"
 
             ## The Core Lesson Pillars bar — sized to fit cleanly inside 1860px
             hbox:
@@ -334,7 +334,7 @@ screen constellation_map():
             hbox:
                 spacing 12
                 yalign 0.5
-                text "✦ In stories, click any highlighted {color=#FFFF55}{u}word(?){/u}{/color} to open its Glossary definition." color "#D8D0C5" size 18 yalign 0.5
+                text "✦ In stories, click any highlighted {color=#FFFF55}{u}word{/u}ˀ{/color} to open its Glossary definition." color "#D8D0C5" size 18 yalign 0.5
             hbox:
                 spacing 14
                 xalign 1.0

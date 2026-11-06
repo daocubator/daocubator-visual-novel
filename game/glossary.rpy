@@ -90,7 +90,7 @@ init -10 python:
              text="Token Generation Event: the day a <token> is created and starts trading. A bit like a company's first day on the stock market — but much faster, and with far fewer rules. That's why <regulator|regulators> watch them."),
         dict(id="mint", term="Mint", cat="crypto", match=[r"mint(?:s|ed|ing)?"],
              text="To create new <token|tokens> or NFTs. 'Mint night' is when people can first get them. Minting can also be an attack: whoever controls <governance> may be able to mint a billion new tokens for themselves."),
-        dict(id="burn", term="Burn", cat="crypto", match=[r"burn(?:s|ed|ing)?"],
+        dict(id="burn", term="Burn", cat="crypto", match=[r"burn(?:s|ed|ing)?(?!\s+(?:out|with\b))"],
              text="To destroy <token|tokens> on purpose by sending them to an <address> nobody can ever use. A founder burn means giving up some of your own tokens — and the votes that come with them — to show trust."),
         dict(id="eth", term="ETH (Ξ)", cat="crypto", match=[r"ETH", r"ether"],
              text="Ether: the native money of the Ethereum <blockchain>. You use it to pay <gas> fees and fund shared <treasury|treasuries>. Its symbol is Ξ."),
@@ -118,7 +118,7 @@ init -10 python:
              text="A famous kind of <smart_contract|smart contract> bug. An attacker's contract calls back into yours before yours finishes updating its records, and takes the money again and again. It caused 'The DAO' hack in 2016."),
         dict(id="audit", term="Audit", cat="crypto", match=[r"audit(?:s|ed|ing|ors?)?"],
              text="An expert review of code (or of money) to find problems before attackers do. A security audit is expensive. A hack is much more expensive. Auditors look for bugs like <reentrancy>."),
-        dict(id="address", term="Address", cat="crypto", match=[r"address(?:es)?"],
+        dict(id="address", term="Address", cat="crypto", match=[r"(?<!home )address(?:es)?"],
              text="A long code like 0x4A21…9DEB that identifies a <wallet> or a <smart_contract|contract>. Attackers create addresses that look almost the same as real ones, so check every character. See <hex>."),
         dict(id="hex", term="Hex / Raw Data", cat="crypto", match=[r"hex", r"raw data"],
              text="The raw code of a transaction, written in hexadecimal (0–9 and a–f). Your wallet app shows a friendly summary, but <malware> can fake that summary. The raw data — best read on a <hardware_wallet|hardware wallet> — shows the truth."),
@@ -311,7 +311,7 @@ init -10 python:
                 reopen = "".join(t for _, t in stack)
                 reclose = "".join("{/%s}" % n for n, _ in reversed(stack))
                 out.append(part[pos:m.start()])
-                out.append("{a=gloss:%s}%s%s{size=-6}(?){/size}%s{/a}" % (gid, reopen, m.group(0), reclose))
+                out.append("{a=gloss:%s}%s%s{plain}ˀ{/plain}%s{/a}" % (gid, reopen, m.group(0), reclose))
                 pos = m.end()
             out.append(part[pos:])
         return "".join(out)
@@ -320,14 +320,14 @@ init -10 python:
     ## it re-opened. Needed because menu labels are filtered BEFORE the
     ## translation lookup, whose key is the original text.
     _GLOSS_UNLINK_RE = _gre.compile(
-        r"\{a=gloss:\w+\}(?:\{(?:i|b|size=[^{}]*)\})*(.*?)\{size=-6\}\(\?\)\{/size\}(?:\{/(?:i|b|size)\})*\{/a\}")
+        r"\{a=gloss:\w+\}(?:\{(?:i|b|size=[^{}]*)\})*(.*?)\{plain\}ˀ\{/plain\}(?:\{/(?:i|b|size)\})*\{/a\}")
 
     def gloss_unlink(s):
         return _GLOSS_UNLINK_RE.sub(r"\1", s or "")
 
     def gloss_strip_links(s):
         """Menu choices are buttons — hyperlinks can't live inside them. Underline instead."""
-        return _gre.sub(r"\{a=gloss:\w+\}(.*?)\{size=-6\}\(\?\)\{/size\}(.*?)\{/a\}", r"{u}\1\2{/u}", s)
+        return _gre.sub(r"\{a=gloss:\w+\}(.*?)\{plain\}ˀ\{/plain\}(.*?)\{/a\}", r"{u}\1\2{/u}", s)
 
     _GLOSS_MARKUP_RE = _gre.compile(r"<(\w+)(?:\|([^<>]+))?>")
 

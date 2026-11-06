@@ -71,8 +71,8 @@ screen bad_ending_rewind_modal(failure_title, failure_summary, lesson_id):
             hbox:
                 spacing 32
                 xalign 0.5
-                textbutton "« REWIND TO THIS DECISION (INSTANT RETRY)" action Return("retry") style "constellation_confirm_btn"
-                textbutton "✦ RETURN TO CONSTELLATION" action Return("map") style "constellation_cancel_btn"
+                textbutton "TRY AGAIN" action Return("retry") style "constellation_confirm_btn"
+                textbutton "QUIT SCENARIO" action Return("map") style "constellation_cancel_btn"
 
 
 label checkpoint_bad_end(retry_label, failure_title, failure_summary, lesson_id):
@@ -198,7 +198,6 @@ label ep1_keys:
     ashel "What happened?"
 
     ## --- DECISION 1: KEY ROTATION & SOVEREIGNTY ---
-label ep1_d1:
     scene bg sanctuary
     show ashel determined at left
     show xochtl neutral at center
@@ -206,6 +205,12 @@ label ep1_d1:
 
     xochtl "Someone uploaded a plain text file named {b}dao_seed_keys_FINAL.txt{/b} into our public Google Drive press folder last night. That file has our wallet's secret recovery words — our seed phrase. Automated bots have already scanned the folder."
     laylay "Ugh, managing crypto keys is too complicated for artists. Look, Ash — you focus on the music and the juices. Just move all the group's money into my personal wallet. I'll hold the keys by myself and pay bills for you."
+
+label ep1_d1:
+    scene bg sanctuary
+    show ashel determined at left
+    show xochtl neutral at center
+    show laylay smirk at right
 
     menu:
         "Use key rotation right now to cancel the leaked key, and move the treasury into a 2-of-3 shared multisig wallet (Ash El, Xochtl, and Lay-Lay).":
@@ -242,7 +247,6 @@ label ep1_d1:
             )
 
     ## --- DECISION 2: TRUST & VETTING NEW DAO ADMINISTRATORS ---
-label ep1_d2:
     scene bg sanctuary with dissolve
     show ashel neutral at left
     show xochtl neutral at center
@@ -253,8 +257,11 @@ label ep1_d2:
     xochtl "Wait. Has anyone checked Kestrel's past wallet history or spoken to the last two groups he worked with?"
     laylay "Oh, don't be so suspicious, Xochtl! He wore a hand-woven poncho and talked about earth-friendly finance for two hours. The vibes were amazing! Here, sign the proposal to give him full admin keys."
 
-    narrator "{color=#F2CC8F}DECISION 2 OF 3 — GOOD VIBES VS. CHECKING THE FACTS{/color}"
-    narrator "Lay-Lay wants you to give Kestrel full treasury keys today based only on charm and good vibes."
+label ep1_d2:
+    scene bg sanctuary
+    show ashel neutral at left
+    show xochtl neutral at center
+    show laylay neutral at right
 
     menu:
         "Pause the vote: check Kestrel's past wallet transactions, call his previous groups, and only offer limited trial permissions first.":
@@ -291,7 +298,6 @@ label ep1_d2:
             )
 
     ## --- DECISION 3: THE $60,000 TRANSFER & THE $1 TEST TRANSACTION ---
-label ep1_d3:
     scene bg sanctuary with dissolve
     show ashel determined at left
     show xochtl warm at center
@@ -302,8 +308,11 @@ label ep1_d3:
     xochtl "Hold on. Where did you copy that wallet address from, Lay-Lay?"
     laylay "From a message forwarded in our group chat! Look, the first four letters match: {b}0x7F4c...{/b} Come on, Ash, sign it — we're out of time!"
 
-    narrator "{color=#F2CC8F}DECISION 3 OF 3 — SENDING $60,000 ON THE BLOCKCHAIN{/color}"
-    narrator "Sixty thousand dollars is queued up in one transfer. On a blockchain, once money is sent, nobody can reverse it."
+label ep1_d3:
+    scene bg sanctuary
+    show ashel determined at left
+    show xochtl warm at center
+    show laylay neutral at right
 
     menu:
         "Refuse to rush: send a $1 test transaction first, confirm on a video call that the $1 arrived safely, and only then send the remaining $59,999.":
@@ -379,8 +388,7 @@ label ep2_lisbon:
     show xochtl focused at center
     show laylay stern at right
 
-    narrator "{color=#FF6B6B}WORST-CASE OUTCOME — LISBON SHOWCASE BACKSTAGE, 3 HOURS TO DOORS{/color}"
-    narrator "Projectors warm up across the main hall in Lisbon. Ash El hasn't slept in two days. He built the entire interactive showcase game, recorded the original folk-electronic soundtrack, and delivered everything on time."
+    narrator "Backstage at the Lisbon Showcase, three hours before doors open. Projectors warm up across the main hall. Ash El hasn't slept in two days — he built the entire interactive showcase game, recorded the original folk-electronic soundtrack, and delivered everything on time."
     ashel "The game is ready on stage, Lay-Lay! Why did you just block my 18,000 USDC payment?!"
     laylay "Because I think your ego has gotten way too big, Ash El. Everyone at the festival keeps calling this 'Ash El's masterpiece' as if my admin work doesn't matter. I'm freezing your pay until you act more humble."
     ashel "I paid the sound crew out of my own pocket! If you freeze my pay after I already delivered the work, I'm deleting the game off the stage computers right now!"
@@ -399,17 +407,20 @@ label ep2_lisbon:
 
     narrator "Ten days before the Lisbon event. You are {b}Xochtl{/b}, pouring warm ceremonial cacao for the team while Ash El tunes his instrument and tests the interactive game scenes."
     narrator "You notice a quiet change in {b}Lay-Lay{/b}: at first she admired how quickly Ash El created the music, art, and code. Now that admiration is turning into jealousy."
-    laylay "About the 18,000 USDC budget for Ash El's Lisbon game — let's not lock it into an automatic agreement. Just leave the money in my admin queue, and I'll decide how much Ash El deserves after I see how I feel in Lisbon."
 
     ## --- DECISION 1: OBJECTIVE ESCROW VS. SUBJECTIVE GATEKEEPING ---
-label ep2_d1:
     scene bg cacao_circle
     show xochtl focused at left
     show ashel neutral at center
     show laylay smirk at right
 
-    narrator "{color=#F2CC8F}DECISION 1 OF 3 — PROTECTING CREATORS FROM ADMIN MOOD SWINGS{/color}"
-    narrator "Lay-Lay wants complete personal control over whether Ash El gets paid after he finishes building the game."
+    laylay "About the 18,000 USDC budget for Ash El's Lisbon game — let's not lock it into an automatic agreement. Just leave the money in my admin queue, and I'll decide how much Ash El deserves after I see how I feel in Lisbon."
+
+label ep2_d1:
+    scene bg cacao_circle
+    show xochtl focused at left
+    show ashel neutral at center
+    show laylay smirk at right
 
     menu:
         "Lock the 18,000 USDC in an objective smart-contract escrow that pays out automatically when the playable game and music files are delivered.":
@@ -445,7 +456,6 @@ label ep2_d1:
             )
 
     ## --- DECISION 2: THE "AMY & EDWARD / JENA" AVATAR PLAY (CO-OP SOLIDARITY) ---
-label ep2_d2:
     scene bg cacao_circle with dissolve
     show xochtl neutral at left
     show ashel hurt at center
@@ -456,8 +466,11 @@ label ep2_d2:
     xochtl "I see it, Ash. Her admiration turned into jealousy, and now she's blocking anything with your name on it. But if we scream at her in public chat, she'll act like the victim and lock the whole wallet."
     ashel "Then how do we prove to the council that she's rejecting me out of pure personal bias AND get the finished work approved?"
 
-    narrator "{color=#F2CC8F}DECISION 2 OF 3 — PROVING BIAS WITH CO-OP SOLIDARITY{/color}"
-    narrator "Lay-Lay rejected Ash El's finished work without even opening it, simply because his name was on it."
+label ep2_d2:
+    scene bg cacao_circle
+    show xochtl neutral at left
+    show ashel hurt at center
+    show laylay stern at right
 
     menu:
         "Use Xochtl's 'Neutral Avatar' plan: quietly resubmit Ash El's exact same game file under an anonymous teammate username ('solstice_dev_09') with Ash El's wallet address attached.":
@@ -497,7 +510,6 @@ label ep2_d2:
             )
 
     ## --- DECISION 3: RESTRUCTURING FOR CO-OP RECIPROCITY & PREVENTING BURNOUT ---
-label ep2_d3:
     scene bg cacao_circle with dissolve
     show xochtl warm at left
     show ashel proud at center
@@ -507,7 +519,11 @@ label ep2_d3:
     ashel "My payment arrived and the game is ready for the main stage tonight. But if we keep the exact same setup, this same fight will happen again next month."
     xochtl "How should we redesign our roles so our cooperative truly wins together?"
 
-    narrator "{color=#F2CC8F}DECISION 3 OF 3 — BUILDING A HEALTHY COOPERATIVE{/color}"
+label ep2_d3:
+    scene bg cacao_circle
+    show xochtl warm at left
+    show ashel proud at center
+    show laylay defensive at right
 
     menu:
         "Set up rotating admin signers elected by the group, peer review for creative work, and paid rest breaks after big projects so nobody burns out.":
@@ -574,8 +590,7 @@ label ep3_agreements:
     show xochtl hurt at center
     show laylay alarmed at right
 
-    narrator "{color=#FF6B6B}WORST-CASE OUTCOME — THE CACAO ALTAR LAWSUIT{/color}"
-    narrator "A court officer walks past the incense burner and drops a thick legal lawsuit onto the ceremonial table. At the exact same moment, your phone buzzes: your group's token price just crashed 78%%."
+    narrator "A court officer walks past the incense burner and drops a thick legal lawsuit onto the ceremonial cacao table. At the exact same moment, your phone buzzes: your group's token price just crashed 78%%."
     ashel "What is happening?! That early co-founder who quit in Week Two after making three slides — how did he just sell off thirty-three percent of all our tokens?!"
     laylay "Because we did an equal 33%% handshake split on Day One with no written vesting agreement! He kept all those tokens the second he walked out the door."
     xochtl "And why does this court lawsuit list my personal home address and Ash El's personal bank account?!"
@@ -598,14 +613,18 @@ label ep3_agreements:
     xochtl "Listen closely, Ash. How we write down our ownership, our legal protection, and our money rules today decides whether this sanctuary survives its first storm."
 
     ## --- DECISION 1: WRITTEN VESTING & CLIFFS VS. HANDSHAKE SPLITS ---
-label ep3_d1:
     scene bg cacao_circle
     show ashel neutral at left
     show xochtl focused at center
     show laylay neutral at right
 
-    narrator "{color=#F2CC8F}DECISION 1 OF 3 — SPLITTING FOUNDER OWNERSHIP (VESTING){/color}"
-    narrator "How will you divide ownership shares (equity) and voting tokens among the co-founders?"
+    xochtl "First: how will we divide ownership shares and voting tokens among the co-founders?"
+
+label ep3_d1:
+    scene bg cacao_circle
+    show ashel neutral at left
+    show xochtl focused at center
+    show laylay neutral at right
 
     menu:
         "Sign a written 4-year vesting agreement with a 1-year cliff — founders earn their shares gradually by staying and doing the work.":
@@ -642,18 +661,21 @@ label ep3_d1:
             )
 
     ## --- DECISION 2: LEGAL WRAPPER VS. UNWRAPPED GENERAL PARTNERSHIP ---
-label ep3_d2:
     scene bg cacao_circle with dissolve
     show ashel neutral at left
     show xochtl stern at center
     show laylay calculating at right
 
-    narrator "Next, Xochtl slides the second document across the table: registration papers for a **Cooperative LLC / Swiss Verein legal wrapper**."
+    narrator "Next, Xochtl slides the second document across the table: registration papers for a {b}Cooperative LLC / Swiss Verein legal wrapper{/b}."
     xochtl "Right now, we are renting real-world event halls, shipping herbal drinks across borders, and voting on payments. Without a registered company — a {b}legal wrapper{/b} — courts treat our group as a {b}general partnership{/b}."
     ashel "Wait — doesn't calling ourselves a 'DAO' on the internet automatically protect our personal bank accounts?"
     laylay "Not at all. In the Ooki DAO court case, the judge ruled that an unregistered DAO is a general partnership. That means any member who voted can be held personally responsible for 100%% of the group's lawsuits and debts."
 
-    narrator "{color=#F2CC8F}DECISION 2 OF 3 — PROTECTING MEMBERS WITH A LEGAL WRAPPER{/color}"
+label ep3_d2:
+    scene bg cacao_circle
+    show ashel neutral at left
+    show xochtl stern at center
+    show laylay calculating at right
 
     menu:
         "Register a formal Co-op LLC / Swiss Verein legal wrapper and written operating agreement before signing leases or moving money.":
@@ -690,16 +712,19 @@ label ep3_d2:
             )
 
     ## --- DECISION 3: ENFORCEABLE RECOUPMENT & BARBELL TREASURY DISCIPLINE ---
-label ep3_d3:
     scene bg cacao_circle with dissolve
     show ashel neutral at left
     show xochtl warm at center
     show laylay neutral at right
 
-    narrator "Xochtl turns to the final page of the agreement: **Treasury Safety & Paying Back Creator Expenses**."
+    narrator "Xochtl turns to the final page of the agreement: {b}Treasury Safety & Paying Back Creator Expenses{/b}."
     xochtl "Ash El has already spent $12,000 of his own savings on studio gear and herbal bottles, and our community token just launched. How should we manage the group's money?"
 
-    narrator "{color=#F2CC8F}DECISION 3 OF 3 — STABLE CASH RESERVES & FAIR RECOUPMENT{/color}"
+label ep3_d3:
+    scene bg cacao_circle
+    show ashel neutral at left
+    show xochtl warm at center
+    show laylay neutral at right
 
     menu:
         "Write two clear rules into the charter: keep 50%% of the treasury in stable USDC cash (a barbell strategy) and pay back verified creator expenses automatically.":
@@ -756,8 +781,7 @@ label ep4_apothecary:
     show laylay alarmed at center
     show xochtl hurt at right
 
-    narrator "{color=#FF6B6B}WORST-CASE OUTCOME — LAY-LAY'S APOTHECARY, 1:18 A.M.{/color}"
-    narrator "Glass potion vials lie shattered across the floor. On Lay-Lay's computer screen, a red alert flashes: {b}PROPOSAL EXECUTED — 100%% OF TREASURY TRANSFERRED TO 0xDEAD...BEEF{/b}."
+    narrator "Inside Lay-Lay's apothecary at 1:18 a.m., glass potion vials lie shattered across the floor. On her computer screen, a red alert flashes: {b}PROPOSAL EXECUTED — 100%% OF TREASURY TRANSFERRED TO 0xDEAD...BEEF{/b}."
     ashel "Lay-Lay, open the door! What did you just sign on our shared wallet?!"
     laylay "I didn't mean to! It was 1:14 in the morning, a popup said our wallet session was expiring, and the wealthy investor Atlas was pressuring me to rush his vote through!"
     xochtl "You gave Atlas a secret veto deal, turned off the 48-hour safety delay, and clicked 'Approve' on your hardware wallet without reading its screen?!"
@@ -776,19 +800,22 @@ label ep4_apothecary:
 
     narrator "Forty-eight hours earlier. You are {b}Lay-Lay{/b}. Rows of dried lavender, glass potion bottles, and accounting ledgers line your desk beside your {b}hardware wallet{/b}."
     narrator "For the first time, you feel the heavy pressure on the administrator's shoulders: while Ash El and Xochtl prepare the ceremony, your inbox is overflowing with thirty-two unpaid bills, tax forms, and a private voice message from {b}Atlas{/b}, a wealthy crypto {b}whale{/b}."
-    laylay "Listen to this offer Atlas just sent me: he wants to put 80 ETH into our apothecary treasury today — on one condition."
-    ashel "What condition?"
-    laylay "He wants 35%% of all our voting tokens and a secret side-agreement so he and I can push proposals through without waiting for the rest of the cooperative to vote."
 
     ## --- DECISION 1: RESISTING PLUTOCRATIC CAPTURE ---
-label ep4_d1:
     scene bg apothecary
     show ashel focused at left
     show laylay stern at center
     show xochtl stern at right
 
-    narrator "{color=#F2CC8F}DECISION 1 OF 3 — THE WEALTHY WHALE'S BACKROOM OFFER{/color}"
-    narrator "Atlas offers huge funding if you quietly hand him 35%% voting power and a secret shortcut around community votes."
+    laylay "Listen to this offer Atlas just sent me: he wants to put 80 ETH into our apothecary treasury today — on one condition."
+    ashel "What condition?"
+    laylay "He wants 35%% of all our voting tokens and a secret side-agreement so he and I can push proposals through without waiting for the rest of the cooperative to vote."
+
+label ep4_d1:
+    scene bg apothecary
+    show ashel focused at left
+    show laylay stern at center
+    show xochtl stern at right
 
     menu:
         "Reject the secret deal: limit any single investor to 8%% voting power and keep all terms 100%% public to the cooperative.":
@@ -811,7 +838,6 @@ label ep4_d1:
             )
 
     ## --- DECISION 2: VERIFYING HARDWARE CALLDATA HEX AT 1:14 A.M. ---
-label ep4_d2:
     scene bg apothecary with dissolve
     show laylay calculating at center
     show xochtl focused at right
@@ -820,8 +846,10 @@ label ep4_d2:
     narrator "Suddenly, an urgent direct message pops up from an account using the exact logo of your wallet app: {b}'URGENT: Wallet Sync Error. Click here and sign now or tomorrow's Brazil Sanctuary payment will fail!'{/b}"
     narrator "You click the link. Your computer screen shows a friendly button saying 'Re-Sync Wallet.' However, when you look down at the tiny screen on your physical {b}hardware wallet{/b}, the raw data ({b}hex{/b}) says `{b}setApprovalForAll{/b}` — giving an unknown contract permission to take every token in the vault!"
 
-    narrator "{color=#F2CC8F}DECISION 2 OF 3 — THE 1:14 A.M. HARDWARE WALLET SCREEN{/color}"
-    narrator "You are exhausted, the message says it's an emergency, and your computer screen says 'Safe Sync' while your hardware wallet's tiny screen warns `{b}setApprovalForAll{/b}`."
+label ep4_d2:
+    scene bg apothecary
+    show laylay calculating at center
+    show xochtl focused at right
 
     menu:
         "Stop immediately: trust the hardware wallet's tiny screen, close the fake link, and wait until morning to verify with the team.":
@@ -843,7 +871,6 @@ label ep4_d2:
             )
 
     ## --- DECISION 3: DEFENDING AGAINST FLASH-LOAN GOVERNANCE CAPTURE ---
-label ep4_d3:
     scene bg apothecary with dissolve
     show laylay stern at left
     show xochtl focused at center
@@ -853,7 +880,11 @@ label ep4_d3:
     ashel "Lay-Lay! How did that attacker get forty percent of the votes in twelve seconds?!"
     xochtl "He didn't buy those tokens — he borrowed them for a single transaction using a flash loan! How did you set up our voting rules, Lay-Lay?!"
 
-    narrator "{color=#F2CC8F}DECISION 3 OF 3 — STOPPING THE 12-SECOND FLASH-LOAN ATTACK{/color}"
+label ep4_d3:
+    scene bg apothecary
+    show laylay stern at left
+    show xochtl focused at center
+    show ashel determined at right
 
     menu:
         "Use a mandatory 48-hour time-lock waiting period and past-snapshot voting so borrowed flash-loan tokens cannot execute an instant theft.":
