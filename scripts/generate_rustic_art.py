@@ -771,6 +771,236 @@ def generate_gui_chrome():
     print("[SAVED] Restyled GUI chrome (main_menu, game_menu, textbox, frame, notify)")
 
 
+# ---------------------------------------------------------------------------
+# 6. EVENT CGs — 2 per Constellation Node (Disaster CG & Happy/Resolved CG)
+# ---------------------------------------------------------------------------
+def _paste_char_bust(canvas: Image.Image, sprite: Image.Image, center_x: int, top_y: int, scale: float = 0.62, flip_x: bool = False, dim: float = 1.0):
+    """Helper to composite a character bust cleanly into an Event CG."""
+    s = sprite.copy()
+    if flip_x:
+        s = s.transpose(Image.Transpose.FLIP_LEFT_RIGHT)
+    if dim < 0.99:
+        arr = np.array(s).astype(np.float32)
+        arr[:, :, :3] *= dim
+        s = Image.fromarray(np.clip(arr, 0, 255).astype(np.uint8))
+    nw, nh = int(s.width * scale), int(s.height * scale)
+    s_resized = s.resize((nw, nh), Image.Resampling.LANCZOS)
+    px = center_x - nw // 2
+    canvas.alpha_composite(s_resized, dest=(px, top_y))
+
+
+def _frame_cg(im: Image.Image, border_col, is_disaster: bool, seed: int) -> Image.Image:
+    """Applies vignette, rustic double-ink border, and analog watercolor paper grain."""
+    W, H = im.size
+    d = ImageDraw.Draw(im)
+    # Corner diagonal accents for disaster or corner botanical stars for happy
+    if is_disaster:
+        for i in range(0, 140, 24):
+            d.line([(0, i), (i, 0)], fill=(214, 72, 56, 150), width=4)
+            d.line([(W - i, 0), (W, i)], fill=(214, 72, 56, 150), width=4)
+    else:
+        for cx_c, cy_c in [(26, 26), (W - 26, 26), (26, H - 26), (W - 26, H - 26)]:
+            d.ellipse([cx_c - 10, cy_c - 10, cx_c + 10, cy_c + 10], fill=(*border_col[:3], 220), outline=INK, width=2)
+
+    d.rectangle([2, 2, W - 3, H - 3], outline=INK, width=5)
+    d.rectangle([8, 8, W - 9, H - 9], outline=(*border_col[:3], 235), width=3)
+    d.rectangle([13, 13, W - 14, H - 14], outline=(244, 239, 230, 110), width=1)
+    return apply_watercolor_paper_grain(im.convert("RGB"), strength=0.035, seed=seed)
+
+
+def generate_event_cgs(sprites: dict):
+    """Generates 8 cutscene Event CG graphics (1000x320 full + 500x160 thumb):
+    - ep1: cg_ep1_disaster.png / cg_ep1_happy.png
+    - ep2: cg_ep2_disaster.png / cg_ep2_happy.png
+    - ep3: cg_ep3_disaster.png / cg_ep3_happy.png
+    - ep4: cg_ep4_disaster.png / cg_ep4_happy.png
+    """
+    W, H = 1000, 320
+
+    # --- EP1 DISASTER: Stranded at Lisbon Customs + 0.00 NEAR Poisoned Transfer ---
+    im = Image.new("RGBA", (W, H), (24, 16, 18, 255))
+    d = ImageDraw.Draw(im)
+    # Crimson fracture rays & rain streaks on airport window
+    for x in range(-100, W + 100, 36):
+        d.line([(x, 0), (x - 80, H)], fill=(58, 24, 26, 255), width=14)
+        d.line([(x + 12, 0), (x - 45, H)], fill=(140, 165, 190, 75), width=2)
+    # Impounded wooden crates on center-left
+    for cx_box, cy_box, bw, bh in [(355, 175, 135, 125), (465, 205, 120, 100)]:
+        d.rectangle([cx_box, cy_box, cx_box + bw, cy_box + bh], fill=WOOD_AMBER, outline=INK, width=4)
+        d.line([(cx_box, cy_box), (cx_box + bw, cy_box + bh)], fill=WOOD_DARK, width=4)
+        d.line([(cx_box + bw, cy_box), (cx_box, cy_box + bh)], fill=WOOD_DARK, width=4)
+    # Characters: Ash El alarmed on left, Xochtl hurt on right, Lay-Lay stern far right
+    _paste_char_bust(im, sprites["ashel_alarmed"], 185, -35, scale=0.56, flip_x=True)
+    _paste_char_bust(im, sprites["xochtl_hurt"], 675, -30, scale=0.54, dim=0.88)
+    _paste_char_bust(im, sprites["laylay_stern"], 865, -30, scale=0.54, dim=0.82)
+    d = ImageDraw.Draw(im)
+    # Foreground cutscene focal prop: Fractured Red Wallet Screen & Broken Key
+    d.rounded_rectangle([370, 38, 610, 182], radius=14, fill=(28, 14, 16, 248), outline=TERRACOTTA, width=4)
+    d.rectangle([384, 52, 596, 98], fill=(178, 38, 36, 255), outline=INK, width=3)
+    # Cracked zero-balance emblem & downward drain arrow
+    d.ellipse([410, 60, 442, 90], outline=PARCHMENT, width=4)
+    d.line([(406, 92), (446, 58)], fill=PARCHMENT, width=4)
+    d.polygon([(490, 108), (520, 108), (520, 142), (538, 142), (505, 172), (472, 142), (490, 142)], fill=TERRACOTTA, outline=INK, width=3)
+    # Caution customs tape across bottom
+    d.polygon([(0, 265), (W, 235), (W, 262), (0, 292)], fill=POTION_AMBER, outline=INK, width=3)
+    for tx in range(20, W, 65):
+        d.polygon([(tx, 264 - int(tx * 0.03)), (tx + 25, 263 - int(tx * 0.03)), (tx + 10, 290 - int(tx * 0.03)), (tx - 15, 291 - int(tx * 0.03))], fill=INK)
+    cg1_dis = _frame_cg(im, TERRACOTTA, is_disaster=True, seed=101)
+
+    # --- EP1 HAPPY: Sunlit Sanctuary + 2-of-3 Multisig Shield & Verified Transfer ---
+    im = Image.new("RGBA", (W, H), (236, 198, 126, 255))
+    d = ImageDraw.Draw(im)
+    for r in range(380, 30, -35):
+        d.ellipse([500 - r, 160 - r, 500 + r, 160 + r], fill=(246, 218, 152, 65))
+    # Botanical leaves framing top
+    for lx, ly in [(80, 45), (160, 32), (840, 38), (920, 50)]:
+        d.ellipse([lx - 45, ly - 22, lx + 45, ly + 22], fill=BEAD_GREEN, outline=INK, width=3)
+    _paste_char_bust(im, sprites["ashel_proud"], 200, -35, scale=0.56, flip_x=True)
+    _paste_char_bust(im, sprites["xochtl_proud"], 800, -35, scale=0.56)
+    _paste_char_bust(im, sprites["laylay_neutral"], 645, -25, scale=0.50, dim=0.95)
+    d = ImageDraw.Draw(im)
+    # Center 2-of-3 Multisig Golden-Emerald Shield with 3 Keys
+    sh_pts = [(500, 34), (605, 74), (585, 198), (500, 268), (415, 198), (395, 74)]
+    draw_ink_poly(d, sh_pts, fill=(26, 62, 54, 248), outline=POTION_AMBER, width=5)
+    d.polygon([(500, 52), (585, 86), (568, 188), (500, 246), (432, 188), (415, 86)], fill=(46, 164, 150, 235), outline=INK, width=3)
+    # Three interlocking golden keys + checkmark
+    for kx, ky in [(462, 118), (500, 102), (538, 118)]:
+        d.ellipse([kx - 16, ky - 16, kx + 16, ky + 16], fill=POTION_AMBER, outline=INK, width=3)
+        d.line([(kx, ky + 16), (kx, ky + 72)], fill=POTION_AMBER, width=6)
+        d.line([(kx, ky + 56), (kx + 12, ky + 56)], fill=POTION_AMBER, width=5)
+    d.line([(468, 202), (492, 224), (540, 178)], fill=PARCHMENT, width=8, joint="curve")
+    cg1_hap = _frame_cg(im, TURQUOISE, is_disaster=False, seed=102)
+
+    # --- EP2 DISASTER: Lisbon Showcase Sabotage — Frozen Escrow Padlock ---
+    im = Image.new("RGBA", (W, H), (28, 18, 24, 255))
+    d = ImageDraw.Draw(im)
+    for i in range(0, W + 200, 40):
+        d.line([(i, 0), (i - 160, H)], fill=(64, 24, 38, 255), width=18)
+    # Darkened Lisbon dome backstage in center
+    d.ellipse([360, 20, 640, 300], fill=(20, 22, 28, 240), outline=TERRACOTTA, width=3)
+    _paste_char_bust(im, sprites["ashel_hurt"], 195, -35, scale=0.56, flip_x=True)
+    _paste_char_bust(im, sprites["laylay_stern"], 805, -35, scale=0.56)
+    d = ImageDraw.Draw(im)
+    # Giant Iron & Crimson Padlock chaining the stage payout
+    d.line([(280, 180), (720, 140)], fill=(90, 86, 84, 255), width=14)
+    d.line([(280, 140), (720, 180)], fill=(90, 86, 84, 255), width=14)
+    d.arc([448, 48, 552, 165], 180, 360, fill=PARCHMENT, width=14)
+    d.rounded_rectangle([430, 118, 570, 248], radius=16, fill=TERRACOTTA, outline=INK, width=5)
+    d.ellipse([484, 156, 516, 188], fill=INK)
+    d.polygon([(492, 180), (508, 180), (514, 222), (486, 222)], fill=INK)
+    cg2_dis = _frame_cg(im, TERRACOTTA, is_disaster=True, seed=201)
+
+    # --- EP2 HAPPY: Lisbon Showcase Dome & Co-op Solidarity ---
+    im = Image.new("RGBA", (W, H), (24, 38, 44, 255))
+    d = ImageDraw.Draw(im)
+    # Glowing Turquoise & Gold Projection Dome + soundwaves behind the performers
+    for r in (290, 230, 170, 115):
+        d.ellipse([500 - r, 180 - r, 500 + r, 180 + r], fill=(36, 68, 72, 95), outline=POTION_AMBER, width=3)
+    for deg in range(0, 360, 24):
+        rad = math.radians(deg)
+        d.line([(500, 180), (500 + int(280 * math.cos(rad)), 180 + int(280 * math.sin(rad)))], fill=(46, 196, 182, 120), width=2)
+    _paste_char_bust(im, sprites["xochtl_proud"], 195, -35, scale=0.56, flip_x=True)
+    _paste_char_bust(im, sprites["ashel_proud"], 500, -40, scale=0.58)
+    _paste_char_bust(im, sprites["laylay_neutral"], 815, -30, scale=0.54)
+    cg2_hap = _frame_cg(im, TURQUOISE, is_disaster=False, seed=202)
+
+    # --- EP3 DISASTER: The Cacao Altar Summons & Dead-Equity Crash ---
+    im = Image.new("RGBA", (W, H), (30, 16, 16, 255))
+    d = ImageDraw.Draw(im)
+    # Plunging Red Token Crash Chart in background
+    chart_pts = [(40, 55), (220, 75), (380, 62), (510, 155), (680, 235), (860, 285), (960, 295)]
+    d.polygon(chart_pts + [(960, H), (40, H)], fill=(128, 28, 28, 120))
+    d.line(chart_pts, fill=TERRACOTTA, width=8, joint="curve")
+    _paste_char_bust(im, sprites["ashel_alarmed"], 185, -35, scale=0.55, flip_x=True)
+    _paste_char_bust(im, sprites["xochtl_hurt"], 815, -35, scale=0.55)
+    d = ImageDraw.Draw(im)
+    # Center: Spilled Cacao Cup & Legal Lawsuit Summons Document
+    doc_pts = [(415, 36), (595, 52), (575, 258), (395, 242)]
+    draw_ink_poly(d, doc_pts, fill=PARCHMENT, outline=INK, width=5)
+    # Red legal wax seal / stamp & ruling lines on the summons
+    d.rectangle([435, 68, 565, 96], fill=FACE_RED, outline=INK, width=3)
+    for ly in (118, 140, 162, 184):
+        d.line([(430, ly), (560, ly + 8)], fill=INK, width=4)
+    d.ellipse([515, 195, 558, 238], fill=FACE_RED, outline=INK, width=3)
+    # Tipped cacao cup spilling dark cacao across bottom left of document
+    d.polygon([(330, 225), (395, 205), (405, 258), (340, 272)], fill=CACAO_BRONZE, outline=INK, width=4)
+    d.ellipse([385, 220, 485, 285], fill=(62, 32, 22, 235), outline=INK, width=3)
+    cg3_dis = _frame_cg(im, TERRACOTTA, is_disaster=True, seed=301)
+
+    # --- EP3 HAPPY: Sealed Co-op Charter, Vesting Hourglass & Cacao Circle ---
+    im = Image.new("RGBA", (W, H), (234, 214, 184, 255))
+    d = ImageDraw.Draw(im)
+    for r in range(360, 40, -40):
+        d.ellipse([500 - r, 160 - r, 500 + r, 160 + r], fill=(242, 196, 132, 65))
+    _paste_char_bust(im, sprites["ashel_proud"], 185, -35, scale=0.55, flip_x=True)
+    _paste_char_bust(im, sprites["xochtl_warm"], 815, -35, scale=0.55)
+    d = ImageDraw.Draw(im)
+    # Center: Golden Co-op Charter Scroll + 3 Steaming Earthen Cacao Cups
+    d.rounded_rectangle([395, 32, 605, 218], radius=12, fill=PARCHMENT, outline=INK, width=5)
+    d.rectangle([382, 24, 618, 46], fill=WOOD_AMBER, outline=INK, width=4)
+    d.rectangle([382, 206, 618, 228], fill=WOOD_AMBER, outline=INK, width=4)
+    # Shield & scales/vesting emblem on scroll
+    d.polygon([(500, 62), (548, 82), (538, 148), (500, 178), (462, 148), (452, 82)], fill=TURQUOISE, outline=INK, width=4)
+    d.line([(482, 118), (496, 134), (524, 98)], fill=PARCHMENT, width=6)
+    # Three steaming cacao cups at the bottom of the charter
+    for cup_x in (425, 500, 575):
+        d.polygon([(cup_x - 24, 235), (cup_x + 24, 235), (cup_x + 18, 288), (cup_x - 18, 288)], fill=CACAO_BRONZE, outline=INK, width=4)
+        d.line([(cup_x, 226), (cup_x - 8, 202), (cup_x + 6, 182)], fill=TURQUOISE, width=3, joint="curve")
+    cg3_hap = _frame_cg(im, POTION_AMBER, is_disaster=False, seed=302)
+
+    # --- EP4 DISASTER: 1:14 A.M. Apothecary Drain & Phishing Hook ---
+    im = Image.new("RGBA", (W, H), (20, 16, 28, 255))
+    d = ImageDraw.Draw(im)
+    for r in range(340, 20, -35):
+        d.ellipse([500 - r, 150 - r, 500 + r, 150 + r], fill=(128, 32, 48, 55))
+    _paste_char_bust(im, sprites["ashel_alarmed"], 165, -25, scale=0.50, flip_x=True, dim=0.72)
+    _paste_char_bust(im, sprites["laylay_alarmed"], 500, -35, scale=0.57)
+    _paste_char_bust(im, sprites["xochtl_hurt"], 835, -25, scale=0.50, dim=0.72)
+    d = ImageDraw.Draw(im)
+    # Phishing hooks dropping from top + shattered potion vials on desk
+    for hx in (335, 665):
+        d.line([(hx, 0), (hx, 135)], fill=POTION_AMBER, width=4)
+        d.arc([hx - 24, 115, hx + 24, 168], 0, 220, fill=TERRACOTTA, width=6)
+    # Shattered vials & spilled glowing potion at bottom
+    d.ellipse([280, 248, 430, 295], fill=POTION_CYAN, outline=INK, width=3)
+    d.ellipse([580, 252, 720, 296], fill=FACE_RED, outline=INK, width=3)
+    cg4_dis = _frame_cg(im, ALCHEMICAL_VIOLET, is_disaster=True, seed=401)
+
+    # --- EP4 HAPPY: Dawn Apothecary — Hardware Hex Verified & 48h Timelock Shield ---
+    im = Image.new("RGBA", (W, H), (224, 216, 198, 255))
+    d = ImageDraw.Draw(im)
+    for r in range(360, 30, -35):
+        d.ellipse([500 - r, 160 - r, 500 + r, 160 + r], fill=(155, 126, 222, 45))
+    # Hanging herb bundles at top
+    for hx in (110, 310, 690, 890):
+        d.line([(hx, 0), (hx, 42)], fill=INK, width=4)
+        d.polygon([(hx, 36), (hx - 26, 98), (hx, 112), (hx + 26, 98)], fill=SAGE_GREEN, outline=INK, width=3)
+    _paste_char_bust(im, sprites["ashel_proud"], 180, -30, scale=0.54, flip_x=True)
+    _paste_char_bust(im, sprites["laylay_neutral"], 500, -35, scale=0.57)
+    _paste_char_bust(im, sprites["xochtl_proud"], 820, -30, scale=0.54)
+    d = ImageDraw.Draw(im)
+    # Glowing Hardware Wallet & Timelock Hourglass Shield in foreground bottom-center
+    d.rounded_rectangle([420, 192, 580, 292], radius=14, fill=(26, 36, 42, 250), outline=POTION_AMBER, width=4)
+    d.rectangle([438, 210, 562, 274], fill=TURQUOISE, outline=INK, width=3)
+    d.line([(475, 244), (494, 262), (532, 222)], fill=INK, width=7, joint="curve")
+    cg4_hap = _frame_cg(im, ALCHEMICAL_VIOLET, is_disaster=False, seed=402)
+
+    cgs = [
+        ("cg_ep1_disaster", cg1_dis),
+        ("cg_ep1_happy",    cg1_hap),
+        ("cg_ep2_disaster", cg2_dis),
+        ("cg_ep2_happy",    cg2_hap),
+        ("cg_ep3_disaster", cg3_dis),
+        ("cg_ep3_happy",    cg3_hap),
+        ("cg_ep4_disaster", cg4_dis),
+        ("cg_ep4_happy",    cg4_hap),
+    ]
+    for name, img in cgs:
+        save_both(img, f"{name}.png", is_bg=True)
+        thumb = img.resize((480, 154), Image.Resampling.LANCZOS)
+        save_both(thumb, f"{name}_thumb.png", is_bg=True)
+
+
 def save_both(im: Image.Image, filename: str, is_bg: bool = False):
     p1 = os.path.join(IMG_DIR, filename)
     p2 = os.path.join(VAULT_BG_DIR if is_bg else VAULT_SPRITES_DIR, filename)
@@ -785,16 +1015,20 @@ def save_both(im: Image.Image, filename: str, is_bg: bool = False):
 def main():
     print("=== Generating 2x-Supersampled Rustic Line-Art & Analog Watercolor Assets ===")
 
+    sprites = {}
     for expr in ("neutral", "focused", "alarmed", "hurt", "determined", "proud"):
         im = generate_ashel_sprite(expr)
+        sprites[f"ashel_{expr}"] = im
         save_both(im, f"ashel {expr}.png", is_bg=False)
 
     for expr in ("neutral", "warm", "focused", "stern", "hurt", "proud"):
         im = generate_xochtl_sprite(expr)
+        sprites[f"xochtl_{expr}"] = im
         save_both(im, f"xochtl {expr}.png", is_bg=False)
 
     for expr in ("neutral", "calculating", "smirk", "defensive", "stern", "alarmed"):
         im = generate_laylay_sprite(expr)
+        sprites[f"laylay_{expr}"] = im
         save_both(im, f"laylay {expr}.png", is_bg=False)
 
     save_both(generate_bg_constellation(), "bg constellation.png", is_bg=True)
@@ -803,6 +1037,7 @@ def main():
     save_both(generate_bg_cacao_circle(), "bg cacao_circle.png", is_bg=True)
     save_both(generate_bg_apothecary(), "bg apothecary.png", is_bg=True)
     generate_gui_chrome()
+    generate_event_cgs(sprites)
 
     print("=== All Rustic Line-Art & Analog Watercolor Assets Generated! ===")
 

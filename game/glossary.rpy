@@ -26,21 +26,20 @@ init -10 python:
         ("crypto", "CRYPTO",   "#55FFFF"),
         ("defi",   "MONEY",    "#FFFF55"),
         ("dao",    "DAO",      "#FF55FF"),
-        ("game",   "STATS",    "#55FF55"),
     ]
     GLOSS_CAT_NAMES = {
         "biz": "Business & Startups", "crypto": "Crypto & Tech",
-        "defi": "Money & DeFi", "dao": "DAO & Governance", "game": "Game Stats",
+        "defi": "Money & DeFi", "dao": "DAO & Governance",
     }
 
     GLOSSARY = [
-        ## ── GAME STATS ────────────────────────────────────────────────────
-        dict(id="vibes", term="Vibes", cat="game", match=[r"vibes"],
-             text="One of your five stats. Vibes is how the wider community feels about your project: excitement, trust, hype. High Vibes help your <token> price and help you win votes. Low Vibes lead to fights — and sometimes a <fork>."),
-        dict(id="security", term="Security", cat="game", match=[r"security"],
-             text="One of your five stats. Security is how safe your money and systems are. Low Security makes attacks like <phishing> much easier. You raise it with an <audit>, a <multisig>, and good habits with your <seed_phrase|seed phrase>."),
-        dict(id="morale", term="Morale", cat="game", match=[r"morale"],
-             text="One of your five stats. Morale is how your core team feels. High Morale means people stay and do good work. Low Morale means people quit — like a <cofounder|co-founder> taking a better job."),
+        ## ── CULTURE, SECURITY & TEAM HEALTH ───────────────────────────────
+        dict(id="vibes", term="Vibes", cat="dao", match=[r"vibes"],
+             text="How the wider community feels about your project: excitement, trust, and shared energy. Good vibes help your <token> hold value and bring people out to vote; relying on vibes instead of real <due_diligence|due diligence> or written agreements leads to fights and <fork|forks>."),
+        dict(id="security", term="Security", cat="crypto", match=[r"security"],
+             text="How safe your money, keys, and systems are. Weak security makes attacks like <phishing> much easier. You strengthen it with an <audit>, a <multisig>, <key_rotation|key rotation>, and careful habits with your <seed_phrase|seed phrase>."),
+        dict(id="morale", term="Morale", cat="biz", match=[r"morale"],
+             text="How your core team and creators feel about working together. High morale means builders stay and support each other; low morale — often caused by unfair <equity> splits or administrative gatekeeping — makes <cofounder|co-founders> quit."),
 
         ## ── DAO & GOVERNANCE ──────────────────────────────────────────────
         dict(id="dao", term="DAO", cat="dao", match=[r"DAOs?"],
@@ -94,7 +93,7 @@ init -10 python:
         dict(id="burn", term="Burn", cat="crypto", match=[r"burn(?:s|ed|ing)?"],
              text="To destroy <token|tokens> on purpose by sending them to an <address> nobody can ever use. A founder burn means giving up some of your own tokens — and the votes that come with them — to show trust."),
         dict(id="eth", term="ETH (Ξ)", cat="crypto", match=[r"ETH", r"ether"],
-             text="Ether: the money of the Ethereum <blockchain>. You use it to buy things and to pay <gas>. In this game your <treasury> is counted in ETH — that's the Ξ symbol."),
+             text="Ether: the native money of the Ethereum <blockchain>. You use it to pay <gas> fees and fund shared <treasury|treasuries>. Its symbol is Ξ."),
         dict(id="gas", term="Gas", cat="crypto", match=[r"gas"],
              text="The small fee you pay the network for each transaction on a <blockchain>. How a <wallet> pays gas (how much, and when) can work like a fingerprint — that's how Spectre and Alex spot one person behind many wallets."),
         dict(id="wallet", term="Wallet", cat="crypto", match=[r"wallets?"],
@@ -150,7 +149,7 @@ init -10 python:
         dict(id="defi", term="DeFi", cat="defi", match=[r"DeFi"],
              text="Decentralized Finance: banking-style services — trading, loans, savings — run by <smart_contract|smart contracts> instead of banks. Open and fast, but there is nobody to call when something breaks. Home of the <flash_loan|flash loan>."),
         dict(id="treasury", term="Treasury", cat="defi", match=[r"treasury", r"treasuries"],
-             text="The shared money of a group or company. In a <dao|DAO> it sits in a <wallet> (ideally a <multisig>) and members vote on how to spend it. In this game Treasury is also a stat, counted in <eth|ETH>."),
+             text="The shared money of a group, cooperative, or company. In a <dao|DAO> it sits in a shared <wallet> (ideally a <multisig>) and members vote on how to spend it, often holding a mix of <eth|ETH>, <stablecoin|stablecoins>, and tokens."),
         dict(id="native_token", term="Native Token", cat="defi", match=[r"native(?: tokens?)?"],
              text="The <token> your own project creates. Exciting to hold — but its price falls exactly when your project has problems. A <treasury> full of it can fall into a <death_spiral|death spiral>."),
         dict(id="stablecoin", term="Stablecoin", cat="defi", match=[r"stablecoins?", r"stables"],
@@ -204,7 +203,7 @@ init -10 python:
         dict(id="postmortem", term="Post-mortem", cat="biz", match=[r"post-?mortems?"],
              text="A careful, honest review after something fails: what went wrong, and why. This whole game is built from real DAO and startup post-mortems. Reading them is the cheapest education there is."),
         dict(id="burnout", term="Burnout", cat="biz", match=[r"burnout"],
-             text="Deep physical and mental exhaustion from long-term stress. Founders get it constantly. In this game Burnout is a stat: at 60 or more your judgment gets worse (and the game stops being honest with you), and at 80 you are forced to rest."),
+             text="Deep physical and mental exhaustion from long-term stress and overwork. Founders and solo creators experience it constantly when one person tries to carry creation, administration, and crisis response alone instead of sharing the load across a cooperative."),
         dict(id="exit", term="Exit", cat="biz", match=[r"exits?"],
              text="How founders and investors finally get their money out — usually by selling the company (an <acquisition>) or by listing it on a stock market. 'We didn't build an exit' means 'we're not building this to sell it'."),
         dict(id="acquisition", term="Acquisition", cat="biz", match=[r"acquisitions?", r"acqui-hires?", r"acquir(?:e|es|ed|ing)"],
@@ -312,7 +311,7 @@ init -10 python:
                 reopen = "".join(t for _, t in stack)
                 reclose = "".join("{/%s}" % n for n, _ in reversed(stack))
                 out.append(part[pos:m.start()])
-                out.append("{a=gloss:%s}%s%s%s{/a}" % (gid, reopen, m.group(0), reclose))
+                out.append("{a=gloss:%s}%s%s{size=-6}(?){/size}%s{/a}" % (gid, reopen, m.group(0), reclose))
                 pos = m.end()
             out.append(part[pos:])
         return "".join(out)
@@ -321,14 +320,14 @@ init -10 python:
     ## it re-opened. Needed because menu labels are filtered BEFORE the
     ## translation lookup, whose key is the original text.
     _GLOSS_UNLINK_RE = _gre.compile(
-        r"\{a=gloss:\w+\}(?:\{(?:i|b|size=[^{}]*)\})*(.*?)(?:\{/(?:i|b|size)\})*\{/a\}")
+        r"\{a=gloss:\w+\}(?:\{(?:i|b|size=[^{}]*)\})*(.*?)\{size=-6\}\(\?\)\{/size\}(?:\{/(?:i|b|size)\})*\{/a\}")
 
     def gloss_unlink(s):
         return _GLOSS_UNLINK_RE.sub(r"\1", s or "")
 
     def gloss_strip_links(s):
         """Menu choices are buttons — hyperlinks can't live inside them. Underline instead."""
-        return _gre.sub(r"\{a=gloss:\w+\}(.*?)\{/a\}", r"{u}\1{/u}", s)
+        return _gre.sub(r"\{a=gloss:\w+\}(.*?)\{size=-6\}\(\?\)\{/size\}(.*?)\{/a\}", r"{u}\1\2{/u}", s)
 
     _GLOSS_MARKUP_RE = _gre.compile(r"<(\w+)(?:\|([^<>]+))?>")
 

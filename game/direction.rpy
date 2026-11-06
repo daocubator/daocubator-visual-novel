@@ -108,19 +108,22 @@ init -5 python:
         focus_on = getattr(store, "_lab_speaker_focus_enabled", True)
 
         # Target focus values (no yoffset so bottom edge never lifts off the screen)
+        dim_mul = 1.0
         if not focus_on:
             t_zoom, t_bright, t_sat = 1.0, 0.0, 1.0
         elif active == char_tag:
             if multi_stage:
-                t_zoom, t_bright, t_sat = 1.035, 0.04, 1.04
+                t_zoom, t_bright, t_sat = 1.04, 0.04, 1.06
             else:
                 t_zoom, t_bright, t_sat = 1.0, 0.02, 1.02
         elif active is not None and active != char_tag and multi_stage:
-            # Another character is speaking in a multi-character scene -> dim listener
-            t_zoom, t_bright, t_sat = 0.965, -0.20, 0.82
+            # Another character is speaking in a multi-character scene -> dim listener clearly
+            t_zoom, t_bright, t_sat = 0.955, -0.18, 0.65
+            dim_mul = 0.54
         elif active is None and multi_stage:
             # Narrator or player speaking while multiple characters are on stage
-            t_zoom, t_bright, t_sat = 0.985, -0.08, 0.92
+            t_zoom, t_bright, t_sat = 0.98, -0.06, 0.88
+            dim_mul = 0.80
         else:
             t_zoom, t_bright, t_sat = 1.0, 0.0, 1.0
 
@@ -138,11 +141,7 @@ init -5 python:
         if expr_name == "typing":
             rr, rg, rb = rr * 0.88, rg * 1.04, rb * 1.12
 
-        # Burnout >= 60 visual fraying (slight desaturation & contrast, no motion jitter)
-        burnout_val = getattr(store, "burnout", 10)
-        if burnout_val >= 60:
-            es *= 0.86
-            r_cont *= 1.06
+        rr, rg, rb = rr * dim_mul, rg * dim_mul, rb * dim_mul
 
         final_bright = t_bright + eb + r_bright
         final_sat    = t_sat * es
@@ -165,13 +164,17 @@ init -5 python:
             * ContrastMatrix(final_cont)
             * BrightnessMatrix(final_bright)
         )
-        return None
+        return 0.05
 
     def char_focus_and_light(char_tag, expr_name="neutral"):
         return Transform(function=renpy.curry(char_focus_light_fn)(char_tag=char_tag, expr_name=expr_name))
 
 ## Attach speaker tracking to the Character objects defined in script.rpy
 init 5 python:
+    def direction_all_char_callback(event, interact=True, _speaker_tag=None, **kwargs):
+        if event == "begin" and interact:
+            store._active_speaker = _speaker_tag
+
     def _wire_speaker_callbacks():
         mapping = [
             ("ashel", "ashel"),
@@ -193,15 +196,9 @@ init 5 python:
                 new_cb_args = dict(ch.cb_args) if ch.cb_args else {}
                 new_cb_args["_speaker_tag"] = tag
                 ch.cb_args = new_cb_args
+                ch.callback = direction_all_char_callback
 
     _wire_speaker_callbacks()
-
-    def direction_all_char_callback(event, interact=True, _speaker_tag=None, **kwargs):
-        if event == "begin" and interact:
-            store._active_speaker = _speaker_tag
-
-    if direction_all_char_callback not in config.all_character_callbacks:
-        config.all_character_callbacks.append(direction_all_char_callback)
 
 
 ################################################################################

@@ -89,7 +89,17 @@ init python:
         renpy.store.pivotal.append(text)
 
 ################################################################################
-## Stats HUD — top bar, PC-98 flavored
+## Top HUD Bar — POV, Glossary Footnote Hint, Lessons & Constellation Navigation
+
+init python:
+    def _ensure_single_narrative():
+        try:
+            if _preferences.language is not None:
+                _preferences.language = None
+        except Exception:
+            pass
+    config.start_callbacks.append(_ensure_single_narrative)
+    config.after_load_callbacks.append(_ensure_single_narrative)
 
 screen stats_hud():
     zorder 50
@@ -99,17 +109,15 @@ screen stats_hud():
         background Frame("gui/notify.png", gui.notify_frame_borders)
         padding (32, 8)
         hbox:
-            spacing 24
+            spacing 28
             if current_episode:
                 text "POV: [current_pov]" color "#E07A5F" size 21 yalign 0.5
             else:
                 text "DAY [day]" color "#F4EFE6" size 21 yalign 0.5
-            ## Each stat opens its glossary entry (glossary.rpy).
-            textbutton "VIBES [vibes]" action Function(gloss_hyperlink, "vibes") style "hud_stat" text_color "#E07A5F"
-            textbutton "TREASURY [treasury]Ξ" action Function(gloss_hyperlink, "treasury") style "hud_stat" text_color "#F2CC8F"
-            textbutton "SECURITY [security]" action Function(gloss_hyperlink, "security") style "hud_stat" text_color "#2EC4B6"
-            textbutton "MORALE [morale]" action Function(gloss_hyperlink, "morale") style "hud_stat" text_color "#A8DADC"
-            textbutton "BURNOUT [burnout]" action Function(gloss_hyperlink, "burnout") style "hud_stat" text_color ("#E07A5F" if burnout >= 60 else "#BEB5A7")
+            text "·" color "#6E655C" size 21 yalign 0.5
+            text "Click any {color=#FFFF55}{u}term(?){/u}{/color} to learn more" color "#BEB5A7" size 19 yalign 0.5
+            textbutton "(?) GLOSSARY" action ShowMenu("glossary") style "hud_stat" text_color "#FFFF55"
+            textbutton "★ LESSONS" action ShowMenu("lessons_codex") style "hud_stat" text_color "#2EC4B6"
             textbutton "✦ CONSTELLATION" action Jump("world_overview") style "hud_stat" text_color "#F2CC8F"
 
 style hud_stat is button
@@ -118,40 +126,25 @@ style hud_stat:
     padding (0, 0)
     background None
 style hud_stat_text:
-    size 22
+    size 21
     hover_underline True
 
 ################################################################################
-## Chapter close bookkeeping — cascade rule + burnout gate
-## vault: Game Systems.md (token price ∝ Vibes × Security)
+## Chapter close bookkeeping (legacy chapters compatibility)
 
 label chapter_close(new_day, vibes_at_open):
-    if treasury_mix == "mono" and vibes < vibes_at_open:
-        $ adjust(treasury=-15)
-        narrator "{color=#FF5555}Your token dips with the mood. A treasury that IS your token dips with it. (Treasury -15){/color}"
-    if burnout >= 80:
-        call forced_rest
     $ day = new_day
     return
 
 label forced_rest:
-    scene bg apartment with fade
-    narrator "You don't remember deciding to lie down."
-    narrator "Your body files a governance proposal of its own. It passes unanimously."
-    menu:
-        "Actually rest. Delegate for a week.":
-            $ adjust(burnout=-30, treasury=-5)
-            narrator "The collective survives a week without you. That fact is either humbling or liberating. You choose liberating."
-        "Rest is for people with runway.":
-            $ adjust(burnout=+10, morale=-10)
-            narrator "You reopen the laptop. Somewhere, Vera sighs without knowing why."
     return
 
 ################################################################################
 ## Main menu — start the theme (Soft Circuit Reverie for Nimpet, by staRpauSe)
-## and keep it playing into the game.
+## and keep it playing into the game. The Episode Constellation is the Start Screen.
 
 label main_menu:
+    $ _ensure_single_narrative()
     if not renpy.music.get_playing(channel='music'):
         play music "audio/Soft-Circuit-Reverie-for-Nimpet-by-staRpauSe.mp3" loop
     call screen main_menu
@@ -161,81 +154,19 @@ label main_menu:
 ## Start
 
 label start:
+    $ _ensure_single_narrative()
     $ pivotal = []
     $ current_episode = None
-    scene bg constellation with fade
-
-    ## Experience picker — vault: 01 Overview/Game Systems.md (Plain Mode)
-    ## "plain" is a Ren'Py language: game/tl/plain/ holds the ELI5/ESL script.
-    call screen experience_select
-    $ renpy.change_language("plain" if _return == "plain" else None)
-
-    narrator "{color=#55FF55}TIP:{/color} {color=#FFFF55}{u}Yellow words{/u}{/color} are Glossary terms — click one to look it up. New terms unlock as you meet them, and entries link to more entries. Press G any time."
-
     jump world_overview
 
 label legacy_marathon:
     $ current_episode = None
     scene bg blockchain with fade
     show screen stats_hud
-    narrator "2025. The age of DAOs has truly begun — again — for the third or fourth time."
-    narrator "NounsDAO. MakerDAO. The Aragon crisis. Build Finance. Beanstalk. You watched them all rise, and you read every post-mortem on the way down."
-    narrator "Roughly 65%% of ventures like the one you're about to start die from the inside. Not the market. The people. The structure. The deferred conversations."
-    narrator "You're going to be different. Everyone says that."
+    narrator "The year is 2025. DAOs — groups that run themselves with shared rules and a shared treasury on a blockchain instead of a boss — are popular again."
+    narrator "NounsDAO. MakerDAO. The Aragon crisis. Build Finance. Beanstalk. You watched them grow, and when they failed, you read every post-mortem report about what went wrong."
+    narrator "About 65%% of projects like yours fail from the inside — not because of the market, but because of the people, the structure, and the hard conversations everyone kept putting off."
+    narrator "You believe you will be different. Everyone believes that."
     python:
         player_name = renpy.input("What do they call you, founder?", default="Kai", length=20).strip() or "Kai"
     jump ch1_genesis
-
-################################################################################
-## Experience picker (shown at Start). Returns "plain" or "classic".
-
-screen experience_select():
-    modal True
-    add "#000000dd"
-    frame:
-        xalign 0.5
-        yalign 0.5
-        xsize 1560
-        background Frame("gui/frame.png", gui.frame_borders)
-        padding (50, 40)
-        vbox:
-            spacing 26
-            text "✦ BEFORE YOU ENTER THE CONSTELLATION ✦" color "#F2CC8F" size 34 xalign 0.5
-            text _("How well do you know business, startups and crypto?") color "#F4EFE6" size 30 xalign 0.5
-            hbox:
-                spacing 40
-                xalign 0.5
-                button:
-                    style "xp_card"
-                    action Return("plain")
-                    default_focus (_preferences.language == "plain")
-                    vbox:
-                        spacing 14
-                        text _("I'M NEW TO THIS") style "xp_card_title" color "#2EC4B6"
-                        text _("Plain, simple English. Short sentences, fewer idioms. Words are explained as you go, and you get tips before big choices.") style "xp_card_body"
-                        text _("Good if English is not your first language, or if 'multisig' and 'cap table' mean nothing to you yet.") style "xp_card_note"
-                button:
-                    style "xp_card"
-                    action Return("classic")
-                    default_focus (_preferences.language != "plain")
-                    vbox:
-                        spacing 14
-                        text _("I SPEAK FOUNDER") style "xp_card_title" color "#E07A5F"
-                        text _("The original script: fast, dense, and full of in-jokes and jargon. Assumes you know your vesting cliff from your death spiral.") style "xp_card_body"
-                        text _("Good if you've been in a startup, a DAO, or a Discord that should have been a DAO.") style "xp_card_note"
-            text _("Both versions have the same story, choices and endings. Switch any time in Preferences → Story Text.") color "#B8B0A4" size 22 xalign 0.5
-
-style xp_card is button
-style xp_card:
-    xsize 700
-    padding (36, 32)
-    background Frame("gui/button/slot_idle_background.png", gui.slot_button_borders)
-    hover_background Frame("gui/button/slot_hover_background.png", gui.slot_button_borders)
-style xp_card_title is text:
-    size 34
-style xp_card_body is text:
-    size 25
-    color "#FFFFFF"
-style xp_card_note is text:
-    size 21
-    color "#AAAAAA"

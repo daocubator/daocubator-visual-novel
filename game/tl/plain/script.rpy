@@ -35,14 +35,6 @@ translate plain forced_rest_322f6bd7:
     # narrator "You reopen the laptop. Somewhere, Vera sighs without knowing why."
     narrator "You open your laptop again and keep working. Somewhere, Vera sighs. She doesn't know why — but she would not be happy."
 
-# game/script.rpy:158
-translate plain start_809f9a27:
-
-    # narrator "{color=#55FF55}TIP:{/color} {color=#FFFF55}{u}Yellow words{/u}{/color} are Glossary terms — click one to look it up. New terms unlock as you meet them, and entries link to more entries. Press G any time."
-    narrator "{color=#55FF55}TIP:{/color} {color=#FFFF55}{u}Yellow words{/u}{/color} are special words. Click one to see what it means in the Glossary."
-    narrator "{color=#55FF55}TIP:{/color} Each new word you meet is saved in your Glossary. Inside the Glossary, words link to other words — follow them to find more. Press G any time to open it."
-    narrator "{color=#55FF55}TIP:{/color} At the top of the screen are your five stats: Vibes, Treasury, Security, Morale and Burnout. Click any of them to learn what it means."
-
 # game/script.rpy:160
 translate plain legacy_marathon_202e172d:
 

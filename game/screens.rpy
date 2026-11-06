@@ -248,7 +248,7 @@ screen quick_menu():
     ## Ensure this appears on top of other screens.
     zorder 100
 
-    if quick_menu:
+    if quick_menu and not renpy.get_screen("constellation_map"):
 
         hbox:
             style_prefix "quick"
@@ -313,9 +313,11 @@ screen navigation():
 
         if main_menu:
 
-            textbutton _("Start") action Start()
+            textbutton _("Constellation") action ShowMenu("main_menu")
 
         else:
+
+            textbutton _("Constellation") action Jump("world_overview")
 
             textbutton _("History") action ShowMenu("history")
 
@@ -332,10 +334,6 @@ screen navigation():
         if _in_replay:
 
             textbutton _("End Replay") action EndReplay(confirm=True)
-
-        elif not main_menu:
-
-            textbutton _("Main Menu") action MainMenu()
 
         textbutton _("About") action ShowMenu("about")
 
@@ -364,35 +362,14 @@ style navigation_button_text:
 
 ## Main Menu screen ############################################################
 ##
-## Used to display the main menu when Ren'Py starts.
-##
-## https://www.renpy.org/doc/html/screen_special.html#main-menu
+## The Episode Constellation IS the Start Screen.
 
 screen main_menu():
 
     ## This ensures that any other menu screen is replaced.
     tag menu
 
-    add gui.main_menu_background
-
-    ## This empty frame darkens the main menu.
-    frame:
-        style "main_menu_frame"
-
-    ## The use statement includes another screen inside this one. The actual
-    ## contents of the main menu are in the navigation screen.
-    use navigation
-
-    if gui.show_name:
-
-        vbox:
-            style "main_menu_vbox"
-
-            text "[config.name!t]":
-                style "main_menu_title"
-
-            text "[config.version]":
-                style "main_menu_version"
+    use constellation_map
 
 
 style main_menu_frame is empty
@@ -773,14 +750,6 @@ screen preferences():
                     textbutton _("Unseen Text") action Preference("skip", "toggle")
                     textbutton _("After Choices") action Preference("after choices", "toggle")
                     textbutton _("Transitions") action InvertSelected(Preference("transitions", "toggle"))
-
-                ## Story text: "plain" is a Ren'Py language (game/tl/plain/) —
-                ## the ELI5 / ESL-friendly script. None = the original script.
-                vbox:
-                    style_prefix "radio"
-                    label _("Story Text")
-                    textbutton _("Plain") action Language("plain")
-                    textbutton _("Original") action Language(None)
 
                 vbox:
                     style_prefix "check"
