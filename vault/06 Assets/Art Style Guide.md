@@ -3,7 +3,12 @@ status: draft
 tags: [assets, art]
 ---
 
-# Art Style Guide — Minimalist Rustic Line-Art & Analog Watercolor
+**Current Background Direction (Approved 2026-11-04 — Pass 3A Tea/Coffee Watercolor on Macro Canvas)**:
+- **Human-Readable Guide**: [[Background Generation Guide]] (`vault/06 Assets/Background Generation Guide.md`)
+- **Machine-Readable Spec**: `vault/06 Assets/background_style_spec.json`
+- **Automated Post-Processor**: `scripts/apply_canvas_style.py`
+- **Reference Plates**: `vault/06 Assets/style_references/`
+
 
 ## Visual Direction
 

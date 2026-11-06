@@ -1,0 +1,92 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "style_id": "tea_coffee_watercolor_macro_canvas_v3a",
+  "name": "Low-Contrast Coffee & Tea Capillary Watercolor on Macro Linen Canvas (Pass 3A)",
+  "status": "approved",
+  "approved_date": "2026-11-04",
+  "target_output": {
+    "aspect_ratio": "16:9",
+    "generation_resolution": [1376, 768],
+    "final_resolution": [1920, 1080],
+    "color_space": "sRGB",
+    "format": "PNG32"
+  },
+  "design_pillars": {
+    "ground_surface": "Warm ivory / natural off-white heavy cotton-linen canvas (#F4EEE1 average) sitting strictly 50/50 between bright warm-white cotton (#FAF8F3) and unbleached raw linen (#EEE4CF).",
+    "macro_texture": "Bold, chunky, physically pronounced warp-and-weft fabric weave large enough to be immediately legible on a mobile phone screen while crisp at 1920x1080 on desktop.",
+    "medium_and_contrast": "Very low-contrast, high-key, translucent wet-on-wet washes of chamomile tea, Earl Grey tea, and diluted coffee stains with capillary bleeding, water backruns, and soft tide rings.",
+    "zero_linework_rule": "Strictly zero pen, pencil, ink, or wireframe linework. Forms, architecture, lighting, and tech motifs emerge solely through wash density, stain blooms, and negative-space cutouts."
+  },
+  "stage_1_generation": {
+    "prompt_template": "A wide 16:9 visual novel background illustration of {scene_subject}, created entirely from delicate, ethereal tea and coffee watercolor washes on bright white heavy cotton canvas. Absolutely zero linework, no pen, no pencil, no wireframe polygon outlines, no drawn contours. {structural_wash_behavior}. {negative_space_motifs}. Coarse, chunky macro canvas fabric weave with visible cotton cross-hatch texture across the bright clean white ground. Very low contrast, pale chamomile amber and soft Earl Grey sepia washes, highly luminous and airy, fine-art analog stain painting. Pure artwork with no text.",
+    "mandatory_positive_clauses": [
+      "wide 16:9 visual novel background illustration",
+      "delicate, ethereal wet-on-wet tea and coffee watercolor washes on bright white heavy cotton canvas",
+      "capillary bleeding, water backruns, feathered blooms, and subtle coffee-ring tide marks",
+      "shapes and lighting emerging strictly from translucent wash density and glowing negative-space light pockets",
+      "coarse, chunky macro canvas fabric weave with visible cotton cross-hatch texture",
+      "very low contrast, high-key, pale amber, chamomile, and soft warm sepia washes",
+      "pure background artwork with zero text and zero typography"
+    ],
+    "mandatory_negative_clauses": [
+      "ABSOLUTELY ZERO linework",
+      "no pen lines",
+      "no pencil sketching",
+      "no ink outlines",
+      "no wireframe polygons or drawn geometric contours",
+      "no dark backgrounds, black fills, or heavy shadows",
+      "no neon colors or high saturation",
+      "no text, labels, UI elements, or watermarks"
+    ],
+    "scene_category_adapters": {
+      "symbolic_or_network": {
+        "structural_wash_behavior": "Core structures feature delicate capillary bleeding and branching water channels that naturally evoke organic circuit traces soaking into the fabric weave",
+        "negative_space_motifs": "Floating geometric crystal nodes and network constellations are rendered strictly as soft negative-space diamond light pockets and organic water-drop blooms pushing pigment outward"
+      },
+      "interior_architecture": {
+        "structural_wash_behavior": "Walls, desks, windows, and room depth emerge softly from layered horizontal and vertical wet-on-wet Earl Grey and diluted espresso washes with feathered tide edges",
+        "negative_space_motifs": "Window daylight, monitor glows, and lamps are left as untouched bright warm-white canvas negative-space shapes with soft water-bloom halos bleeding outward into the surrounding tea wash"
+      },
+      "exterior_or_cityscape": {
+        "structural_wash_behavior": "Horizon, skyline silhouettes, and foliage form through overlapping translucent washes of chamomile, raw umber, and pale coffee rings soaking into the coarse weave",
+        "negative_space_motifs": "Dawn sky, sunbeams, and distant city lights appear as expansive unpainted off-white canvas negative space and delicate water-drop backruns"
+      },
+      "close_up_or_interface": {
+        "structural_wash_behavior": "Foreground focal objects are suggested by pooled coffee-stain rings and soft tonal washes without hard drawn borders",
+        "negative_space_motifs": "Data blocks, hex patterns, or screen panels are represented as soft rectangular and geometric negative-space light cutouts suspended inside a pale tea wash"
+      }
+    },
+    "validated_example_prompt_main_menu": "A wide 16:9 visual novel background illustration of a majestic Tree of Life, created entirely from delicate, ethereal tea and coffee watercolor washes on bright white heavy cotton canvas. Absolutely zero linework, no pen, no pencil, no wireframe polygon outlines. The tree trunk and roots feature delicate capillary bleeding and branching water channels that naturally evoke organic circuit traces soaking into the fabric weave. The canopy is a soft, atmospheric cloud of pale chamomile and Earl Grey tea washes, with subtle negative-space diamond crystal shapes and soft glowing light pockets emerging from the watercolor blooms. Coarse, chunky macro canvas fabric weave with visible cotton cross-hatch texture across the bright clean white ground. Very low contrast, pale amber and soft sepia washes, highly luminous and airy, fine-art analog stain painting. Pure artwork with no text."
+  },
+  "stage_2_canvas_composite": {
+    "description": "Synthesizes a seamless full-frame macro linen weave from Pass 1's clean canvas margin and absorbs the Stage 1 capillary wash into the canvas valleys before upscaling to 1920x1080.",
+    "script_path": "scripts/apply_canvas_style.py",
+    "reference_assets": {
+      "pass1_macro_canvas_source": "vault/06 Assets/style_references/pass1_macro_canvas_source.jpg",
+      "pass2a_capillary_wash_reference": "vault/06 Assets/style_references/pass2a_capillary_wash_reference.jpg",
+      "pass3a_approved_composite": "vault/06 Assets/style_references/pass3a_approved_composite.jpg"
+    },
+    "parameters": {
+      "tone_mix": 0.50,
+      "weave_strength": 0.75,
+      "valley_boost": 0.35,
+      "white_ground_rgb": [250.0, 248.0, 243.0],
+      "wash_white_point_rgb": [248.0, 247.0, 245.0],
+      "patch_quilting": {
+        "patch_width": 120,
+        "patch_height": 260,
+        "overlap_x": 36,
+        "overlap_y": 48,
+        "random_seed": 42,
+        "source_strip_x_range": [1226, 1375],
+        "source_strip_y_range": [10, 630]
+      },
+      "upscale_1080p": {
+        "width": 1920,
+        "height": 1080,
+        "filter": "Lanczos",
+        "unsharp_mask": "0x0.75+0.45+0.008"
+      }
+    }
+  }
+}
