@@ -238,58 +238,152 @@ style choice_button_text is default:
     properties gui.text_properties("choice_button")
 
 
-## Quick Menu screen ###########################################################
+## Quick Menu screen (Upper-Right Thumb-Friendly Hamburger Menu) ###############
 ##
-## The quick menu is displayed in-game to provide easy access to the out-of-game
-## menus.
+## The quick menu is displayed in-game via a large, thumb-friendly hamburger
+## button in the upper-right corner that opens a touch-friendly menu panel.
+
+default quick_menu = True
+default quick_menu_open = False
+
+init python:
+    class HamburgerAction(Action):
+        """Closes the hamburger menu and runs the underlying action while preserving sensitivity/selection state."""
+        def __init__(self, action):
+            self.action = action
+        def __call__(self):
+            renpy.store.quick_menu_open = False
+            renpy.restart_interaction()
+            return renpy.run(self.action)
+        def get_sensitive(self):
+            return getattr(self.action, "get_sensitive", lambda: True)()
+        def get_selected(self):
+            return getattr(self.action, "get_selected", lambda: False)()
+
+    config.overlay_screens.append("quick_menu")
 
 screen quick_menu():
 
     ## Ensure this appears on top of other screens.
     zorder 100
 
+    on "hide" action SetVariable("quick_menu_open", False)
+
     if quick_menu and not renpy.get_screen("constellation_map"):
 
-        hbox:
-            style_prefix "quick"
-            style "quick_menu"
+        ## Dimmed full-screen backdrop to dismiss when tapping outside the menu
+        if quick_menu_open:
+            button:
+                xfill True
+                yfill True
+                background "#00000077"
+                action SetVariable("quick_menu_open", False)
 
-            textbutton _("Back") action Rollback()
-            textbutton _("History") action ShowMenu('history')
-            textbutton _("Glossary") action ShowMenu('glossary')
-            textbutton _("Lessons") action ShowMenu('lessons_codex')
-            textbutton _("Constellation") action Jump('world_overview')
-            textbutton _("Skip") action Skip() alternate Skip(fast=True, confirm=True)
-            textbutton _("Auto") action Preference("auto-forward", "toggle")
-            textbutton _("Save") action ShowMenu('save')
-            textbutton _("Q.Save") action QuickSave()
-            textbutton _("Q.Load") action QuickLoad()
-            textbutton _("Prefs") action ShowMenu('preferences')
+            key "K_ESCAPE" action SetVariable("quick_menu_open", False)
 
-        key "g" action ShowMenu('glossary')
-        key "l" action ShowMenu('lessons_codex')
+        ## Upper-right thumb-friendly hamburger button
+        button:
+            style "hamburger_toggle_button"
+            xalign 1.0
+            yalign 0.0
+            xoffset -24
+            yoffset 20
+            action ToggleVariable("quick_menu_open")
+            if quick_menu_open:
+                text "✕" color "#F2CC8F" size 42 align (0.5, 0.5)
+            else:
+                vbox:
+                    align (0.5, 0.5)
+                    spacing 9
+                    add Solid("#F4EFE6", xsize=44, ysize=5)
+                    add Solid("#F4EFE6", xsize=44, ysize=5)
+                    add Solid("#F4EFE6", xsize=44, ysize=5)
 
+        ## Expanded thumb-friendly menu panel
+        if quick_menu_open:
+            frame:
+                style "hamburger_menu_frame"
+                xalign 1.0
+                yalign 0.0
+                xoffset -24
+                yoffset 118
 
-## This code ensures that the quick_menu screen is displayed in-game, whenever
-## the player has not explicitly hidden the interface.
-init python:
-    config.overlay_screens.append("quick_menu")
+                vbox:
+                    spacing 14
 
-default quick_menu = True
+                    hbox:
+                        spacing 14
+                        textbutton _("Back") style "hamburger_item_button" action HamburgerAction(Rollback())
+                        textbutton _("History") style "hamburger_item_button" action HamburgerAction(ShowMenu('history'))
+
+                    hbox:
+                        spacing 14
+                        textbutton _("Glossary") style "hamburger_item_button" action HamburgerAction(ShowMenu('glossary'))
+                        textbutton _("Lessons") style "hamburger_item_button" action HamburgerAction(ShowMenu('lessons_codex'))
+
+                    textbutton _("Exit (Back to Constellation)") style "hamburger_exit_button" action HamburgerAction(Jump('world_overview'))
+
+                    hbox:
+                        spacing 14
+                        textbutton _("Skip") style "hamburger_item_button" action HamburgerAction(Skip()) alternate HamburgerAction(Skip(fast=True, confirm=True))
+                        textbutton _("Auto") style "hamburger_item_button" action HamburgerAction(Preference("auto-forward", "toggle"))
+
+                    hbox:
+                        spacing 14
+                        textbutton _("Save") style "hamburger_item_button" action HamburgerAction(ShowMenu('save'))
+                        textbutton _("Q.Save") style "hamburger_item_button" action HamburgerAction(QuickSave())
+
+                    hbox:
+                        spacing 14
+                        textbutton _("Q.Load") style "hamburger_item_button" action HamburgerAction(QuickLoad())
+                        textbutton _("Prefs") style "hamburger_item_button" action HamburgerAction(ShowMenu('preferences'))
+
+        key "g" action HamburgerAction(ShowMenu('glossary'))
+        key "l" action HamburgerAction(ShowMenu('lessons_codex'))
+
 
 style quick_menu is hbox
 style quick_button is default
 style quick_button_text is button_text
 
-style quick_menu:
-    xalign 0.5
-    yalign 1.0
+style hamburger_toggle_button is button:
+    xsize 104
+    ysize 88
+    background Frame("gui/notify.png", gui.notify_frame_borders)
+    hover_background "#2E2722F2"
+    padding (20, 16)
 
-style quick_button:
-    properties gui.button_properties("quick_button")
+style hamburger_menu_frame is frame:
+    background "#181512F5"
+    padding (24, 24)
 
-style quick_button_text:
-    properties gui.text_properties("quick_button")
+style hamburger_item_button is button:
+    xsize 340
+    ysize 96
+    background "#26201B"
+    hover_background "#3B3129"
+    selected_background "#3D2A22"
+    insensitive_background "#1A1613"
+    padding (20, 16)
+
+style hamburger_item_button_text is button_text:
+    align (0.5, 0.5)
+    text_align 0.5
+    size 32
+    color "#F4EFE6"
+    hover_color "#F2CC8F"
+    selected_color "#E07A5F"
+    insensitive_color "#6E665E7F"
+
+style hamburger_exit_button is hamburger_item_button:
+    xsize 694
+    ysize 96
+    background "#2B2219"
+    hover_background "#433426"
+
+style hamburger_exit_button_text is hamburger_item_button_text:
+    color "#F2CC8F"
+    hover_color "#FFFFFF"
 
 
 ################################################################################
@@ -1514,25 +1608,6 @@ define bubble.expand_area = {
 style pref_vbox:
     variant "medium"
     xsize 675
-
-## Since a mouse may not be present, we replace the quick menu with a version
-## that uses fewer and bigger buttons that are easier to touch.
-screen quick_menu():
-    variant "touch"
-
-    zorder 100
-
-    if quick_menu:
-
-        hbox:
-            style "quick_menu"
-            style_prefix "quick"
-
-            textbutton _("Back") action Rollback()
-            textbutton _("Skip") action Skip() alternate Skip(fast=True, confirm=True)
-            textbutton _("Auto") action Preference("auto-forward", "toggle")
-            textbutton _("Glossary") action ShowMenu("glossary")
-            textbutton _("Menu") action ShowMenu()
 
 
 style window:

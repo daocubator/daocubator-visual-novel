@@ -173,8 +173,9 @@ transform rewind_banner_flash:
     zoom 1.10
     easein 0.25 alpha 1.0 zoom 1.0
 
-transform cg_modal_scale:
-    zoom 0.78
+transform cg_modal_bg:
+    size (1350, 432)
+    fit "cover"
 
 
 ################################################################################
@@ -184,6 +185,7 @@ label world_overview:
     $ _ensure_single_narrative()
     $ current_episode = None
     $ selected_constellation_node = None
+    $ play_menu_music()
     hide screen stats_hud
     scene bg constellation with dissolve
     call screen constellation_map
@@ -356,84 +358,62 @@ screen scenario_overview_modal(ep_id):
     $ ep = EPISODES[ep_id]
     $ is_done = ep_id in (persistent.episodes_completed or set())
     $ cg_img = ep["cg_happy"] if is_done else ep["cg_disaster"]
+    $ subtitle_text = ep["pillar_short"].upper()
 
-    add "#0B0908E8"
+    ## Clicking or tapping outside the modal card dismisses the overlay
+    button:
+        xfill True
+        yfill True
+        background "#0B0908E8"
+        action Hide("scenario_overview_modal")
 
+    key "game_menu" action Hide("scenario_overview_modal")
+
+    ## Modal card filled with dimmed scenario CG background
     frame:
         xalign 0.5
         yalign 0.5
-        xsize 1420
+        xsize 1350
+        ysize 432
+        padding (0, 0)
         background "#1B1714"
-        padding (42, 30)
+
+        ## Scenario CG (happy if good ending unlocked, otherwise disaster) + dark dimming overlay
+        add cg_img at cg_modal_bg
+        add "#120F0DD4"
+
+        ## Absorb clicks inside the modal card so they don't trigger the outside backdrop button
+        button:
+            xfill True
+            yfill True
+            background None
+            action NullAction()
 
         vbox:
-            spacing 14
+            xalign 0.5
+            yalign 0.5
+            spacing 16
 
-            hbox:
-                xfill True
-                text "[ep['pillar']]" color ep["color"] size 20
-                if is_done:
-                    text "✓ GOOD ENDING UNLOCKED" color "#52B788" size 20 xalign 1.0
-                else:
-                    text "3 DECISIONS TO SAVE THE COLLECTIVE" color "#F2CC8F" size 20 xalign 1.0
-
-            hbox:
-                spacing 28
-                ## Left side: Featured Cutscene Event CG
-                frame:
-                    background "#120F0D"
-                    padding (6, 6)
-                    add cg_img at cg_modal_scale
-
-                ## Right side: Title, Cast & Story Hook
-                vbox:
-                    spacing 8
-                    xfill True
-                    text "✦ [ep['title']]" color "#F4EFE6" size 36
-                    text "{b}POV:{/b} [ep['pov']]   ·   {b}Cast:{/b} [ep['cast']]" color "#2EC4B6" size 19
-                    frame:
-                        xfill True
-                        background ("#182822" if is_done else "#2A1816")
-                        padding (18, 14)
-                        vbox:
-                            spacing 6
-                            if is_done:
-                                text "★ RESTORED TIMELINE: [ep['happy_title']]" color "#52B788" size 20
-                            else:
-                                text "✦ THE OPENING CRISIS: [ep['omg_title']]" color "#E07A5F" size 20
-                            text "[ep['omg_hook']]" color "#F4EFE6" size 19
-
-            ## The 3 Rewind Decisions
-            frame:
-                xfill True
-                background "#221E1A"
-                padding (22, 14)
-                vbox:
-                    spacing 6
-                    text "« THE REWIND CHALLENGE (3 CHECKPOINTED DECISIONS):" color "#F2CC8F" size 19
-                    for d_text in ep["decisions_preview"]:
-                        text "• [d_text]" color "#D8D0C5" size 18
-
-            ## Lessons taught in this scenario
-            hbox:
-                spacing 14
-                text "Core Lessons:" color "#BEB5A7" size 18 yalign 0.5
-                for lid in ep["lessons"]:
-                    $ lmeta = get_lesson_meta(lid)
-                    $ l_unlocked = lid in (persistent.lessons_unlocked or set())
-                    frame:
-                        background ("#1A2E26" if l_unlocked else "#28231E")
-                        padding (14, 6)
-                        text ("[lmeta['number']]: [lmeta['title']]") color ("#52B788" if l_unlocked else "#F2CC8F") size 16
-
-            null height 4
-
-            ## Action Buttons: Confirm Dive-In or Exit to Keep Exploring
-            hbox:
-                spacing 32
+            vbox:
                 xalign 0.5
-                textbutton ("▶ REPLAY STORY" if is_done else "▶ ENTER STORY & REWIND DISASTER") action [Hide("scenario_overview_modal"), Start(ep["label"]) if main_menu else Jump(ep["label"])] style "constellation_confirm_btn"
-                textbutton "✕ BACK TO CONSTELLATION" action Hide("scenario_overview_modal") style "constellation_cancel_btn"
+                spacing 4
+                text "[ep['title']]" color "#F4EFE6" size 42 xalign 0.5 bold True outlines [(2, "#000000AA", 0, 0)]
+                text "[subtitle_text]" color ep["color"] size 20 xalign 0.5 bold True outlines [(1, "#000000AA", 0, 0)]
+
+            text "[ep['omg_hook']]" color "#F4EFE6" size 23 xsize 1160 xalign 0.5 text_align 0.5 line_spacing 6 outlines [(2, "#000000CC", 0, 0)]
+
+            vbox:
+                xalign 0.5
+                spacing 10
+
+                if is_done:
+                    text "GOOD ENDING UNLOCKED" color "#52B788" size 26 xalign 0.5 bold True outlines [(2, "#000000CC", 0, 0)]
+
+                hbox:
+                    spacing 28
+                    xalign 0.5
+                    textbutton ("Replay Story" if is_done else "Enter Story") action [Hide("scenario_overview_modal"), Start(ep["label"]) if main_menu else Jump(ep["label"])] style "constellation_confirm_btn"
+                    textbutton "Back" action Hide("scenario_overview_modal") style "constellation_cancel_btn"
 
 
 ################################################################################

@@ -76,6 +76,7 @@ screen bad_ending_rewind_modal(failure_title, failure_summary, lesson_id):
 
 
 label checkpoint_bad_end(retry_label, failure_title, failure_summary, lesson_id):
+    $ play_bad_music()
     call lesson(lesson_id)
     call screen bad_ending_rewind_modal(failure_title, failure_summary, lesson_id)
     if _return == "map":
@@ -139,6 +140,7 @@ screen episode_complete_modal(ep_id, summary_text):
 
 
 label complete_episode(ep_id, summary_text):
+    $ play_menu_music()
     python:
         if persistent.episodes_completed is None:
             persistent.episodes_completed = set()
@@ -162,7 +164,7 @@ label complete_episode(ep_id, summary_text):
 label ep1_keys:
     $ current_episode = "ep1_keys"
     $ current_pov = "Ash El (The Creator)"
-    show screen stats_hud
+    $ play_bad_music(force=True)
 
     ## --- THE HOOK: WORST-CASE SCENARIO (IN MEDIA RES) ---
     scene bg treasury_fire with fade
@@ -170,8 +172,7 @@ label ep1_keys:
     show xochtl hurt at center
     show laylay stern at right
 
-    narrator "{color=#FF6B6B}WORST-CASE OUTCOME — LISBON AIRPORT TERMINAL, 11:42 P.M.{/color}"
-    narrator "Twelve crates of pressed herbal juices sit locked behind airport customs glass. Rain streaks the window. On your phone, the Essential Food & Medicine DAO treasury reads {b}0.00 NEAR{/b}."
+    narrator "Lisbon Airport Terminal, 11:42 p.m. Twelve crates of pressed herbal juices sit locked behind airport customs glass. Rain streaks the window. On your phone, the Essential Food & Medicine DAO treasury reads {b}0.00 NEAR{/b}."
     ashel "Sixty thousand dollars, Lay-Lay! Every concert I played, every bottle of herbal medicine we sold, every grant Xochtl and I worked for — gone in one click?!"
     laylay "Lower your voice, Ash El. I copied the Brazil sanctuary's wallet address from our group chat as fast as I could. How was I supposed to know a scammer swapped the middle letters?"
     xochtl "You didn't send a single dollar first to check if my cacao cooperative actually received it. You sent all sixty thousand dollars at once to a fake address."
@@ -195,8 +196,6 @@ label ep1_keys:
     narrator "You are {b}Ash El{/b}. You just finished recording a morning folk song, and forty crates of fresh herbal elixirs are packed for the community tour."
     xochtl "Drink your warm cacao, Ash. Before we pay for the Brazil shipment, look at the laptop."
     ashel "What happened?"
-    xochtl "Someone uploaded a plain text file named {b}dao_seed_keys_FINAL.txt{/b} into our public Google Drive press folder last night. That file has our wallet's secret recovery words — our seed phrase. Automated bots have already scanned the folder."
-    laylay "Ugh, managing crypto keys is too complicated for artists. Look, Ash — you focus on the music and the juices. Just move all the group's money into my personal wallet. I'll hold the keys by myself and pay bills for you."
 
     ## --- DECISION 1: KEY ROTATION & SOVEREIGNTY ---
 label ep1_d1:
@@ -205,8 +204,8 @@ label ep1_d1:
     show xochtl neutral at center
     show laylay smirk at right
 
-    narrator "{color=#F2CC8F}DECISION 1 OF 3 — THE LEAKED KEYS & WHO CONTROLS THE WALLET{/color}"
-    narrator "Your wallet's secret key was exposed in a public cloud folder. Lay-Lay wants to hold 100%% of the group's money in her personal wallet so you 'don't have to worry about it.'"
+    xochtl "Someone uploaded a plain text file named {b}dao_seed_keys_FINAL.txt{/b} into our public Google Drive press folder last night. That file has our wallet's secret recovery words — our seed phrase. Automated bots have already scanned the folder."
+    laylay "Ugh, managing crypto keys is too complicated for artists. Look, Ash — you focus on the music and the juices. Just move all the group's money into my personal wallet. I'll hold the keys by myself and pay bills for you."
 
     menu:
         "Use key rotation right now to cancel the leaked key, and move the treasury into a 2-of-3 shared multisig wallet (Ash El, Xochtl, and Lay-Lay).":
@@ -346,6 +345,7 @@ label ep1_d3:
             )
 
     ## --- EPISODE 1 RESOLUTION ---
+    $ play_menu_music(force=True)
     scene bg sanctuary with fade
     show ashel proud at left
     show xochtl proud at center
@@ -371,7 +371,7 @@ label ep1_d3:
 label ep2_lisbon:
     $ current_episode = "ep2_lisbon"
     $ current_pov = "Xochtl & Ash El"
-    show screen stats_hud
+    $ play_bad_music(force=True)
 
     ## --- THE HOOK: WORST-CASE SCENARIO (IN MEDIA RES) ---
     scene bg treasury_fire with fade
@@ -541,6 +541,7 @@ label ep2_d3:
             )
 
     ## --- EPISODE 2 RESOLUTION ---
+    $ play_menu_music(force=True)
     scene bg sanctuary with fade
     show xochtl proud at left
     show ashel proud at center
@@ -565,7 +566,7 @@ label ep2_d3:
 label ep3_agreements:
     $ current_episode = "ep3_agreements"
     $ current_pov = "Ash El & Xochtl"
-    show screen stats_hud
+    $ play_bad_music(force=True)
 
     ## --- THE HOOK: WORST-CASE SCENARIO (IN MEDIA RES) ---
     scene bg treasury_fire with fade
@@ -722,6 +723,7 @@ label ep3_d3:
             )
 
     ## --- EPISODE 3 RESOLUTION ---
+    $ play_menu_music(force=True)
     scene bg cacao_circle with fade
     show ashel proud at left
     show xochtl proud at center
@@ -746,7 +748,7 @@ label ep3_d3:
 label ep4_apothecary:
     $ current_episode = "ep4_apothecary"
     $ current_pov = "Lay-Lay (The Administrator)"
-    show screen stats_hud
+    $ play_bad_music(force=True)
 
     ## --- THE HOOK: WORST-CASE SCENARIO (IN MEDIA RES) ---
     scene bg treasury_fire with fade
@@ -875,6 +877,7 @@ label ep4_d3:
             )
 
     ## --- EPISODE 4 RESOLUTION ---
+    $ play_menu_music(force=True)
     scene bg apothecary with fade
     show ashel proud at left
     show laylay neutral at center

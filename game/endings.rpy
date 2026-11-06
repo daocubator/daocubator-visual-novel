@@ -51,6 +51,7 @@ label ending_recap:
 
 label ending_acquihire:
     $ persistent.endings_seen.add("acquihire")
+    $ play_menu_music(force=True)
     scene bg conference with fade
     narrator "🤝 ENDING: THE ACQUI-HIRE"
     narrator "The papers sign smoothly. Everyone gets jobs, some get windfalls, and the mission statement gets a redirect notice."
@@ -61,6 +62,7 @@ label ending_acquihire:
 
 label ending_burnout:
     $ persistent.endings_seen.add("burnout")
+    $ play_bad_music()
     scene black with fade
     narrator "🔥 ENDING: THE BURNOUT CRASH"
     narrator "The collective survives you. That's the good news, and — sit with this — it's also the lesson: it could always survive you. You were the one who couldn't."
@@ -72,6 +74,7 @@ label ending_burnout:
 
 label ending_takeover:
     $ persistent.endings_seen.add("takeover")
+    $ play_bad_music()
     scene bg blockchain with fade
     narrator "💀 ENDING: THE HOSTILE TAKEOVER"
     narrator "The treasury address updates one last time. Whoever holds the keys now sends a single gg into the governance forum before archiving it."
@@ -82,6 +85,7 @@ label ending_takeover:
 
 label ending_capture:
     $ persistent.endings_seen.add("capture")
+    $ play_bad_music()
     scene bg conference with fade
     narrator "🏛️ ENDING: FOUNDER'S CAPTURE"
     narrator "You kept control of everything except the point. The votes pass smoothly now — they're yours. The proposals are polite — they're performative. The community is stable — it's an audience."
@@ -92,6 +96,7 @@ label ending_capture:
 
 label ending_bureaucracy:
     $ persistent.endings_seen.add("bureaucracy")
+    $ play_bad_music()
     scene bg discord with fade
     narrator "🐌 ENDING: DEATH BY DEMOCRACY"
     narrator "Forty-seven proposals pending. Approving the new logo took three months and a constitutional amendment. Turnout on the amendment: 4.1%%."
@@ -102,6 +107,7 @@ label ending_bureaucracy:
 
 label ending_split:
     $ persistent.endings_seen.add("split")
+    $ play_bad_music()
     scene bg factionmap with fade
     narrator "🌊 ENDING: THE COMMUNITY SPLIT"
     narrator "The fork was inevitable in hindsight, which is the only place anything is inevitable. Three DAOs now share one dream, two grudges, and a fractured treasury."
@@ -112,6 +118,7 @@ label ending_split:
 
 label ending_sustainable:
     $ persistent.endings_seen.add("sustainable")
+    $ play_menu_music(force=True)
     scene bg coworking with fade
     narrator "🌱 ENDING: THE SUSTAINABLE COLLECTIVE"
     narrator "No monument. No unicorn. A working thing: artists paid on time, decisions made in the open, a treasury that survives bad months because you made it boring on purpose."
@@ -122,6 +129,7 @@ label ending_sustainable:
 
 label ending_golden:
     $ persistent.endings_seen.add("golden")
+    $ play_menu_music(force=True)
     scene bg rooftop with fade
     narrator "🌕 ENDING: COLLECTIVE PROSPERITY"
     narrator "It works. Not perfectly — resiliently. The constitution has calluses. The treasury has boring parts. The community has factions that argue and stay."

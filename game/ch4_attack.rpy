@@ -4,6 +4,7 @@
 
 label ch4_attack:
     $ ch_open_vibes = vibes
+    $ play_bad_music(force=True)
 
     python:
         if opsec == "rushed":

@@ -88,6 +88,33 @@ init python:
         """Record a pivotal choice for the ending recap screen."""
         renpy.store.pivotal.append(text)
 
+    MENU_MUSIC = [
+        "audio/(menu)-Glitch-N-Paper-by-DJ-KWHYC.mp3",
+        "audio/(menu)-Off-Kilter-Hustle-by-DJ-KWHYC.mp3",
+    ]
+
+    BAD_MUSIC = [
+        "audio/(bad)-Subtle-Ruin-by-DJ-KWHYC.mp3",
+        "audio/(bad)-Red-Ink-Panic-by-DJ-KWHYC.mp3",
+        "audio/(bad)-Bankrupt-Breakdown.mp3",
+        "audio/(bad)-Point-of-No-Return-by-DJ-KWHYC.mp3",
+    ]
+
+    def play_menu_music(force=False):
+        """Randomly play one of the (menu) tracks for default, main menu, and good outcomes."""
+        current = renpy.music.get_playing(channel="music")
+        if force or current not in MENU_MUSIC:
+            track = renpy.random.choice(MENU_MUSIC)
+            config.main_menu_music = track
+            renpy.music.play(track, channel="music", loop=True, fadeout=0.5, fadein=0.5)
+
+    def play_bad_music(force=False):
+        """Randomly play one of the (bad) tracks when entering an episode where things are going bad."""
+        current = renpy.music.get_playing(channel="music")
+        if force or current not in BAD_MUSIC:
+            track = renpy.random.choice(BAD_MUSIC)
+            renpy.music.play(track, channel="music", loop=True, fadeout=0.5, fadein=0.5)
+
 ################################################################################
 ## Top HUD Bar — POV, Glossary Footnote Hint, Lessons & Constellation Navigation
 
@@ -102,32 +129,7 @@ init python:
     config.after_load_callbacks.append(_ensure_single_narrative)
 
 screen stats_hud():
-    zorder 50
-    frame:
-        xalign 0.5
-        ypos 0
-        background Frame("gui/notify.png", gui.notify_frame_borders)
-        padding (32, 8)
-        hbox:
-            spacing 28
-            if current_episode:
-                text "POV: [current_pov]" color "#E07A5F" size 21 yalign 0.5
-            else:
-                text "DAY [day]" color "#F4EFE6" size 21 yalign 0.5
-            text "·" color "#6E655C" size 21 yalign 0.5
-            text "Click any {color=#FFFF55}{u}term(?){/u}{/color} to learn more" color "#BEB5A7" size 19 yalign 0.5
-            textbutton "(?) GLOSSARY" action ShowMenu("glossary") style "hud_stat" text_color "#FFFF55"
-            textbutton "★ LESSONS" action ShowMenu("lessons_codex") style "hud_stat" text_color "#2EC4B6"
-            textbutton "✦ CONSTELLATION" action Jump("world_overview") style "hud_stat" text_color "#F2CC8F"
-
-style hud_stat is button
-style hud_stat_text is button_text
-style hud_stat:
-    padding (0, 0)
-    background None
-style hud_stat_text:
-    size 21
-    hover_underline True
+    pass
 
 ################################################################################
 ## Chapter close bookkeeping (legacy chapters compatibility)
@@ -140,13 +142,12 @@ label forced_rest:
     return
 
 ################################################################################
-## Main menu — start the theme (Soft Circuit Reverie for Nimpet, by staRpauSe)
+## Main menu — randomly play one of the DJ KWHYC (menu) tracks
 ## and keep it playing into the game. The Episode Constellation is the Start Screen.
 
 label main_menu:
     $ _ensure_single_narrative()
-    if not renpy.music.get_playing(channel='music'):
-        play music "audio/Soft-Circuit-Reverie-for-Nimpet-by-staRpauSe.mp3" loop
+    $ play_menu_music()
     call screen main_menu
     return
 
@@ -157,12 +158,13 @@ label start:
     $ _ensure_single_narrative()
     $ pivotal = []
     $ current_episode = None
+    $ play_menu_music()
     jump world_overview
 
 label legacy_marathon:
     $ current_episode = None
+    $ play_menu_music()
     scene bg blockchain with fade
-    show screen stats_hud
     narrator "The year is 2025. DAOs — groups that run themselves with shared rules and a shared treasury on a blockchain instead of a boss — are popular again."
     narrator "NounsDAO. MakerDAO. The Aragon crisis. Build Finance. Beanstalk. You watched them grow, and when they failed, you read every post-mortem report about what went wrong."
     narrator "About 65%% of projects like yours fail from the inside — not because of the market, but because of the people, the structure, and the hard conversations everyone kept putting off."
