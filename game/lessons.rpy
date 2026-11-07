@@ -123,7 +123,7 @@ screen lesson_popup(lid):
         padding (48, 38)
         vbox:
             spacing 16
-            text "• CRYPTO-ETHICS & CO-OP LESSON UNLOCKED" font gui.mono_font kerning 3.2 color "#B87444" size 16 xalign 0.5
+            text "CRYPTO-ETHICS & CO-OP LESSON UNLOCKED" font gui.mono_font kerning 3.2 color "#B87444" size 16 xalign 0.5
             text LESSONS[lid][0] font gui.serif_font axis {"weight": 300, "opticalsize": 48} color "#EED4B4" size 38 xalign 0.5
             null height 4
             frame:

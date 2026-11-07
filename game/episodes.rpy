@@ -50,7 +50,7 @@ screen bad_ending_rewind_modal(failure_title, failure_summary, lesson_id):
             spacing 18
             hbox:
                 xfill True
-                text "• BAD ENDING — TIMELINE COLLAPSED" font gui.mono_font kerning 3.6 color "#D3710D" size 18
+                text "BAD ENDING — TIMELINE COLLAPSED" font gui.mono_font kerning 3.6 color "#D3710D" size 18
                 text "[ldata['number']] · [ldata['category'].upper()]" font gui.mono_font kerning 3.2 color "#B87444" size 16 xalign 1.0
 
             text "[failure_title]" font gui.serif_font axis {"weight": 300, "opticalsize": 48} color "#EED4B4" size 38
