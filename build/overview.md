@@ -116,7 +116,7 @@ Every episode follows a tight 4-beat structure:
 | Episode | Constellation Pillar | POV Protagonist | OMG Disaster Hook | 3 Checkpointed Decisions & Lessons |
 |---------|----------------------|-----------------|-------------------|------------------------------------|
 | Ep 1: No Keys, No Cheese | Keys & Sovereignty | Ash El (The Creator) | Stranded on the Brazil sanctuary trip while $60,000 vanishes into a dead address and Lay-Lay locks the multisig. | D1: Rotate leaked text-file keys on-chain & set 2-of-3 multisig (No Keys No Cheese, Credential Hygiene)<br/>D2: Vet the incoming DAO co-admin before voting (Vetting DAO Administrators)<br/>D3: Send a $1 test transaction before wiring $60,000 (The One Dollar Test Transaction) |
-| Ep 2: The Lisbon Refusal | Collaboration & Co-op | Xochtl & Ash El | Hours before the Lisbon presentation, Lay-Lay freezes Ash El's game payout out of jealousy, threatening to detonate the showcase. | D1: Separate admin ops from subjective creative veto (Creator vs Administrator Gatekeeping)<br/>D2: Submit the deliverable under a neutral avatar to prove bias on-chain (Co-op Solidarity)<br/>D3: Enact rotating stewardship & rest to prevent creator burnout (Burnout and Identity Fusion, Voter Apathy and Delegation) |
+| Ep 2: Frozen Pay, Empty Stage | Collaboration & Co-op | Xochtl & Ash El | Hours before the Lisbon presentation, Lay-Lay freezes Ash El's game payout out of jealousy, threatening to detonate the showcase. | D1: Separate admin ops from subjective creative veto (Creator vs Administrator Gatekeeping)<br/>D2: Submit the deliverable under a neutral avatar to prove bias on-chain (Co-op Solidarity)<br/>D3: Enact rotating stewardship & rest to prevent creator burnout (Burnout and Identity Fusion, Voter Apathy and Delegation) |
 | Ep 3: Blood, Cacao & Paper | Make & Enforce Agreements | Ash El & Xochtl | A departing member claims 50% dead equity, a 360 deal traps the masters, and a regulator serves the DAO via Discord chat. | D1: Reject "handshake vibes" for 4-year vesting + 1-year cliff (Make and Enforce Agreements, The Equal Split Trap, Vesting and Dead Equity)<br/>D2: Form a Swiss Verein / Co-op legal wrapper (The Partnership Trap)<br/>D3: Strike 360 cross-collateralization & build a 50% stablecoin barbell (Predatory Recoupment, Treasury Death Spiral) |
 | Ep 4: One Tired Click Drained the Apothecary | Perspective Shift (Admin & Defense) | Lay-Lay (The Administrator) | Overwhelmed at 1:14 a.m., Lay-Lay gets baited by a predatory whale and a spoofed wallet popup that drains the apothecary treasury. | D1: Refuse unilateral "weekend yield" temptations & keep co-op multisig transparency (Governance Capture)<br/>D2: Verify raw hex on the hardware screen & run a $1 test batch (Verify the Hex, Ice Phishing)<br/>D3: Use a 48-hour time-lock & community delegation to defeat a flash-loan whale attack (Flash Loans and Time-locks) |
 
@@ -186,7 +186,7 @@ Ash El represents the visionary creators in collectives like *Essential Food and
 ### Arc across the Constellation Episodes
 
 - **Episode 1 — "No Keys, No Cheese" (POV: Ash El):** Confronted with the nightmare of being stranded in Brazil while $60,000 vanishes and Lay-Lay holds the keys, Ash El rewinds time to rotate leaked keys on-chain, vet incoming DAO administrators, and enforce the $1 test transaction rule.
-- **Episode 2 — "The Lisbon Refusal" (POV: Xochtl & Ash El):** After working sleepless weeks on a game and music showcase for Lisbon, Ash El faces an administrative payout freeze from a jealous gatekeeper—and learns how co-op solidarity and objective milestone escrow defeat ego trips.
+- **Episode 2 — "Frozen Pay, Empty Stage" (POV: Xochtl & Ash El):** After working sleepless weeks on a game and music showcase for Lisbon, Ash El faces an administrative payout freeze from a jealous gatekeeper—and learns how co-op solidarity and objective milestone escrow defeat ego trips.
 - **Episode 3 — "Blood, Cacao & Paper" (POV: Ash El & Xochtl):** Learns why counter-culture collectives still need written vesting agreements, legal wrappers, and capped recoupment deals.
 - **Episode 4 — "One Tired Click Drained the Apothecary" (Co-star):** Holds the line as a co-signer alongside Xochtl when Lay-Lay is tempted by whale money and spoofed transactions.
 
@@ -215,7 +215,7 @@ Lay-Lay synthesizes the toxic administrative power dynamic from real-world DAO p
 ### Arc across the Constellation Episodes
 
 - **Episode 1 — "No Keys, No Cheese":** Offers to take sole custody of the treasury after a text-file key leak and pushes an unvetted co-admin into the DAO.
-- **Episode 2 — "The Lisbon Refusal":** Freezes Ash El's Lisbon showcase payout out of personal ego, only to expose her own bias when Xochtl submits the identical work under an anonymous co-op proposal.
+- **Episode 2 — "Frozen Pay, Empty Stage":** Freezes Ash El's Lisbon showcase payout out of personal ego, only to expose her own bias when Xochtl submits the identical work under an anonymous co-op proposal.
 - **Episode 3 — "Blood, Cacao & Paper":** Pushes for "vibes-only handshake splits" and unwrapped governance until legal and financial reality catches up.
 - **Episode 4 — "One Tired Click Drained the Apothecary" (POV: Lay-Lay):** Playable perspective episode showing how an overwhelmed administrator gets targeted by whales (Atlas) and phishing attacks—and how choosing transparency and multi-sig discipline saves both her and the collective.
 
@@ -242,7 +242,7 @@ Xochtl embodies the grounded co-creators and community protectors (including the
 ### Arc across the Constellation Episodes
 
 - **Episode 1 — "No Keys, No Cheese":** Holds the second hardware key in the 2-of-3 co-op multisig and coordinates on-the-ground verification in Brazil for the $1 test transaction.
-- **Episode 2 — "The Lisbon Refusal" (POV: Xochtl):** Steps in when Lay-Lay freezes Ash El's payout, orchestrating the covert avatar submission that saves the Lisbon presentation and reforms the DAO's bounty constitution.
+- **Episode 2 — "Frozen Pay, Empty Stage" (POV: Xochtl):** Steps in when Lay-Lay freezes Ash El's payout, orchestrating the covert avatar submission that saves the Lisbon presentation and reforms the DAO's bounty constitution.
 - **Episode 3 — "Blood, Cacao & Paper" (POV: Ash El & Xochtl):** Insists that sacred work deserves sacred protection—allying with Vera to paper the 4-year vesting cliff and Swiss Verein legal wrapper.
 - **Episode 4 — "One Tired Click Drained the Apothecary":** Anchors the community stewards to outvote Atlas's hostile governance capture.
 

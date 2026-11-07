@@ -374,7 +374,7 @@ label ep1_d3:
 
 
 ################################################################################
-## STORY 2: "THE LISBON REFUSAL"
+## STORY 2: "FROZEN PAY, EMPTY STAGE"
 ## Pillar II: Collaboration & Co-op = Winning Together (The "Amy & Edward / Jena" Story)
 ## POV: Xochtl (The Shaman) & Ash El (The Creator)
 ## Lessons: creator_vs_admin, coop_solidarity, burnout

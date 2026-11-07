@@ -23,7 +23,7 @@ Xochtl embodies the grounded co-creators and community protectors (including the
 ## Arc across the Constellation Episodes
 
 - **Episode 1 — "No Keys, No Cheese":** Holds the second hardware key in the 2-of-3 co-op multisig and coordinates on-the-ground verification in Brazil for the $1 test transaction.
-- **Episode 2 — "The Lisbon Refusal" (POV: Xochtl):** Steps in when Lay-Lay freezes Ash El's payout, orchestrating the covert avatar submission that saves the Lisbon presentation and reforms the DAO's bounty constitution.
+- **Episode 2 — "Frozen Pay, Empty Stage" (POV: Xochtl):** Steps in when Lay-Lay freezes Ash El's payout, orchestrating the covert avatar submission that saves the Lisbon presentation and reforms the DAO's bounty constitution.
 - **Episode 3 — "Blood, Cacao & Paper" (POV: Ash El & Xochtl):** Insists that sacred work deserves sacred protection—allying with Vera to paper the 4-year vesting cliff and Swiss Verein legal wrapper.
 - **Episode 4 — "One Tired Click Drained the Apothecary":** Anchors the community stewards to outvote Atlas's hostile governance capture.
 

@@ -25,7 +25,7 @@ Lay-Lay synthesizes the toxic administrative power dynamic from real-world DAO p
 ## Arc across the Constellation Episodes
 
 - **Episode 1 — "No Keys, No Cheese":** Offers to take sole custody of the treasury after a text-file key leak and pushes an unvetted co-admin into the DAO.
-- **Episode 2 — "The Lisbon Refusal":** Freezes Ash El's Lisbon showcase payout out of personal ego, only to expose her own bias when Xochtl submits the identical work under an anonymous co-op proposal.
+- **Episode 2 — "Frozen Pay, Empty Stage":** Freezes Ash El's Lisbon showcase payout out of personal ego, only to expose her own bias when Xochtl submits the identical work under an anonymous co-op proposal.
 - **Episode 3 — "Blood, Cacao & Paper":** Pushes for "vibes-only handshake splits" and unwrapped governance until legal and financial reality catches up.
 - **Episode 4 — "One Tired Click Drained the Apothecary" (POV: Lay-Lay):** Playable perspective episode showing how an overwhelmed administrator gets targeted by whales (Atlas) and phishing attacks—and how choosing transparency and multi-sig discipline saves both her and the collective.
 

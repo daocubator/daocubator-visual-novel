@@ -63,7 +63,7 @@ init 5 python:
             "lessons": ["no_keys_no_cheese", "vetting_admins", "test_transaction"],
         },
         "ep2_lisbon": {
-            "title": "The Lisbon Refusal",
+            "title": "Frozen Pay, Empty Stage",
             "color": "#578C88",
             "pov": "Xochtl (The Shaman) & Ash El",
             "cast": "Xochtl · Ash El · Lay-Lay",
@@ -214,7 +214,7 @@ screen constellation_map():
                 vbox:
                     spacing 2
                     text "Get Rich Together — The First Constellation" font gui.serif_font axis {"weight": 300, "opticalsize": 48} color "#EED4B4" size 30
-                    text "Click any story node below to witness the collapse, then rewind time and solve it in 3 decisions." font gui.sans_font color "#DDBCAD" size 18
+                    text "Click any story node below to witness the collapse, then rewind time and solve it." font gui.sans_font color "#DDBCAD" size 18
                 hbox:
                     spacing 12
                     xalign 1.0
