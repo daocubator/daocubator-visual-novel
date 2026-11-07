@@ -22,10 +22,10 @@ translate plain vera_closing_67a86b4b:
     v "There is always a next time. Next time, start with the work — with the people."
 
 # game/endings.rpy:39
-translate plain ending_recap_0a31718a:
+translate plain ending_recap_8ba30468:
 
-    # narrator "── THIS RUN ──"
-    narrator "── YOUR CHOICES THIS TIME ──"
+    # narrator "—— THIS RUN ——"
+    narrator "—— YOUR CHOICES THIS TIME ——"
 
 # game/endings.rpy:43
 translate plain ending_recap_43194085:
@@ -34,17 +34,17 @@ translate plain ending_recap_43194085:
     narrator "[recap_text]"
 
 # game/endings.rpy:47
-translate plain ending_recap_61ceeb48:
+translate plain ending_recap_5a144089:
 
-    # narrator "Lessons unlocked this run: [n_seen] of [n_total]. {i}([missed] failure modes remain undiscovered. They remain either way — the question is whether you meet them here or out there.){/i}"
-    narrator "Lessons unlocked this time: [n_seen] of [n_total]. {i}([missed] ways to fail are still waiting to be found.){/i}"
-    narrator "{i}They are out there either way. The question is: will you meet them here, in a game, or in real life?{/i}"
+    # narrator "Lessons unlocked this run: [n_seen] of [n_total]. ([missed] failure modes remain undiscovered. They remain either way — the question is whether you meet them here or out there.)"
+    narrator "Lessons unlocked this time: [n_seen] of [n_total]. ([missed] ways to fail are still waiting to be found.)"
+    narrator "They are out there either way. The question is: will you meet them here, in a game, or in real life?"
 
 # game/endings.rpy:55
-translate plain ending_acquihire_6f578ab1:
+translate plain ending_acquihire_a171cc48:
 
-    # narrator "🤝 ENDING: THE ACQUI-HIRE"
-    narrator "🤝 ENDING: THE ACQUI-HIRE"
+    # narrator "ENDING · THE ACQUI-HIRE"
+    narrator "ENDING · THE ACQUI-HIRE"
 
 # game/endings.rpy:56
 translate plain ending_acquihire_797470d7:
@@ -61,10 +61,10 @@ translate plain ending_acquihire_51f8f476:
     narrator "Every year, someone posts the old logo in the old team's group chat. Everyone likes it. Nobody says anything."
 
 # game/endings.rpy:65
-translate plain ending_burnout_26b28ad8:
+translate plain ending_burnout_b7397b17:
 
-    # narrator "🔥 ENDING: THE BURNOUT CRASH"
-    narrator "🔥 ENDING: THE BURNOUT CRASH"
+    # narrator "ENDING · THE BURNOUT CRASH"
+    narrator "ENDING · THE BURNOUT CRASH"
 
 # game/endings.rpy:66
 translate plain ending_burnout_3c714f76:
@@ -82,10 +82,10 @@ translate plain ending_burnout_401572af:
     narrator "You are not the venture — you are not the project. You never were."
 
 # game/endings.rpy:76
-translate plain ending_takeover_41109bb6:
+translate plain ending_takeover_ca80539b:
 
-    # narrator "💀 ENDING: THE HOSTILE TAKEOVER"
-    narrator "💀 ENDING: THE HOSTILE TAKEOVER"
+    # narrator "ENDING · THE HOSTILE TAKEOVER"
+    narrator "ENDING · THE HOSTILE TAKEOVER"
 
 # game/endings.rpy:77
 translate plain ending_takeover_b3caebfe:
@@ -104,10 +104,10 @@ translate plain ending_takeover_177bf713:
     narrator "That matters. It's just not your win."
 
 # game/endings.rpy:86
-translate plain ending_capture_a9060c39:
+translate plain ending_capture_3691dc3f:
 
-    # narrator "🏛️ ENDING: FOUNDER'S CAPTURE"
-    narrator "🏛️ ENDING: FOUNDER'S CAPTURE"
+    # narrator "ENDING: FOUNDER'S CAPTURE"
+    narrator "ENDING: FOUNDER'S CAPTURE"
 
 # game/endings.rpy:87
 translate plain ending_capture_609135f3:
@@ -125,10 +125,10 @@ translate plain ending_capture_fcd005a0:
     narrator "It's a normal top-down internet company, like in Web2, with extra steps. And the steps were expensive."
 
 # game/endings.rpy:96
-translate plain ending_bureaucracy_495d0375:
+translate plain ending_bureaucracy_c4b8c7d4:
 
-    # narrator "🐌 ENDING: DEATH BY DEMOCRACY"
-    narrator "🐌 ENDING: DEATH BY DEMOCRACY"
+    # narrator "ENDING · DEATH BY DEMOCRACY"
+    narrator "ENDING · DEATH BY DEMOCRACY"
 
 # game/endings.rpy:97
 translate plain ending_bureaucracy_cafa625e:
@@ -145,10 +145,10 @@ translate plain ending_bureaucracy_f4cbf9d6:
     narrator "The collective became a ghost town with beautiful rules. Perfect process, but no life."
 
 # game/endings.rpy:106
-translate plain ending_split_7e31cf0d:
+translate plain ending_split_f6436e77:
 
-    # narrator "🌊 ENDING: THE COMMUNITY SPLIT"
-    narrator "🌊 ENDING: THE COMMUNITY SPLIT"
+    # narrator "ENDING: THE COMMUNITY SPLIT"
+    narrator "ENDING: THE COMMUNITY SPLIT"
 
 # game/endings.rpy:107
 translate plain ending_split_268ffa31:
@@ -166,10 +166,10 @@ translate plain ending_split_38511c0b:
     narrator "It dies in a Discord argument about the dream."
 
 # game/endings.rpy:116
-translate plain ending_sustainable_a4c62416:
+translate plain ending_sustainable_f4247e2d:
 
-    # narrator "🌱 ENDING: THE SUSTAINABLE COLLECTIVE"
-    narrator "🌱 ENDING: THE SUSTAINABLE COLLECTIVE"
+    # narrator "ENDING · THE SUSTAINABLE COLLECTIVE"
+    narrator "ENDING · THE SUSTAINABLE COLLECTIVE"
 
 # game/endings.rpy:117
 translate plain ending_sustainable_5415b586:
@@ -187,10 +187,10 @@ translate plain ending_sustainable_8a2564a4:
     narrator "In this industry, people dream of an exit — selling the company for big money. A good night's sleep is the rarest exit of all."
 
 # game/endings.rpy:126
-translate plain ending_golden_c34d3ce2:
+translate plain ending_golden_5ee3d6c0:
 
-    # narrator "🌕 ENDING: COLLECTIVE PROSPERITY"
-    narrator "🌕 ENDING: COLLECTIVE PROSPERITY"
+    # narrator "ENDING · COLLECTIVE PROSPERITY"
+    narrator "ENDING · COLLECTIVE PROSPERITY"
 
 # game/endings.rpy:127
 translate plain ending_golden_91437b4a:

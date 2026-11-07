@@ -21,11 +21,11 @@ init -10 python:
     import re as _gre
 
     GLOSS_CATS = [
-        # (id, tab label, color)
-        ("biz",    "BUSINESS", "#FFAA55"),
-        ("crypto", "CRYPTO",   "#55FFFF"),
-        ("defi",   "MONEY",    "#FFFF55"),
-        ("dao",    "DAO",      "#FF55FF"),
+        # (id, tab label, color) — DAOcubator Design System tokens
+        ("biz",    "BUSINESS", "#B87444"),
+        ("crypto", "CRYPTO",   "#578C88"),
+        ("defi",   "MONEY",    "#FAC443"),
+        ("dao",    "DAO",      "#EED4B4"),
     ]
     GLOSS_CAT_NAMES = {
         "biz": "Business & Startups", "crypto": "Crypto & Tech",
@@ -92,8 +92,8 @@ init -10 python:
              text="To create new <token|tokens> or NFTs. 'Mint night' is when people can first get them. Minting can also be an attack: whoever controls <governance> may be able to mint a billion new tokens for themselves."),
         dict(id="burn", term="Burn", cat="crypto", match=[r"burn(?:s|ed|ing)?(?!\s+(?:out|with\b))"],
              text="To destroy <token|tokens> on purpose by sending them to an <address> nobody can ever use. A founder burn means giving up some of your own tokens — and the votes that come with them — to show trust."),
-        dict(id="eth", term="ETH (Ξ)", cat="crypto", match=[r"ETH", r"ether"],
-             text="Ether: the native money of the Ethereum <blockchain>. You use it to pay <gas> fees and fund shared <treasury|treasuries>. Its symbol is Ξ."),
+        dict(id="eth", term="ETH", cat="crypto", match=[r"ETH", r"ether"],
+             text="Ether: the native money of the Ethereum <blockchain>. You use it to pay <gas> fees and fund shared <treasury|treasuries>."),
         dict(id="gas", term="Gas", cat="crypto", match=[r"gas"],
              text="The small fee you pay the network for each transaction on a <blockchain>. How a <wallet> pays gas (how much, and when) can work like a fingerprint — that's how Spectre and Alex spot one person behind many wallets."),
         dict(id="wallet", term="Wallet", cat="crypto", match=[r"wallets?"],
@@ -159,7 +159,7 @@ init -10 python:
         dict(id="swap_fee", term="Swap Fee", cat="defi", match=[r"swap fees?"],
              text="The small fee you pay to trade one <token> for another. A cheap price for safety when you build a <barbell>."),
         dict(id="death_spiral", term="Death Spiral", cat="defi", match=[r"death spirals?", r"spiral"],
-             text="A trap: you need cash → you sell your own <token> → its price drops → you must sell even more → repeat. It happens when a <treasury> is mostly <native_token|native token> and a <bear_market|bear market> arrives."),
+             text="A trap: you need cash » you sell your own <token> » its price drops » you must sell even more » repeat. It happens when a <treasury> is mostly <native_token|native token> and a <bear_market|bear market> arrives."),
         dict(id="flash_loan", term="Flash Loan", cat="defi", match=[r"flash[- ]?loans?", r"flash-borrowed"],
              text="A huge loan that is borrowed and paid back inside ONE transaction — a few seconds. No collateral needed. Attackers use flash loans to borrow millions of votes for one moment. A <timelock|time-lock> makes that useless."),
         dict(id="bear_market", term="Bear Market", cat="defi", match=[r"bear markets?"],
@@ -169,7 +169,7 @@ init -10 python:
         dict(id="number_go_up", term="Number Go Up", cat="defi", match=[r"number goes? up"],
              text="A crypto joke about believing the <token> price will only ever rise. A strategy built on Number Go Up has no plan for the bad day — see <death_spiral|death spiral>."),
         dict(id="carbon_credit", term="Carbon Credit", cat="defi", match=[r"carbon[- ]credits?"],
-             text="A certificate saying one ton of CO₂ was removed or avoided. Companies buy them to 'offset' their pollution. Some are worthless — like credits from old dams that were going to exist anyway. Buying those is <greenwashing>."),
+             text="A certificate saying one ton of CO2 was removed or avoided. Companies buy them to 'offset' their pollution. Some are worthless — like credits from old dams that were going to exist anyway. Buying those is <greenwashing>."),
         dict(id="greenwashing", term="Greenwashing", cat="defi", match=[r"greenwash(?:ing|ed)?"],
              text="Making something look good for the planet when it isn't. Tying your project to junk <carbon_credit|carbon credits> can destroy trust overnight. The defence is <due_diligence|due diligence>."),
 
@@ -243,7 +243,7 @@ init -10 python:
     GLOSS = {e["id"]: e for e in GLOSSARY}
     GLOSS_CAT_COLORS = dict((c[0], c[2]) for c in GLOSS_CATS)
     for _e in GLOSSARY:
-        _e["cat_color"] = GLOSS_CAT_COLORS.get(_e["cat"], "#FFFFFF")
+        _e["cat_color"] = GLOSS_CAT_COLORS.get(_e["cat"], "#DDBCAD")
         _e["masked"] = _e["term"][0] + "·" * min(len(_e["term"]) - 1, 9)
 
     ## One big case-insensitive regex; one named group per entry. Entries with
@@ -311,7 +311,7 @@ init -10 python:
                 reopen = "".join(t for _, t in stack)
                 reclose = "".join("{/%s}" % n for n, _ in reversed(stack))
                 out.append(part[pos:m.start()])
-                out.append("{a=gloss:%s}%s%s{plain}ˀ{/plain}%s{/a}" % (gid, reopen, m.group(0), reclose))
+                out.append("{a=gloss:%s}%s%s{plain}˚{/plain}%s{/a}" % (gid, reopen, m.group(0), reclose))
                 pos = m.end()
             out.append(part[pos:])
         return "".join(out)
@@ -320,14 +320,14 @@ init -10 python:
     ## it re-opened. Needed because menu labels are filtered BEFORE the
     ## translation lookup, whose key is the original text.
     _GLOSS_UNLINK_RE = _gre.compile(
-        r"\{a=gloss:\w+\}(?:\{(?:i|b|size=[^{}]*)\})*(.*?)\{plain\}ˀ\{/plain\}(?:\{/(?:i|b|size)\})*\{/a\}")
+        r"\{a=gloss:\w+\}(?:\{(?:i|b|size=[^{}]*)\})*(.*?)\{plain\}˚\{/plain\}(?:\{/(?:i|b|size)\})*\{/a\}")
 
     def gloss_unlink(s):
         return _GLOSS_UNLINK_RE.sub(r"\1", s or "")
 
     def gloss_strip_links(s):
         """Menu choices are buttons — hyperlinks can't live inside them. Underline instead."""
-        return _gre.sub(r"\{a=gloss:\w+\}(.*?)\{plain\}ˀ\{/plain\}(.*?)\{/a\}", r"{u}\1\2{/u}", s)
+        return _gre.sub(r"\{a=gloss:\w+\}(.*?)\{plain\}˚\{/plain\}(.*?)\{/a\}", r"{u}\1\2{/u}", s)
 
     _GLOSS_MARKUP_RE = _gre.compile(r"<(\w+)(?:\|([^<>]+))?>")
 
@@ -337,13 +337,13 @@ init -10 python:
                 for m in _GLOSS_MARKUP_RE.finditer(text)]
 
     def gloss_render_body(text, found):
-        """Entry body → Ren'Py text. Undiscovered targets get a † after and magenta."""
+        """Entry body → Ren'Py text. Undiscovered targets get a § after and ember."""
         def rep(m):
             gid = m.group(1)
             disp = m.group(2) or GLOSS[gid]["term"]
             if gid in found:
                 return "{a=gloss:%s}%s{/a}" % (gid, disp)
-            return "{a=gloss:%s}{color=#FF55FF}%s†{/color}{/a}" % (gid, disp)
+            return "{a=gloss:%s}{color=#D3710D}%s§{/color}{/a}" % (gid, disp)
         return _GLOSS_MARKUP_RE.sub(rep, text)
 
     GLOSS_RANKS = [
@@ -367,7 +367,7 @@ init -10 python:
 
     def gloss_bar(n, total, width=20):
         filled = int(round(width * n / float(total))) if total else 0
-        return "█" * filled + "░" * (width - filled)
+        return "•" * filled + "·" * (width - filled)
 
 ################################################################################
 ## Ren'Py wiring: persistence, unlocking, dialogue filter, hyperlink protocol.
@@ -484,7 +484,7 @@ init python:
 ################################################################################
 ## Screens
 
-## Toast: "◆ NEW TERM ◆" — top-right, under the HUD.
+## Toast: "• NEW TERM •" — top-right, under the HUD.
 screen gloss_toast(names, n):
     zorder 200
     tag gloss_toast
@@ -496,9 +496,9 @@ screen gloss_toast(names, n):
         padding (32, 14)
         vbox:
             spacing 4
-            text ("◆ NEW TERM ◆" if len(names) == 1 else "◆ %d NEW TERMS ◆" % len(names)) color "#FFFF55" size 22
-            text ", ".join(names) color "#FFFFFF" size 24 substitute False
-            text "GLOSSARY %d/%d  ·  press G" % (n, len(GLOSSARY)) color "#AAAAAA" size 18
+            text ("• NEW TERM" if len(names) == 1 else "• %d NEW TERMS" % len(names)) font gui.mono_font kerning 3.4 color "#FAC443" size 17
+            text ", ".join(names) font gui.serif_font axis {"weight": 300, "opticalsize": 36} color "#EED4B4" size 26 substitute False
+            text "GLOSSARY %d/%d  ·  PRESS G" % (n, len(GLOSSARY)) font gui.mono_font kerning 3.0 color "#9D908D" size 15
 
 transform gloss_toast_appear:
     on show:
@@ -530,10 +530,10 @@ screen glossary():
             ## Progress header
             hbox:
                 spacing 24
-                text "[n_found]/[n_total] TERMS" color "#FFFF55" size 26
-                text gloss_bar(n_found, n_total) color "#55FFFF" size 22 yalign 0.5
-                text "RANK: " + gloss_rank(n_found) color "#FF55FF" size 26
-                text "† via links: %d" % gloss_link_count() color "#AAAAAA" size 22 yalign 0.5
+                text "[n_found]/[n_total] TERMS" font gui.mono_font kerning 4.0 color "#FAC443" size 20 yalign 0.5
+                text gloss_bar(n_found, n_total) font gui.mono_font kerning 4.0 color "#578C88" size 20 yalign 0.5
+                text "RANK · " + gloss_rank(n_found) font gui.mono_font kerning 4.0 color "#D3710D" size 20 yalign 0.5
+                text "§ VIA LINKS: %d" % gloss_link_count() font gui.mono_font kerning 3.4 color "#9D908D" size 17 yalign 0.5
 
             ## Category tabs
             hbox:
@@ -571,7 +571,7 @@ screen glossary():
                         for e in entries:
                             $ eid = e["id"]
                             if eid in persistent.gloss_found:
-                                textbutton (e["term"] + ("  {color=#FFFF55}NEW{/color}" if eid not in persistent.gloss_read and eid != cur else "")):
+                                textbutton (e["term"] + ("  {color=#FAC443}NEW{/color}" if eid not in persistent.gloss_read and eid != cur else "")):
                                     style "gloss_item"
                                     text_color e["cat_color"]
                                     selected cur == eid
@@ -579,7 +579,7 @@ screen glossary():
                             else:
                                 textbutton e["masked"]:
                                     style "gloss_item"
-                                    text_color "#555555"
+                                    text_color "#9D908D"
                                     selected cur == eid
                                     action Function(gloss_select, eid)
 
@@ -592,8 +592,8 @@ screen glossary():
                     if cur is None:
                         vbox:
                             spacing 16
-                            text "Nothing discovered yet." color "#FFFFFF" size 30
-                            text "Words in {color=#FFFF55}yellow{/color} in the story are glossary terms. Click one to look it up. Every term you meet is added here — and entries link to more entries." color "#AAAAAA" size 24
+                            text "Nothing discovered yet." font gui.serif_font axis {"weight": 300, "opticalsize": 48} color "#EED4B4" size 34
+                            text "Words in {color=#FAC443}amber glow{/color} in the story are glossary terms. Click one to look it up. Every term you meet is added here — and entries link to more entries." font gui.sans_font color "#DDBCAD" size 23
                     elif cur in persistent.gloss_found:
                         $ e = GLOSS[cur]
                         $ ccol = e["cat_color"]
@@ -606,21 +606,21 @@ screen glossary():
                             vbox:
                                 spacing 16
                                 if persistent._gloss_fresh == cur:
-                                    text "★ NEW DISCOVERY ★" color "#FFFF55" size 26
-                                text e["term"] color ccol size 44 substitute False
-                                text "%s  ·  %s" % (GLOSS_CAT_NAMES[e["cat"]].upper(), "found by following a link" if persistent.gloss_found[cur] == "link" else "found in the story") color "#AAAAAA" size 20
+                                    text "• NEW DISCOVERY" font gui.mono_font kerning 3.6 color "#FAC443" size 18
+                                text e["term"] font gui.serif_font axis {"weight": 300, "opticalsize": 48} color "#EED4B4" size 44 substitute False
+                                text "%s  ·  %s" % (GLOSS_CAT_NAMES[e["cat"]].upper(), "FOUND BY FOLLOWING A LINK" if persistent.gloss_found[cur] == "link" else "FOUND IN THE STORY") font gui.mono_font kerning 3.0 color "#B87444" size 15
                                 null height 4
-                                text gloss_render_body(e["text"], persistent.gloss_found) color "#FFFFFF" size 28 substitute False
+                                text gloss_render_body(e["text"], persistent.gloss_found) font gui.sans_font color "#DDBCAD" size 26 line_spacing 6 substitute False
                                 null height 8
-                                text "{color=#FF55FF}†{/color} = not discovered yet. Follow it to unlock." color "#777777" size 18
+                                text "{color=#D3710D}§{/color} = not discovered yet. Follow it to unlock." font gui.sans_font color "#9D908D" size 18
                     else:
                         $ e = GLOSS[cur]
                         vbox:
                             spacing 16
-                            text "† UNDISCOVERED †" color "#FF55FF" size 36
-                            text gloss_masked(e["term"]) color "#555555" size 44 substitute False
-                            text "Category: " + GLOSS_CAT_NAMES[e["cat"]] color "#AAAAAA" size 22
-                            text "Keep playing to meet this term in the story — or find a {color=#FF55FF}† link{/color} to it inside another entry." color "#FFFFFF" size 26
+                            text "§ UNDISCOVERED ENTRY" font gui.mono_font kerning 3.6 color "#D3710D" size 18
+                            text gloss_masked(e["term"]) font gui.serif_font axis {"weight": 300, "opticalsize": 48} color "#9D908D" size 44 substitute False
+                            text "CATEGORY · " + GLOSS_CAT_NAMES[e["cat"]].upper() font gui.mono_font kerning 3.2 color "#B87444" size 16
+                            text "Keep playing to meet this term in the story — or find a {color=#D3710D}§ link{/color} to it inside another entry." font gui.sans_font color "#DDBCAD" size 24
 
 style gloss_tab is button
 style gloss_tab_text is button_text
@@ -630,10 +630,12 @@ style gloss_tab:
     hover_background Frame("gui/button/hover_background.png", gui.button_borders)
     padding (14, 8)
 style gloss_tab_text:
-    size 20
-    color "#94A3B8"
-    selected_color "#FFE57F"
-    hover_color "#FFFFFF"
+    font gui.mono_font
+    kerning 3.2
+    size 16
+    color "#9D908D"
+    selected_color "#FAC443"
+    hover_color "#EED4B4"
 
 style gloss_item is button
 style gloss_item_text is button_text
@@ -641,10 +643,11 @@ style gloss_item:
     xfill True
     ysize 38
     padding (10, 4)
-    selected_background "#0000AA"
-    hover_background "#000060"
+    selected_background "#42281E"
+    hover_background "#241309"
 style gloss_item_text:
-    size 24
+    font gui.sans_font
+    size 22
     yalign 0.5
-    hover_color "#FFFFFF"
-    selected_color "#FFFFFF"
+    hover_color "#FAC443"
+    selected_color "#EED4B4"

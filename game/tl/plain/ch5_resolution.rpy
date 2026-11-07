@@ -49,8 +49,8 @@ translate plain ch5_resolution_e2179b2a:
     # j "HUGE news — a carbon-credit protocol wants us as their 'regenerative culture partner'! Real money, real mission, REAL good vibes!"
     j "HUGE news! A carbon-credit project wants us as their 'regenerative culture partner'!"
     j "Real money, real mission, REAL good vibes!"
-    narrator "{color=#55FF55}TIP:{/color} A carbon credit should prove that some pollution was removed or avoided. Signing fast brings money now, without checking what the credits really are."
-    narrator "{color=#55FF55}TIP:{/color} Due diligence means checking the facts before a deal. It takes time and needs Maya or Spectre. Saying no on instinct is fast, but you skip both the money and the checking."
+    narrator "{color=#578C88}TIP:{/color} A carbon credit should prove that some pollution was removed or avoided. Signing fast brings money now, without checking what the credits really are."
+    narrator "{color=#578C88}TIP:{/color} Due diligence means checking the facts before a deal. It takes time and needs Maya or Spectre. Saying no on instinct is fast, but you skip both the money and the checking."
 
 # game/ch5_resolution.rpy:40
 translate plain ch5_resolution_661ec57d:
@@ -88,8 +88,8 @@ translate plain ch5_resolution_48f1f574:
     # narrator "Then the email. Subject line: 'Exploring Strategic Alignment.' BigCorp wants to acquire the collective. Real money, for tired people."
     narrator "Then an email arrives. The subject line says: 'Exploring Strategic Alignment.'"
     narrator "BigCorp wants to acquire the collective — to buy it. Real money, for tired people."
-    narrator "{color=#55FF55}TIP:{/color} Taking the offer means everyone gets paid, but BigCorp owns the collective. Negotiating may get a better deal, and you still decide later."
-    narrator "{color=#55FF55}TIP:{/color} Refusing keeps the collective independent, but there is no payout. The work, and the tiredness, continue."
+    narrator "{color=#578C88}TIP:{/color} Taking the offer means everyone gets paid, but BigCorp owns the collective. Negotiating may get a better deal, and you still decide later."
+    narrator "{color=#578C88}TIP:{/color} Refusing keeps the collective independent, but there is no payout. The work, and the tiredness, continue."
 
 # game/ch5_resolution.rpy:61
 translate plain ch5_resolution_8ed8c151:
@@ -153,8 +153,8 @@ translate plain ch5_resolution_afb08b8a:
     # narrator "You count the room: [vote_support] of your five closest people will vote with you on anything. The rest vote their conscience — which is what you built this for, allegedly."
     narrator "You count the people in the room. [vote_support] of your five closest people will vote with you on anything."
     narrator "The others will vote for what they believe is right. That is what you built this for — in theory."
-    narrator "{color=#55FF55}TIP:{/color} FULL DECENTRALIZATION removes every special founder power. The community decides everything, but nobody can step in during an emergency."
-    narrator "{color=#55FF55}TIP:{/color} BALANCED adds time-locks (a wait before votes take effect), quorums (a minimum number of voters) and an elected council. It is slower. BENEVOLENT keeps founders in control: faster decisions, but less real power for the community."
+    narrator "{color=#578C88}TIP:{/color} FULL DECENTRALIZATION removes every special founder power. The community decides everything, but nobody can step in during an emergency."
+    narrator "{color=#578C88}TIP:{/color} BALANCED adds time-locks (a wait before votes take effect), quorums (a minimum number of voters) and an elected council. It is slower. BENEVOLENT keeps founders in control: faster decisions, but less real power for the community."
 
 # game/ch5_resolution.rpy:114
 translate plain ch5_resolution_51a3039a:

@@ -168,6 +168,6 @@ label ch2_tge:
 
     ## 2.9 Chapter close
     if treasury_mix == "mono":
-        narrator "The chart is beautiful tonight. 90%% of your treasury agrees with itself. {i}(Remember this candle.){/i}"
+        narrator "The chart is beautiful tonight. 90%% of your treasury agrees with itself. (Remember this candle.)"
     call chapter_close(47, ch_open_vibes)
     jump ch3_governance

@@ -1,0 +1,58 @@
+<!-- @dsCard height=288 -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>DAOcubator</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..600&family=Karla:wght@400;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  html, body { margin:0; height:100%; }
+  body { background:var(--ink); color:var(--flame); font-family:var(--font-sans); overflow:hidden; }
+  .cover { position:relative; width:960px; height:288px; overflow:hidden; }
+  .art { position:absolute; top:0; left:480px; width:480px; height:288px; overflow:hidden; }
+  .art svg { display:block; width:480px; height:288px; }
+  .clay { fill:var(--clay); }
+  .ember { fill:var(--ember); }
+  .glow { fill:var(--glow); }
+  .core { fill:var(--glow-core); }
+  .teal { fill:var(--teal); }
+  .field { fill:var(--field); }
+  .ground { fill:var(--ground); }
+  .cut { fill:var(--ink); }
+  .blk { rx:var(--radius-0); }
+  .words { position:absolute; left:var(--space-6); bottom:var(--space-6); max-width:440px; }
+  .name { margin:0; font-family:var(--font-serif); font-size:72px; line-height:.95; font-weight:300; letter-spacing:-.015em; color:var(--flame); }
+  .tag { margin:var(--space-2) 0 0 2px; font-size:14px; line-height:20px; color:var(--ash); }
+</style>
+</head>
+<body>
+<div class="cover">
+<div class="art" aria-hidden="true">
+<svg viewBox="0 0 480 288" width="480" height="288">
+<!--
+  blocks      clay 120×240 bled off the top (the material, largest) · teal 120×40 under it (cool relief) · ember 72×96 · field 256×240 bled off the right holding the aperture, ≈ 40% of 960×288
+  arrangement one tall clay slab with satellites stepping down to the right; gutters space-3, bottoms on one line space-3 above the edge; the field block carries the one glow
+  pattern     literal motif, the aperture: "a bounded brighter opening inside a darker field" → an arch (radius half its width) of glow with a small glow-core arch in it, beside two tall ground panels on a shared ground line; three ink arch cut-outs of falling height in the clay slab as doors
+  scales      sides in space-3/space-4 multiples; gutters space-3; corners radius-0; arch radii 12, 16 and 48 (half the width); one glow, glow stays under 6% of the cover
+-->
+<rect class="clay blk" x="16" y="-24" width="120" height="240"/>
+<rect class="teal blk" x="16" y="232" width="120" height="40"/>
+<rect class="ember blk" x="152" y="176" width="72" height="96"/>
+<rect class="field blk" x="240" y="32" width="256" height="240"/>
+<rect class="ground blk" x="256" y="64" width="56" height="172"/>
+<rect class="ground blk" x="324" y="104" width="20" height="132"/>
+<path class="glow" d="M372 236 V120 A48 48 0 0 1 468 120 V236 Z"/>
+<path class="core" d="M404 236 V196 A16 16 0 0 1 436 196 V236 Z"/>
+<rect class="cut blk" x="240" y="236" width="256" height="36"/>
+<path class="cut" d="M32 200 V132 A12 12 0 0 1 56 132 V200 Z"/>
+<path class="cut" d="M68 200 V156 A12 12 0 0 1 92 156 V200 Z"/>
+<path class="cut" d="M104 200 V176 A12 12 0 0 1 128 176 V200 Z"/>
+</svg>
+</div>
+<div class="words">
+  <h1 class="name">DAOcubator</h1>
+  <p class="tag">Warm ground, one gold light: roots, circuits, canopy.</p>
+</div>
+</div>
+</body>
+</html>

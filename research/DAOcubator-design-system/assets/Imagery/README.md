@@ -1,0 +1,1 @@
+Frames from the earlier DAOcubator / Primordia deck, in cool slate and line-art gold. Use them for composition only (roots turning into circuits turning into canopy, one focal glow); take colour from the palette, not from these frames. They are AI renders and carry a NotebookLM watermark.

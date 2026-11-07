@@ -21,12 +21,12 @@ translate plain ch3_governance_e4783963:
     m "That means: take tokens from us founders and give them to members. Thirty-five percent support it, and that number is growing."
 
 # game/ch3_governance.rpy:17
-translate plain ch3_governance_1e7c4a40:
+translate plain ch3_governance_81a95805:
 
-    # m "Here's the uncomfortable part: half their arguments are {i}good{/i}."
-    m "Here's the uncomfortable part. Half of their arguments are {i}good{/i}."
-    narrator "{color=#55FF55}TIP:{/color} Rallying votes means you campaign, then let members decide in an open vote. It is fair, but the result is not certain."
-    narrator "{color=#55FF55}TIP:{/color} A veto is a special founder power to cancel a decision alone. It is fast and certain, but it shows the founders still hold the real power."
+    # m "Here's the uncomfortable part: half their arguments are good."
+    m "Here's the uncomfortable part. Half of their arguments are good."
+    narrator "{color=#578C88}TIP:{/color} Rallying votes means you campaign, then let members decide in an open vote. It is fair, but the result is not certain."
+    narrator "{color=#578C88}TIP:{/color} A veto is a special founder power to cancel a decision alone. It is fast and certain, but it shows the founders still hold the real power."
 
 # game/ch3_governance.rpy:20
 translate plain ch3_governance_2c4d8cd5:
@@ -35,7 +35,7 @@ translate plain ch3_governance_2c4d8cd5:
     v "Before you touch that veto, founder, listen to me."
     v "I watched a hundred local union groups win this exact fight. Then they lost everything afterwards."
     v "There's a third path. But you have to be brave enough to look weak."
-    narrator "{color=#55FF55}TIP:{/color} The compromise is a founder burn. The founders destroy 10 percent of their own tokens on purpose. You give up some tokens and votes by choice."
+    narrator "{color=#578C88}TIP:{/color} The compromise is a founder burn. The founders destroy 10 percent of their own tokens on purpose. You give up some tokens and votes by choice."
 
 # game/ch3_governance.rpy:26
 translate plain ch3_governance_a269abe0:
@@ -64,8 +64,8 @@ translate plain ch3_governance_e5c88cc1:
     # narrator "Turnout keeps falling. Someone proposes delegation — 'liquid democracy.' Someone else livestreams a pie chart: in comparable DAOs, the top 10%% of voters hold 76.2%% of the power."
     narrator "Turnout keeps falling. Someone suggests delegation, also called 'liquid democracy'. You give your vote to someone you trust, and they vote for you."
     narrator "Someone else livestreams a pie chart. In similar DAOs, the top 10 percent of voters hold 76.2 percent of the power."
-    narrator "{color=#55FF55}TIP:{/color} Open delegation lets anyone give their vote to anyone. More people take part, but power can collect in a few hands."
-    narrator "{color=#55FF55}TIP:{/color} Capped, rotating delegation limits each delegate's power and changes delegates over time. Time-locks add a waiting period before big proposals take effect. This is safer, but slower. Tabling it means you decide later."
+    narrator "{color=#578C88}TIP:{/color} Open delegation lets anyone give their vote to anyone. More people take part, but power can collect in a few hands."
+    narrator "{color=#578C88}TIP:{/color} Capped, rotating delegation limits each delegate's power and changes delegates over time. Time-locks add a waiting period before big proposals take effect. This is safer, but slower. Tabling it means you decide later."
 
 # game/ch3_governance.rpy:44
 translate plain ch3_governance_88e347c8:
@@ -98,7 +98,7 @@ translate plain ch3_governance_37c16441:
     # m "...A competitor offered me three times my salary. I told them I'd think about it. I've been thinking about it for two weeks."
     m "...A competitor offered me three times my salary."
     m "I told them I'd think about it. I've been thinking about it for two weeks."
-    narrator "{color=#55FF55}TIP:{/color} You can ask what she needs, call the offer a betrayal, or give her space. Each answer shows her a different kind of leader."
+    narrator "{color=#578C88}TIP:{/color} You can ask what she needs, call the offer a betrayal, or give her space. Each answer shows her a different kind of leader."
 
 # game/ch3_governance.rpy:68
 translate plain ch3_governance_0503684e:
@@ -193,7 +193,7 @@ translate plain ch3_governance_402dd8d0:
     # narrator "4:11 a.m. You're re-reading your own launch-day post. 'We're going to do this sustainably.' The author seems nice. You don't recognize them."
     narrator "4:11 a.m. You're re-reading your own launch-day post: 'We're going to do this sustainably.'"
     narrator "The person who wrote it seems nice. You don't recognize them anymore."
-    narrator "{color=#55FF55}TIP:{/color} Burnout is a stat for how exhausted you are. Resting means the project goes on without you for a while. Pushing through means you keep working while tired."
+    narrator "{color=#578C88}TIP:{/color} Burnout is a stat for how exhausted you are. Resting means the project goes on without you for a while. Pushing through means you keep working while tired."
 
 # game/ch3_governance.rpy:119
 translate plain ch3_governance_f4f3653f:
@@ -210,11 +210,11 @@ translate plain ch3_governance_a9a072ef:
     narrator "But only the collective has a Discord channel to shout at you. Your sleep has no voice."
 
 # game/ch3_governance.rpy:126
-translate plain ch3_governance_ce3fd8aa:
+translate plain ch3_governance_edfd5e2b:
 
-    # narrator "{color=#FF5555}Your judgment is fraying at the edges. From here on, don't fully trust your own read on consequences — that's not a metaphor, it's a mechanic.{/color}"
-    narrator "{color=#FF5555}Your judgment is starting to break down. From now on, don't fully trust your own sense of what will happen.{/color}"
-    narrator "{color=#FF5555}This is not just a figure of speech. It is a real game rule.{/color}"
+    # narrator "{color=#D3710D}Your judgment is fraying at the edges. From here on, don't fully trust your own read on consequences — that's not a metaphor, it's a mechanic.{/color}"
+    narrator "{color=#D3710D}Your judgment is starting to break down. From now on, don't fully trust your own sense of what will happen.{/color}"
+    narrator "{color=#D3710D}This is not just a figure of speech. It is a real game rule.{/color}"
 
 # game/ch3_governance.rpy:132
 translate plain ch3_governance_5268ee7f:

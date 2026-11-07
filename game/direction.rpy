@@ -486,4 +486,4 @@ transform cam_dutch_spiral:
 transform cam_red_alert:
     subpixel True
     xalign 0.5 yalign 0.5
-    zoom 1.05 xoffset 0 yoffset 25 matrixcolor (TintMatrix("#ffdede") * ContrastMatrix(1.10))
+    zoom 1.05 xoffset 0 yoffset 25 matrixcolor (TintMatrix("#EED4B4") * ContrastMatrix(1.10))

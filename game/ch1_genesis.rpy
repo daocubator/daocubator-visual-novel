@@ -9,15 +9,15 @@ label ch1_genesis:
     narrator "Day one. You badge out of BigCorp for the last time, savings account modest, group chat feral."
     pc "Okay. A collective. Actually collectively owned. What are we making?"
     menu:
-        "🎵 A record label — artists own their masters, together.":
+        "A record label — artists own their masters, together.":
             $ venture = "label"
             $ mark("Founded a record label collective")
             narrator "A label. Contracts, catalogs, and a century of artists getting robbed to learn from."
-        "👕 A streetwear brand — drops decided by the community.":
+        "A streetwear brand — drops decided by the community.":
             $ venture = "streetwear"
             $ mark("Founded a streetwear collective")
             narrator "Streetwear. Hype is a supply chain, and supply chains are where dreams meet customs forms."
-        "🎨 An artist collective — shared studio, shared upside.":
+        "An artist collective — shared studio, shared upside.":
             $ venture = "collective"
             $ mark("Founded an artist collective")
             narrator "An artist collective. The oldest idea here, wearing the newest clothes."
@@ -35,7 +35,7 @@ label ch1_genesis:
             $ adjust(maya=+12)
             show maya proud
             m "Correct first question."
-            m "Decentralization is a spectrum, not a virtue. Pure democracy sounds great until your first 51%% attack. Smart governance is knowing {i}when{/i} to decentralize."
+            m "Decentralization is a spectrum, not a virtue. Pure democracy sounds great until your first 51%% attack. Smart governance is knowing when to decentralize."
 
     ## 1.3 The equity conversation — KEYSTONE (vault 1.3)
     show maya focused
@@ -98,7 +98,7 @@ label ch1_genesis:
     scene bg conference with fade
     show vera wry at right with dissolve
     v "So you're the new collective. I organized unions for thirty years — we were doing 'governance tokens' in 1936. We called them union cards."
-    v "One question, founder: when this goes wrong — and something always goes wrong — who is {i}legally{/i} holding the bag?"
+    v "One question, founder: when this goes wrong — and something always goes wrong — who is legally holding the bag?"
     menu:
         "\"...Point taken. Set up the legal wrapper. Pay the $15k.\"":
             $ wrapper = "verein"
@@ -137,13 +137,13 @@ label ch1_genesis:
     scene bg blockchain with fade
     narrator "Token design ceremony. This shapes everything that follows."
     menu:
-        "🏛️ Equal split between founders":
+        "Equal split between founders":
             $ adjust(morale=+5)
             narrator "Clean, simple, and — as Maya mutters — 'a tie waiting for a breaker.'"
-        "📊 Merit-weighted by contribution":
+        "Merit-weighted by contribution":
             $ adjust(morale=-5, vibes=+5)
             narrator "Fair in theory. The spreadsheet measuring 'contribution' becomes the most political document you own."
-        "🌊 60%% to the community treasury":
+        "60%% to the community treasury":
             $ adjust(vibes=+15, treasury=+20)
             $ mark("Gave the community 60% of the token supply")
             narrator "The community cheers. Alex does math quietly, like a person at a funeral."
@@ -151,7 +151,7 @@ label ch1_genesis:
     show atlas guarded at right with dissolve
     w "Consider it a vote of confidence. I admire builders."
     hide atlas with dissolve
-    narrator "The tokens never move again. They sit there. Waiting. {i}(You will think about this later.){/i}"
+    narrator "The tokens never move again. They sit there. Waiting. (You will think about this later.)"
 
     ## 1.9 Chapter close
     scene bg coworking with fade

@@ -12,6 +12,9 @@ init offset = -1
 style default:
     properties gui.text_properties()
     language gui.language
+    ## Any focusable region on a non-Button displayable (such as {a=gloss:...}
+    ## hyperlinks inside Text, or sliders/scrollbars) uses the pointer cursor.
+    mouse "button"
 
 style input:
     properties gui.text_properties("input", accent=True)
@@ -19,10 +22,11 @@ style input:
 
 style hyperlink_text:
     properties gui.text_properties("hyperlink", accent=True)
-    ## Hyperlinks are glossary terms (glossary.rpy): yellow, underlined.
-    color "#FFFF55"
-    hover_color "#FFFFFF"
+    ## Hyperlinks are glossary terms (glossary.rpy): glow amber, underlined.
+    color "#FAC443"
+    hover_color "#FFF3C9"
     underline True
+    mouse "button"
 
 style gui_text:
     properties gui.text_properties("interface")
@@ -30,6 +34,7 @@ style gui_text:
 
 style button:
     properties gui.button_properties("button")
+    mouse "button"
 
 style button_text is gui_text:
     properties gui.text_properties("button")
@@ -38,6 +43,9 @@ style button_text is gui_text:
 
 style label_text is gui_text:
     properties gui.text_properties("label", accent=True)
+    font gui.serif_font
+    axis {"weight": 300, "opticalsize": 36}
+    color "#EED4B4"
 
 style prompt_text is gui_text:
     properties gui.text_properties("prompt")
@@ -103,14 +111,17 @@ screen say(who, what):
     window:
         id "window"
 
-        if who is not None:
+        fixed:
+            yfit True
 
-            window:
-                id "namebox"
-                style "namebox"
-                text who id "who"
+            if who is not None:
 
-        text what id "what"
+                window:
+                    id "namebox"
+                    style "namebox"
+                    text who id "who"
+
+            text what id "what" ypos (gui.dialogue_ypos if who is not None else 42)
 
 
     ## If there's a side image, display it above the text. Do not display on the
@@ -136,9 +147,14 @@ style window:
     xalign 0.5
     xfill True
     yalign gui.textbox_yalign
-    ysize gui.textbox_height
+    yminimum gui.textbox_height
 
-    background Image("gui/textbox.png", xalign=0.5, yalign=1.0)
+    top_padding 0
+    bottom_padding 28
+    left_padding 0
+    right_padding 0
+
+    background Frame("gui/textbox.png", Borders(200, 32, 200, 32), tile=False, xalign=0.5, yalign=1.0)
 
 style namebox:
     xpos gui.name_xpos
@@ -152,6 +168,9 @@ style namebox:
 
 style say_label:
     properties gui.text_properties("name", accent=True)
+    font gui.sans_font
+    axis {"weight": 600}
+    color "#FAC443"
     xalign gui.name_xalign
     yalign 0.5
 
@@ -210,13 +229,15 @@ style input:
 screen choice(items):
     style_prefix "choice"
 
+    default shuffled_items = renpy.random.sample(list(items), len(items))
+
     ## Glossary: terms in choices unlock when the menu appears (glossary.rpy).
     ## Captions arrive already glossary-linked, which would break the plain-mode
     ## string lookup — gloss_choice_text unlinks, translates, then underlines.
-    on "show" action Function(gloss_unlock_text, *[gloss_choice_raw(i.caption) for i in items])
+    on "show" action Function(gloss_unlock_text, *[gloss_choice_raw(i.caption) for i in shuffled_items])
 
     vbox:
-        for i in items:
+        for i in shuffled_items:
             textbutton gloss_choice_text(i.caption) action i.action
 
 
@@ -276,7 +297,7 @@ screen quick_menu():
             button:
                 xfill True
                 yfill True
-                background "#00000077"
+                background "#140702BA"
                 action SetVariable("quick_menu_open", False)
 
             key "K_ESCAPE" action SetVariable("quick_menu_open", False)
@@ -290,14 +311,14 @@ screen quick_menu():
             yoffset 20
             action ToggleVariable("quick_menu_open")
             if quick_menu_open:
-                text "✕" color "#F2CC8F" size 42 align (0.5, 0.5)
+                text "×" color "#FAC443" size 44 align (0.5, 0.5)
             else:
                 vbox:
                     align (0.5, 0.5)
                     spacing 9
-                    add Solid("#F4EFE6", xsize=44, ysize=5)
-                    add Solid("#F4EFE6", xsize=44, ysize=5)
-                    add Solid("#F4EFE6", xsize=44, ysize=5)
+                    add Solid("#EED4B4", xsize=40, ysize=3)
+                    add Solid("#EED4B4", xsize=40, ysize=3)
+                    add Solid("#EED4B4", xsize=40, ysize=3)
 
         ## Expanded thumb-friendly menu panel
         if quick_menu_open:
@@ -313,30 +334,30 @@ screen quick_menu():
 
                     hbox:
                         spacing 14
-                        textbutton _("Back") style "hamburger_item_button" action HamburgerAction(Rollback())
-                        textbutton _("History") style "hamburger_item_button" action HamburgerAction(ShowMenu('history'))
+                        textbutton _("BACK") style "hamburger_item_button" action HamburgerAction(Rollback())
+                        textbutton _("HISTORY") style "hamburger_item_button" action HamburgerAction(ShowMenu('history'))
 
                     hbox:
                         spacing 14
-                        textbutton _("Glossary") style "hamburger_item_button" action HamburgerAction(ShowMenu('glossary'))
-                        textbutton _("Lessons") style "hamburger_item_button" action HamburgerAction(ShowMenu('lessons_codex'))
+                        textbutton _("GLOSSARY") style "hamburger_item_button" action HamburgerAction(ShowMenu('glossary'))
+                        textbutton _("LESSONS") style "hamburger_item_button" action HamburgerAction(ShowMenu('lessons_codex'))
 
-                    textbutton _("Exit (Back to Constellation)") style "hamburger_exit_button" action HamburgerAction(Jump('world_overview'))
-
-                    hbox:
-                        spacing 14
-                        textbutton _("Skip") style "hamburger_item_button" action HamburgerAction(Skip()) alternate HamburgerAction(Skip(fast=True, confirm=True))
-                        textbutton _("Auto") style "hamburger_item_button" action HamburgerAction(Preference("auto-forward", "toggle"))
+                    textbutton _("EXIT TO CONSTELLATION") style "hamburger_exit_button" action HamburgerAction(Jump('world_overview'))
 
                     hbox:
                         spacing 14
-                        textbutton _("Save") style "hamburger_item_button" action HamburgerAction(ShowMenu('save'))
-                        textbutton _("Q.Save") style "hamburger_item_button" action HamburgerAction(QuickSave())
+                        textbutton _("SKIP") style "hamburger_item_button" action HamburgerAction(Skip()) alternate HamburgerAction(Skip(fast=True, confirm=True))
+                        textbutton _("AUTO") style "hamburger_item_button" action HamburgerAction(Preference("auto-forward", "toggle"))
 
                     hbox:
                         spacing 14
-                        textbutton _("Q.Load") style "hamburger_item_button" action HamburgerAction(QuickLoad())
-                        textbutton _("Prefs") style "hamburger_item_button" action HamburgerAction(ShowMenu('preferences'))
+                        textbutton _("SAVE") style "hamburger_item_button" action HamburgerAction(ShowMenu('save'))
+                        textbutton _("Q.SAVE") style "hamburger_item_button" action HamburgerAction(QuickSave())
+
+                    hbox:
+                        spacing 14
+                        textbutton _("Q.LOAD") style "hamburger_item_button" action HamburgerAction(QuickLoad())
+                        textbutton _("PREFS") style "hamburger_item_button" action HamburgerAction(ShowMenu('preferences'))
 
         key "g" action HamburgerAction(ShowMenu('glossary'))
         key "l" action HamburgerAction(ShowMenu('lessons_codex'))
@@ -350,40 +371,42 @@ style hamburger_toggle_button is button:
     xsize 104
     ysize 88
     background Frame("gui/notify.png", gui.notify_frame_borders)
-    hover_background "#2E2722F2"
+    hover_background "#42281EF2"
     padding (20, 16)
 
 style hamburger_menu_frame is frame:
-    background "#181512F5"
+    background Frame("gui/frame.png", gui.frame_borders)
     padding (24, 24)
 
 style hamburger_item_button is button:
     xsize 340
     ysize 96
-    background "#26201B"
-    hover_background "#3B3129"
-    selected_background "#3D2A22"
-    insensitive_background "#1A1613"
+    background "#241309"
+    hover_background "#42281E"
+    selected_background "#42281E"
+    insensitive_background "#1E140E"
     padding (20, 16)
 
 style hamburger_item_button_text is button_text:
     align (0.5, 0.5)
     text_align 0.5
-    size 32
-    color "#F4EFE6"
-    hover_color "#F2CC8F"
-    selected_color "#E07A5F"
-    insensitive_color "#6E665E7F"
+    font gui.mono_font
+    size 20
+    kerning 4.0
+    color "#DDBCAD"
+    hover_color "#FAC443"
+    selected_color "#EED4B4"
+    insensitive_color "#9D908D7F"
 
 style hamburger_exit_button is hamburger_item_button:
     xsize 694
     ysize 96
-    background "#2B2219"
-    hover_background "#433426"
+    background "#42281E"
+    hover_background "#834225"
 
 style hamburger_exit_button_text is hamburger_item_button_text:
-    color "#F2CC8F"
-    hover_color "#FFFFFF"
+    color "#FAC443"
+    hover_color "#FFF3C9"
 
 
 ################################################################################
@@ -490,6 +513,9 @@ style main_menu_text:
 
 style main_menu_title:
     properties gui.text_properties("title")
+    font gui.serif_font
+    axis {"weight": 300, "opticalsize": 72}
+    color "#EED4B4"
 
 style main_menu_version:
     properties gui.text_properties("version")
@@ -617,8 +643,10 @@ style game_menu_label:
     ysize 180
 
 style game_menu_label_text:
-    size 75
-    color gui.accent_color
+    font gui.serif_font
+    axis {"weight": 300, "opticalsize": 64}
+    size 64
+    color "#EED4B4"
     yalign 0.5
 
 style return_button:
@@ -1311,11 +1339,11 @@ screen skip_indicator():
         hbox:
             spacing 9
 
-            text _("Skipping")
+            text _("SKIPPING")
 
-            text "▸" at delayed_blink(0.0, 1.0) style "skip_triangle"
-            text "▸" at delayed_blink(0.2, 1.0) style "skip_triangle"
-            text "▸" at delayed_blink(0.4, 1.0) style "skip_triangle"
+            text "›" at delayed_blink(0.0, 1.0) style "skip_triangle"
+            text "›" at delayed_blink(0.2, 1.0) style "skip_triangle"
+            text "›" at delayed_blink(0.4, 1.0) style "skip_triangle"
 
 
 ## This transform is used to blink the arrows one after another.
@@ -1342,12 +1370,14 @@ style skip_frame:
     padding gui.skip_frame_borders.padding
 
 style skip_text:
+    font gui.mono_font
     size gui.notify_text_size
+    kerning 4.4
+    color "#EED4B4"
 
 style skip_triangle:
-    ## We have to use a font that has the BLACK RIGHT-POINTING SMALL TRIANGLE
-    ## glyph in it.
-    font "DejaVuSans.ttf"
+    font gui.sans_font
+    color "#FAC443"
 
 
 ## Notify screen ###############################################################
@@ -1554,13 +1584,13 @@ style bubble_namebox:
 style bubble_who:
     xalign 0.5
     textalign 0.5
-    color "#000"
+    color "#FAC443"
 
 style bubble_what:
     align (0.5, 0.5)
     text_align 0.5
     layout "subtitle"
-    color "#000"
+    color "#DDBCAD"
 
 define bubble.frame = Frame("gui/bubble.png", 55, 55, 55, 95)
 define bubble.thoughtframe = Frame("gui/thoughtbubble.png", 55, 55, 55, 55)
@@ -1612,7 +1642,7 @@ style pref_vbox:
 
 style window:
     variant "small"
-    background "gui/phone/textbox.png"
+    background Frame("gui/phone/textbox.png", Borders(32, 32, 32, 32), tile=False)
 
 style radio_button:
     variant "small"

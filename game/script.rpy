@@ -2,20 +2,20 @@
 # vault: 01 Overview/Game Systems.md · 02 Characters/*  (vault/ is the source of truth)
 
 ################################################################################
-## Characters (colors match vault character frontmatter / Art Style Guide)
+## Characters (DAOcubator Design System color tokens)
 
 define narrator = Character(None)
-define pc  = Character("[player_name]", color="#FFFFFF")
-define ashel  = Character("Ash El",  color="#E07A5F", image="ashel")
-define laylay = Character("Lay-Lay", color="#9B7EDE", image="laylay")
-define xochtl = Character("Xochtl",  color="#2EC4B6", image="xochtl")
-define m   = Character("Maya",    color="#55FFFF", image="maya")
-define j   = Character("Jordan",  color="#FF55FF", image="jordan")
-define a   = Character("Alex",    color="#FFAA55", image="alex")
-define v   = Character("Vera",    color="#AA00AA", image="vera")
-define s   = Character("Spectre", color="#00AAAA", image="spectre", what_prefix="{i}", what_suffix="{/i}")
-define w   = Character("Atlas",   color="#FFFF55", image="atlas")
-define mod = Character("Mod (pixel_pal)", color="#AAAAAA")
+define pc  = Character("[player_name]", color="#EED4B4")
+define ashel  = Character("Ash El",  color="#D3710D", image="ashel")
+define laylay = Character("Lay-Lay", color="#C2AEC7", image="laylay")
+define xochtl = Character("Xochtl",  color="#578C88", image="xochtl")
+define m   = Character("Maya",    color="#578C88", image="maya")
+define j   = Character("Jordan",  color="#D3710D", image="jordan")
+define a   = Character("Alex",    color="#B87444", image="alex")
+define v   = Character("Vera",    color="#C2AEC7", image="vera")
+define s   = Character("Spectre", color="#8C8CA3", image="spectre")
+define w   = Character("Atlas",   color="#FAC443", image="atlas")
+define mod = Character("Mod (pixel_pal)", color="#9D908D")
 
 ################################################################################
 ## Core stats — the research's five-variable model

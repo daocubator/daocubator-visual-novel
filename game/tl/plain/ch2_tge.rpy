@@ -29,8 +29,8 @@ translate plain ch2_tge_d518f32e:
     m "Option two: the barbell. Put 30 to 50 percent in boring stables."
     m "Stables, or stablecoins, are tokens that stay worth one dollar."
     m "We pay swap fees now to trade into them. But we survive our first bad month."
-    narrator "{color=#55FF55}TIP:{/color} Native means our own token. Holding mostly native gains the most if its price rises, and loses the most if it falls."
-    narrator "{color=#55FF55}TIP:{/color} The barbell holds a safe part and a risky part. It costs fees now and grows less, but falls less in a crash."
+    narrator "{color=#578C88}TIP:{/color} Native means our own token. Holding mostly native gains the most if its price rises, and loses the most if it falls."
+    narrator "{color=#578C88}TIP:{/color} The barbell holds a safe part and a risky part. It costs fees now and grows less, but falls less in a crash."
 
 # game/ch2_tge.rpy:26
 translate plain ch2_tge_473954ee:
@@ -58,8 +58,8 @@ translate plain ch2_tge_5253fbec:
 
     # a "{size=-8}(Whales always want something. Sometimes the something is later.){/size}"
     a "{size=-8}(Whales — people with huge amounts of money — always want something. Sometimes they want it later.){/size}"
-    narrator "{color=#55FF55}TIP:{/color} A whale is someone who holds a very large amount. Runway is how long your money will last."
-    narrator "{color=#55FF55}TIP:{/color} No conditions is the simplest deal. With conditions, Atlas can give advice but gets no vote. Declining means no money from Atlas."
+    narrator "{color=#578C88}TIP:{/color} A whale is someone who holds a very large amount. Runway is how long your money will last."
+    narrator "{color=#578C88}TIP:{/color} No conditions is the simplest deal. With conditions, Atlas can give advice but gets no vote. Declining means no money from Atlas."
 
 # game/ch2_tge.rpy:46
 translate plain ch2_tge_a1a1f143:
@@ -101,8 +101,8 @@ translate plain ch2_tge_6e6aac86:
 
     # a "I think it's good money. Genuinely."
     a "I think it's good money. I really mean it."
-    narrator "{color=#55FF55}TIP:{/color} To recoup means to earn back an advance from sales. Artists get no more money until that happens."
-    narrator "{color=#55FF55}TIP:{/color} Signing is fast and brings the advance now. Negotiating asks for limits on what is paid back. Walking away means you distribute the music yourselves."
+    narrator "{color=#578C88}TIP:{/color} To recoup means to earn back an advance from sales. Artists get no more money until that happens."
+    narrator "{color=#578C88}TIP:{/color} Signing is fast and brings the advance now. Negotiating asks for limits on what is paid back. Walking away means you distribute the music yourselves."
 
 # game/ch2_tge.rpy:70
 translate plain ch2_tge_5f612185:
@@ -131,8 +131,8 @@ translate plain ch2_tge_87e34695:
     # j "Everyone's asking for a FULL COLLECTION. Eight pieces! Cut-and-sew! We'd look so real!"
     j "Everyone wants a FULL COLLECTION. Eight pieces!"
     j "Cut-and-sew — clothes made from scratch! We'd look like a REAL brand!"
-    narrator "{color=#55FF55}TIP:{/color} A full collection looks impressive, but nobody has paid for it yet. It costs a lot up front."
-    narrator "{color=#55FF55}TIP:{/color} A pre-order means people pay first, and you make only what sold. It's smaller, but it helps validate, or test, real demand."
+    narrator "{color=#578C88}TIP:{/color} A full collection looks impressive, but nobody has paid for it yet. It costs a lot up front."
+    narrator "{color=#578C88}TIP:{/color} A pre-order means people pay first, and you make only what sold. It's smaller, but it helps validate, or test, real demand."
 
 # game/ch2_tge.rpy:88
 translate plain ch2_tge_518c5f8f:
@@ -162,8 +162,8 @@ translate plain ch2_tge_0a58e8d3:
     m "Unit cost at the price we promised: we lose fifteen on every unit, at this size."
     m "Every new backer makes our hole deeper."
     m "This is the worst thing that has ever happened to us."
-    narrator "{color=#55FF55}TIP:{/color} Unit cost is what one item costs to make and ship. Overfunding means raising far more than your goal."
-    narrator "{color=#55FF55}TIP:{/color} Capping closes the sale and disappoints new fans. Letting it run brings in more money, but more items sold below cost."
+    narrator "{color=#578C88}TIP:{/color} Unit cost is what one item costs to make and ship. Overfunding means raising far more than your goal."
+    narrator "{color=#578C88}TIP:{/color} Capping closes the sale and disappoints new fans. Letting it run brings in more money, but more items sold below cost."
 
 # game/ch2_tge.rpy:105
 translate plain ch2_tge_caa78bc8:
@@ -186,8 +186,8 @@ translate plain ch2_tge_b2cfe92d:
     s "launch in 72 hours."
     s "i need 20 eth and admin access to audit properly."
     s "or don't. good luck either way."
-    narrator "{color=#55FF55}TIP:{/color} An audit is an expert check of your code for security holes. Scoped access means access limited to what the audit needs."
-    narrator "{color=#55FF55}TIP:{/color} Funding it costs 20 ETH and some trust. Reviewing it yourselves costs nothing, but must happen tonight, in a rush."
+    narrator "{color=#578C88}TIP:{/color} An audit is an expert check of your code for security holes. Scoped access means access limited to what the audit needs."
+    narrator "{color=#578C88}TIP:{/color} Funding it costs 20 ETH and some trust. Reviewing it yourselves costs nothing, but must happen tonight, in a rush."
 
 # game/ch2_tge.rpy:123
 translate plain ch2_tge_1632dd41:
@@ -209,8 +209,8 @@ translate plain ch2_tge_ee012430:
     # j "Um. pixel_pal pasted the multisig seed phrase into the team Notion. 'Just temporarily.' It's been six hours."
     j "Um. pixel_pal pasted the multisig seed phrase into the team Notion page."
     j "'Just for now,' they said. That was six hours ago."
-    narrator "{color=#55FF55}TIP:{/color} A multisig is a shared wallet that needs several people to approve. A seed phrase is the master password to a wallet. Anyone who sees it can take the money."
-    narrator "{color=#55FF55}TIP:{/color} A public response sends a strong message, but shames a teammate. A quiet fix is gentler. Waiting saves time now, but the phrase stays visible."
+    narrator "{color=#578C88}TIP:{/color} A multisig is a shared wallet that needs several people to approve. A seed phrase is the master password to a wallet. Anyone who sees it can take the money."
+    narrator "{color=#578C88}TIP:{/color} A public response sends a strong message, but shames a teammate. A quiet fix is gentler. Waiting saves time now, but the phrase stays visible."
 
 # game/ch2_tge.rpy:137
 translate plain ch2_tge_3f51a0af:
@@ -240,7 +240,7 @@ translate plain ch2_tge_b5942a1b:
     v "Here's my counteroffer to your whale."
     v "Twenty ETH for a small share. No board seat for me."
     v "And once a month, we have dinner, and you tell me the truth."
-    narrator "{color=#55FF55}TIP:{/color} A board seat is a formal role with power over big decisions. Vera wants a small share and monthly honest talks, not control."
+    narrator "{color=#578C88}TIP:{/color} A board seat is a formal role with power over big decisions. Vera wants a small share and monthly honest talks, not control."
 
 # game/ch2_tge.rpy:158
 translate plain ch2_tge_c35dc01f:
@@ -272,11 +272,11 @@ translate plain ch2_tge_9fdcf245:
     narrator "Nobody warns founders about the tired mornings after."
 
 # game/ch2_tge.rpy:171
-translate plain ch2_tge_18d6d3f5:
+translate plain ch2_tge_9420daa6:
 
-    # narrator "The chart is beautiful tonight. 90%% of your treasury agrees with itself. {i}(Remember this candle.){/i}"
+    # narrator "The chart is beautiful tonight. 90%% of your treasury agrees with itself. (Remember this candle.)"
     narrator "The price chart looks beautiful tonight."
-    narrator "90 percent of your treasury is one token, so it all moves together. {i}(Remember this candle — this moment on the chart.){/i}"
+    narrator "90 percent of your treasury is one token, so it all moves together. (Remember this candle — this moment on the chart.)"
 
 translate plain strings:
 

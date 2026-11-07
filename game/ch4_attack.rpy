@@ -52,19 +52,19 @@ label ch4a_phish:
 
     ## 4a.2 THE SET PIECE — verify the hex (vault 4a.2)
     scene bg signing with fade
-    narrator "SIGN TRANSACTION?\n\nTo: Vendor Payments Ltd ✓\nAmount: 12.5 ETH ✓\nGas: normal ✓"
+    narrator "SIGN TRANSACTION?\n\nTo: Vendor Payments Ltd [OK]\nAmount: 12.5 ETH [OK]\nGas: normal [OK]"
     narrator "Everything looks fine. It is 1:14 a.m. Your Burnout is [burnout]. The confirm button is very large and very green."
     menu:
-        "◉ SIGN — it's the same invoice as always.":
+        "• SIGN — it's the same invoice as always.":
             $ adjust(treasury=-60, security=-20, vibes=-15)
             $ mark("Signed a spoofed transaction without checking the raw hex")
             narrator "The 'summary' was drawn by malware. The real destination was 0x7C3f…a91E — a fresh wallet, already tumbling your 60 ETH into fog."
             call lesson("verify_hex")
-        "▢ EXPAND RAW DATA — check the hex against the whitelist.":
+        "› EXPAND RAW DATA — check the hex against the whitelist.":
             if burnout >= 60:
-                narrator "You expand the raw data. The hex swims — you're too tired for this.\n\nWhitelist:  {color=#55FF55}0x4A21…9DEB{/color}\nDestination: {color=#AAAAAA}0x4A2l…9DE8{/color}\n\n(Is that an l? An 8? You genuinely cannot tell tonight.)"
+                narrator "You expand the raw data. The hex swims — you're too tired for this.\n\nWhitelist:  {color=#578C88}0x4A21…9DEB{/color}\nDestination: {color=#9D908D}0x4A2l…9DE8{/color}\n\n(Is that an l? An 8? You genuinely cannot tell tonight.)"
             else:
-                narrator "You expand the raw data.\n\nWhitelist:  {color=#55FF55}0x4A21…9DEB{/color}\nDestination: {color=#FF5555}0x7C3f…a91E{/color}\n\nNot even close."
+                narrator "You expand the raw data.\n\nWhitelist:  {color=#578C88}0x4A21…9DEB{/color}\nDestination: {color=#D3710D}0x7C3f…a91E{/color}\n\nNot even close."
             menu:
                 "REJECT. Kill the queue. Wake everyone up.":
                     $ adjust(security=+15, spectre=+10)
@@ -107,12 +107,12 @@ label ch4b_fiftyone:
         show alex sincere at right with dissolve
         a "It's Atlas. I'd know that gas-price signature anywhere. You have maybe a day before the proposal drops. Use it."
         $ adjust(security=+5)
-    narrator "The proposal appears at dawn: {i}'Treasury Diversification Initiative.'{/i} Professional. Reasonable. Beautifully formatted."
+    narrator "The proposal appears at dawn: 'Treasury Diversification Initiative.' Professional. Reasonable. Beautifully formatted."
     if timelocks:
         narrator "Buried in the code: a drain to an address Atlas controls. Your time-locks force a 7-day review — which is why anyone found it at all."
         call lesson("flashloan")
     else:
-        narrator "Buried in the code: a drain function. And with no time-locks, it executes the moment it passes. A charming proposal to fund an animal shelter posts an hour later. {i}(The distraction.){/i}"
+        narrator "Buried in the code: a drain function. And with no time-locks, it executes the moment it passes. A charming proposal to fund an animal shelter posts an hour later. (The distraction.)"
         call lesson("flashloan")
     show atlas predatory at right with dissolve
     w "Nothing personal, founder. Someone responsible was always going to end up holding the keys. I'd hoped you'd hand them over gently."
@@ -148,7 +148,7 @@ label ch4c_spiral:
     if not maya_gone:
         show maya tired at left with dissolve
         m "Treasury purchasing power is down 70%%. Payroll is Thursday. I want it on record that I said the word 'barbell' in this room."
-    narrator "The spiral logic is simple and airless: you need cash → you sell your token → the price falls → you need more cash."
+    narrator "The spiral logic is simple and airless: you need cash » you sell your token » the price falls » you need more cash."
 
     ## 4c.2 The choice
     menu:
@@ -176,7 +176,7 @@ label ch4_triage:
     ## 4.5 Triage (vault 4.5)
     scene bg coworking with fade
     $ adjust(burnout=+20)
-    narrator "Casualty accounting, morning after: Treasury [treasury]Ξ. Vibes [vibes]. Security [security]. Morale [morale]. Burnout [burnout] — crises bill the founder first."
+    narrator "Casualty accounting, morning after: Treasury [treasury] ETH. Vibes [vibes]. Security [security]. Morale [morale]. Burnout [burnout] — crises bill the founder first."
     narrator "The collective is still here. Changed — the way a house is changed by a fire it survived."
     if burnout >= 80:
         call forced_rest

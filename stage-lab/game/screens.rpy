@@ -1,4 +1,4 @@
-﻿################################################################################
+################################################################################
 ## Initialization
 ################################################################################
 
@@ -12,6 +12,9 @@ init offset = -1
 style default:
     properties gui.text_properties()
     language gui.language
+    ## Any focusable region on a non-Button displayable (such as {a=gloss:...}
+    ## hyperlinks inside Text, or sliders/scrollbars) uses the pointer cursor.
+    mouse "button"
 
 style input:
     properties gui.text_properties("input", accent=True)
@@ -19,10 +22,11 @@ style input:
 
 style hyperlink_text:
     properties gui.text_properties("hyperlink", accent=True)
-    ## Hyperlinks are glossary terms (glossary.rpy): yellow, underlined.
-    color "#FFFF55"
-    hover_color "#FFFFFF"
+    ## Hyperlinks are glossary terms (glossary.rpy): glow amber, underlined.
+    color "#FAC443"
+    hover_color "#FFF3C9"
     underline True
+    mouse "button"
 
 style gui_text:
     properties gui.text_properties("interface")
@@ -30,6 +34,7 @@ style gui_text:
 
 style button:
     properties gui.button_properties("button")
+    mouse "button"
 
 style button_text is gui_text:
     properties gui.text_properties("button")
@@ -38,6 +43,9 @@ style button_text is gui_text:
 
 style label_text is gui_text:
     properties gui.text_properties("label", accent=True)
+    font gui.serif_font
+    axis {"weight": 300, "opticalsize": 36}
+    color "#EED4B4"
 
 style prompt_text is gui_text:
     properties gui.text_properties("prompt")
@@ -103,14 +111,17 @@ screen say(who, what):
     window:
         id "window"
 
-        if who is not None:
+        fixed:
+            yfit True
 
-            window:
-                id "namebox"
-                style "namebox"
-                text who id "who"
+            if who is not None:
 
-        text what id "what"
+                window:
+                    id "namebox"
+                    style "namebox"
+                    text who id "who"
+
+            text what id "what" ypos (gui.dialogue_ypos if who is not None else 42)
 
 
     ## If there's a side image, display it above the text. Do not display on the
@@ -136,9 +147,14 @@ style window:
     xalign 0.5
     xfill True
     yalign gui.textbox_yalign
-    ysize gui.textbox_height
+    yminimum gui.textbox_height
 
-    background Image("gui/textbox.png", xalign=0.5, yalign=1.0)
+    top_padding 0
+    bottom_padding 28
+    left_padding 0
+    right_padding 0
+
+    background Frame("gui/textbox.png", Borders(200, 32, 200, 32), tile=False, xalign=0.5, yalign=1.0)
 
 style namebox:
     xpos gui.name_xpos
@@ -152,6 +168,9 @@ style namebox:
 
 style say_label:
     properties gui.text_properties("name", accent=True)
+    font gui.sans_font
+    axis {"weight": 600}
+    color "#FAC443"
     xalign gui.name_xalign
     yalign 0.5
 
@@ -210,13 +229,15 @@ style input:
 screen choice(items):
     style_prefix "choice"
 
+    default shuffled_items = renpy.random.sample(list(items), len(items))
+
     ## Glossary: terms in choices unlock when the menu appears (glossary.rpy).
     ## Captions arrive already glossary-linked, which would break the plain-mode
     ## string lookup — gloss_choice_text unlinks, translates, then underlines.
-    on "show" action Function(gloss_unlock_text, *[gloss_choice_raw(i.caption) for i in items])
+    on "show" action Function(gloss_unlock_text, *[gloss_choice_raw(i.caption) for i in shuffled_items])
 
     vbox:
-        for i in items:
+        for i in shuffled_items:
             textbutton gloss_choice_text(i.caption) action i.action
 
 
@@ -238,55 +259,154 @@ style choice_button_text is default:
     properties gui.text_properties("choice_button")
 
 
-## Quick Menu screen ###########################################################
+## Quick Menu screen (Upper-Right Thumb-Friendly Hamburger Menu) ###############
 ##
-## The quick menu is displayed in-game to provide easy access to the out-of-game
-## menus.
+## The quick menu is displayed in-game via a large, thumb-friendly hamburger
+## button in the upper-right corner that opens a touch-friendly menu panel.
+
+default quick_menu = True
+default quick_menu_open = False
+
+init python:
+    class HamburgerAction(Action):
+        """Closes the hamburger menu and runs the underlying action while preserving sensitivity/selection state."""
+        def __init__(self, action):
+            self.action = action
+        def __call__(self):
+            renpy.store.quick_menu_open = False
+            renpy.restart_interaction()
+            return renpy.run(self.action)
+        def get_sensitive(self):
+            return getattr(self.action, "get_sensitive", lambda: True)()
+        def get_selected(self):
+            return getattr(self.action, "get_selected", lambda: False)()
+
+    config.overlay_screens.append("quick_menu")
 
 screen quick_menu():
 
     ## Ensure this appears on top of other screens.
     zorder 100
 
-    if quick_menu:
+    on "hide" action SetVariable("quick_menu_open", False)
 
-        hbox:
-            style_prefix "quick"
-            style "quick_menu"
+    if quick_menu and not renpy.get_screen("constellation_map"):
 
-            textbutton _("Back") action Rollback()
-            textbutton _("History") action ShowMenu('history')
-            textbutton _("Glossary") action ShowMenu('glossary')
-            textbutton _("Skip") action Skip() alternate Skip(fast=True, confirm=True)
-            textbutton _("Auto") action Preference("auto-forward", "toggle")
-            textbutton _("Save") action ShowMenu('save')
-            textbutton _("Q.Save") action QuickSave()
-            textbutton _("Q.Load") action QuickLoad()
-            textbutton _("Prefs") action ShowMenu('preferences')
+        ## Dimmed full-screen backdrop to dismiss when tapping outside the menu
+        if quick_menu_open:
+            button:
+                xfill True
+                yfill True
+                background "#140702BA"
+                action SetVariable("quick_menu_open", False)
 
-        key "g" action ShowMenu('glossary')
+            key "K_ESCAPE" action SetVariable("quick_menu_open", False)
 
+        ## Upper-right thumb-friendly hamburger button
+        button:
+            style "hamburger_toggle_button"
+            xalign 1.0
+            yalign 0.0
+            xoffset -24
+            yoffset 20
+            action ToggleVariable("quick_menu_open")
+            if quick_menu_open:
+                text "×" color "#FAC443" size 44 align (0.5, 0.5)
+            else:
+                vbox:
+                    align (0.5, 0.5)
+                    spacing 9
+                    add Solid("#EED4B4", xsize=40, ysize=3)
+                    add Solid("#EED4B4", xsize=40, ysize=3)
+                    add Solid("#EED4B4", xsize=40, ysize=3)
 
-## This code ensures that the quick_menu screen is displayed in-game, whenever
-## the player has not explicitly hidden the interface.
-init python:
-    config.overlay_screens.append("quick_menu")
+        ## Expanded thumb-friendly menu panel
+        if quick_menu_open:
+            frame:
+                style "hamburger_menu_frame"
+                xalign 1.0
+                yalign 0.0
+                xoffset -24
+                yoffset 118
 
-default quick_menu = True
+                vbox:
+                    spacing 14
+
+                    hbox:
+                        spacing 14
+                        textbutton _("BACK") style "hamburger_item_button" action HamburgerAction(Rollback())
+                        textbutton _("HISTORY") style "hamburger_item_button" action HamburgerAction(ShowMenu('history'))
+
+                    hbox:
+                        spacing 14
+                        textbutton _("GLOSSARY") style "hamburger_item_button" action HamburgerAction(ShowMenu('glossary'))
+                        textbutton _("LESSONS") style "hamburger_item_button" action HamburgerAction(ShowMenu('lessons_codex'))
+
+                    textbutton _("EXIT TO CONSTELLATION") style "hamburger_exit_button" action HamburgerAction(Jump('world_overview'))
+
+                    hbox:
+                        spacing 14
+                        textbutton _("SKIP") style "hamburger_item_button" action HamburgerAction(Skip()) alternate HamburgerAction(Skip(fast=True, confirm=True))
+                        textbutton _("AUTO") style "hamburger_item_button" action HamburgerAction(Preference("auto-forward", "toggle"))
+
+                    hbox:
+                        spacing 14
+                        textbutton _("SAVE") style "hamburger_item_button" action HamburgerAction(ShowMenu('save'))
+                        textbutton _("Q.SAVE") style "hamburger_item_button" action HamburgerAction(QuickSave())
+
+                    hbox:
+                        spacing 14
+                        textbutton _("Q.LOAD") style "hamburger_item_button" action HamburgerAction(QuickLoad())
+                        textbutton _("PREFS") style "hamburger_item_button" action HamburgerAction(ShowMenu('preferences'))
+
+        key "g" action HamburgerAction(ShowMenu('glossary'))
+        key "l" action HamburgerAction(ShowMenu('lessons_codex'))
+
 
 style quick_menu is hbox
 style quick_button is default
 style quick_button_text is button_text
 
-style quick_menu:
-    xalign 0.5
-    yalign 1.0
+style hamburger_toggle_button is button:
+    xsize 104
+    ysize 88
+    background Frame("gui/notify.png", gui.notify_frame_borders)
+    hover_background "#42281EF2"
+    padding (20, 16)
 
-style quick_button:
-    properties gui.button_properties("quick_button")
+style hamburger_menu_frame is frame:
+    background Frame("gui/frame.png", gui.frame_borders)
+    padding (24, 24)
 
-style quick_button_text:
-    properties gui.text_properties("quick_button")
+style hamburger_item_button is button:
+    xsize 340
+    ysize 96
+    background "#241309"
+    hover_background "#42281E"
+    selected_background "#42281E"
+    insensitive_background "#1E140E"
+    padding (20, 16)
+
+style hamburger_item_button_text is button_text:
+    align (0.5, 0.5)
+    text_align 0.5
+    font gui.mono_font
+    size 20
+    kerning 4.0
+    color "#DDBCAD"
+    hover_color "#FAC443"
+    selected_color "#EED4B4"
+    insensitive_color "#9D908D7F"
+
+style hamburger_exit_button is hamburger_item_button:
+    xsize 694
+    ysize 96
+    background "#42281E"
+    hover_background "#834225"
+
+style hamburger_exit_button_text is hamburger_item_button_text:
+    color "#FAC443"
+    hover_color "#FFF3C9"
 
 
 ################################################################################
@@ -310,9 +430,11 @@ screen navigation():
 
         if main_menu:
 
-            textbutton _("Start") action Start()
+            textbutton _("Constellation") action ShowMenu("main_menu")
 
         else:
+
+            textbutton _("Constellation") action Jump("world_overview")
 
             textbutton _("History") action ShowMenu("history")
 
@@ -322,15 +444,13 @@ screen navigation():
 
         textbutton _("Glossary") action ShowMenu("glossary")
 
+        textbutton _("Lessons") action ShowMenu("lessons_codex")
+
         textbutton _("Preferences") action ShowMenu("preferences")
 
         if _in_replay:
 
             textbutton _("End Replay") action EndReplay(confirm=True)
-
-        elif not main_menu:
-
-            textbutton _("Main Menu") action MainMenu()
 
         textbutton _("About") action ShowMenu("about")
 
@@ -359,35 +479,14 @@ style navigation_button_text:
 
 ## Main Menu screen ############################################################
 ##
-## Used to display the main menu when Ren'Py starts.
-##
-## https://www.renpy.org/doc/html/screen_special.html#main-menu
+## The Episode Constellation IS the Start Screen.
 
 screen main_menu():
 
     ## This ensures that any other menu screen is replaced.
     tag menu
 
-    add gui.main_menu_background
-
-    ## This empty frame darkens the main menu.
-    frame:
-        style "main_menu_frame"
-
-    ## The use statement includes another screen inside this one. The actual
-    ## contents of the main menu are in the navigation screen.
-    use navigation
-
-    if gui.show_name:
-
-        vbox:
-            style "main_menu_vbox"
-
-            text "[config.name!t]":
-                style "main_menu_title"
-
-            text "[config.version]":
-                style "main_menu_version"
+    use constellation_map
 
 
 style main_menu_frame is empty
@@ -414,6 +513,9 @@ style main_menu_text:
 
 style main_menu_title:
     properties gui.text_properties("title")
+    font gui.serif_font
+    axis {"weight": 300, "opticalsize": 72}
+    color "#EED4B4"
 
 style main_menu_version:
     properties gui.text_properties("version")
@@ -541,8 +643,10 @@ style game_menu_label:
     ysize 180
 
 style game_menu_label_text:
-    size 75
-    color gui.accent_color
+    font gui.serif_font
+    axis {"weight": 300, "opticalsize": 64}
+    size 64
+    color "#EED4B4"
     yalign 0.5
 
 style return_button:
@@ -768,14 +872,6 @@ screen preferences():
                     textbutton _("Unseen Text") action Preference("skip", "toggle")
                     textbutton _("After Choices") action Preference("after choices", "toggle")
                     textbutton _("Transitions") action InvertSelected(Preference("transitions", "toggle"))
-
-                ## Story text: "plain" is a Ren'Py language (game/tl/plain/) —
-                ## the ELI5 / ESL-friendly script. None = the original script.
-                vbox:
-                    style_prefix "radio"
-                    label _("Story Text")
-                    textbutton _("Plain") action Language("plain")
-                    textbutton _("Original") action Language(None)
 
                 vbox:
                     style_prefix "check"
@@ -1243,11 +1339,11 @@ screen skip_indicator():
         hbox:
             spacing 9
 
-            text _("Skipping")
+            text _("SKIPPING")
 
-            text "▸" at delayed_blink(0.0, 1.0) style "skip_triangle"
-            text "▸" at delayed_blink(0.2, 1.0) style "skip_triangle"
-            text "▸" at delayed_blink(0.4, 1.0) style "skip_triangle"
+            text "›" at delayed_blink(0.0, 1.0) style "skip_triangle"
+            text "›" at delayed_blink(0.2, 1.0) style "skip_triangle"
+            text "›" at delayed_blink(0.4, 1.0) style "skip_triangle"
 
 
 ## This transform is used to blink the arrows one after another.
@@ -1274,12 +1370,14 @@ style skip_frame:
     padding gui.skip_frame_borders.padding
 
 style skip_text:
+    font gui.mono_font
     size gui.notify_text_size
+    kerning 4.4
+    color "#EED4B4"
 
 style skip_triangle:
-    ## We have to use a font that has the BLACK RIGHT-POINTING SMALL TRIANGLE
-    ## glyph in it.
-    font "DejaVuSans.ttf"
+    font gui.sans_font
+    color "#FAC443"
 
 
 ## Notify screen ###############################################################
@@ -1486,13 +1584,13 @@ style bubble_namebox:
 style bubble_who:
     xalign 0.5
     textalign 0.5
-    color "#000"
+    color "#FAC443"
 
 style bubble_what:
     align (0.5, 0.5)
     text_align 0.5
     layout "subtitle"
-    color "#000"
+    color "#DDBCAD"
 
 define bubble.frame = Frame("gui/bubble.png", 55, 55, 55, 95)
 define bubble.thoughtframe = Frame("gui/thoughtbubble.png", 55, 55, 55, 55)
@@ -1541,29 +1639,10 @@ style pref_vbox:
     variant "medium"
     xsize 675
 
-## Since a mouse may not be present, we replace the quick menu with a version
-## that uses fewer and bigger buttons that are easier to touch.
-screen quick_menu():
-    variant "touch"
-
-    zorder 100
-
-    if quick_menu:
-
-        hbox:
-            style "quick_menu"
-            style_prefix "quick"
-
-            textbutton _("Back") action Rollback()
-            textbutton _("Skip") action Skip() alternate Skip(fast=True, confirm=True)
-            textbutton _("Auto") action Preference("auto-forward", "toggle")
-            textbutton _("Glossary") action ShowMenu("glossary")
-            textbutton _("Menu") action ShowMenu()
-
 
 style window:
     variant "small"
-    background "gui/phone/textbox.png"
+    background Frame("gui/phone/textbox.png", Borders(32, 32, 32, 32), tile=False)
 
 style radio_button:
     variant "small"

@@ -1,0 +1,72 @@
+{
+  "v": 3,
+  "assetGroups": {
+    "Imagery": {
+      "files": {
+        "architecture-of-liberation.jpg": {
+          "blob": "56ad21732cfbaf7335160c2a8e7a1112",
+          "name": "architecture-of-liberation.jpg",
+          "size": 341628,
+          "type": "image/jpeg"
+        },
+        "blueprint-sovereign-futures.jpg": {
+          "blob": "89fdbaca738f8f1980f6b20c35cefe19",
+          "name": "blueprint-sovereign-futures.jpg",
+          "size": 193114,
+          "type": "image/jpeg"
+        },
+        "economic-paradigm-and-nodes.jpg": {
+          "blob": "e26c36801ad0a3ab701a2789ad5c854e",
+          "name": "economic-paradigm-and-nodes.jpg",
+          "size": 281903,
+          "type": "image/jpeg"
+        },
+        "first-constellation.jpg": {
+          "blob": "7646d58b46c5ae07ffbfa8e25132e999",
+          "name": "first-constellation.jpg",
+          "size": 87964,
+          "type": "image/jpeg"
+        }
+      },
+      "name": "Imagery",
+      "order": [
+        "architecture-of-liberation.jpg",
+        "blueprint-sovereign-futures.jpg",
+        "economic-paradigm-and-nodes.jpg",
+        "first-constellation.jpg"
+      ],
+      "tile": "l"
+    }
+  },
+  "blobs": {},
+  "createdOnFiles": {
+    "at": "2026-10-15T22:50:40Z",
+    "v": 1
+  },
+  "docs": {
+    "sections": []
+  },
+  "groups": [
+    "Imagery"
+  ],
+  "lastChange": {
+    "at": "2026-10-22T01:00:00Z",
+    "by": "Jordan",
+    "note": "Bundled Fraunces, Karla and IBM Plex Mono font files so Typography renders them; earlier: re-based on Asya's boards, HungPanel added, cover remade",
+    "via": "Claude (claude.ai chat)"
+  },
+  "layout": "files",
+  "libraries": [
+    {
+      "name": "react",
+      "version": "18"
+    },
+    {
+      "name": "react-dom",
+      "version": "18"
+    }
+  ],
+  "namespace": "DAOcubator",
+  "sections": {},
+  "title": "DAOcubator"
+}

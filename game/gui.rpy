@@ -22,66 +22,97 @@ define config.check_conflicting_properties = True
 
 ## Colors ######################################################################
 ##
-## The colors of text in the interface.
+## The colors of text in the interface (DAOcubator Design System tokens).
+
+## Core DAOcubator palette tokens
+define gui.color_ink = '#140702'
+define gui.color_char = '#1E140E'
+define gui.color_ground = '#241309'
+define gui.color_panel = '#2D1B10'
+define gui.color_field = '#42281E'
+define gui.color_clay = '#B87444'
+define gui.color_rust = '#834225'
+define gui.color_ember = '#D3710D'
+define gui.color_glow = '#FAC443'
+define gui.color_glow_core = '#FFF3C9'
+define gui.color_sand = '#AE896A'
+define gui.color_verdigris = '#3B615F'
+define gui.color_teal = '#578C88'
+define gui.color_slate = '#6B6E86'
+define gui.color_lavender = '#8C8CA3'
+define gui.color_viol = '#C2AEC7'
+define gui.color_ultramarine = '#211668'
+define gui.color_mark = '#1C1A15'
+define gui.color_flame = '#EED4B4'
+define gui.color_bone = '#DDBCAD'
+define gui.color_ash = '#9D908D'
+define gui.color_rule = '#DDBCAD29'
+define gui.color_rule_strong = '#DDBCAD4D'
+define gui.color_on_glow = '#140702'
 
 ## An accent color used throughout the interface to label and highlight text.
-define gui.accent_color = '#E07A5F'
+define gui.accent_color = '#FAC443'
 
 ## The color used for a text button when it is neither selected nor hovered.
-define gui.idle_color = '#D8D0C5'
+define gui.idle_color = '#DDBCAD'
 
 ## The small color is used for small text, which needs to be brighter/darker to
 ## achieve the same effect.
-define gui.idle_small_color = '#B8B0A4'
+define gui.idle_small_color = '#9D908D'
 
 ## The color that is used for buttons and bars that are hovered.
-define gui.hover_color = '#F2CC8F'
+define gui.hover_color = '#FAC443'
 
 ## The color used for a text button when it is selected but not focused. A
 ## button is selected if it is the current screen or preference value.
-define gui.selected_color = '#F4EFE6'
+define gui.selected_color = '#EED4B4'
 
 ## The color used for a text button when it cannot be selected.
-define gui.insensitive_color = '#6E665E7F'
+define gui.insensitive_color = '#9D908D7F'
 
 ## Colors used for the portions of bars that are not filled in. These are not
 ## used directly, but are used when re-generating bar image files.
-define gui.muted_color = '#2A231E'
-define gui.hover_muted_color = '#3D332B'
+define gui.muted_color = '#241309'
+define gui.hover_muted_color = '#42281E'
 
 ## The colors used for dialogue and menu choice text.
-define gui.text_color = '#F4EFE6'
-define gui.interface_text_color = '#EAE3D9'
+define gui.text_color = '#DDBCAD'
+define gui.interface_text_color = '#DDBCAD'
 
 
 ## Fonts and Font Sizes ########################################################
 
+## DAOcubator Design System font families (3 fonts: Fraunces 300, Karla, IBM Plex Mono 500).
+define gui.serif_font = "fonts/Fraunces-Variable.woff2"
+define gui.sans_font = "fonts/Karla-Variable.woff2"
+define gui.mono_font = "fonts/IBMPlexMono-Medium.woff2"
+
 ## The font used for in-game text.
-define gui.text_font = "DejaVuSans.ttf"
+define gui.text_font = "fonts/Karla-Variable.woff2"
 
 ## The font used for character names.
-define gui.name_text_font = "DejaVuSans.ttf"
+define gui.name_text_font = "fonts/Karla-Variable.woff2"
 
 ## The font used for out-of-game text.
-define gui.interface_text_font = "DejaVuSans.ttf"
+define gui.interface_text_font = "fonts/Karla-Variable.woff2"
 
 ## The size of normal dialogue text.
-define gui.text_size = 33
+define gui.text_size = 32
 
 ## The size of character names.
-define gui.name_text_size = 45
+define gui.name_text_size = 28
 
 ## The size of text in the game's user interface.
-define gui.interface_text_size = 33
+define gui.interface_text_size = 30
 
 ## The size of labels in the game's user interface.
-define gui.label_text_size = 36
+define gui.label_text_size = 34
 
 ## The size of text on the notify screen.
-define gui.notify_text_size = 24
+define gui.notify_text_size = 22
 
 ## The size of the game's title.
-define gui.title_text_size = 75
+define gui.title_text_size = 72
 
 
 ## Main and Game Menus #########################################################
@@ -106,7 +137,7 @@ define gui.textbox_yalign = 1.0
 
 ## The placement of the speaking character's name, relative to the textbox.
 ## These can be a whole number of pixels from the left or top, or 0.5 to center.
-define gui.name_xpos = 360
+define gui.name_xpos = 240
 define gui.name_ypos = 0
 
 ## The horizontal alignment of the character's name. This can be 0.0 for left-
@@ -120,7 +151,7 @@ define gui.namebox_height = None
 
 ## The borders of the box containing the character's name, in left, top, right,
 ## bottom order.
-define gui.namebox_borders = Borders(24, 6, 24, 6)
+define gui.namebox_borders = Borders(20, 8, 20, 8)
 
 ## If True, the background of the namebox will be tiled, if False, the
 ## background of the namebox will be scaled.
@@ -130,11 +161,11 @@ define gui.namebox_tile = False
 ## The placement of dialogue relative to the textbox. These can be a whole
 ## number of pixels relative to the left or top side of the textbox, or 0.5 to
 ## center.
-define gui.dialogue_xpos = 402
-define gui.dialogue_ypos = 75
+define gui.dialogue_xpos = 240
+define gui.dialogue_ypos = 68
 
 ## The maximum width of dialogue text, in pixels.
-define gui.dialogue_width = 1116
+define gui.dialogue_width = 1440
 
 ## The horizontal alignment of the dialogue text. This can be 0.0 for left-
 ## aligned, 0.5 for centered, and 1.0 for right-aligned.
@@ -204,16 +235,16 @@ define gui.quick_button_text_selected_color = gui.accent_color
 ##
 ## Choice buttons are used in the in-game menus.
 
-define gui.choice_button_width = 1185
+define gui.choice_button_width = 1360
 define gui.choice_button_height = None
 define gui.choice_button_tile = False
-define gui.choice_button_borders = Borders(150, 8, 150, 8)
+define gui.choice_button_borders = Borders(60, 12, 60, 12)
 define gui.choice_button_text_font = gui.text_font
 define gui.choice_button_text_size = gui.text_size
 define gui.choice_button_text_xalign = 0.5
-define gui.choice_button_text_idle_color = '#E2E8F0'
-define gui.choice_button_text_hover_color = "#FFE57F"
-define gui.choice_button_text_insensitive_color = '#64748B7F'
+define gui.choice_button_text_idle_color = '#DDBCAD'
+define gui.choice_button_text_hover_color = "#FAC443"
+define gui.choice_button_text_insensitive_color = '#9D908D7F'
 
 
 ## File Slot Buttons ###########################################################

@@ -8,21 +8,21 @@
 screen rewind_overlay(headline="« REWINDING TIMELINE", subline="Dropping back before the disaster..."):
     modal True
     zorder 180
-    add "#0D0B09EE"
+    add "#140702EE"
     frame:
         xalign 0.5
         yalign 0.5
         xsize 1280
-        background "#1E1915"
+        background Frame("gui/frame.png", gui.frame_borders)
         padding (56, 44)
         at rewind_banner_flash
         vbox:
             spacing 18
             xalign 0.5
-            text "[headline]" color "#2EC4B6" size 44 xalign 0.5
-            text "[subline]" color "#F4EFE6" size 26 xalign 0.5
+            text "[headline]" font gui.mono_font kerning 5.2 color "#FAC443" size 26 xalign 0.5
+            text "[subline]" font gui.serif_font axis {"weight": 300, "opticalsize": 48} color "#EED4B4" size 38 xalign 0.5
             null height 8
-            text "Change the structure. Protect the keys. Save the collective." color "#F2CC8F" size 21 xalign 0.5
+            text "Change the structure. Protect the keys. Save the collective." font gui.sans_font color "#DDBCAD" size 22 xalign 0.5
             null height 10
             textbutton "« STEP INTO THE PAST" action Return() style "constellation_confirm_btn" xalign 0.5
 
@@ -37,41 +37,41 @@ screen bad_ending_rewind_modal(failure_title, failure_summary, lesson_id):
     zorder 190
     $ ldata = get_lesson_meta(lesson_id)
 
-    add "#120808EE"
+    add "#140702EA"
 
     frame:
         xalign 0.5
         yalign 0.5
         xsize 1380
-        background "#1F1413"
+        background Frame("gui/frame.png", gui.frame_borders)
         padding (48, 38)
 
         vbox:
             spacing 18
             hbox:
                 xfill True
-                text "✦ BAD ENDING — TIMELINE COLLAPSED" color "#E07A5F" size 26
-                text "[ldata['number']] · [ldata['category']]" color "#F2CC8F" size 22 xalign 1.0
+                text "• BAD ENDING — TIMELINE COLLAPSED" font gui.mono_font kerning 3.6 color "#D3710D" size 18
+                text "[ldata['number']] · [ldata['category'].upper()]" font gui.mono_font kerning 3.2 color "#B87444" size 16 xalign 1.0
 
-            text "[failure_title]" color "#F4EFE6" size 38
-            text "[failure_summary]" color "#E8E2D9" size 23
+            text "[failure_title]" font gui.serif_font axis {"weight": 300, "opticalsize": 48} color "#EED4B4" size 38
+            text "[failure_summary]" font gui.sans_font color "#DDBCAD" size 23 line_spacing 5
 
             frame:
                 xfill True
-                background "#161210"
+                background "#241309"
                 padding (26, 20)
                 vbox:
                     spacing 8
-                    text "✦ LESSON TAKEAWAY: [ldata['title']]" color "#2EC4B6" size 22
-                    text "[ldata['body']]" color "#D8D0C5" size 20
-                    text "{i}Real-world case study: [ldata['real_world']]{/i}" color "#BEB5A7" size 18
+                    text "LESSON TAKEAWAY · [ldata['title'].upper()]" font gui.mono_font kerning 3.2 color "#578C88" size 16
+                    text "[ldata['body']]" font gui.serif_font axis {"weight": 300, "opticalsize": 36} color "#EED4B4" size 22 line_spacing 5
+                    text "Real-world case study: [ldata['real_world']]" font gui.sans_font color "#9D908D" size 18 line_spacing 4
 
             null height 8
 
             hbox:
                 spacing 32
                 xalign 0.5
-                textbutton "TRY AGAIN" action Return("retry") style "constellation_confirm_btn"
+                textbutton "TRY AGAIN ›" action Return("retry") style "constellation_confirm_btn"
                 textbutton "QUIT SCENARIO" action Return("map") style "constellation_cancel_btn"
 
 
@@ -90,53 +90,53 @@ screen episode_complete_modal(ep_id, summary_text):
     zorder 190
     $ ep = EPISODES[ep_id]
 
-    add "#0B110FEE"
+    add "#140702EA"
 
     frame:
         xalign 0.5
         yalign 0.5
         xsize 1420
-        background "#17211E"
+        background Frame("gui/frame.png", gui.frame_borders)
         padding (42, 30)
 
         vbox:
             spacing 14
             hbox:
                 xfill True
-                text "✓ DISASTER AVERTED — GOOD ENDING UNLOCKED" color "#52B788" size 24
-                text "[ep['pillar_short']]" color "#F2CC8F" size 20 xalign 1.0
+                text "• DISASTER AVERTED — GOOD ENDING UNLOCKED" font gui.mono_font kerning 3.6 color "#578C88" size 18
+                text "[ep['pillar_short']]" font gui.mono_font kerning 3.2 color "#FAC443" size 16 xalign 1.0
 
             hbox:
                 spacing 28
                 frame:
-                    background "#101715"
+                    background "#1E140E"
                     padding (6, 6)
                     add ep["cg_happy"] at cg_modal_scale
                 vbox:
                     spacing 10
                     xfill True
-                    text "[ep['title']] — Resolved" color "#F4EFE6" size 36
-                    text "★ [ep['happy_title']]" color "#52B788" size 21
-                    text "[summary_text]" color "#E8E2D9" size 20
+                    text "[ep['title']] — Resolved" font gui.serif_font axis {"weight": 300, "opticalsize": 48} color "#EED4B4" size 36
+                    text "• [ep['happy_title'].upper()]" font gui.mono_font kerning 3.2 color "#578C88" size 16
+                    text "[summary_text]" font gui.sans_font color "#DDBCAD" size 20 line_spacing 5
 
             frame:
                 xfill True
-                background "#121917"
+                background "#241309"
                 padding (22, 16)
                 vbox:
                     spacing 8
-                    text "✦ LESSONS MASTERED IN THIS STORY:" color "#2EC4B6" size 20
+                    text "LESSONS MASTERED IN THIS STORY" font gui.mono_font kerning 3.2 color "#578C88" size 16
                     for lid in ep["lessons"]:
                         $ ldata = get_lesson_meta(lid)
-                        text "★ [ldata['number']] — [ldata['title']]: [ldata['body']]" color "#D8D0C5" size 18
+                        text "• [ldata['number']] — [ldata['title']]: [ldata['body']]" font gui.sans_font color "#DDBCAD" size 18
 
             null height 6
 
             hbox:
                 spacing 32
                 xalign 0.5
-                textbutton "✦ RETURN TO CONSTELLATION" action Return("map") style "constellation_confirm_btn"
-                textbutton "★ OPEN LESSONS CODEX" action [ShowMenu("lessons_codex"), Return("map")] style "constellation_cancel_btn"
+                textbutton "RETURN TO CONSTELLATION ›" action Return("map") style "constellation_confirm_btn"
+                textbutton "OPEN LESSONS CODEX" action [ShowMenu("lessons_codex"), Return("map")] style "constellation_cancel_btn"
 
 
 label complete_episode(ep_id, summary_text):

@@ -1,0 +1,15 @@
+<!-- @dsCard group="Diagrams" height=340 -->
+<!doctype html>
+<html><head><meta charset="utf-8"><title>NodeCard</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..600&family=Karla:wght@400;600&family=IBM+Plex+Mono:wght@400;500&display=swap"></head>
+<body><div id="root" class="dc-root dc-row"></div>
+<script>
+var D = window.DAOcubator, h = React.createElement;
+function icon(d) { return h('svg', { viewBox: '0 0 24 24' }, d.map(function (p, i) { return h('path', { key: i, d: p }); })); }
+var care = icon(['M12 14s-3-2-3-4a1.6 1.6 0 0 1 3-.8 1.6 1.6 0 0 1 3 .8c0 2-3 4-3 4z', 'M4 15c2 0 4 3 8 3s6-2 8-3', 'M12 9V4', 'M12 6c1.5-1.5 3-1.5 3-1.5S15 6 12 7']);
+var land = icon(['M3 20h18', 'M5 20v-7l5-4 5 4v7', 'M9 20v-4h2v4', 'M18 20v-5', 'M18 15c-2 0-2.5-2-2.5-2s2 0 2.5 2c.5-2 2.5-2 2.5-2s-.5 2-2.5 2']);
+ReactDOM.createRoot(document.getElementById('root')).render(h(React.Fragment, null,
+  h(D.NodeCard, { label: 'Care', icon: care }, 'Kindness Grocery Co-op: Meeting immediate physical needs, ending food deserts, and onboarding the unbanked.'),
+  h(D.NodeCard, { label: 'Land', icon: land, side: 'right' }, 'EarthChange: Deploying decentralized capital to purchase physical land and build community-owned infrastructure.')
+));
+</script></body></html>

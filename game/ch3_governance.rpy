@@ -14,7 +14,7 @@ label ch3_governance:
     scene bg conference with fade
     show maya alarmed at left with dissolve
     m "Proposal #17 just went up: 'Redistribute founder tokens to the community.' Thirty-five percent support and climbing."
-    m "Here's the uncomfortable part: half their arguments are {i}good{/i}."
+    m "Here's the uncomfortable part: half their arguments are good."
     if rel_vera >= 40:
         show vera stern at right with dissolve
         v "Before you touch that veto, founder: I watched a hundred union locals win that exact battle and lose everything after. There's a third path if you're brave enough to look weak."
@@ -123,7 +123,7 @@ label ch3_governance:
             narrator "The collective needs you. You need sleep. Only one of those needs has a Discord channel."
             call lesson("burnout")
     if burnout >= 60:
-        narrator "{color=#FF5555}Your judgment is fraying at the edges. From here on, don't fully trust your own read on consequences — that's not a metaphor, it's a mechanic.{/color}"
+        narrator "{color=#D3710D}Your judgment is fraying at the edges. From here on, don't fully trust your own read on consequences — that's not a metaphor, it's a mechanic.{/color}"
 
     ## 3.7 Alex's quiet dinner (vault 3.7)
     if rel_alex >= 50:

@@ -41,8 +41,8 @@ init 5 python:
         "ep1_keys": {
             "title": "No Keys, No Cheese",
             "pillar": "PILLAR I · KEYS & SOVEREIGNTY (CRYPTO BASIS)",
-            "pillar_short": "Keys & Sovereignty",
-            "color": "#E07A5F",
+            "pillar_short": "PILLAR I · KEYS & SOVEREIGNTY",
+            "color": "#D3710D",
             "pov": "Ash El (The Creator)",
             "cast": "Ash El · Lay-Lay · Xochtl",
             "pos": (430, 340),
@@ -68,8 +68,8 @@ init 5 python:
         "ep2_lisbon": {
             "title": "The Lisbon Refusal",
             "pillar": "PILLAR II · COLLABORATION & CO-OP = WINNING TOGETHER",
-            "pillar_short": "Collaboration & Co-op",
-            "color": "#2EC4B6",
+            "pillar_short": "PILLAR II · COLLABORATION & CO-OP",
+            "color": "#578C88",
             "pov": "Xochtl (The Shaman) & Ash El",
             "cast": "Xochtl · Ash El · Lay-Lay",
             "pos": (1490, 340),
@@ -95,8 +95,8 @@ init 5 python:
         "ep3_agreements": {
             "title": "Blood, Cacao & Paper",
             "pillar": "PILLAR III · MAKE & ENFORCE AGREEMENTS (LAW & STRUCTURE)",
-            "pillar_short": "Make & Enforce Agreements",
-            "color": "#F2CC8F",
+            "pillar_short": "PILLAR III · MAKE & ENFORCE AGREEMENTS",
+            "color": "#FAC443",
             "pov": "Ash El & Xochtl (Co-Creators)",
             "cast": "Ash El · Xochtl · Lay-Lay",
             "pos": (430, 760),
@@ -122,8 +122,8 @@ init 5 python:
         "ep4_apothecary": {
             "title": "The Keys of the Apothecary",
             "pillar": "PERSPECTIVE SHIFT · BEHIND THE ADMINISTRATOR'S LEDGER",
-            "pillar_short": "Perspective Shift (Lay-Lay POV)",
-            "color": "#9B7EDE",
+            "pillar_short": "PERSPECTIVE SHIFT · ADMIN & DEFENSE",
+            "color": "#C2AEC7",
             "pov": "Lay-Lay (The Administrator)",
             "cast": "Lay-Lay · Ash El · Xochtl",
             "pos": (1490, 760),
@@ -200,22 +200,23 @@ screen constellation_map():
     modal True
 
     add "bg constellation"
-    add "#100E0C66"
+    add "#1407027A"
 
     ## Top Header Bar — Game Title, Progress & Core Pillars
     frame:
         xalign 0.5
         ypos 12
         xsize 1860
-        background "#181512F2"
+        background "#1E140EF2"
         padding (28, 12)
         vbox:
             spacing 8
             hbox:
                 xfill True
                 vbox:
-                    text "✦ GET RICH TOGETHER — THE FIRST CONSTELLATION" color "#F2CC8F" size 28
-                    text "Click any story node below to witness the collapse, then rewind time and solve it in 3 decisions." color "#D8D0C5" size 18
+                    spacing 2
+                    text "Get Rich Together — The First Constellation" font gui.serif_font axis {"weight": 300, "opticalsize": 48} color "#EED4B4" size 30
+                    text "Click any story node below to witness the collapse, then rewind time and solve it in 3 decisions." font gui.sans_font color "#DDBCAD" size 18
                 hbox:
                     spacing 12
                     xalign 1.0
@@ -223,49 +224,49 @@ screen constellation_map():
                     $ num_ep_done = len(persistent.episodes_completed or set())
                     $ num_lessons_done = len(persistent.lessons_unlocked or set())
                     frame:
-                        background "#26211C"
+                        background "#241309"
                         padding (14, 6)
-                        text "RESOLVED: [num_ep_done]/4" color "#52B788" size 18
+                        text "RESOLVED · [num_ep_done]/4" font gui.mono_font kerning 3.2 color "#578C88" size 16
                     frame:
-                        background "#26211C"
+                        background "#241309"
                         padding (14, 6)
-                        text "LESSONS: [num_lessons_done]/[len(LESSONS)]" color "#F2CC8F" size 18
-                    textbutton "★ LESSONS CODEX" action ShowMenu("lessons_codex") style "constellation_nav_btn"
-                    textbutton "ˀ GLOSSARY" action ShowMenu("glossary") style "constellation_nav_btn"
+                        text "LESSONS · [num_lessons_done]/[len(LESSONS)]" font gui.mono_font kerning 3.2 color "#FAC443" size 16
+                    textbutton "LESSONS CODEX" action ShowMenu("lessons_codex") style "constellation_nav_btn"
+                    textbutton "GLOSSARY" action ShowMenu("glossary") style "constellation_nav_btn"
 
             ## The Core Lesson Pillars bar — sized to fit cleanly inside 1860px
             hbox:
                 spacing 14
                 xalign 0.5
                 frame:
-                    background "#241B17"
+                    background "#241309"
                     padding (14, 4)
-                    text "● PILLAR I: KEYS & SOVEREIGNTY" color "#E07A5F" size 16
+                    text "• PILLAR I: KEYS & SOVEREIGNTY" font gui.mono_font kerning 2.8 color "#D3710D" size 14
                 frame:
-                    background "#162422"
+                    background "#241309"
                     padding (14, 4)
-                    text "● PILLAR II: COLLABORATION & CO-OP = WINNING TOGETHER" color "#2EC4B6" size 16
+                    text "• PILLAR II: COLLABORATION & CO-OP = WINNING TOGETHER" font gui.mono_font kerning 2.8 color "#578C88" size 14
                 frame:
-                    background "#262116"
+                    background "#241309"
                     padding (14, 4)
-                    text "● PILLAR III: MAKE & ENFORCE AGREEMENTS" color "#F2CC8F" size 16
+                    text "• PILLAR III: MAKE & ENFORCE AGREEMENTS" font gui.mono_font kerning 2.8 color "#FAC443" size 14
                 frame:
-                    background "#1F1A29"
+                    background "#241309"
                     padding (14, 4)
-                    text "● PERSPECTIVE SHIFT: ADMIN & DEFENSE" color "#9B7EDE" size 16
+                    text "• PERSPECTIVE SHIFT: ADMIN & DEFENSE" font gui.mono_font kerning 2.8 color "#C2AEC7" size 14
 
-    ## Center Hub Badge ("PRIMORDIA / EFAM CORE")
+    ## Center Hub Badge ("Primordia / EFAM Core") — NodeCard / Hub Label
     frame:
         xalign 0.5
         yalign 0.53
-        background "#181512E8"
-        padding (26, 18)
+        background "#1E140EE8"
+        padding (28, 18)
         vbox:
             spacing 4
             xalign 0.5
-            text "✦ PRIMORDIA ✦" color "#F2CC8F" size 25 xalign 0.5
-            text "Essential Food & Medicine" color "#E07A5F" size 19 xalign 0.5
-            text "Ash El · Lay-Lay · Xochtl" color "#2EC4B6" size 17 xalign 0.5
+            text "Primordia" font gui.serif_font axis {"weight": 300, "opticalsize": 28} color "#FAC443" size 28 xalign 0.5
+            text "ESSENTIAL FOOD & MEDICINE" font gui.mono_font kerning 3.0 color "#EED4B4" size 15 xalign 0.5
+            text "Ash El · Lay-Lay · Xochtl" font gui.sans_font color "#578C88" size 16 xalign 0.5
 
     ## Glowing Constellation Nodes with Event CG Thumbnails (Disaster CG -> Happy CG)
     for ep_id in EPISODE_ORDER:
@@ -283,7 +284,7 @@ screen constellation_map():
             yanchor 0.5
             xsize 536
             ysize 326
-            background ("#1E352B66" if is_done else "#2E261F66")
+            background ("#3B615F66" if is_done else "#83422566")
             at constellation_orb_pulse
 
         ## Interactive Node Card with Cutscene Event CG Thumbnail
@@ -294,8 +295,8 @@ screen constellation_map():
             yanchor 0.5
             xsize 520
             padding (20, 14)
-            background ("#17241FF4" if is_done else "#1C1815F4")
-            hover_background "#2B241FF8"
+            background ("#1E140EF6" if is_done else "#241309F6")
+            hover_background "#2D1B10FA"
             at constellation_star_glow
             action Show("scenario_overview_modal", ep_id=ep_id)
 
@@ -306,44 +307,44 @@ screen constellation_map():
 
                 hbox:
                     xfill True
-                    text "[ep['pillar_short']]" color ep["color"] size 17
+                    text "[ep['pillar_short']]" font gui.mono_font kerning 2.6 color ep["color"] size 13
                     if is_done:
-                        text "✓ TIMELINE RESTORED" color "#52B788" size 16 xalign 1.0
+                        text "• TIMELINE RESTORED" font gui.mono_font kerning 2.6 color "#578C88" size 13 xalign 1.0
                     else:
-                        text "→ Inspect Scenario" color ep["color"] size 16 xalign 1.0
+                        text "INSPECT SCENARIO ›" font gui.mono_font kerning 2.6 color "#FAC443" size 13 xalign 1.0
 
-                text "✦ [ep['title']]" color "#F4EFE6" size 26
-                text "[sub_hook]  ·  POV: [ep['pov']]" color "#D8D0C5" size 16
+                text "[ep['title']]" font gui.serif_font axis {"weight": 300, "opticalsize": 36} color "#EED4B4" size 26
+                text "[sub_hook]  ·  POV: [ep['pov']]" font gui.sans_font color "#DDBCAD" size 16
 
                 hbox:
                     spacing 14
                     for lid in ep["lessons"]:
                         $ lmeta = get_lesson_meta(lid)
                         $ l_unlocked = lid in (persistent.lessons_unlocked or set())
-                        text ("★ " + lmeta["number"] + " " + lmeta["title"][:18] + ("…" if len(lmeta["title"]) > 18 else "") if l_unlocked else "☆ Lesson " + lmeta["number"]) color ("#52B788" if l_unlocked else "#888075") size 15
+                        text ("• " + lmeta["number"] + " " + lmeta["title"][:16].upper() + ("…" if len(lmeta["title"]) > 16 else "") if l_unlocked else "· LESSON " + lmeta["number"]) font gui.mono_font kerning 2.6 color ("#FAC443" if l_unlocked else "#9D908D") size 13
 
     ## Bottom Bar — Natural Glossary Footnote Explanation + System Menu Controls
     frame:
         xalign 0.5
         yalign 0.99
         xsize 1860
-        background "#181512F2"
+        background "#1E140EF2"
         padding (24, 10)
         hbox:
             xfill True
             hbox:
                 spacing 12
                 yalign 0.5
-                text "✦ In stories, click any highlighted {color=#FFFF55}{u}word{/u}ˀ{/color} to open its Glossary definition." color "#D8D0C5" size 18 yalign 0.5
+                text "In stories, click any highlighted {color=#FAC443}{u}word{/u}˚{/color} to open its Glossary definition." font gui.sans_font color "#DDBCAD" size 18 yalign 0.5
             hbox:
                 spacing 14
                 xalign 1.0
                 yalign 0.5
-                textbutton "📂 LOAD" action ShowMenu("load") style "constellation_nav_btn"
-                textbutton "⚙ PREFERENCES" action ShowMenu("preferences") style "constellation_nav_btn"
-                textbutton "ℹ ABOUT" action ShowMenu("about") style "constellation_nav_btn"
+                textbutton "LOAD" action ShowMenu("load") style "constellation_nav_btn"
+                textbutton "PREFERENCES" action ShowMenu("preferences") style "constellation_nav_btn"
+                textbutton "ABOUT" action ShowMenu("about") style "constellation_nav_btn"
                 if renpy.variant("pc"):
-                    textbutton "✕ QUIT" action Quit(confirm=not main_menu) style "constellation_nav_btn"
+                    textbutton "QUIT" action Quit(confirm=not main_menu) style "constellation_nav_btn"
 
     key "l" action ShowMenu("lessons_codex")
     key "g" action ShowMenu("glossary")
@@ -364,7 +365,7 @@ screen scenario_overview_modal(ep_id):
     button:
         xfill True
         yfill True
-        background "#0B0908E8"
+        background "#140702E0"
         action Hide("scenario_overview_modal")
 
     key "game_menu" action Hide("scenario_overview_modal")
@@ -376,17 +377,18 @@ screen scenario_overview_modal(ep_id):
         xsize 1350
         ysize 432
         padding (0, 0)
-        background "#1B1714"
+        background "#1E140E"
 
         ## Scenario CG (happy if good ending unlocked, otherwise disaster) + dark dimming overlay
         add cg_img at cg_modal_bg
-        add "#120F0DD4"
+        add "#140702D8"
 
         ## Absorb clicks inside the modal card so they don't trigger the outside backdrop button
         button:
             xfill True
             yfill True
             background None
+            mouse "default"
             action NullAction()
 
         vbox:
@@ -396,24 +398,24 @@ screen scenario_overview_modal(ep_id):
 
             vbox:
                 xalign 0.5
-                spacing 4
-                text "[ep['title']]" color "#F4EFE6" size 42 xalign 0.5 bold True outlines [(2, "#000000AA", 0, 0)]
-                text "[subtitle_text]" color ep["color"] size 20 xalign 0.5 bold True outlines [(1, "#000000AA", 0, 0)]
+                spacing 6
+                text "[subtitle_text]" font gui.mono_font kerning 3.4 color ep["color"] size 17 xalign 0.5 outlines [(1, "#140702CC", 0, 0)]
+                text "[ep['title']]" font gui.serif_font axis {"weight": 300, "opticalsize": 48} color "#EED4B4" size 44 xalign 0.5 outlines [(2, "#140702CC", 0, 0)]
 
-            text "[ep['omg_hook']]" color "#F4EFE6" size 23 xsize 1160 xalign 0.5 text_align 0.5 line_spacing 6 outlines [(2, "#000000CC", 0, 0)]
+            text "[ep['omg_hook']]" font gui.sans_font color "#DDBCAD" size 23 xsize 1160 xalign 0.5 text_align 0.5 line_spacing 6 outlines [(2, "#140702CC", 0, 0)]
 
             vbox:
                 xalign 0.5
-                spacing 10
+                spacing 12
 
                 if is_done:
-                    text "GOOD ENDING UNLOCKED" color "#52B788" size 26 xalign 0.5 bold True outlines [(2, "#000000CC", 0, 0)]
+                    text "• TIMELINE RESTORED — GOOD ENDING UNLOCKED" font gui.mono_font kerning 4.0 color "#578C88" size 20 xalign 0.5 outlines [(2, "#140702CC", 0, 0)]
 
                 hbox:
                     spacing 28
                     xalign 0.5
-                    textbutton ("Replay Story" if is_done else "Enter Story") action [Hide("scenario_overview_modal"), Start(ep["label"]) if main_menu else Jump(ep["label"])] style "constellation_confirm_btn"
-                    textbutton "Back" action Hide("scenario_overview_modal") style "constellation_cancel_btn"
+                    textbutton ("REPLAY STORY ›" if is_done else "ENTER STORY ›") action [Hide("scenario_overview_modal"), Start(ep["label"]) if main_menu else Jump(ep["label"])] style "constellation_confirm_btn"
+                    textbutton "BACK" action Hide("scenario_overview_modal") style "constellation_cancel_btn"
 
 
 ################################################################################
@@ -425,14 +427,14 @@ screen lessons_codex():
     tag menu
     modal True
 
-    add "#12100E"
+    add "#140702"
 
     frame:
         xalign 0.5
         yalign 0.5
         xsize 1780
         ysize 980
-        background "#1B1714"
+        background "#1E140E"
         padding (40, 32)
 
         vbox:
@@ -440,19 +442,21 @@ screen lessons_codex():
             hbox:
                 xfill True
                 vbox:
-                    text "★ CRYPTO-ETHICS & CO-OP LESSONS CODEX" color "#F2CC8F" size 34
-                    text "Every disaster teaches a real-world rule. Review unlocked lessons or inspect any lesson below." color "#BEB5A7" size 20
-                textbutton "✕ RETURN" action Return() style "constellation_cancel_btn" xalign 1.0 yalign 0.5
+                    spacing 4
+                    text "DAOCUBATOR FIELD NOTES · LESSONS CODEX" font gui.mono_font kerning 3.0 color "#B87444" size 15
+                    text "Crypto-ethics & co-op lessons codex" font gui.serif_font axis {"weight": 300, "opticalsize": 48} color "#EED4B4" size 36
+                    text "Every disaster teaches a real-world rule. Review unlocked lessons or inspect any lesson below." font gui.sans_font color "#9D908D" size 19
+                textbutton "× RETURN" action Return() style "constellation_cancel_btn" xalign 1.0 yalign 0.5
 
             hbox:
                 spacing 30
-                ysize 820
+                ysize 800
 
                 ## Left column: scrollable list of all lessons
                 frame:
                     xsize 680
                     yfill True
-                    background "#14110F"
+                    background "#241309"
                     padding (18, 18)
                     viewport:
                         scrollbars "vertical"
@@ -466,15 +470,16 @@ screen lessons_codex():
                                 button:
                                     xfill True
                                     padding (14, 10)
-                                    background ("#2D251E" if selected_codex_lesson == lid else "#1C1815")
-                                    hover_background "#382E25"
+                                    background ("#42281E" if selected_codex_lesson == lid else "#2D1B10")
+                                    hover_background "#42281E"
                                     action SetScreenVariable("selected_codex_lesson", lid)
                                     hbox:
                                         spacing 12
-                                        text ("★" if is_un else "☆") color ("#52B788" if is_un else "#777067") size 20 yalign 0.5
+                                        text ("•" if is_un else "·") font gui.mono_font color ("#FAC443" if is_un else "#9D908D") size 22 yalign 0.5
                                         vbox:
-                                            text "[lmeta['number']] · [lmeta['title']]" color ("#F4EFE6" if selected_codex_lesson == lid else "#D8D0C5") size 18
-                                            text "[lmeta['category']]" color "#E07A5F" size 15
+                                            spacing 2
+                                            text "[lmeta['number']] · [lmeta['title']]" font gui.sans_font color ("#EED4B4" if selected_codex_lesson == lid else "#DDBCAD") size 18
+                                            text "[lmeta['category'].upper()]" font gui.mono_font kerning 2.6 color "#B87444" size 13
 
                 ## Right column: detail view of selected lesson
                 $ cur_l = get_lesson_meta(selected_codex_lesson)
@@ -482,59 +487,65 @@ screen lessons_codex():
                 frame:
                     xfill True
                     yfill True
-                    background "#221D19"
+                    background "#2D1B10"
                     padding (36, 30)
                     vbox:
                         spacing 18
                         hbox:
                             xfill True
-                            text "[cur_l['number']] · [cur_l['category']]" color "#F2CC8F" size 22
-                            text ("✓ UNLOCKED IN PLAY" if cur_un else "☆ PREVIEW MODE") color ("#52B788" if cur_un else "#BEB5A7") size 20 xalign 1.0
-                        text "[cur_l['title']]" color "#F4EFE6" size 36
+                            text "[cur_l['number']] · [cur_l['category'].upper()]" font gui.mono_font kerning 3.2 color "#B87444" size 16
+                            text ("• UNLOCKED IN PLAY" if cur_un else "· PREVIEW MODE") font gui.mono_font kerning 3.2 color ("#FAC443" if cur_un else "#9D908D") size 16 xalign 1.0
+                        text "[cur_l['title']]" font gui.serif_font axis {"weight": 300, "opticalsize": 48} color "#EED4B4" size 38
                         frame:
                             xfill True
-                            background "#171411"
+                            background "#241309"
                             padding (26, 22)
-                            text "[cur_l['body']]" color "#E8E2D9" size 24 line_spacing 6
+                            text "[cur_l['body']]" font gui.serif_font axis {"weight": 300, "opticalsize": 36} color "#EED4B4" size 26 line_spacing 6
                         frame:
                             xfill True
-                            background "#1C2926"
+                            background "#1E140E"
                             padding (22, 16)
                             vbox:
                                 spacing 6
-                                text "REAL-WORLD CASE STUDY & RECEIPTS:" color "#2EC4B6" size 18
-                                text "[cur_l['real_world']]" color "#D8D0C5" size 21
+                                text "REAL-WORLD CASE STUDY & RECEIPTS" font gui.mono_font kerning 3.0 color "#578C88" size 15
+                                text "[cur_l['real_world']]" font gui.sans_font color "#DDBCAD" size 20
 
 
 ################################################################################
 ## Styles for Constellation & Modals
 
 style constellation_nav_btn is button:
-    background "#2B241E"
-    hover_background "#3E332A"
+    background "#2D1B10"
+    hover_background "#42281E"
     padding (16, 6)
 
 style constellation_nav_btn_text is button_text:
-    color "#F4EFE6"
-    hover_color "#F2CC8F"
-    size 18
+    font gui.mono_font
+    kerning 3.2
+    color "#DDBCAD"
+    hover_color "#FAC443"
+    size 16
 
 style constellation_confirm_btn is button:
-    background "#2EC4B6"
-    hover_background "#45DFD0"
+    background "#FAC443"
+    hover_background "#FFF3C9"
     padding (32, 14)
 
 style constellation_confirm_btn_text is button_text:
-    color "#12100E"
-    hover_color "#000000"
-    size 24
+    font gui.mono_font
+    kerning 4.0
+    color "#140702"
+    hover_color "#140702"
+    size 20
 
 style constellation_cancel_btn is button:
-    background "#2E2722"
-    hover_background "#463B33"
+    background "#2D1B10"
+    hover_background "#42281E"
     padding (26, 14)
 
 style constellation_cancel_btn_text is button_text:
-    color "#D8D0C5"
-    hover_color "#FFFFFF"
-    size 22
+    font gui.mono_font
+    kerning 3.6
+    color "#DDBCAD"
+    hover_color "#FAC443"
+    size 18

@@ -1,0 +1,55 @@
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..600&family=Karla:wght@400;600&family=IBM+Plex+Mono:wght@400;500&display=swap");
+
+body { background: var(--ink); color: var(--bone); font-family: var(--font-sans); margin: 0; }
+.dc-root { padding: var(--space-4); }
+.dc-row { display: flex; gap: var(--space-4); flex-wrap: wrap; align-items: flex-start; }
+
+/* Panel */
+.dc-panel { background: var(--char); padding: var(--space-4); border-radius: var(--radius-0); max-width: 460px; }
+.dc-panel + .dc-panel { border-top: var(--stroke-hair) solid var(--rule-strong); }
+.dc-panel--deep { background: var(--ground); }
+.dc-panel--framed { border: var(--stroke-hair) solid var(--rule-strong); }
+.dc-panel__title { font: 400 18px/24px var(--font-sans); color: var(--glow); margin: 0 0 var(--space-2); }
+.dc-panel__body { font: 400 15px/22px var(--font-sans); color: var(--bone); margin: 0; }
+
+/* HungPanel */
+.dc-hung { position: relative; max-width: 600px; margin: 0 0 var(--space-7); }
+.dc-hung__frame { background: var(--field); padding: 18px; }
+.dc-hung__wall { position: relative; background: var(--char); padding: 56px 72px 76px 44px; }
+.dc-hung__panel { background: var(--panel); border: var(--stroke-hair) solid var(--rule); padding: var(--space-4); }
+.dc-hung__tie { position: absolute; top: 0; width: var(--stroke-thread); height: 56px; background: var(--sand); }
+.dc-hung__tie::after { content: ""; position: absolute; left: -5px; bottom: -6px; width: 12px; height: 12px; border-radius: var(--radius-full); background: var(--sand); }
+.dc-hung__tie--a { left: 100px; }
+.dc-hung__tie--b { left: 70%; height: 50px; }
+.dc-hung__tail { position: absolute; bottom: -58px; width: var(--stroke-thread); height: 134px; background: var(--sand); }
+.dc-hung__tail--a { left: 130px; transform: rotate(3deg); }
+.dc-hung__tail--b { left: 68%; transform: rotate(-5deg); }
+
+/* NodeCard */
+.dc-node { display: flex; align-items: center; gap: var(--space-4); }
+.dc-node--right { flex-direction: row-reverse; }
+.dc-ring { flex: none; width: 96px; height: 96px; border-radius: var(--radius-full); border: var(--stroke-ring) solid var(--glow); box-shadow: var(--glow-sm); display: grid; place-items: center; background: var(--ink); position: relative; }
+.dc-ring::after { content: ""; position: absolute; inset: 6px; border-radius: var(--radius-full); border: var(--stroke-hair) solid var(--ember); }
+.dc-ring svg { width: 40px; height: 40px; stroke: var(--glow); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.dc-node__card { background: var(--panel); border: var(--stroke-hair) solid var(--rule); padding: var(--space-3) var(--space-4); max-width: 320px; }
+.dc-node__label { font: 500 12px/16px var(--font-mono); letter-spacing: .2em; text-transform: uppercase; color: var(--flame); text-align: center; margin: 0 0 var(--space-2); padding-bottom: var(--space-2); border-bottom: var(--stroke-hair) solid var(--rule-strong); }
+.dc-node__body { font: 400 14px/20px var(--font-sans); color: var(--bone); margin: 0; }
+
+/* ComparisonTable */
+.dc-table { border-collapse: collapse; width: 100%; max-width: 900px; border: var(--stroke-hair) solid var(--sand); font-family: var(--font-sans); }
+.dc-table th, .dc-table td { border: var(--stroke-hair) solid var(--sand); padding: var(--space-3) var(--space-4); vertical-align: top; text-align: left; }
+.dc-table thead th { font: 400 20px/26px var(--font-sans); color: var(--flame); text-align: center; background: var(--ink); }
+.dc-table thead th:first-child { background: var(--field); }
+.dc-table tbody th { background: var(--field); color: var(--flame); font: 400 17px/22px var(--font-sans); width: 22%; }
+.dc-table td { color: var(--bone); font: 400 15px/22px var(--font-sans); background: var(--ink); }
+
+/* PullQuote */
+.dc-quote { max-width: 520px; }
+.dc-quote__lede { font: 400 28px/36px var(--font-sans); color: var(--flame); margin: 0 0 var(--space-3); }
+.dc-quote__lede strong { font-weight: 600; color: var(--glow); }
+.dc-quote__body { font: 400 16px/24px var(--font-sans); color: var(--bone); margin: 0 0 var(--space-4); }
+.dc-quote__rule { border: 0; border-top: var(--stroke-hair) solid var(--sand); margin: 0 0 var(--space-4); }
+.dc-quote__quote { font: 300 40px/46px var(--font-serif); color: var(--glow); margin: 0; }
+.dc-quote__cite { display: block; font: 400 14px/20px var(--font-sans); color: var(--ash); margin-top: var(--space-2); }
+
+:focus-visible { outline: 2px solid var(--glow); outline-offset: 2px; }

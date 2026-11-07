@@ -19,6 +19,9 @@ init -5 python:
 
     # Map Character `name` (or image tag) to canonical sprite tag
     CHAR_TAG_MAP = {
+        "Ash El": "ashel",
+        "Lay-Lay": "laylay",
+        "Xochtl": "xochtl",
         "Maya": "maya",
         "Jordan": "jordan",
         "Alex": "alex",
@@ -27,20 +30,24 @@ init -5 python:
         "Atlas": "atlas",
     }
 
-    ALL_CHAR_TAGS = ("maya", "jordan", "alex", "vera", "spectre", "atlas")
+    ALL_CHAR_TAGS = ("ashel", "laylay", "xochtl", "maya", "jordan", "alex", "vera", "spectre", "atlas")
 
     # Room lighting profiles (r_mul, g_mul, b_mul, bright_offset, contrast_mul)
-    # Calibrated specifically for polished 24k gold sculptures so each venue
-    # reflects its ambient environment naturally.
+    # Calibrated for both rustic line-art/watercolor sprites and legacy sprites.
     ROOM_LIGHTING = {
-        "coworking":  (1.00, 0.99, 0.96,  0.00, 1.00),  # Warm natural daylight studio
-        "conference": (1.02, 0.98, 0.92,  0.01, 1.04),  # Crisp stage spotlights
-        "apartment":  (0.84, 0.93, 1.08, -0.05, 1.06),  # 2:47 AM cool midnight monitor glow
-        "discord":    (0.95, 0.92, 1.08,  0.00, 1.05),  # Neon cyan/magenta server ambiance
-        "blockchain": (0.88, 0.98, 1.06, -0.02, 1.10),  # High-contrast cyber node glow
-        "rooftop":    (1.06, 0.95, 0.88,  0.03, 1.04),  # Golden hour / dawn rose-gold warmth
-        "signing":    (0.90, 1.02, 0.94, -0.03, 1.08),  # Hardware wallet emerald/terminal glow
-        "factionmap": (0.96, 0.94, 0.90, -0.02, 1.05),  # War-room tactical table light
+        "sanctuary":     (1.02, 0.99, 0.94,  0.01, 1.02),  # Warm sunlit ochre sanctuary
+        "treasury_fire": (1.06, 0.92, 0.90, -0.02, 1.08),  # High-contrast crimson crisis light
+        "cacao_circle":  (1.03, 0.98, 0.93,  0.01, 1.02),  # Warm candle & ceremonial cacao glow
+        "apothecary":    (0.98, 1.01, 0.96,  0.00, 1.03),  # Herbal apothecary & ledger room
+        "constellation": (0.96, 0.97, 1.02,  0.00, 1.04),  # Star-chart night canvas
+        "coworking":     (1.00, 0.99, 0.96,  0.00, 1.00),  # Warm natural daylight studio
+        "conference":    (1.02, 0.98, 0.92,  0.01, 1.04),  # Crisp stage spotlights
+        "apartment":     (0.84, 0.93, 1.08, -0.05, 1.06),  # 2:47 AM cool midnight monitor glow
+        "discord":       (0.95, 0.92, 1.08,  0.00, 1.05),  # Neon cyan/magenta server ambiance
+        "blockchain":    (0.88, 0.98, 1.06, -0.02, 1.10),  # High-contrast cyber node glow
+        "rooftop":       (1.06, 0.95, 0.88,  0.03, 1.04),  # Golden hour / dawn rose-gold warmth
+        "signing":       (0.90, 1.02, 0.94, -0.03, 1.08),  # Hardware wallet emerald/terminal glow
+        "factionmap":    (0.96, 0.94, 0.90, -0.02, 1.05),  # War-room tactical table light
     }
 
     # Expression-specific subtle lighting modifiers (bright_delta, sat_mul, contrast_mul)
@@ -101,19 +108,22 @@ init -5 python:
         focus_on = getattr(store, "_lab_speaker_focus_enabled", True)
 
         # Target focus values (no yoffset so bottom edge never lifts off the screen)
+        dim_mul = 1.0
         if not focus_on:
             t_zoom, t_bright, t_sat = 1.0, 0.0, 1.0
         elif active == char_tag:
             if multi_stage:
-                t_zoom, t_bright, t_sat = 1.035, 0.04, 1.04
+                t_zoom, t_bright, t_sat = 1.04, 0.04, 1.06
             else:
                 t_zoom, t_bright, t_sat = 1.0, 0.02, 1.02
         elif active is not None and active != char_tag and multi_stage:
-            # Another character is speaking in a multi-character scene -> dim listener
-            t_zoom, t_bright, t_sat = 0.965, -0.20, 0.82
+            # Another character is speaking in a multi-character scene -> dim listener clearly
+            t_zoom, t_bright, t_sat = 0.955, -0.18, 0.65
+            dim_mul = 0.54
         elif active is None and multi_stage:
             # Narrator or player speaking while multiple characters are on stage
-            t_zoom, t_bright, t_sat = 0.985, -0.08, 0.92
+            t_zoom, t_bright, t_sat = 0.98, -0.06, 0.88
+            dim_mul = 0.80
         else:
             t_zoom, t_bright, t_sat = 1.0, 0.0, 1.0
 
@@ -131,11 +141,7 @@ init -5 python:
         if expr_name == "typing":
             rr, rg, rb = rr * 0.88, rg * 1.04, rb * 1.12
 
-        # Burnout >= 60 visual fraying (slight desaturation & contrast, no motion jitter)
-        burnout_val = getattr(store, "burnout", 10)
-        if burnout_val >= 60:
-            es *= 0.86
-            r_cont *= 1.06
+        rr, rg, rb = rr * dim_mul, rg * dim_mul, rb * dim_mul
 
         final_bright = t_bright + eb + r_bright
         final_sat    = t_sat * es
@@ -158,15 +164,22 @@ init -5 python:
             * ContrastMatrix(final_cont)
             * BrightnessMatrix(final_bright)
         )
-        return None
+        return 0.05
 
     def char_focus_and_light(char_tag, expr_name="neutral"):
         return Transform(function=renpy.curry(char_focus_light_fn)(char_tag=char_tag, expr_name=expr_name))
 
 ## Attach speaker tracking to the Character objects defined in script.rpy
 init 5 python:
+    def direction_all_char_callback(event, interact=True, _speaker_tag=None, **kwargs):
+        if event == "begin" and interact:
+            store._active_speaker = _speaker_tag
+
     def _wire_speaker_callbacks():
         mapping = [
+            ("ashel", "ashel"),
+            ("laylay", "laylay"),
+            ("xochtl", "xochtl"),
             ("m", "maya"),
             ("j", "jordan"),
             ("a", "alex"),
@@ -183,15 +196,9 @@ init 5 python:
                 new_cb_args = dict(ch.cb_args) if ch.cb_args else {}
                 new_cb_args["_speaker_tag"] = tag
                 ch.cb_args = new_cb_args
+                ch.callback = direction_all_char_callback
 
     _wire_speaker_callbacks()
-
-    def direction_all_char_callback(event, interact=True, _speaker_tag=None, **kwargs):
-        if event == "begin" and interact:
-            store._active_speaker = _speaker_tag
-
-    if direction_all_char_callback not in config.all_character_callbacks:
-        config.all_character_callbacks.append(direction_all_char_callback)
 
 
 ################################################################################
@@ -330,6 +337,30 @@ image atlas generous  = At("images/atlas generous.png",  expr_generous,  char_fo
 image atlas guarded   = At("images/atlas guarded.png",   expr_guarded,   char_focus_and_light("atlas", "guarded"))
 image atlas predatory = At("images/atlas predatory.png", expr_predatory, char_focus_and_light("atlas", "predatory"))
 
+# ASH EL (6)
+image ashel neutral    = At("images/ashel neutral.png",    expr_neutral,    char_focus_and_light("ashel", "neutral"))
+image ashel focused    = At("images/ashel focused.png",    expr_focused,    char_focus_and_light("ashel", "focused"))
+image ashel alarmed    = At("images/ashel alarmed.png",    expr_alarmed,    char_focus_and_light("ashel", "alarmed"))
+image ashel hurt       = At("images/ashel hurt.png",       expr_hurt,       char_focus_and_light("ashel", "hurt"))
+image ashel determined = At("images/ashel determined.png", expr_determined, char_focus_and_light("ashel", "determined"))
+image ashel proud      = At("images/ashel proud.png",      expr_proud,      char_focus_and_light("ashel", "proud"))
+
+# XOCHTL (6)
+image xochtl neutral   = At("images/xochtl neutral.png",   expr_neutral,    char_focus_and_light("xochtl", "neutral"))
+image xochtl warm      = At("images/xochtl warm.png",      expr_warm,       char_focus_and_light("xochtl", "warm"))
+image xochtl focused   = At("images/xochtl focused.png",   expr_focused,    char_focus_and_light("xochtl", "focused"))
+image xochtl stern     = At("images/xochtl stern.png",     expr_stern,      char_focus_and_light("xochtl", "stern"))
+image xochtl hurt      = At("images/xochtl hurt.png",      expr_hurt,       char_focus_and_light("xochtl", "hurt"))
+image xochtl proud     = At("images/xochtl proud.png",     expr_proud,      char_focus_and_light("xochtl", "proud"))
+
+# LAY-LAY (6)
+image laylay neutral     = At("images/laylay neutral.png",     expr_neutral,     char_focus_and_light("laylay", "neutral"))
+image laylay calculating = At("images/laylay calculating.png", expr_calculating, char_focus_and_light("laylay", "calculating"))
+image laylay smirk       = At("images/laylay smirk.png",       expr_smirk,       char_focus_and_light("laylay", "smirk"))
+image laylay defensive   = At("images/laylay defensive.png",   expr_defensive,   char_focus_and_light("laylay", "defensive"))
+image laylay stern       = At("images/laylay stern.png",       expr_stern,       char_focus_and_light("laylay", "stern"))
+image laylay alarmed     = At("images/laylay alarmed.png",     expr_alarmed,     char_focus_and_light("laylay", "alarmed"))
+
 
 ################################################################################
 ## 4. Theater Blocking Slots & Shot Sizes (Static, Bottom-Anchored)
@@ -455,4 +486,4 @@ transform cam_dutch_spiral:
 transform cam_red_alert:
     subpixel True
     xalign 0.5 yalign 0.5
-    zoom 1.05 xoffset 0 yoffset 25 matrixcolor (TintMatrix("#ffdede") * ContrastMatrix(1.10))
+    zoom 1.05 xoffset 0 yoffset 25 matrixcolor (TintMatrix("#EED4B4") * ContrastMatrix(1.10))

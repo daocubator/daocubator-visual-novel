@@ -3,14 +3,14 @@
 # Shares `images/` and `gui/` with the main game via directory junctions.
 
 define narrator = Character(None)
-define pc  = Character("[player_name]", color="#FFFFFF")
-define m   = Character("Maya",    color="#55FFFF", image="maya")
-define j   = Character("Jordan",  color="#FF55FF", image="jordan")
-define a   = Character("Alex",    color="#FFAA55", image="alex")
-define v   = Character("Vera",    color="#AA00AA", image="vera")
-define s   = Character("Spectre", color="#00AAAA", image="spectre", what_prefix="{i}", what_suffix="{/i}")
-define w   = Character("Atlas",   color="#FFFF55", image="atlas")
-define mod = Character("Mod (pixel_pal)", color="#AAAAAA")
+define pc  = Character("[player_name]", color="#EED4B4")
+define m   = Character("Maya",    color="#578C88", image="maya")
+define j   = Character("Jordan",  color="#D3710D", image="jordan")
+define a   = Character("Alex",    color="#B87444", image="alex")
+define v   = Character("Vera",    color="#C2AEC7", image="vera")
+define s   = Character("Spectre", color="#8C8CA3", image="spectre")
+define w   = Character("Atlas",   color="#FAC443", image="atlas")
+define mod = Character("Mod (pixel_pal)", color="#9D908D")
 
 default player_name = "Kai"
 default burnout = 15
@@ -32,10 +32,12 @@ style gloss_tab:
     hover_background Frame("gui/button/hover_background.png", gui.button_borders)
     padding (14, 8)
 style gloss_tab_text:
-    size 20
-    color "#94A3B8"
-    selected_color "#FFE57F"
-    hover_color "#FFFFFF"
+    font gui.mono_font
+    kerning 3.2
+    size 16
+    color "#9D908D"
+    selected_color "#FAC443"
+    hover_color "#EED4B4"
 
 ################################################################################
 ## Skip the Main Menu and boot straight into the Stage Lab loop!
@@ -99,12 +101,12 @@ init python:
     }
 
     LAB_CHAR_COLORS = {
-        "maya":    "#55FFFF",
-        "jordan":  "#FF55FF",
-        "alex":    "#FFAA55",
-        "vera":    "#AA00AA",
-        "spectre": "#00AAAA",
-        "atlas":   "#FFFF55",
+        "maya":    "#578C88",
+        "jordan":  "#D3710D",
+        "alex":    "#B87444",
+        "vera":    "#C2AEC7",
+        "spectre": "#8C8CA3",
+        "atlas":   "#FAC443",
     }
 
     LAB_EXPR_NOTES = {
@@ -237,8 +239,8 @@ screen stage_lab_jukebox_hud():
             padding (24, 12)
             hbox:
                 spacing 20
-                text "◆ JUKEBOX SCENE PREVIEW ◆" color "#FFFF55" size 22 yalign 0.5
-                textbutton "◀ RETURN TO STAGE LAB (D / ESC)" action Jump("lab_loop") text_color "#55FF55" text_hover_color "#FFFFFF" text_size 22
+                text "• JUKEBOX SCENE PREVIEW" font gui.mono_font kerning 2.0 color "#FAC443" size 18 yalign 0.5
+                textbutton "« RETURN TO STAGE LAB (D / ESC)" action Jump("lab_loop") text_font gui.mono_font text_color "#578C88" text_hover_color "#EED4B4" text_size 18
 
 init python:
     if "stage_lab_jukebox_hud" not in config.overlay_screens:
@@ -295,35 +297,35 @@ screen stage_lab():
             yalign 1.0
             xsize 1920
             ysize 210
-            background "#070b14dd"
+            background "#140702EA"
             padding (48, 20)
             vbox:
                 spacing 8
                 if lab_tab == "emotes":
                     $ _cname = lab_char.capitalize()
-                    $ _ccol = LAB_CHAR_COLORS.get(lab_char, "#FFFF55")
+                    $ _ccol = LAB_CHAR_COLORS.get(lab_char, "#FAC443")
                     hbox:
                         spacing 18
-                        text "[_cname]  ·  expression: [lab_expr]" color _ccol size 30
+                        text "[_cname]  ·  expression: [lab_expr]" font gui.serif_font axis {"weight": 300, "opticalsize": 36} color _ccol size 30
                         if lab_special != "none":
-                            text "+ special: [lab_special]" color "#55FF55" size 26 yalign 0.5
-                    text LAB_EXPR_NOTES.get(lab_expr, "") color "#F8FAFC" size 25 substitute False
-                    text "Tip: Press (R) or click '↻ REPLAY' to re-trigger the entrance/emote animation. Press (H) to hide panels." color "#94A3B8" size 20
+                            text "+ special: [lab_special]" font gui.mono_font color "#578C88" size 20 yalign 0.5
+                    text LAB_EXPR_NOTES.get(lab_expr, "") font gui.sans_font color "#DDBCAD" size 24 substitute False
+                    text "Tip: Press (R) or click 'REPLAY' to re-trigger the entrance/emote animation. Press (H) to hide panels." font gui.sans_font color "#9D908D" size 19
                 elif lab_tab == "blocking":
                     hbox:
                         spacing 24
-                        text "ACTIVE SPEAKER: " + (_active_speaker.upper() if _active_speaker else "NARRATOR / NONE") color "#FFFF55" size 28
-                        text ("(Speaker Focus: ON — speaker zooms to 1.035x, listeners dim to 0.965x)" if _lab_speaker_focus_enabled else "(Speaker Focus: OFF — flat unlit staging)") color "#55FFFF" size 22 yalign 0.5
-                    text "Click the 'SPEAK' buttons in the panel above to watch focus shift smoothly between characters." color "#F8FAFC" size 24
+                        text "ACTIVE SPEAKER: " + (_active_speaker.upper() if _active_speaker else "NARRATOR / NONE") font gui.mono_font kerning 2.0 color "#FAC443" size 22
+                        text ("(Speaker Focus: ON — speaker zooms to 1.035x, listeners dim to 0.965x)" if _lab_speaker_focus_enabled else "(Speaker Focus: OFF — flat unlit staging)") font gui.sans_font color "#578C88" size 20 yalign 0.5
+                    text "Click the 'SPEAK' buttons in the panel above to watch focus shift smoothly between characters." font gui.sans_font color "#DDBCAD" size 23
                 elif lab_tab == "lighting":
                     hbox:
                         spacing 24
-                        text "ROOM: [lab_bg!u]   ·   CAMERA: [lab_cam!u]   ·   BURNOUT: [burnout]" color "#FFFF55" size 28
-                        text ("(Room Lighting Tint: ON)" if _lab_room_tint_enabled else "(Room Lighting Tint: OFF — raw studio gold)") color "#55FF55" size 22 yalign 0.5
-                    text "Compare how the 24k gold reflections adapt to 2:47 AM Apartment (cool blue), Rooftop (dawn warm), and Blockchain (high-contrast cyber)." color "#F8FAFC" size 23
+                        text "ROOM: [lab_bg!u]   ·   CAMERA: [lab_cam!u]   ·   BURNOUT: [burnout]" font gui.mono_font kerning 2.0 color "#FAC443" size 22
+                        text ("(Room Lighting Tint: ON)" if _lab_room_tint_enabled else "(Room Lighting Tint: OFF — raw studio gold)") font gui.sans_font color "#578C88" size 20 yalign 0.5
+                    text "Compare how the 24k gold reflections adapt to 2:47 AM Apartment, Rooftop, and Blockchain." font gui.sans_font color "#DDBCAD" size 22
                 else:
-                    text "SCENE BEAT JUKEBOX — Click any scene card above to watch the choreographed dialogue & camera direction live." color "#FFFF55" size 26
-                    text "During any Jukebox scene, click '◀ RETURN TO STAGE LAB' at the top-left (or press D / ESC) to jump right back here." color "#94A3B8" size 22
+                    text "SCENE BEAT JUKEBOX — Click any scene card above to watch the choreographed dialogue & camera direction live." font gui.sans_font color "#FAC443" size 24
+                    text "During any Jukebox scene, click '« RETURN TO STAGE LAB' at the top-left (or press D / ESC) to jump right back here." font gui.sans_font color "#9D908D" size 20
 
     ## ── 3. TOP CONTROL DECK ─────────────────────────────────────────────────
     if lab_ui_minimized:
@@ -334,14 +336,14 @@ screen stage_lab():
             padding (20, 10)
             hbox:
                 spacing 16
-                textbutton "◆ SHOW STAGE LAB CONTROLS (H)" action SetVariable("lab_ui_minimized", False) text_color "#FFFF55" text_hover_color "#FFFFFF" text_size 22
-                textbutton "↻ REPLAY (R)" action Function(lab_replay) text_color "#55FF55" text_hover_color "#FFFFFF" text_size 22
+                textbutton "• SHOW STAGE LAB CONTROLS (H)" action SetVariable("lab_ui_minimized", False) text_font gui.mono_font text_color "#FAC443" text_hover_color "#EED4B4" text_size 18
+                textbutton "REPLAY (R)" action Function(lab_replay) text_font gui.mono_font text_color "#578C88" text_hover_color "#EED4B4" text_size 18
     else:
         frame:
             xalign 0.02
             ypos 14
             xsize 1280
-            background "#090e1aee"
+            background "#1E140EF2"
             padding (24, 18)
             vbox:
                 spacing 12
@@ -349,7 +351,7 @@ screen stage_lab():
                 ## Header + Mode Tabs
                 hbox:
                     spacing 12
-                    text "◆ DIRECTOR'S STAGE LAB ◆" color "#FFFF55" size 26 yalign 0.5
+                    text "DIRECTOR'S STAGE LAB" font gui.serif_font axis {"weight": 300, "opticalsize": 36} color "#EED4B4" size 28 yalign 0.5
                     null width 10
                     textbutton "1. EMOTES (27)" action Function(lab_set_tab, "emotes") selected (lab_tab == "emotes") style "gloss_tab"
                     textbutton "2. BLOCKING & FOCUS" action Function(lab_set_tab, "blocking") selected (lab_tab == "blocking") style "gloss_tab"
@@ -357,15 +359,15 @@ screen stage_lab():
                 hbox:
                     spacing 12
                     textbutton "4. SCENE BEAT JUKEBOX (8)" action Function(lab_set_tab, "jukebox") selected (lab_tab == "jukebox") style "gloss_tab"
-                    textbutton "↻ REPLAY (R)" action Function(lab_replay) style "gloss_tab" text_color "#55FF55"
-                    textbutton "HIDE UI (H)" action SetVariable("lab_ui_minimized", True) style "gloss_tab" text_color "#55FFFF"
-                    textbutton "✕ QUIT LAB" action Quit(confirm=False) style "gloss_tab" text_color "#FF5555"
+                    textbutton "REPLAY (R)" action Function(lab_replay) style "gloss_tab" text_color "#578C88"
+                    textbutton "HIDE UI (H)" action SetVariable("lab_ui_minimized", True) style "gloss_tab" text_color "#FAC443"
+                    textbutton "× QUIT LAB" action Quit(confirm=False) style "gloss_tab" text_color "#D3710D"
 
                 ## ── TAB 1: EMOTES & ENTRANCES ───────────────────────────────
                 if lab_tab == "emotes":
                     hbox:
                         spacing 8
-                        text "CHARACTER:" color "#AAAAAA" size 20 yalign 0.5
+                        text "CHARACTER:" font gui.mono_font color "#9D908D" size 16 yalign 0.5
                         for c in ("maya", "jordan", "alex", "vera", "spectre", "atlas"):
                             textbutton c.upper():
                                 action Function(lab_select_char, c)
@@ -375,7 +377,7 @@ screen stage_lab():
 
                     hbox:
                         spacing 8
-                        text "EXPRESSION:" color "#AAAAAA" size 20 yalign 0.5
+                        text "EXPRESSION:" font gui.mono_font color "#9D908D" size 16 yalign 0.5
                         for e in LAB_CHAR_EXPRESSIONS[lab_char]:
                             textbutton e.upper():
                                 action Function(lab_select_expr, e)
@@ -384,7 +386,7 @@ screen stage_lab():
 
                     hbox:
                         spacing 8
-                        text "SPECIAL ENTRANCE/EXIT:" color "#AAAAAA" size 20 yalign 0.5
+                        text "SPECIAL ENTRANCE/EXIT:" font gui.mono_font color "#9D908D" size 16 yalign 0.5
                         textbutton "NONE" action Function(lab_select_special, "none") selected (lab_special == "none") style "gloss_tab"
                         textbutton "SHADOW EMERGE (Atlas)" action Function(lab_select_special, "shadow") selected (lab_special == "shadow") style "gloss_tab"
                         textbutton "TERMINAL GLITCH (Spectre)" action Function(lab_select_special, "glitch") selected (lab_special == "glitch") style "gloss_tab"
@@ -393,7 +395,7 @@ screen stage_lab():
 
                     hbox:
                         spacing 8
-                        text "SHOT / SLOT:" color "#AAAAAA" size 20 yalign 0.5
+                        text "SHOT / SLOT:" font gui.mono_font color "#9D908D" size 16 yalign 0.5
                         textbutton "RIGHT (0.82)" action [SetVariable("lab_slot", "stage_right"), Function(lab_replay)] selected (lab_slot == "stage_right") style "gloss_tab"
                         textbutton "CENTER (0.50)" action [SetVariable("lab_slot", "stage_center"), Function(lab_replay)] selected (lab_slot == "stage_center") style "gloss_tab"
                         textbutton "BUST CLOSE-UP (1.42x)" action [SetVariable("lab_slot", "closeup_right"), Function(lab_replay)] selected (lab_slot == "closeup_right") style "gloss_tab"
@@ -404,17 +406,17 @@ screen stage_lab():
                 elif lab_tab == "blocking":
                     hbox:
                         spacing 10
-                        text "WHO IS SPEAKING?" color "#FFFF55" size 20 yalign 0.5
-                        textbutton ("◀ SPEAK: " + lab_left_char.upper()) action SetVariable("_active_speaker", lab_left_char) selected (_active_speaker == lab_left_char) style "gloss_tab" text_color "#55FF55"
+                        text "WHO IS SPEAKING?" font gui.mono_font color "#FAC443" size 16 yalign 0.5
+                        textbutton ("« SPEAK: " + lab_left_char.upper()) action SetVariable("_active_speaker", lab_left_char) selected (_active_speaker == lab_left_char) style "gloss_tab" text_color "#578C88"
                         if lab_trio_mode or lab_blocking_preset == "whale":
-                            textbutton ("▲ SPEAK: " + lab_center_char.upper()) action SetVariable("_active_speaker", lab_center_char) selected (_active_speaker == lab_center_char) style "gloss_tab" text_color "#FFFF55"
-                        textbutton ("SPEAK: " + lab_right_char.upper() + " ▶") action SetVariable("_active_speaker", lab_right_char) selected (_active_speaker == lab_right_char) style "gloss_tab" text_color "#55FF55"
+                            textbutton ("• SPEAK: " + lab_center_char.upper()) action SetVariable("_active_speaker", lab_center_char) selected (_active_speaker == lab_center_char) style "gloss_tab" text_color "#FAC443"
+                        textbutton ("SPEAK: " + lab_right_char.upper() + " »") action SetVariable("_active_speaker", lab_right_char) selected (_active_speaker == lab_right_char) style "gloss_tab" text_color "#578C88"
                         textbutton "NARRATOR (DIM BOTH)" action SetVariable("_active_speaker", None) selected (_active_speaker is None) style "gloss_tab"
                         textbutton ("FOCUS: " + ("ON" if _lab_speaker_focus_enabled else "OFF")) action ToggleVariable("_lab_speaker_focus_enabled") selected _lab_speaker_focus_enabled style "gloss_tab"
 
                     hbox:
                         spacing 10
-                        text "BLOCKING PRESET:" color "#AAAAAA" size 20 yalign 0.5
+                        text "BLOCKING PRESET:" font gui.mono_font color "#9D908D" size 16 yalign 0.5
                         textbutton "STANDARD DUO" action [SetVariable("lab_blocking_preset", "standard"), SetVariable("lab_trio_mode", False), Function(lab_replay)] selected (lab_blocking_preset == "standard" and not lab_trio_mode) style "gloss_tab"
                         textbutton "BUST CLOSE-UP DUO" action [SetVariable("lab_blocking_preset", "closeup"), SetVariable("lab_trio_mode", False), Function(lab_replay)] selected (lab_blocking_preset == "closeup") style "gloss_tab"
                         textbutton "WHALE DOMINANCE (3-CHAR)" action [SetVariable("lab_blocking_preset", "whale"), SetVariable("lab_trio_mode", True), SetVariable("_active_speaker", "atlas"), Function(lab_replay)] selected (lab_blocking_preset == "whale") style "gloss_tab"
@@ -422,11 +424,11 @@ screen stage_lab():
 
                     hbox:
                         spacing 10
-                        text "STAGE LEFT:" color "#AAAAAA" size 20 yalign 0.5
-                        textbutton ("FLIP INWARD (xzoom -1): " + ("ON" if lab_flip_left else "OFF")) action ToggleVariable("lab_flip_left") selected lab_flip_left style "gloss_tab" text_color "#55FFFF"
+                        text "STAGE LEFT:" font gui.mono_font color "#9D908D" size 16 yalign 0.5
+                        textbutton ("FLIP INWARD (xzoom -1): " + ("ON" if lab_flip_left else "OFF")) action ToggleVariable("lab_flip_left") selected lab_flip_left style "gloss_tab" text_color "#578C88"
                         for c in ("maya", "jordan", "alex", "vera"):
                             textbutton c.upper() action [SetVariable("lab_left_char", c), SetVariable("lab_left_expr", "neutral"), Function(lab_replay)] selected (lab_left_char == c) style "gloss_tab"
-                        text "  STAGE RIGHT:" color "#AAAAAA" size 20 yalign 0.5
+                        text "  STAGE RIGHT:" font gui.mono_font color "#9D908D" size 16 yalign 0.5
                         for c in ("alex", "atlas", "vera", "spectre"):
                             textbutton c.upper() action [SetVariable("lab_right_char", c), SetVariable("lab_right_expr", "neutral"), Function(lab_replay)] selected (lab_right_char == c) style "gloss_tab"
 
@@ -434,7 +436,7 @@ screen stage_lab():
                 elif lab_tab == "lighting":
                     hbox:
                         spacing 8
-                        text "ROOM BG:" color "#AAAAAA" size 20 yalign 0.5
+                        text "ROOM BG:" font gui.mono_font color "#9D908D" size 16 yalign 0.5
                         for bg_id, bg_label in LAB_BGS[:4]:
                             textbutton bg_label action Function(lab_set_bg, bg_id) selected (lab_bg == bg_id) style "gloss_tab"
                     hbox:
@@ -442,11 +444,11 @@ screen stage_lab():
                         text "        " size 20
                         for bg_id, bg_label in LAB_BGS[4:]:
                             textbutton bg_label action Function(lab_set_bg, bg_id) selected (lab_bg == bg_id) style "gloss_tab"
-                        textbutton ("GOLD ROOM TINT: " + ("ON" if _lab_room_tint_enabled else "OFF (RAW)")) action ToggleVariable("_lab_room_tint_enabled") selected _lab_room_tint_enabled style "gloss_tab" text_color "#55FF55"
+                        textbutton ("GOLD ROOM TINT: " + ("ON" if _lab_room_tint_enabled else "OFF (RAW)")) action ToggleVariable("_lab_room_tint_enabled") selected _lab_room_tint_enabled style "gloss_tab" text_color "#578C88"
 
                     hbox:
                         spacing 8
-                        text "CAMERA RIG:" color "#AAAAAA" size 20 yalign 0.5
+                        text "CAMERA RIG:" font gui.mono_font color "#9D908D" size 16 yalign 0.5
                         textbutton "1.0x RESET" action SetVariable("lab_cam", "reset") selected (lab_cam == "reset") style "gloss_tab"
                         textbutton "PUSH-IN (1.08x)" action SetVariable("lab_cam", "push_in") selected (lab_cam == "push_in") style "gloss_tab"
                         textbutton "INTIMATE (1.15x)" action SetVariable("lab_cam", "intimate") selected (lab_cam == "intimate") style "gloss_tab"
@@ -455,9 +457,9 @@ screen stage_lab():
 
                     hbox:
                         spacing 10
-                        text "BURNOUT MECHANIC:" color "#AAAAAA" size 20 yalign 0.5
-                        textbutton "BURNOUT 10 (CLEAR)" action SetVariable("burnout", 10) selected (burnout < 60) style "gloss_tab" text_color "#55FF55"
-                        textbutton "BURNOUT 75 (FRAYING TREMOR & DESATURATION)" action SetVariable("burnout", 75) selected (burnout >= 60) style "gloss_tab" text_color "#FF5555"
+                        text "BURNOUT MECHANIC:" font gui.mono_font color "#9D908D" size 16 yalign 0.5
+                        textbutton "BURNOUT 10 (CLEAR)" action SetVariable("burnout", 10) selected (burnout < 60) style "gloss_tab" text_color "#578C88"
+                        textbutton "BURNOUT 75 (FRAYING TREMOR & DESATURATION)" action SetVariable("burnout", 75) selected (burnout >= 60) style "gloss_tab" text_color "#D3710D"
 
                 ## ── TAB 4: SCENE BEAT JUKEBOX ───────────────────────────────
                 elif lab_tab == "jukebox":
@@ -475,8 +477,8 @@ screen stage_lab():
                                 action Return(beat_id)
                                 vbox:
                                     spacing 3
-                                    text "▶ " + beat_title color "#FFE57F" size 20 substitute False
-                                    text beat_desc color "#CBD5E1" size 16 substitute False
+                                    text "› " + beat_title font gui.sans_font color "#FAC443" size 20 substitute False
+                                    text beat_desc font gui.sans_font color "#DDBCAD" size 16 substitute False
 
 
 ################################################################################

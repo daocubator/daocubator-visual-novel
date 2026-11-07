@@ -12,8 +12,8 @@ translate plain ch4_attack_9d57b965:
 
     # s "it's happening. tonight. you have maybe one move before it starts. use it."
     s "it's happening. tonight. you have time for maybe one move before it starts. use it."
-    narrator "{color=#55FF55}TIP:{/color} The multisig is your shared wallet that needs several people to approve payments. Hardening it and rotating means making it stricter and replacing every key with a new one."
-    narrator "{color=#55FF55}TIP:{/color} Alerting the community means telling all members now, so many more people are watching."
+    narrator "{color=#578C88}TIP:{/color} The multisig is your shared wallet that needs several people to approve payments. Hardening it and rotating means making it stricter and replacing every key with a new one."
+    narrator "{color=#578C88}TIP:{/color} Alerting the community means telling all members now, so many more people are watching."
 
 # game/ch4_attack.rpy:28
 translate plain ch4_attack_8c1a72d1:
@@ -49,10 +49,10 @@ translate plain ch4a_phish_f49652fc:
     m "I didn't approve that update."
 
 # game/ch4_attack.rpy:54
-translate plain ch4a_phish_d14f7f89:
+translate plain ch4a_phish_fdc93eb6:
 
-    # narrator "SIGN TRANSACTION?\n\nTo: Vendor Payments Ltd ✓\nAmount: 12.5 ETH ✓\nGas: normal ✓"
-    narrator "SIGN TRANSACTION?\n\nTo: Vendor Payments Ltd ✓\nAmount: 12.5 ETH ✓\nGas: normal ✓"
+    # narrator "SIGN TRANSACTION?\n\nTo: Vendor Payments Ltd [OK]\nAmount: 12.5 ETH [OK]\nGas: normal [OK]"
+    narrator "SIGN TRANSACTION?\n\nTo: Vendor Payments Ltd [OK]\nAmount: 12.5 ETH [OK]\nGas: normal [OK]"
 
 # game/ch4_attack.rpy:55
 translate plain ch4a_phish_232cb2bd:
@@ -60,8 +60,8 @@ translate plain ch4a_phish_232cb2bd:
     # narrator "Everything looks fine. It is 1:14 a.m. Your Burnout is [burnout]. The confirm button is very large and very green."
     narrator "Everything looks fine. It is 1:14 a.m. Your Burnout is [burnout]."
     narrator "The confirm button is very big and very green."
-    narrator "{color=#55FF55}TIP:{/color} The summary is your wallet app's short, friendly version of the payment. The raw data is the real transaction code, written in hex: numbers 0–9 and letters a–f."
-    narrator "{color=#55FF55}TIP:{/color} An address is a long code for a wallet. The whitelist is your list of addresses you already trust."
+    narrator "{color=#578C88}TIP:{/color} The summary is your wallet app's short, friendly version of the payment. The raw data is the real transaction code, written in hex: numbers 0–9 and letters a–f."
+    narrator "{color=#578C88}TIP:{/color} An address is a long code for a wallet. The whitelist is your list of addresses you already trust."
 
 # game/ch4_attack.rpy:60
 translate plain ch4a_phish_5646e145:
@@ -71,16 +71,16 @@ translate plain ch4a_phish_5646e145:
     narrator "The real destination was 0x7C3f…a91E, a brand-new wallet. It is already mixing your 60 ETH through other wallets, so nobody can follow it."
 
 # game/ch4_attack.rpy:64
-translate plain ch4a_phish_5e8c54b5:
+translate plain ch4a_phish_1190bb1e:
 
-    # narrator "You expand the raw data. The hex swims — you're too tired for this.\n\nWhitelist: {color=#55FF55}0x4A21…9DEB{/color}\nDestination: {color=#AAAAAA}0x4A2l…9DE8{/color}\n\n(Is that an l? An 8? You genuinely cannot tell tonight.)"
-    narrator "You expand the raw data. The hex swims in front of your eyes. You're too tired for this.\n\nWhitelist: {color=#55FF55}0x4A21…9DEB{/color}\nDestination: {color=#AAAAAA}0x4A2l…9DE8{/color}\n\n(Is that an l? An 8? You really cannot tell tonight.)"
+    # narrator "You expand the raw data. The hex swims — you're too tired for this.\n\nWhitelist: {color=#578C88}0x4A21…9DEB{/color}\nDestination: {color=#9D908D}0x4A2l…9DE8{/color}\n\n(Is that an l? An 8? You genuinely cannot tell tonight.)"
+    narrator "You expand the raw data. The hex swims in front of your eyes. You're too tired for this.\n\nWhitelist: {color=#578C88}0x4A21…9DEB{/color}\nDestination: {color=#9D908D}0x4A2l…9DE8{/color}\n\n(Is that an l? An 8? You really cannot tell tonight.)"
 
 # game/ch4_attack.rpy:66
-translate plain ch4a_phish_ecf0f2a6:
+translate plain ch4a_phish_aecb21f3:
 
-    # narrator "You expand the raw data.\n\nWhitelist: {color=#55FF55}0x4A21…9DEB{/color}\nDestination: {color=#FF5555}0x7C3f…a91E{/color}\n\nNot even close."
-    narrator "You expand the raw data.\n\nWhitelist: {color=#55FF55}0x4A21…9DEB{/color}\nDestination: {color=#FF5555}0x7C3f…a91E{/color}\n\nThey are not even close."
+    # narrator "You expand the raw data.\n\nWhitelist: {color=#578C88}0x4A21…9DEB{/color}\nDestination: {color=#D3710D}0x7C3f…a91E{/color}\n\nNot even close."
+    narrator "You expand the raw data.\n\nWhitelist: {color=#578C88}0x4A21…9DEB{/color}\nDestination: {color=#D3710D}0x7C3f…a91E{/color}\n\nThey are not even close."
 
 # game/ch4_attack.rpy:71
 translate plain ch4a_phish_ffd5a438:
@@ -101,8 +101,8 @@ translate plain ch4a_phish_74354c50:
     # j "Three members say the site asked them for weird token approvals tonight. Probably nothing? The mint is LIVE, [player_name]."
     j "Three members say our site asked them for weird token approvals tonight. Probably nothing?"
     j "The mint is LIVE, [player_name]!"
-    narrator "{color=#55FF55}TIP:{/color} A token approval lets an app move your tokens for you. The front end is the website members use."
-    narrator "{color=#55FF55}TIP:{/color} Taking it down stops the mint while you investigate. Keeping it up lets the mint continue while the reports are unchecked."
+    narrator "{color=#578C88}TIP:{/color} A token approval lets an app move your tokens for you. The front end is the website members use."
+    narrator "{color=#578C88}TIP:{/color} Taking it down stops the mint while you investigate. Keeping it up lets the mint continue while the reports are unchecked."
 
 # game/ch4_attack.rpy:87
 translate plain ch4a_phish_2987cf2f:
@@ -140,10 +140,10 @@ translate plain ch4b_fiftyone_c90cf47d:
     a "You have maybe one day before his proposal goes up. Use it."
 
 # game/ch4_attack.rpy:109
-translate plain ch4b_fiftyone_db52af8d:
+translate plain ch4b_fiftyone_ce83956e:
 
-    # narrator "The proposal appears at dawn: {i}'Treasury Diversification Initiative.'{/i} Professional. Reasonable. Beautifully formatted."
-    narrator "The proposal appears at dawn: {i}'Treasury Diversification Initiative.'{/i} The title means spreading the treasury money across different things."
+    # narrator "The proposal appears at dawn: 'Treasury Diversification Initiative.' Professional. Reasonable. Beautifully formatted."
+    narrator "The proposal appears at dawn: 'Treasury Diversification Initiative.' The title means spreading the treasury money across different things."
     narrator "It looks professional. Reasonable. Beautifully formatted."
 
 # game/ch4_attack.rpy:111
@@ -154,11 +154,11 @@ translate plain ch4b_fiftyone_ad586491:
     narrator "Your time-locks force a 7-day review before it can run. That's the only reason anyone found it."
 
 # game/ch4_attack.rpy:114
-translate plain ch4b_fiftyone_a0cd0784:
+translate plain ch4b_fiftyone_0668bf72:
 
-    # narrator "Buried in the code: a drain function. And with no time-locks, it executes the moment it passes. A charming proposal to fund an animal shelter posts an hour later. {i}(The distraction.){/i}"
+    # narrator "Buried in the code: a drain function. And with no time-locks, it executes the moment it passes. A charming proposal to fund an animal shelter posts an hour later. (The distraction.)"
     narrator "Hidden in the code is a drain function, code that sends the money out. With no time-locks, it runs the moment the vote passes."
-    narrator "An hour later, a charming proposal to fund an animal shelter appears. {i}(It's a distraction.){/i}"
+    narrator "An hour later, a charming proposal to fund an animal shelter appears. (It's a distraction.)"
 
 # game/ch4_attack.rpy:117
 translate plain ch4b_fiftyone_59f1083b:
@@ -166,8 +166,8 @@ translate plain ch4b_fiftyone_59f1083b:
     # w "Nothing personal, founder. Someone responsible was always going to end up holding the keys. I'd hoped you'd hand them over gently."
     w "Nothing personal, founder."
     w "Someone responsible was always going to end up holding the keys. I had hoped you would hand them over gently."
-    narrator "{color=#55FF55}TIP:{/color} An emergency pause uses your founder key to freeze all governance at once. Only you can do it, so the DAO is less decentralized."
-    narrator "{color=#55FF55}TIP:{/color} Community defense, if offered, means many small holders delegate together to outvote the whale. Negotiating means paying Atlas to leave."
+    narrator "{color=#578C88}TIP:{/color} An emergency pause uses your founder key to freeze all governance at once. Only you can do it, so the DAO is less decentralized."
+    narrator "{color=#578C88}TIP:{/color} Community defense, if offered, means many small holders delegate together to outvote the whale. Negotiating means paying Atlas to leave."
 
 # game/ch4_attack.rpy:125
 translate plain ch4b_fiftyone_d6298007:
@@ -212,12 +212,12 @@ translate plain ch4c_spiral_4a245c0e:
     m "For the record: I said the word 'barbell' in this room. Keep a safe part in stables. Remember?"
 
 # game/ch4_attack.rpy:150
-translate plain ch4c_spiral_67f0c4e1:
+translate plain ch4c_spiral_13f38153:
 
-    # narrator "The spiral logic is simple and airless: you need cash → you sell your token → the price falls → you need more cash."
-    narrator "The spiral logic is simple, and there's no air in it: you need cash → you sell your token → the price falls → you need more cash."
-    narrator "{color=#55FF55}TIP:{/color} Selling native tokens gets cash for payroll now, but selling pushes the price lower. An emergency raise means taking Atlas's money without knowing his terms."
-    narrator "{color=#55FF55}TIP:{/color} Hibernating means cutting spending and pausing pay, to survive as something small."
+    # narrator "The spiral logic is simple and airless: you need cash » you sell your token » the price falls » you need more cash."
+    narrator "The spiral logic is simple, and there's no air in it: you need cash » you sell your token » the price falls » you need more cash."
+    narrator "{color=#578C88}TIP:{/color} Selling native tokens gets cash for payroll now, but selling pushes the price lower. An emergency raise means taking Atlas's money without knowing his terms."
+    narrator "{color=#578C88}TIP:{/color} Hibernating means cutting spending and pausing pay, to survive as something small."
 
 # game/ch4_attack.rpy:157
 translate plain ch4c_spiral_bd3aae32:
@@ -241,10 +241,10 @@ translate plain ch4c_spiral_dfb8f197:
     narrator "But technically, the lights stay on. The project is still alive."
 
 # game/ch4_attack.rpy:178
-translate plain ch4_triage_2ee7d4af:
+translate plain ch4_triage_e296016c:
 
-    # narrator "Casualty accounting, morning after: Treasury [treasury]Ξ. Vibes [vibes]. Security [security]. Morale [morale]. Burnout [burnout] — crises bill the founder first."
-    narrator "The next morning, you count the damage. Treasury [treasury]Ξ. Vibes [vibes]. Security [security]. Morale [morale]. Burnout [burnout]."
+    # narrator "Casualty accounting, morning after: Treasury [treasury] ETH. Vibes [vibes]. Security [security]. Morale [morale]. Burnout [burnout] — crises bill the founder first."
+    narrator "The next morning, you count the damage. Treasury [treasury] ETH. Vibes [vibes]. Security [security]. Morale [morale]. Burnout [burnout]."
     narrator "In every crisis, the founder pays first."
 
 # game/ch4_attack.rpy:179
@@ -265,12 +265,12 @@ translate plain strings:
     new "\"Warn the community. Everyone, help watch.\""
 
     # game/ch4_attack.rpy:57
-    old "◉ SIGN — it's the same invoice as always."
-    new "◉ SIGN — it's the same invoice as always."
+    old "• SIGN — it's the same invoice as always."
+    new "• SIGN — it's the same invoice as always."
 
     # game/ch4_attack.rpy:62
-    old "▢ EXPAND RAW DATA — check the hex against the whitelist."
-    new "▢ EXPAND RAW DATA — compare the hex to the whitelist."
+    old "› EXPAND RAW DATA — check the hex against the whitelist."
+    new "› EXPAND RAW DATA — compare the hex to the whitelist."
 
     # game/ch4_attack.rpy:68
     old "REJECT. Kill the queue. Wake everyone up."

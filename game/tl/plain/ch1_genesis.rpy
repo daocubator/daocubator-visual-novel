@@ -13,8 +13,8 @@ translate plain ch1_genesis_c73965f5:
     # pc "Okay. A collective. Actually collectively owned. What are we making?"
     pc "Okay. A collective. A business that we all really own together."
     pc "So what are we making?"
-    narrator "{color=#55FF55}TIP:{/color} Each option is a different kind of business, with its own kind of problems."
-    narrator "{color=#55FF55}TIP:{/color} 'Masters' are the original recordings of songs. 'Drops' are small, limited product releases."
+    narrator "{color=#578C88}TIP:{/color} Each option is a different kind of business, with its own kind of problems."
+    narrator "{color=#578C88}TIP:{/color} 'Masters' are the original recordings of songs. 'Drops' are small, limited product releases."
 
 # game/ch1_genesis.rpy:15
 translate plain ch1_genesis_f5b84da6:
@@ -66,13 +66,13 @@ translate plain ch1_genesis_9fad2a7c:
     m "That's the right first question."
 
 # game/ch1_genesis.rpy:38
-translate plain ch1_genesis_afc30813:
+translate plain ch1_genesis_7d10c639:
 
-    # m "Decentralization is a spectrum, not a virtue. Pure democracy sounds great until your first 51%% attack. Smart governance is knowing {i}when{/i} to decentralize."
+    # m "Decentralization is a spectrum, not a virtue. Pure democracy sounds great until your first 51%% attack. Smart governance is knowing when to decentralize."
     m "Decentralization means power is spread out, not held by one person."
     m "It's a scale, not a virtue. More is not always better."
     m "Pure democracy sounds great until your first 51%% attack. That's when someone gets over half the votes and takes control."
-    m "Smart governance means knowing {i}when{/i} to decentralize."
+    m "Smart governance means knowing when to decentralize."
 
 # game/ch1_genesis.rpy:42
 translate plain ch1_genesis_6e70c4e3:
@@ -80,8 +80,8 @@ translate plain ch1_genesis_6e70c4e3:
     # m "Before I write a single line: equity. Let's have the awkward conversation now, while we still like each other."
     m "Before I write any code, we need to talk about equity. Equity means who owns how much of the company."
     m "This talk is uncomfortable. It's easier now, while we still like each other."
-    narrator "{color=#55FF55}TIP:{/color} A 50/50 equal split is simple and feels fair now. It doesn't change if one person later does more. Merit-based means shares follow each person's work, but the rules stay loose for now."
-    narrator "{color=#55FF55}TIP:{/color} Vesting means you earn your share over time. With a one-year cliff, anyone who leaves before one year gets nothing. It protects the group, but feels less trusting today."
+    narrator "{color=#578C88}TIP:{/color} A 50/50 equal split is simple and feels fair now. It doesn't change if one person later does more. Merit-based means shares follow each person's work, but the rules stay loose for now."
+    narrator "{color=#578C88}TIP:{/color} Vesting means you earn your share over time. With a one-year cliff, anyone who leaves before one year gets nothing. It protects the group, but feels less trusting today."
 
 # game/ch1_genesis.rpy:49
 translate plain ch1_genesis_8db4ddd1:
@@ -118,8 +118,8 @@ translate plain ch1_genesis_943d1c11:
     j "Also, a warning. You already have a group of trolls — people who post just to cause trouble."
     j "Two members have stopped helping but never left. And one guy talks very loudly but does nothing."
     j "It's day one. This is normal."
-    narrator "{color=#55FF55}TIP:{/color} Community first means spending time and money now on rules, trust and moderators. Growth first means getting big fast and building those systems later."
-    narrator "{color=#55FF55}TIP:{/color} A moat is something that protects a business from competitors."
+    narrator "{color=#578C88}TIP:{/color} Community first means spending time and money now on rules, trust and moderators. Growth first means getting big fast and building those systems later."
+    narrator "{color=#578C88}TIP:{/color} A moat is something that protects a business from competitors."
 
 # game/ch1_genesis.rpy:74
 translate plain ch1_genesis_be1fe267:
@@ -149,7 +149,7 @@ translate plain ch1_genesis_d0cb60dc:
     # a "You're leaving 40%% unallocated? Bold choice. ...Or reckless. Depends on your vesting schedule."
     a "You're leaving 40 percent of the tokens with no plan? Bold choice."
     a "...Or reckless. It depends on your vesting schedule — when people get their tokens."
-    narrator "{color=#55FF55}TIP:{/color} Hiring Alex brings in a money expert, who is not cheap. Letting the community manage the money keeps control shared, with less expert help."
+    narrator "{color=#578C88}TIP:{/color} Hiring Alex brings in a money expert, who is not cheap. Letting the community manage the money keeps control shared, with less expert help."
 
 # game/ch1_genesis.rpy:90
 translate plain ch1_genesis_1edbe1ac:
@@ -174,13 +174,13 @@ translate plain ch1_genesis_135ab5b3:
     v "A card gave you a vote. Same idea."
 
 # game/ch1_genesis.rpy:100
-translate plain ch1_genesis_08772577:
+translate plain ch1_genesis_db312ebb:
 
-    # v "One question, founder: when this goes wrong — and something always goes wrong — who is {i}legally{/i} holding the bag?"
+    # v "One question, founder: when this goes wrong — and something always goes wrong — who is legally holding the bag?"
     v "One question, founder. Something always goes wrong."
-    v "When it does, who is {i}legally{/i} responsible? Who pays the bill?"
-    narrator "{color=#55FF55}TIP:{/color} A legal wrapper is an official legal form for the group, like a company. It costs 15,000 dollars now."
-    narrator "{color=#55FF55}TIP:{/color} Without one, the law does not clearly say who is responsible for the group."
+    v "When it does, who is legally responsible? Who pays the bill?"
+    narrator "{color=#578C88}TIP:{/color} A legal wrapper is an official legal form for the group, like a company. It costs 15,000 dollars now."
+    narrator "{color=#578C88}TIP:{/color} Without one, the law does not clearly say who is responsible for the group."
 
 # game/ch1_genesis.rpy:107
 translate plain ch1_genesis_d2168c73:
@@ -210,8 +210,8 @@ translate plain ch1_genesis_2e91e0d0:
     s "found a reentrancy bug in your mint contract."
     s "you have not launched yet. so this is lucky timing."
     s "voice call, camera off. or you keep the bug."
-    narrator "{color=#55FF55}TIP:{/color} A mint contract is the code that creates your tokens. Reentrancy is a bug that can let someone take money many times."
-    narrator "{color=#55FF55}TIP:{/color} Spectre is a stranger with no history. You can trust them, question them, or ignore them."
+    narrator "{color=#578C88}TIP:{/color} A mint contract is the code that creates your tokens. Reentrancy is a bug that can let someone take money many times."
+    narrator "{color=#578C88}TIP:{/color} Spectre is a stranger with no history. You can trust them, question them, or ignore them."
 
 # game/ch1_genesis.rpy:125
 translate plain ch1_genesis_772b87b6:
@@ -239,8 +239,8 @@ translate plain ch1_genesis_f4dac308:
     # narrator "Token design ceremony. This shapes everything that follows."
     narrator "Token design time. You decide who gets the tokens."
     narrator "This choice shapes everything that follows."
-    narrator "{color=#55FF55}TIP:{/color} Equal split: the founders get the same amount. Merit-based: more tokens for more work, so someone must measure the work."
-    narrator "{color=#55FF55}TIP:{/color} 60 percent to the treasury: most tokens go to the shared community fund, and less to the founders."
+    narrator "{color=#578C88}TIP:{/color} Equal split: the founders get the same amount. Merit-based: more tokens for more work, so someone must measure the work."
+    narrator "{color=#578C88}TIP:{/color} 60 percent to the treasury: most tokens go to the shared community fund, and less to the founders."
 
 # game/ch1_genesis.rpy:141
 translate plain ch1_genesis_6cab295d:
@@ -278,10 +278,10 @@ translate plain ch1_genesis_f7865034:
     w "Consider it a sign that I believe in you. I admire builders."
 
 # game/ch1_genesis.rpy:153
-translate plain ch1_genesis_377a1c22:
+translate plain ch1_genesis_6370f03b:
 
-    # narrator "The tokens never move again. They sit there. Waiting. {i}(You will think about this later.){/i}"
-    narrator "Those tokens never move again. They just sit there. Waiting. {i}(You will think about this later.){/i}"
+    # narrator "The tokens never move again. They sit there. Waiting. (You will think about this later.)"
+    narrator "Those tokens never move again. They just sit there. Waiting. (You will think about this later.)"
 
 # game/ch1_genesis.rpy:157
 translate plain ch1_genesis_511bf257:
@@ -299,16 +299,16 @@ translate plain ch1_genesis_69398b2b:
 translate plain strings:
 
     # game/ch1_genesis.rpy:12
-    old "🎵 A record label — artists own their masters, together."
-    new "🎵 A record label — artists own their masters together."
+    old "A record label — artists own their masters, together."
+    new "A record label — artists own their masters together."
 
     # game/ch1_genesis.rpy:16
-    old "👕 A streetwear brand — drops decided by the community."
-    new "👕 A streetwear brand — the community chooses each drop."
+    old "A streetwear brand — drops decided by the community."
+    new "A streetwear brand — the community chooses each drop."
 
     # game/ch1_genesis.rpy:20
-    old "🎨 An artist collective — shared studio, shared upside."
-    new "🎨 An artist collective — shared studio, shared profits."
+    old "An artist collective — shared studio, shared upside."
+    new "An artist collective — shared studio, shared profits."
 
     # game/ch1_genesis.rpy:30
     old "\"I'd love to have you on board!\""
@@ -367,14 +367,14 @@ translate plain strings:
     new "Ignore it. I don't call anonymous accounts."
 
     # game/ch1_genesis.rpy:139
-    old "🏛️ Equal split between founders"
-    new "🏛️ Equal split between founders"
+    old "Equal split between founders"
+    new "Equal split between founders"
 
     # game/ch1_genesis.rpy:142
-    old "📊 Merit-weighted by contribution"
-    new "📊 Merit-based: more tokens for more work"
+    old "Merit-weighted by contribution"
+    new "Merit-based: more tokens for more work"
 
     # game/ch1_genesis.rpy:145
-    old "🌊 60% to the community treasury"
-    new "🌊 60 percent to the community treasury"
+    old "60% to the community treasury"
+    new "60 percent to the community treasury"
 
