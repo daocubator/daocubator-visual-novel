@@ -169,10 +169,10 @@ define config.window_icon = "gui/window_icon.png"
 ## Maps cursor states to custom cursor PNGs and their (x, y) hotspots.
 
 define config.mouse = {
-    "default": [ ( "gui/cursor_default.png", 4, 4 ) ],
-    "button": [ ( "gui/cursor_pointer.png", 10, 4 ) ],
-    "pressed_default": [ ( "gui/cursor_default.png", 4, 4 ) ],
-    "pressed_button": [ ( "gui/cursor_pressed.png", 10, 4 ) ],
+    "default": [ ( "gui/cursor_default.png", 6, 6 ) ],
+    "button": [ ( "gui/cursor_pointer.png", 15, 6 ) ],
+    "pressed_default": [ ( "gui/cursor_default.png", 6, 6 ) ],
+    "pressed_button": [ ( "gui/cursor_pressed.png", 15, 6 ) ],
 }
 
 

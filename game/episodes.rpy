@@ -767,7 +767,7 @@ label ep3_d3:
 
 
 ################################################################################
-## STORY 4: "THE KEYS OF THE APOTHECARY"
+## STORY 4: "ONE TIRED CLICK DRAINED THE APOTHECARY"
 ## Perspective Shift: Behind the Administrator's Ledger
 ## POV: Lay-Lay (The Administrator — Potions, Herbs & Multisig Keys)
 ## Lessons: capture, verify_hex, flashloan

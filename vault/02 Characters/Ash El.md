@@ -25,7 +25,7 @@ Ash El represents the visionary creators in collectives like *Essential Food and
 - **Episode 1 — "No Keys, No Cheese" (POV: Ash El):** Confronted with the nightmare of being stranded in Brazil while $60,000 vanishes and Lay-Lay holds the keys, Ash El rewinds time to rotate leaked keys on-chain, vet incoming DAO administrators, and enforce the $1 test transaction rule.
 - **Episode 2 — "The Lisbon Refusal" (POV: Xochtl & Ash El):** After working sleepless weeks on a game and music showcase for Lisbon, Ash El faces an administrative payout freeze from a jealous gatekeeper—and learns how co-op solidarity and objective milestone escrow defeat ego trips.
 - **Episode 3 — "Blood, Cacao & Paper" (POV: Ash El & Xochtl):** Learns why counter-culture collectives still need written vesting agreements, legal wrappers, and capped recoupment deals.
-- **Episode 4 — "The Keys of the Apothecary" (Co-star):** Holds the line as a co-signer alongside Xochtl when Lay-Lay is tempted by whale money and spoofed transactions.
+- **Episode 4 — "One Tired Click Drained the Apothecary" (Co-star):** Holds the line as a co-signer alongside Xochtl when Lay-Lay is tempted by whale money and spoofed transactions.
 
 ## Expressions needed
 

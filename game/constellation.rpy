@@ -113,7 +113,7 @@ init 5 python:
             "lessons": ["agreements_law", "vesting", "partnership"],
         },
         "ep4_apothecary": {
-            "title": "The Keys of the Apothecary",
+            "title": "One Tired Click Drained the Apothecary",
             "color": "#C2AEC7",
             "pov": "Lay-Lay (The Administrator)",
             "cast": "Lay-Lay · Ash El · Xochtl",
@@ -157,6 +157,13 @@ transform constellation_orb_pulse:
     zoom 0.97
     linear 1.8 alpha 0.55 zoom 1.04
     linear 1.8 alpha 0.25 zoom 0.97
+    repeat
+
+transform constellation_card_float(delay=0.0):
+    pause delay
+    yoffset 0
+    ease 2.4 yoffset -7
+    ease 2.4 yoffset 0
     repeat
 
 transform rewind_banner_flash:
@@ -237,6 +244,7 @@ screen constellation_map():
     for ep_id in EPISODE_ORDER:
         $ ep = EPISODES[ep_id]
         $ nx, ny = ep["pos"]
+        $ float_delay = EPISODE_ORDER.index(ep_id) * 0.55
         $ is_done = ep_id in (persistent.episodes_completed or set())
         $ cg_thumb = ep["cg_happy_thumb"] if is_done else ep["cg_disaster_thumb"]
         ## Completed stories get a soft sage aura and a clear green border.
@@ -248,6 +256,7 @@ screen constellation_map():
             xsize 536
             ysize 244
             background ("#528C6E55" if is_done else "#83422522")
+            at constellation_card_float(float_delay)
 
         ## Keep the thumbnail and story title as the card's only content.
         button:
@@ -260,6 +269,7 @@ screen constellation_map():
             padding (4, 4)
             background ("#528C6E" if is_done else "#8C533E")
             hover_background ("#528C6E" if is_done else "#8C533E")
+            at constellation_card_float(float_delay)
             action Show("scenario_overview_modal", ep_id=ep_id)
 
             vbox:
