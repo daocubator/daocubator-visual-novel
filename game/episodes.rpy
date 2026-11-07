@@ -85,6 +85,10 @@ label checkpoint_bad_end(retry_label, failure_title, failure_summary, lesson_id)
     return
 
 
+transform cg_modal_scale:
+    zoom 0.78
+
+
 screen episode_complete_modal(ep_id, summary_text):
     modal True
     zorder 190
