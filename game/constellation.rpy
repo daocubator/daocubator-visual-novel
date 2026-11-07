@@ -2,36 +2,35 @@
 # vault: 01 Overview/Story Structure.md · 01 Overview/Game Systems.md · 05 Lessons/Lessons Index.md
 
 init 5 python:
-    _LESSON_NUM_CAT = {
-        "no_keys_no_cheese": ("#16", "Pillar I · Keys & Sovereignty"),
-        "vetting_admins":    ("#17", "Pillar I · Keys & Sovereignty"),
-        "test_transaction":  ("#18", "Pillar I · Keys & Sovereignty"),
-        "creator_vs_admin":  ("#19", "Pillar II · Collaboration & Co-op"),
-        "coop_solidarity":   ("#20", "Pillar II · Collaboration & Co-op"),
-        "agreements_law":    ("#21", "Pillar III · Make & Enforce Agreements"),
-        "equal_split":       ("#01", "Pillar III · Agreements & Equity"),
-        "vesting":           ("#02", "Pillar III · Agreements & Equity"),
-        "partnership":       ("#03", "Pillar III · Law & Legal Wrappers"),
-        "death_spiral":      ("#04", "Pillar III · Treasury Structure"),
-        "recoupment":        ("#05", "Pillar III · Fair Recoupment"),
-        "chargeback":        ("#06", "Operations & Fulfillment"),
-        "overfunding":       ("#07", "Operations & Fulfillment"),
-        "apathy":            ("#08", "Governance & Stewardship"),
-        "capture":           ("#09", "Governance & Defense"),
-        "flashloan":         ("#10", "Governance & Defense"),
-        "credentials":       ("#11", "Pillar I · Keys & OpSec"),
-        "verify_hex":        ("#12", "Pillar I · Hardware Verification"),
-        "ice_phishing":      ("#13", "Pillar I · Front-End Security"),
-        "burnout":           ("#14", "Pillar II · Co-op Sustainability"),
-        "greenwash":         ("#15", "Verification & Due Diligence"),
+    _LESSON_NUMBERS = {
+        "no_keys_no_cheese": "#16",
+        "vetting_admins":    "#17",
+        "test_transaction":  "#18",
+        "creator_vs_admin":  "#19",
+        "coop_solidarity":   "#20",
+        "agreements_law":    "#21",
+        "equal_split":       "#01",
+        "vesting":           "#02",
+        "partnership":       "#03",
+        "death_spiral":      "#04",
+        "recoupment":        "#05",
+        "chargeback":        "#06",
+        "overfunding":       "#07",
+        "apathy":            "#08",
+        "capture":           "#09",
+        "flashloan":         "#10",
+        "credentials":       "#11",
+        "verify_hex":        "#12",
+        "ice_phishing":      "#13",
+        "burnout":           "#14",
+        "greenwash":         "#15",
     }
 
     def get_lesson_meta(lid):
         tup = LESSONS.get(lid, ("LESSON", "", ""))
-        num, cat = _LESSON_NUM_CAT.get(lid, ("#--", "Core Lesson"))
+        num = _LESSON_NUMBERS.get(lid, "#--")
         return {
             "number": num,
-            "category": cat,
             "title": tup[0],
             "body": tup[1],
             "real_world": tup[2],
@@ -40,8 +39,6 @@ init 5 python:
     EPISODES = {
         "ep1_keys": {
             "title": "No Keys, No Cheese",
-            "pillar": "PILLAR I · KEYS & SOVEREIGNTY (CRYPTO BASIS)",
-            "pillar_short": "PILLAR I · KEYS & SOVEREIGNTY",
             "color": "#D3710D",
             "pov": "Ash El (The Creator)",
             "cast": "Ash El · Lay-Lay · Xochtl",
@@ -67,8 +64,6 @@ init 5 python:
         },
         "ep2_lisbon": {
             "title": "The Lisbon Refusal",
-            "pillar": "PILLAR II · COLLABORATION & CO-OP = WINNING TOGETHER",
-            "pillar_short": "PILLAR II · COLLABORATION & CO-OP",
             "color": "#578C88",
             "pov": "Xochtl (The Shaman) & Ash El",
             "cast": "Xochtl · Ash El · Lay-Lay",
@@ -94,8 +89,6 @@ init 5 python:
         },
         "ep3_agreements": {
             "title": "Blood, Cacao & Paper",
-            "pillar": "PILLAR III · MAKE & ENFORCE AGREEMENTS (LAW & STRUCTURE)",
-            "pillar_short": "PILLAR III · MAKE & ENFORCE AGREEMENTS",
             "color": "#FAC443",
             "pov": "Ash El & Xochtl (Co-Creators)",
             "cast": "Ash El · Xochtl · Lay-Lay",
@@ -121,8 +114,6 @@ init 5 python:
         },
         "ep4_apothecary": {
             "title": "The Keys of the Apothecary",
-            "pillar": "PERSPECTIVE SHIFT · BEHIND THE ADMINISTRATOR'S LEDGER",
-            "pillar_short": "PERSPECTIVE SHIFT · ADMIN & DEFENSE",
             "color": "#C2AEC7",
             "pov": "Lay-Lay (The Administrator)",
             "cast": "Lay-Lay · Ash El · Xochtl",
@@ -202,7 +193,7 @@ screen constellation_map():
     add "bg constellation"
     add "#1407027A"
 
-    ## Top Header Bar — Game Title, Progress & Core Pillars
+    ## Top Header Bar — Game Title & Navigation
     frame:
         xalign 0.5
         ypos 12
@@ -221,39 +212,13 @@ screen constellation_map():
                     spacing 12
                     xalign 1.0
                     yalign 0.5
-                    $ num_ep_done = len(persistent.episodes_completed or set())
                     $ num_lessons_done = len(persistent.lessons_unlocked or set())
-                    frame:
-                        background "#241309"
-                        padding (14, 6)
-                        text "RESOLVED · [num_ep_done]/4" font gui.mono_font kerning 3.2 color "#578C88" size 16
                     frame:
                         background "#241309"
                         padding (14, 6)
                         text "LESSONS · [num_lessons_done]/[len(LESSONS)]" font gui.mono_font kerning 3.2 color "#FAC443" size 16
                     textbutton "LESSONS CODEX" action ShowMenu("lessons_codex") style "constellation_nav_btn"
                     textbutton "GLOSSARY" action ShowMenu("glossary") style "constellation_nav_btn"
-
-            ## The Core Lesson Pillars bar — sized to fit cleanly inside 1860px
-            hbox:
-                spacing 14
-                xalign 0.5
-                frame:
-                    background "#241309"
-                    padding (14, 4)
-                    text "• PILLAR I: KEYS & SOVEREIGNTY" font gui.mono_font kerning 2.8 color "#D3710D" size 14
-                frame:
-                    background "#241309"
-                    padding (14, 4)
-                    text "• PILLAR II: COLLABORATION & CO-OP = WINNING TOGETHER" font gui.mono_font kerning 2.8 color "#578C88" size 14
-                frame:
-                    background "#241309"
-                    padding (14, 4)
-                    text "• PILLAR III: MAKE & ENFORCE AGREEMENTS" font gui.mono_font kerning 2.8 color "#FAC443" size 14
-                frame:
-                    background "#241309"
-                    padding (14, 4)
-                    text "• PERSPECTIVE SHIFT: ADMIN & DEFENSE" font gui.mono_font kerning 2.8 color "#C2AEC7" size 14
 
     ## Center Hub Badge ("Primordia / EFAM Core") — NodeCard / Hub Label
     frame:
@@ -268,60 +233,44 @@ screen constellation_map():
             text "ESSENTIAL FOOD & MEDICINE" font gui.mono_font kerning 3.0 color "#EED4B4" size 15 xalign 0.5
             text "Ash El · Lay-Lay · Xochtl" font gui.sans_font color "#578C88" size 16 xalign 0.5
 
-    ## Glowing Constellation Nodes with Event CG Thumbnails (Disaster CG -> Happy CG)
+    ## Story cards with click-through thumbnail art (Disaster CG -> Happy CG)
     for ep_id in EPISODE_ORDER:
         $ ep = EPISODES[ep_id]
         $ nx, ny = ep["pos"]
         $ is_done = ep_id in (persistent.episodes_completed or set())
         $ cg_thumb = ep["cg_happy_thumb"] if is_done else ep["cg_disaster_thumb"]
-        $ sub_hook = ep["happy_title"] if is_done else ep["omg_title"]
-
-        ## Pulsing outer aura
+        ## Completed stories get a soft sage aura and a clear green border.
         frame:
             xpos nx
             ypos ny
             xanchor 0.5
             yanchor 0.5
             xsize 536
-            ysize 326
-            background ("#3B615F66" if is_done else "#83422566")
-            at constellation_orb_pulse
+            ysize 244
+            background ("#528C6E55" if is_done else "#83422522")
 
-        ## Interactive Node Card with Cutscene Event CG Thumbnail
+        ## Keep the thumbnail and story title as the card's only content.
         button:
             xpos nx
             ypos ny
             xanchor 0.5
             yanchor 0.5
             xsize 520
-            padding (20, 14)
-            background ("#1E140EF6" if is_done else "#241309F6")
-            hover_background "#2D1B10FA"
-            at constellation_star_glow
+            ysize 230
+            padding (4, 4)
+            background ("#528C6E" if is_done else "#8C533E")
+            hover_background ("#528C6E" if is_done else "#8C533E")
             action Show("scenario_overview_modal", ep_id=ep_id)
 
             vbox:
-                spacing 6
-                ## Cutscene Event CG Thumbnail (switches from Disaster CG to Happy CG when completed)
-                add cg_thumb xalign 0.5
-
-                hbox:
+                spacing 0
+                add cg_thumb xsize 512
+                frame:
                     xfill True
-                    text "[ep['pillar_short']]" font gui.mono_font kerning 2.6 color ep["color"] size 13
-                    if is_done:
-                        text "• TIMELINE RESTORED" font gui.mono_font kerning 2.6 color "#578C88" size 13 xalign 1.0
-                    else:
-                        text "INSPECT SCENARIO ›" font gui.mono_font kerning 2.6 color "#FAC443" size 13 xalign 1.0
-
-                text "[ep['title']]" font gui.serif_font axis {"weight": 300, "opticalsize": 36} color "#EED4B4" size 26
-                text "[sub_hook]  ·  POV: [ep['pov']]" font gui.sans_font color "#DDBCAD" size 16
-
-                hbox:
-                    spacing 14
-                    for lid in ep["lessons"]:
-                        $ lmeta = get_lesson_meta(lid)
-                        $ l_unlocked = lid in (persistent.lessons_unlocked or set())
-                        text ("• " + lmeta["number"] + " " + lmeta["title"][:16].upper() + ("…" if len(lmeta["title"]) > 16 else "") if l_unlocked else "· LESSON " + lmeta["number"]) font gui.mono_font kerning 2.6 color ("#FAC443" if l_unlocked else "#9D908D") size 13
+                    ysize 54
+                    background "#140702E8"
+                    padding (12, 4)
+                    text "[ep['title']]" font gui.serif_font axis {"weight": 400, "opticalsize": 42} color "#EED4B4" size 34 yalign 0.5
 
     ## Bottom Bar — Natural Glossary Footnote Explanation + System Menu Controls
     frame:
@@ -359,7 +308,6 @@ screen scenario_overview_modal(ep_id):
     $ ep = EPISODES[ep_id]
     $ is_done = ep_id in (persistent.episodes_completed or set())
     $ cg_img = ep["cg_happy"] if is_done else ep["cg_disaster"]
-    $ subtitle_text = ep["pillar_short"].upper()
 
     ## Clicking or tapping outside the modal card dismisses the overlay
     button:
@@ -399,7 +347,6 @@ screen scenario_overview_modal(ep_id):
             vbox:
                 xalign 0.5
                 spacing 6
-                text "[subtitle_text]" font gui.mono_font kerning 3.4 color ep["color"] size 17 xalign 0.5 outlines [(1, "#140702CC", 0, 0)]
                 text "[ep['title']]" font gui.serif_font axis {"weight": 300, "opticalsize": 48} color "#EED4B4" size 44 xalign 0.5 outlines [(2, "#140702CC", 0, 0)]
 
             text "[ep['omg_hook']]" font gui.sans_font color "#DDBCAD" size 23 xsize 1160 xalign 0.5 text_align 0.5 line_spacing 6 outlines [(2, "#140702CC", 0, 0)]
@@ -427,6 +374,8 @@ screen lessons_codex():
     tag menu
     modal True
 
+    key "K_ESCAPE" action Return()
+
     add "#140702"
 
     frame:
@@ -443,10 +392,10 @@ screen lessons_codex():
                 xfill True
                 vbox:
                     spacing 4
-                    text "DAOCUBATOR FIELD NOTES · LESSONS CODEX" font gui.mono_font kerning 3.0 color "#B87444" size 15
-                    text "Crypto-ethics & co-op lessons codex" font gui.serif_font axis {"weight": 300, "opticalsize": 48} color "#EED4B4" size 36
-                    text "Every disaster teaches a real-world rule. Review unlocked lessons or inspect any lesson below." font gui.sans_font color "#9D908D" size 19
-                textbutton "× RETURN" action Return() style "constellation_cancel_btn" xalign 1.0 yalign 0.5
+                    text "CRYPTO-ETHICS & COOPERATIVE FIELD NOTES" font gui.mono_font kerning 3.0 color "#B87444" size 15
+                    text "Lessons Codex" font gui.serif_font axis {"weight": 300, "opticalsize": 48} color "#EED4B4" size 36
+                    text "Every disaster teaches a real-world rule." font gui.sans_font color "#9D908D" size 19
+                textbutton "× RETURN" action Return() style "constellation_confirm_btn" xalign 1.0 yalign 0.5
 
             hbox:
                 spacing 30
@@ -479,7 +428,6 @@ screen lessons_codex():
                                         vbox:
                                             spacing 2
                                             text "[lmeta['number']] · [lmeta['title']]" font gui.sans_font color ("#EED4B4" if selected_codex_lesson == lid else "#DDBCAD") size 18
-                                            text "[lmeta['category'].upper()]" font gui.mono_font kerning 2.6 color "#B87444" size 13
 
                 ## Right column: detail view of selected lesson
                 $ cur_l = get_lesson_meta(selected_codex_lesson)
@@ -493,7 +441,7 @@ screen lessons_codex():
                         spacing 18
                         hbox:
                             xfill True
-                            text "[cur_l['number']] · [cur_l['category'].upper()]" font gui.mono_font kerning 3.2 color "#B87444" size 16
+                            text "[cur_l['number']]" font gui.mono_font kerning 3.2 color "#B87444" size 16
                             text ("• UNLOCKED IN PLAY" if cur_un else "· PREVIEW MODE") font gui.mono_font kerning 3.2 color ("#FAC443" if cur_un else "#9D908D") size 16 xalign 1.0
                         text "[cur_l['title']]" font gui.serif_font axis {"weight": 300, "opticalsize": 48} color "#EED4B4" size 38
                         frame:

@@ -614,11 +614,12 @@ screen glossary():
                                 if persistent._gloss_fresh == cur:
                                     text "• NEW DISCOVERY" font gui.mono_font kerning 3.6 color "#FAC443" size 18
                                 text e["term"] font gui.serif_font axis {"weight": 300, "opticalsize": 48} color "#EED4B4" size 44 substitute False
-                                text "%s  ·  %s" % (GLOSS_CAT_NAMES[e["cat"]].upper(), "FOUND BY FOLLOWING A LINK" if persistent.gloss_found[cur] == "link" else "FOUND IN THE STORY") font gui.mono_font kerning 3.0 color "#B87444" size 15
+                                text "%s%s" % (GLOSS_CAT_NAMES[e["cat"]].upper(), "  FOUND BY FOLLOWING A LINK" if persistent.gloss_found[cur] == "link" else "") font gui.mono_font kerning 3.0 color "#B87444" size 15
                                 null height 4
                                 text gloss_render_body(e["text"], persistent.gloss_found) font gui.sans_font color "#DDBCAD" size 26 line_spacing 6 substitute False
-                                null height 8
-                                text "{color=#D3710D}§{/color} = not discovered yet. Follow it to unlock." font gui.sans_font color "#9D908D" size 18
+                                if any(gid not in persistent.gloss_found for gid, _ in gloss_body_links(e["text"])):
+                                    null height 8
+                                    text "{color=#D3710D}§{/color} = not discovered yet. Follow it to unlock." font gui.sans_font color "#9D908D" size 18
                     else:
                         $ e = GLOSS[cur]
                         vbox:

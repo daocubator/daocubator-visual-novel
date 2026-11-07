@@ -51,7 +51,7 @@ screen bad_ending_rewind_modal(failure_title, failure_summary, lesson_id):
             hbox:
                 xfill True
                 text "BAD ENDING — TIMELINE COLLAPSED" font gui.mono_font kerning 3.6 color "#D3710D" size 18
-                text "[ldata['number']] · [ldata['category'].upper()]" font gui.mono_font kerning 3.2 color "#B87444" size 16 xalign 1.0
+                text "[ldata['number']]" font gui.mono_font kerning 3.2 color "#B87444" size 16 xalign 1.0
 
             text "[failure_title]" font gui.serif_font axis {"weight": 300, "opticalsize": 48} color "#EED4B4" size 38
             text "[failure_summary]" font gui.sans_font color "#DDBCAD" size 23 line_spacing 5
@@ -108,7 +108,6 @@ screen episode_complete_modal(ep_id, summary_text):
             hbox:
                 xfill True
                 text "• DISASTER AVERTED — GOOD ENDING UNLOCKED" font gui.mono_font kerning 3.6 color "#578C88" size 18
-                text "[ep['pillar_short']]" font gui.mono_font kerning 3.2 color "#FAC443" size 16 xalign 1.0
 
             hbox:
                 spacing 28

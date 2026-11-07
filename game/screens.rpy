@@ -591,7 +591,7 @@ screen game_menu(title, scroll=None, yinitial=0.0, spacing=0):
 
     use navigation
 
-    textbutton (_("Back") if main_menu else _("Back to Story")):
+    textbutton (_("× BACK") if main_menu else _("× BACK TO STORY")):
         style "return_button"
 
         action Return()
