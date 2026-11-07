@@ -44,7 +44,12 @@ after the first load. Click **Start** to play.
 
 ## Hosting for collaborators
 
-Standard options for a Ren'Py web build:
+**GitHub Pages (automatic):** `.github/workflows/pages.yml` rebuilds the web version on every
+push to `main` with a fresh Ren'Py 8.5.0 SDK + matching web runtime and publishes it to Pages.
+One-time setup: repo Settings → Pages → Source: "GitHub Actions". Re-run by hand from the
+Actions tab ("Run workflow"). Bump `RENPY_VERSION` there when the SDK is upgraded.
+
+Other options for a Ren'Py web build:
 - **itch.io** — upload `web-build/` as an HTML project, tick "SharedArrayBuffer support". Easiest; handles the COOP/COEP headers.
 - **Any static host that lets you set headers** — the page needs
   `Cross-Origin-Opener-Policy: same-origin` and `Cross-Origin-Embedder-Policy: require-corp`.
