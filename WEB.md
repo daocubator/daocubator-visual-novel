@@ -27,6 +27,10 @@ Stop `serve_web.py` first — it holds `web-build/` open and the build can't rep
 ```
 
 Produces `web-build/` (index.html + renpy.wasm + renpy.data + game.zip + icons).
+The browser build's source artwork lives at the project root: `web-presplash.jpg`
+for the loading screen and `web-icon.png` for the page/PWA icons. Update those
+files before rebuilding; changing only `web-build/` won't affect the GitHub Pages
+workflow, which builds from the project source on each run.
 
 ## Play locally
 

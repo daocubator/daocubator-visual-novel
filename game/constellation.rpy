@@ -175,7 +175,6 @@ transform cg_modal_bg:
     size (1350, 432)
     fit "cover"
 
-
 ################################################################################
 ## World Overview Hub Label
 
@@ -254,7 +253,7 @@ screen constellation_map():
             xanchor 0.5
             yanchor 0.5
             xsize 536
-            ysize 244
+            ysize 309
             background ("#528C6E55" if is_done else "#83422522")
             at constellation_card_float(float_delay)
 
@@ -265,22 +264,24 @@ screen constellation_map():
             xanchor 0.5
             yanchor 0.5
             xsize 520
-            ysize 230
+            ysize 293
             padding (4, 4)
             background ("#528C6E" if is_done else "#8C533E")
             hover_background ("#528C6E" if is_done else "#8C533E")
             at constellation_card_float(float_delay)
             action Show("scenario_overview_modal", ep_id=ep_id)
 
-            vbox:
-                spacing 0
-                add cg_thumb xsize 512
+            fixed:
+                xsize 512
+                ysize 285
+                ## Center-crop the 480x154 placeholder art to a 16:9 window before scaling.
+                add im.Crop(cg_thumb, (102, 0, 276, 154)) xsize 512 ysize 285
                 frame:
                     xfill True
-                    ysize 54
-                    background "#140702E8"
-                    padding (12, 4)
-                    text "[ep['title']]" font gui.serif_font axis {"weight": 400, "opticalsize": 42} color "#EED4B4" size 34 yalign 0.5
+                    yalign 1.0
+                    background "#140702D9"
+                    padding (14, 9)
+                    text "[ep['title']]" font gui.serif_font axis {"weight": 400, "opticalsize": 42} color "#EED4B4" size 32 line_spacing -3
 
     ## Bottom Bar — Natural Glossary Footnote Explanation + System Menu Controls
     frame:
