@@ -522,6 +522,12 @@ screen glossary():
 
     on "show" action Function(gloss_mark_read, cur)
 
+    ## Enter / Space leave the glossary (Esc already does). Declared before the
+    ## menu so a keyboard-focused button still gets Enter first.
+    key "K_RETURN" action Return()
+    key "K_KP_ENTER" action Return()
+    key "K_SPACE" action Return()
+
     use game_menu(_("Glossary")):
 
         vbox:

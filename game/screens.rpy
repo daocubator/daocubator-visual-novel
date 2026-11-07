@@ -590,7 +590,7 @@ screen game_menu(title, scroll=None, yinitial=0.0, spacing=0):
 
     use navigation
 
-    textbutton _("Return"):
+    textbutton (_("Back") if main_menu else _("Back to Story")):
         style "return_button"
 
         action Return()
@@ -653,6 +653,16 @@ style return_button:
     xpos gui.navigation_xpos
     yalign 1.0
     yoffset -45
+    xminimum 300
+    padding (24, 14, 24, 14)
+    background Solid("#FAC443")
+    hover_background Solid("#FFE08A")
+
+style return_button_text:
+    size 30
+    bold True
+    color "#1E120C"
+    hover_color "#1E120C"
 
 
 ## About screen ################################################################
