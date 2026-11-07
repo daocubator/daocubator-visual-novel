@@ -41,8 +41,12 @@ jobs:
           curl -sSfL "https://www.renpy.org/dl/$RENPY_VERSION/renpy-$RENPY_VERSION-sdk.tar.bz2" -o /tmp/sdk.tar.bz2
           mkdir -p "$SDK"
           tar xjf /tmp/sdk.tar.bz2 -C "$SDK" --strip-components=1
-          curl -sSfL "https://update.renpy.org/$RENPY_VERSION/renpy-$RENPY_VERSION-web.update.gz" -o /tmp/web.update.gz
-          gzip -dc /tmp/web.update.gz | tar xf - -C "$SDK" web/
+          # Web runtime from www.renpy.org/dl (valid TLS). update.renpy.org's HTTPS cert is for the wrong host.
+          curl -sSfL "https://www.renpy.org/dl/$RENPY_VERSION/renpy-$RENPY_VERSION-web.zip" -o /tmp/web.zip
+          mkdir -p /tmp/web && unzip -q /tmp/web.zip -d /tmp/web
+          WEB_DIR="$(dirname "$(find /tmp/web -path '*/web/hash.txt' | head -1)")"
+          [ -d "$WEB_DIR" ] || { echo "No web/ runtime in renpy-$RENPY_VERSION-web.zip"; find /tmp/web -maxdepth 3; exit 1; }
+          cp -r "$WEB_DIR" "$SDK/web"
 
       - name: Lint
         env:
