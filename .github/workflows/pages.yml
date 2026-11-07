@@ -1,0 +1,77 @@
+# Builds the Ren'Py web version and publishes it to GitHub Pages on every push to main.
+# One-time setup: repo Settings -> Pages -> Source: "GitHub Actions".
+name: Web build -> GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+env:
+  # Web runtime must exactly match the SDK version (see WEB.md).
+  RENPY_VERSION: 8.5.0
+  SDK: ${{ github.workspace }}/../renpy-sdk
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Cache Ren'Py SDK + web runtime
+        id: sdk-cache
+        uses: actions/cache@v4
+        with:
+          path: ${{ env.SDK }}
+          key: renpy-sdk-web-${{ env.RENPY_VERSION }}
+
+      - name: Download Ren'Py SDK + web runtime
+        if: steps.sdk-cache.outputs.cache-hit != 'true'
+        run: |
+          set -euo pipefail
+          curl -sSfL "https://www.renpy.org/dl/$RENPY_VERSION/renpy-$RENPY_VERSION-sdk.tar.bz2" -o /tmp/sdk.tar.bz2
+          mkdir -p "$SDK"
+          tar xjf /tmp/sdk.tar.bz2 -C "$SDK" --strip-components=1
+          curl -sSfL "https://update.renpy.org/$RENPY_VERSION/renpy-$RENPY_VERSION-web.update.gz" -o /tmp/web.update.gz
+          gzip -dc /tmp/web.update.gz | tar xf - -C "$SDK" web/
+
+      - name: Lint
+        env:
+          SDL_VIDEODRIVER: dummy
+          SDL_AUDIODRIVER: dummy
+        run: '"$SDK/renpy.sh" "$GITHUB_WORKSPACE" lint'
+
+      - name: Build web version
+        env:
+          SDL_VIDEODRIVER: dummy
+          SDL_AUDIODRIVER: dummy
+        run: |
+          set -euo pipefail
+          "$SDK/renpy.sh" "$SDK/launcher" web_build "$GITHUB_WORKSPACE" --dest "$RUNNER_TEMP/site"
+          for f in index.html renpy.wasm game.zip; do
+            test -f "$RUNNER_TEMP/site/$f" || { echo "Missing $f - web build failed"; exit 1; }
+          done
+          ls -lh "$RUNNER_TEMP/site"
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: ${{ runner.temp }}/site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
