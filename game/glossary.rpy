@@ -385,6 +385,7 @@ init python:
         new = [i for i in ids if i in GLOSS and i not in persistent.gloss_found]
         for i in new:
             persistent.gloss_found[i] = how
+            award_game_points("glossary:discovered:%s" % i)
         if new and toast:
             renpy.show_screen("gloss_toast", names=[GLOSS[i]["term"] for i in new],
                               n=len(persistent.gloss_found))
@@ -405,6 +406,7 @@ init python:
     def gloss_mark_read(gid):
         if gid in persistent.gloss_found and gid not in persistent.gloss_read:
             persistent.gloss_read.add(gid)
+            award_game_points("glossary:explored:%s" % gid)
 
     def gloss_select(gid):
         persistent.gloss_sel = gid

@@ -147,12 +147,17 @@ label complete_episode(ep_id, summary_text):
     python:
         if persistent.episodes_completed is None:
             persistent.episodes_completed = set()
+        first_clear = ep_id not in persistent.episodes_completed
         persistent.episodes_completed.add(ep_id)
+        if first_clear:
+            award_game_points("scenario:%s:cleared" % ep_id)
         for lid in EPISODES[ep_id]["lessons"]:
             if persistent.lessons_unlocked is None:
                 persistent.lessons_unlocked = set()
             persistent.lessons_unlocked.add(lid)
         renpy.save_persistent()
+        if persistent.supabase_session and _session_user_id():
+            sync_game_points()
     call screen episode_complete_modal(ep_id, summary_text)
     jump world_overview
 

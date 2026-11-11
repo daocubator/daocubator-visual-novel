@@ -215,6 +215,7 @@ init python:
     build.classify('prototypes/**', None)
     build.classify('scripts/**', None)
     build.classify('build/**', None)
+    build.classify('supabase/**', None)
     build.classify('web-build/**', None)
     build.classify('*.zip', None)
     build.classify('*.md', None)

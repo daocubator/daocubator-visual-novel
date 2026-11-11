@@ -223,6 +223,7 @@ screen constellation_map():
                         background "#241309"
                         padding (14, 6)
                         text "LESSONS · [num_lessons_done]/[len(LESSONS)]" font gui.mono_font kerning 3.2 color "#FAC443" size 16
+                    textbutton "ACCOUNT · [persistent.game_point_balance] PTS" action ShowMenu("player_account") style "constellation_nav_btn"
                     textbutton "LESSONS CODEX" action ShowMenu("lessons_codex") style "constellation_nav_btn"
                     textbutton "GLOSSARY" action ShowMenu("glossary") style "constellation_nav_btn"
 
