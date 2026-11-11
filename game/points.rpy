@@ -8,6 +8,7 @@ default persistent.game_point_balance = 0
 default persistent.supabase_session = {}
 default supabase_email = ""
 default supabase_otp = ""
+default supabase_code_email = ""
 default supabase_status = ""
 
 init -5 python:
@@ -86,6 +87,7 @@ init -5 python:
         try:
             _supabase_fetch("/auth/v1/otp", payload={"email": email, "create_user": True})
             store.supabase_email = email
+            store.supabase_code_email = email
             store.supabase_status = "Code sent. Check your email and enter the code."
         except Exception as e:
             store.supabase_status = "Could not send code: %s" % str(e)
@@ -194,15 +196,24 @@ init -5 python:
             sync_game_points()
 
 
+style account_input is input:
+    xsize 730
+    font gui.sans_font
+    color "#EED4B4"
+    size 22
+
+
 screen player_account():
     tag menu
     modal True
     on "show" action Function(account_screen_opened)
+    dismiss action Return()
 
     add "bg constellation"
     add "#140702D9"
 
     frame:
+        modal True
         xalign 0.5
         yalign 0.5
         xsize 1180
@@ -230,11 +241,28 @@ screen player_account():
             else:
                 text "Sign in with an email code to save points to your account and carry them between devices." font gui.sans_font color "#DDBCAD" size 21 line_spacing 4
                 text "EMAIL ADDRESS" font gui.mono_font kerning 3.0 color "#B87444" size 15
-                input value VariableInputValue("supabase_email") length 254 allow "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@._+-"
+                frame:
+                    xsize 760
+                    background "#834225"
+                    padding (1, 1)
+                    frame:
+                        xsize 758
+                        background "#2D1B10"
+                        padding (14, 8)
+                        input value VariableInputValue("supabase_email") length 254 allow "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@._+-" style "account_input"
                 textbutton "SEND EMAIL CODE" action Function(request_supabase_code, supabase_email) style "constellation_confirm_btn"
-                text "EMAIL CODE" font gui.mono_font kerning 3.0 color "#B87444" size 15
-                input value VariableInputValue("supabase_otp") length 8 allow "0123456789"
-                textbutton "VERIFY & SYNC POINTS" action Function(verify_supabase_code, supabase_otp) style "constellation_confirm_btn"
+                if supabase_code_email and supabase_code_email == (supabase_email or "").strip().lower():
+                    text "EMAIL CODE" font gui.mono_font kerning 3.0 color "#B87444" size 15
+                    frame:
+                        xsize 760
+                        background "#834225"
+                        padding (1, 1)
+                        frame:
+                            xsize 758
+                            background "#2D1B10"
+                            padding (14, 8)
+                            input value VariableInputValue("supabase_otp") length 8 allow "0123456789" style "account_input"
+                    textbutton "VERIFY & SYNC POINTS" action Function(verify_supabase_code, supabase_otp) style "constellation_confirm_btn"
 
             text "[supabase_status]" font gui.sans_font color "#DDBCAD" size 18
             text "Local points: [local_points_total()]" font gui.mono_font kerning 2.5 color "#9D908D" size 15

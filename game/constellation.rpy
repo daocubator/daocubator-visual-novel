@@ -159,12 +159,17 @@ transform constellation_orb_pulse:
     linear 1.8 alpha 0.25 zoom 0.97
     repeat
 
-transform constellation_card_float(delay=0.0):
-    pause delay
-    yoffset 0
-    ease 2.4 yoffset -7
-    ease 2.4 yoffset 0
-    repeat
+transform constellation_card_float(float_delay=0.0, fade_delay=0.0):
+    parallel:
+        alpha 0.0
+        pause fade_delay
+        easein 0.26 alpha 1.0
+    parallel:
+        pause float_delay
+        yoffset 0
+        ease 2.4 yoffset -7
+        ease 2.4 yoffset 0
+        repeat
 
 transform rewind_banner_flash:
     alpha 0.0
@@ -183,16 +188,17 @@ label world_overview:
     $ current_episode = None
     $ selected_constellation_node = None
     $ play_menu_music()
+    $ constellation_card_fade_delays = {ep_id: renpy.random.uniform(0.0, 0.50) for ep_id in EPISODE_ORDER}
     hide screen stats_hud
-    scene bg constellation with dissolve
-    call screen constellation_map
+    scene bg constellation
+    call screen constellation_map(constellation_card_fade_delays) with Dissolve(0.25)
     return
 
 
 ################################################################################
 ## World Overview Screen — "The First Constellation" (Start Screen & Episode Hub)
 
-screen constellation_map():
+screen constellation_map(card_fade_delays=None):
     tag menu
     modal True
 
@@ -245,6 +251,7 @@ screen constellation_map():
         $ ep = EPISODES[ep_id]
         $ nx, ny = ep["pos"]
         $ float_delay = EPISODE_ORDER.index(ep_id) * 0.55
+        $ fade_delay = card_fade_delays.get(ep_id, 0.0) if card_fade_delays else 0.0
         $ is_done = ep_id in (persistent.episodes_completed or set())
         $ cg_thumb = ep["cg_happy_thumb"] if is_done else ep["cg_disaster_thumb"]
         ## Completed stories get a soft sage aura and a clear green border.
@@ -256,7 +263,7 @@ screen constellation_map():
             xsize 536
             ysize 309
             background ("#528C6E55" if is_done else "#83422522")
-            at constellation_card_float(float_delay)
+            at constellation_card_float(float_delay, fade_delay)
 
         ## Keep the thumbnail and story title as the card's only content.
         button:
@@ -269,7 +276,7 @@ screen constellation_map():
             padding (4, 4)
             background ("#528C6E" if is_done else "#8C533E")
             hover_background ("#528C6E" if is_done else "#8C533E")
-            at constellation_card_float(float_delay)
+            at constellation_card_float(float_delay, fade_delay)
             action Show("scenario_overview_modal", ep_id=ep_id)
 
             fixed:

@@ -84,13 +84,13 @@ init python:
 
 ## Entering or exiting the game menu.
 
-define config.enter_transition = dissolve
-define config.exit_transition = dissolve
+define config.enter_transition = Dissolve(0.25)
+define config.exit_transition = Dissolve(0.25)
 
 
 ## Between screens of the game menu.
 
-define config.intra_transition = dissolve
+define config.intra_transition = Dissolve(0.25)
 
 
 ## A transition that is used after a game has been loaded.
