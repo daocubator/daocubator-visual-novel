@@ -10,6 +10,9 @@ default supabase_email = ""
 default supabase_otp = ""
 default supabase_code_email = ""
 default supabase_status = ""
+default supabase_code_loading = False
+default supabase_verify_loading = False
+default supabase_loading_dots = 0
 
 init -5 python:
     import time as _points_time
@@ -88,9 +91,74 @@ init -5 python:
             _supabase_fetch("/auth/v1/otp", payload={"email": email, "create_user": True})
             store.supabase_email = email
             store.supabase_code_email = email
+            store.supabase_otp = ""
             store.supabase_status = "Code sent. Check your email and enter the code."
         except Exception as e:
             store.supabase_status = "Could not send code: %s" % str(e)
+
+    def begin_supabase_code_request(email):
+        email = (email or "").strip().lower()
+        if store.supabase_code_loading:
+            return
+        if not supabase_ready():
+            store.supabase_status = "Add the Supabase project URL and anon key in game/points.rpy first."
+            renpy.restart_interaction()
+            return
+        if not email or "@" not in email:
+            store.supabase_status = "Enter a valid email address."
+            renpy.restart_interaction()
+            return
+        store.supabase_status = ""
+        store.supabase_code_loading = True
+        store.supabase_loading_dots = 0
+        renpy.restart_interaction()
+
+    def finish_supabase_code_request(email):
+        try:
+            request_supabase_code(email)
+        finally:
+            store.supabase_code_loading = False
+            renpy.restart_interaction()
+
+    def begin_supabase_code_verification(code):
+        code = (code or "").strip()
+        if store.supabase_code_loading or store.supabase_verify_loading:
+            return
+        if not supabase_ready():
+            store.supabase_status = "Add the Supabase project URL and anon key in game/points.rpy first."
+            renpy.restart_interaction()
+            return
+        if not (store.supabase_email or "").strip() or not code:
+            store.supabase_status = "Enter the email address and the code from your message."
+            renpy.restart_interaction()
+            return
+        store.supabase_status = ""
+        store.supabase_verify_loading = True
+        store.supabase_loading_dots = 0
+        renpy.restart_interaction()
+
+    def finish_supabase_code_verification(code):
+        try:
+            verify_supabase_code(code)
+        finally:
+            store.supabase_verify_loading = False
+            renpy.restart_interaction()
+
+    def edit_supabase_email():
+        store.supabase_code_email = ""
+        store.supabase_otp = ""
+        store.supabase_status = ""
+        renpy.restart_interaction()
+
+    def activate_account_cta():
+        if store.supabase_code_loading or store.supabase_verify_loading:
+            return
+        if persistent.supabase_session and (persistent.supabase_session.get("user") or {}).get("email"):
+            sync_game_points()
+        elif store.supabase_code_email and store.supabase_code_email == (store.supabase_email or "").strip().lower():
+            begin_supabase_code_verification(store.supabase_otp)
+        else:
+            begin_supabase_code_request(store.supabase_email)
 
     def _set_session(data):
         expires_in = int(data.get("expires_in", 3600))
@@ -195,17 +263,6 @@ init -5 python:
         if _session_user_id():
             sync_game_points()
 
-    def prompt_supabase_otp():
-        code = renpy.input(
-            "Enter the code from your email",
-            default=store.supabase_otp,
-            length=8,
-            allow="0123456789",
-            copypaste=True,
-        )
-        store.supabase_otp = (code or "").strip()
-
-
 style account_input is input:
     xsize 726
     ysize 36
@@ -215,11 +272,46 @@ style account_input is input:
     size 22
 
 
+style account_disabled_btn is constellation_confirm_btn:
+    xsize 320
+    insensitive_background "#42281E"
+
+style account_disabled_btn_text is constellation_confirm_btn_text:
+    xalign 0.0
+    insensitive_color "#9D908D"
+
+style account_request_btn is constellation_confirm_btn:
+    xsize 320
+
+style account_request_btn_text is constellation_confirm_btn_text:
+    xalign 0.0
+
+style account_verify_btn is constellation_confirm_btn:
+    xsize 400
+
+style account_verify_btn_text is constellation_confirm_btn_text:
+    xalign 0.0
+
+style account_verify_disabled_btn is account_disabled_btn:
+    xsize 400
+
 screen player_account():
     tag menu
     modal True
     on "show" action Function(account_screen_opened)
-    dismiss action Return()
+    dismiss action Return() keysym "mouseup_1"
+
+    $ normalized_account_email = (supabase_email or "").strip().lower()
+    $ account_email_locked = supabase_code_loading or supabase_verify_loading or (supabase_code_email and supabase_code_email == normalized_account_email)
+
+    if supabase_code_loading or supabase_verify_loading:
+        timer 0.16 repeat True action SetVariable("supabase_loading_dots", (supabase_loading_dots + 1) % 4)
+    if supabase_code_loading:
+        timer 0.56 action Function(finish_supabase_code_request, supabase_email)
+    if supabase_verify_loading:
+        timer 0.56 action Function(finish_supabase_code_verification, supabase_otp)
+
+    key ["K_RETURN", "K_KP_ENTER"] action Function(activate_account_cta) capture True
 
     add "bg constellation"
     add "#140702D9"
@@ -263,9 +355,23 @@ screen player_account():
                         ysize 52
                         background "#2D1B10"
                         padding (14, 8)
-                        input value VariableInputValue("supabase_email") length 254 allow "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@._+-" style "account_input"
-                textbutton "SEND EMAIL CODE" action Function(request_supabase_code, supabase_email) style "constellation_confirm_btn"
-                if supabase_code_email and supabase_code_email == (supabase_email or "").strip().lower():
+                        if account_email_locked:
+                            text "[supabase_email]" font gui.sans_font color "#9D908D" size 22 xsize 726 ysize 36 yoffset 3
+                        else:
+                            input value VariableInputValue("supabase_email") length 254 allow "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@._+-" action Function(activate_account_cta) style "account_input"
+                if supabase_code_loading:
+                    textbutton "SENDING[supabase_loading_dots * '.']" action NullAction() sensitive False style "account_disabled_btn"
+                elif account_email_locked:
+                    if supabase_verify_loading:
+                        textbutton "CHECK YOUR EMAIL" action NullAction() sensitive False style "account_disabled_btn"
+                    else:
+                        hbox:
+                            spacing 12
+                            textbutton "CHECK YOUR EMAIL" action NullAction() sensitive False style "account_disabled_btn"
+                            textbutton "EDIT EMAIL" action Function(edit_supabase_email) style "constellation_cancel_btn"
+                else:
+                    textbutton "SEND EMAIL CODE" action Function(begin_supabase_code_request, supabase_email) style "account_request_btn"
+                if supabase_code_email and supabase_code_email == normalized_account_email:
                     text "EMAIL CODE" font gui.mono_font kerning 3.0 color "#B87444" size 15
                     frame:
                         xsize 760
@@ -277,18 +383,14 @@ screen player_account():
                             ysize 52
                             background "#2D1B10"
                             padding (14, 8)
-                            if renpy.variant("web"):
-                                button:
-                                    xsize 726
-                                    ysize 36
-                                    padding (0, 0)
-                                    background None
-                                    hover_background None
-                                    action Function(prompt_supabase_otp)
-                                    text (supabase_otp if supabase_otp else "Click to enter the email code") font gui.sans_font color ("#EED4B4" if supabase_otp else "#9D908D") size 22 xalign 0.0 yalign 0.5
+                            if supabase_verify_loading:
+                                text "[supabase_otp]" font gui.sans_font color "#9D908D" size 22 xsize 726 ysize 36 yoffset 3
                             else:
-                                input value VariableInputValue("supabase_otp") length 8 allow "0123456789" style "account_input"
-                    textbutton "VERIFY & SYNC POINTS" action Function(verify_supabase_code, supabase_otp) style "constellation_confirm_btn"
+                                input value VariableInputValue("supabase_otp") length 8 allow "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789" action Function(activate_account_cta) style "account_input"
+                    if supabase_verify_loading:
+                        textbutton "VERIFYING[supabase_loading_dots * '.']" action NullAction() sensitive False style "account_verify_disabled_btn"
+                    else:
+                        textbutton "VERIFY & SYNC POINTS" action Function(begin_supabase_code_verification, supabase_otp) style "account_verify_btn"
 
             text "[supabase_status]" font gui.sans_font color "#DDBCAD" size 18
             text "Local points: [local_points_total()]" font gui.mono_font kerning 2.5 color "#9D908D" size 15
