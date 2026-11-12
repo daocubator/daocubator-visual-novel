@@ -1,7 +1,7 @@
 # Account binding and milestone points.
 # Supabase URL and anon key are public client configuration, not service secrets.
-define SUPABASE_URL = ""
-define SUPABASE_ANON_KEY = ""
+define SUPABASE_URL = "https://jcluracmbowqtbasrppv.supabase.co"
+define SUPABASE_ANON_KEY = "sb_publishable_GOruiaNRryNw2rCqFWRwAA_dM7F8_iV"
 
 default persistent.game_point_milestones = set()
 default persistent.game_point_balance = 0
@@ -197,7 +197,8 @@ init -5 python:
 
 
 style account_input is input:
-    xsize 730
+    xsize 726
+    ysize 36
     font gui.sans_font
     color "#EED4B4"
     size 22
@@ -243,10 +244,12 @@ screen player_account():
                 text "EMAIL ADDRESS" font gui.mono_font kerning 3.0 color "#B87444" size 15
                 frame:
                     xsize 760
+                    ysize 58
                     background "#834225"
-                    padding (1, 1)
+                    padding (3, 3)
                     frame:
-                        xsize 758
+                        xsize 754
+                        ysize 52
                         background "#2D1B10"
                         padding (14, 8)
                         input value VariableInputValue("supabase_email") length 254 allow "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@._+-" style "account_input"
@@ -255,10 +258,12 @@ screen player_account():
                     text "EMAIL CODE" font gui.mono_font kerning 3.0 color "#B87444" size 15
                     frame:
                         xsize 760
+                        ysize 58
                         background "#834225"
-                        padding (1, 1)
+                        padding (3, 3)
                         frame:
-                            xsize 758
+                            xsize 754
+                            ysize 52
                             background "#2D1B10"
                             padding (14, 8)
                             input value VariableInputValue("supabase_otp") length 8 allow "0123456789" style "account_input"
