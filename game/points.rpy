@@ -195,10 +195,21 @@ init -5 python:
         if _session_user_id():
             sync_game_points()
 
+    def prompt_supabase_otp():
+        code = renpy.input(
+            "Enter the code from your email",
+            default=store.supabase_otp,
+            length=8,
+            allow="0123456789",
+            copypaste=True,
+        )
+        store.supabase_otp = (code or "").strip()
+
 
 style account_input is input:
     xsize 726
     ysize 36
+    yoffset 3
     font gui.sans_font
     color "#EED4B4"
     size 22
@@ -266,7 +277,17 @@ screen player_account():
                             ysize 52
                             background "#2D1B10"
                             padding (14, 8)
-                            input value VariableInputValue("supabase_otp") length 8 allow "0123456789" style "account_input"
+                            if renpy.variant("web"):
+                                button:
+                                    xsize 726
+                                    ysize 36
+                                    padding (0, 0)
+                                    background None
+                                    hover_background None
+                                    action Function(prompt_supabase_otp)
+                                    text (supabase_otp if supabase_otp else "Click to enter the email code") font gui.sans_font color ("#EED4B4" if supabase_otp else "#9D908D") size 22 xalign 0.0 yalign 0.5
+                            else:
+                                input value VariableInputValue("supabase_otp") length 8 allow "0123456789" style "account_input"
                     textbutton "VERIFY & SYNC POINTS" action Function(verify_supabase_code, supabase_otp) style "constellation_confirm_btn"
 
             text "[supabase_status]" font gui.sans_font color "#DDBCAD" size 18
