@@ -7,7 +7,7 @@ tags: [moc]
 This vault is the **canonical source of truth** for the **Get Rich Together (DAOCUBATOR)** visual novel. The Google Doc overview (`build/overview.md`) and the Ren'Py implementation (`game/`) are both derived from it — see [[Sync Workflow]].
 
 > **Working title:** Get Rich Together (DAOCUBATOR)
-> **Logline:** Explore a glowing constellation of real-world DAO disasters. Drop into the worst-case scenario as creator **Ash El**, shaman co-creator **Xochtl**, or administrator **Lay-Lay**—then **rewind time (`⏪`)** through 3 high-stakes decisions where every mistake triggers a fast, retryable bad ending and teaches a battle-tested lesson in crypto sovereignty, cooperative power, and enforceable agreements.
+> **Logline:** Explore a glowing constellation of real-world DAO disasters. Drop into the worst-case scenario as creator **Koraba**, shaman co-creator **Xochit**, or administrator **Clara**—then **rewind time (`⏪`)** through 3 high-stakes decisions where every mistake triggers a fast, retryable bad ending and teaches a battle-tested lesson in crypto sovereignty, cooperative power, and enforceable agreements.
 
 ## Start here
 
@@ -18,7 +18,7 @@ This vault is the **canonical source of truth** for the **Get Rich Together (DAO
 
 ## Characters
 
-- **Core Episodic Trio:** [[Ash El]] (The Creator) · [[Lay-Lay]] (The Administrator) · [[Xochtl]] (The Co-Creator / Shaman)
+- **Core Episodic Trio:** [[Koraba]] (The Creator) · [[Clara]] (The Administrator) · [[Xochit]] (The Co-Creator / Shaman)
 - **Ensemble & Legacy Cast:** [[The Player]] · [[Maya]] · [[Jordan]] · [[Alex]] · [[Vera]] · [[Spectre]] · [[Atlas]]
 
 Template for new characters: [[_Character Template]]

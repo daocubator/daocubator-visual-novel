@@ -119,11 +119,11 @@ def apply_pass3a_composite(wash_path, output_path, tone_mix=None, weave_strength
     weave_strength = params["weave_strength"] if weave_strength is None else weave_strength
     valley_boost = params["valley_boost"] if valley_boost is None else valley_boost
 
-    p1_path = os.path.join(REPO_ROOT, stage2["reference_assets"]["pass1_macro_canvas_source"])
-    p1_buf = load_rgb(p1_path, gen_w, gen_h)
+    texture_path = os.path.join(REPO_ROOT, stage2["reference_assets"]["macro_canvas_texture"])
+    texture_buf = load_rgb(texture_path, gen_w, gen_h)
     wash_buf = load_rgb(wash_path, gen_w, gen_h)
 
-    canvas_rgb = synthesize_macro_canvas(p1_buf, gen_w, gen_h, params["patch_quilting"])
+    canvas_rgb = [float(value) for value in texture_buf]
 
     mean_r = sum(canvas_rgb[0::3]) / (gen_w * gen_h)
     mean_g = sum(canvas_rgb[1::3]) / (gen_w * gen_h)

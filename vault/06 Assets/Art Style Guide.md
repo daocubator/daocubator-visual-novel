@@ -24,23 +24,19 @@ Moving away from generic, overly saturated cyber-punk and heavy 3D metallic gold
 | **Charcoal Ink** | `#141210` | Primary line-art, Constellation night sky, high-contrast outlines |
 | **Warm Parchment** | `#F4EFE6` | Light canvas base, dialogue typography, clean breathing room |
 | **Sunlit Ochre** | `#E8C574` | Sanctuary walls, constellation starlight, Lesson unlocked accents |
-| **Terracotta Ember** | `#E07A5F` | **Ash El** accent color — creator warmth, acoustic resonance,woven poncho geometry |
-| **Alchemical Violet** | `#9B7EDE` | **Lay-Lay** primary accent — administrative power, apothecary potion vials |
-| **Herbal Sage** | `#528C6E` | **Lay-Lay** & Sanctuary secondary accent — medicinal herbs, botanical leaves |
-| **Cacao Turquoise** | `#2EC4B6` | **Xochtl** primary accent — ceremonial clarity, sacred water, beadwork |
-| **Cacao Bronze** | `#8C533E` | **Xochtl** secondary accent — ceremonial cacao cup, earth grounding |
+| **Terracotta Ember** | `#E07A5F` | **Koraba** accent color — creator warmth, acoustic resonance,woven poncho geometry |
+| **Alchemical Violet** | `#9B7EDE` | **Clara** primary accent — administrative power, apothecary potion vials |
+| **Herbal Sage** | `#528C6E` | **Clara** & Sanctuary secondary accent — medicinal herbs, botanical leaves |
+| **Cacao Turquoise** | `#2EC4B6` | **Xochit** primary accent — ceremonial clarity, sacred water, beadwork |
+| **Cacao Bronze** | `#8C533E` | **Xochit** secondary accent — ceremonial cacao cup, earth grounding |
 | **Crimson Alert** | `#D64545` | Worst-Case Scenario hooks, Rewind triggers, Bad Ending flashes |
 
 ## Character & Asset Mapping
 
 Rather than generic avatars, the core cast is built around unmistakable visual archetypes, signature gear, and color-coded textile patterns:
 
-1. **Ash El (The Creator / Protagonist):**
-   - **Gear:** Equipped with his acoustic-electric folk instrument (`charango` / guitar) strapped across his chest, green bead necklaces, and a feather pinned in his locs.
-   - **Pattern:** Vertical indigo/cream stripes paired with terracotta & botanical leaf line-art motifs.
-2. **Lay-Lay (The Administrator / Antagonist):**
-   - **Gear:** Equipped with glass apothecary potion vials, dried herb bundles, and an ornate administrative multisig key & ledger tablet.
-   - **Pattern:** Interlocking key-step fretwork in alchemical violet and herbal sage.
-3. **Xochtl (The Co-Creator / Shaman):**
-   - **Gear:** Holding a steaming ceremonial cacao cup; wearing a geometric beaded headband, red-and-black ceremonial face paint stripes across forehead, cheeks, and chin, and long beaded fringe earrings.
-   - **Pattern:** Horizontal rainbow-earth woven huipil stripes and black-and-white geometric zig-zag wrist cuffs.
+1. **Koraba (The Creator / Bridge Keeper):** Dark locs, layered blue wrap, beads, and kora; spiral, star, and orbit motifs.
+2. **Clara (The Registrar / Administrator):** Blonde hair in a structured bun, tailored patterned office clothes, lanyard, clipboard, and ledger; binder, schedule, orbit, and star motifs.
+3. **Xochit (The Ceremonial Weaver / Co-Creator):** Long braids, beaded headband, red-and-black face paint, statement earrings, woven textile layers, and ceremonial cacao bowl.
+
+For current character generation, use the approved 2026-11-11 character sheets in `vault/06 Assets/2026-11-11 character designs (EFAM DAO)/` as the visual source of truth. Older sprite colors and accessories remain legacy assets until replaced.

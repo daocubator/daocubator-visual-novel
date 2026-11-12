@@ -40,8 +40,8 @@ init 5 python:
         "ep1_keys": {
             "title": "No Keys, No Cheese",
             "color": "#D3710D",
-            "pov": "Ash El (The Creator)",
-            "cast": "Ash El · Lay-Lay · Xochtl",
+            "pov": "Koraba (The Creator)",
+            "cast": "Koraba · Clara · Xochit",
             "pos": (430, 340),
             "label": "ep1_keys",
             "cg_disaster": "images/cg_ep1_disaster.png",
@@ -51,22 +51,22 @@ init 5 python:
             "omg_title": "The $60,000 Sanctuary Meltdown",
             "happy_title": "2-of-3 Multisig & Verified Transfer",
             "omg_hook": (
-                "Ash El is stranded at the Lisbon airport terminal with twelve crates of botanical juices and his guitar. "
+                "Koraba is stranded at the Lisbon airport terminal with twelve crates of botanical juices and his guitar. "
                 "The Essential Food & Medicine DAO treasury just hit 0.00 NEAR. $60,000 meant for the Brazil sanctuary "
-                "was sent in one rushed click to a fake address — and Lay-Lay holds the only remaining admin key."
+                "was sent in one rushed click to a fake address — and Clara holds the only remaining admin key."
             ),
             "decisions_preview": [
                 "1 · Key Rotation & Shared Custody: After a secret key is leaked in a shared folder, rotate keys into a 2-of-3 shared wallet — or let one admin hold everything?",
                 "2 · Vetting New Admins: Check a charming newcomer's past wallet history first — or hand them full treasury power on good vibes?",
-                "3 · The $1 Test Transfer: Send $1 first and confirm on video that Xochtl's partner received it — or wire all $60,000 in one blind click?",
+                "3 · The $1 Test Transfer: Send $1 first and confirm on video that Xochit's partner received it — or wire all $60,000 in one blind click?",
             ],
             "lessons": ["no_keys_no_cheese", "vetting_admins", "test_transaction"],
         },
         "ep2_lisbon": {
             "title": "Frozen Pay, Empty Stage",
             "color": "#578C88",
-            "pov": "Xochtl (The Shaman) & Ash El",
-            "cast": "Xochtl · Ash El · Lay-Lay",
+            "pov": "Xochit (The Shaman) & Koraba",
+            "cast": "Xochit · Koraba · Clara",
             "pos": (1490, 340),
             "label": "ep2_lisbon",
             "cg_disaster": "images/cg_ep2_disaster.png",
@@ -76,13 +76,13 @@ init 5 python:
             "omg_title": "The Showcase Sabotage",
             "happy_title": "Milestone Escrow & Co-op Solidarity",
             "omg_hook": (
-                "Three hours before the Lisbon Showcase doors open, Ash El's interactive game and soundtrack are finished — "
-                "and Administrator Lay-Lay freezes his 18,000 USDC payment out of jealousy. "
-                "Ash El is ready to pull the game offline and walk away forever while the stage lights warm up."
+                "Three hours before the Lisbon Showcase doors open, Koraba's interactive game and soundtrack are finished — "
+                "and Administrator Clara freezes his 18,000 USDC payment out of jealousy. "
+                "Koraba is ready to pull the game offline and walk away forever while the stage lights warm up."
             ),
             "decisions_preview": [
                 "1 · Objective Milestone Escrow: Lock creative payouts in automatic smart-contract escrow — or leave payment up to an admin's personal mood?",
-                "2 · Co-op Solidarity (The Neutral Avatar Play): Use Xochtl's clever anonymous submission to prove bias with math — or start a public screaming match?",
+                "2 · Co-op Solidarity (The Neutral Avatar Play): Use Xochit's clever anonymous submission to prove bias with math — or start a public screaming match?",
                 "3 · Rotating Stewardship: Share admin duty through rotating signers and funded rest — or crown a new solo boss?",
             ],
             "lessons": ["creator_vs_admin", "coop_solidarity", "burnout"],
@@ -90,8 +90,8 @@ init 5 python:
         "ep3_agreements": {
             "title": "Blood, Cacao & Paper",
             "color": "#FAC443",
-            "pov": "Ash El & Xochtl (Co-Creators)",
-            "cast": "Ash El · Xochtl · Lay-Lay",
+            "pov": "Koraba & Xochit (Co-Creators)",
+            "cast": "Koraba · Xochit · Clara",
             "pos": (430, 760),
             "label": "ep3_agreements",
             "cg_disaster": "images/cg_ep3_disaster.png",
@@ -102,7 +102,7 @@ init 5 python:
             "happy_title": "4-Year Vesting & Co-op Legal Shield",
             "omg_hook": (
                 "A court officer drops a personal lawsuit onto the ceremonial cacao altar at the exact moment a former co-founder "
-                "who quit in Week 2 sells off 33% of all tokens — crashing the treasury and leaving Ash El and Xochtl "
+                "who quit in Week 2 sells off 33% of all tokens — crashing the treasury and leaving Koraba and Xochit "
                 "personally responsible for $140,000 in group debts."
             ),
             "decisions_preview": [
@@ -115,8 +115,8 @@ init 5 python:
         "ep4_apothecary": {
             "title": "One Tired Click Drained the Apothecary",
             "color": "#C2AEC7",
-            "pov": "Lay-Lay (The Administrator)",
-            "cast": "Lay-Lay · Ash El · Xochtl",
+            "pov": "Clara (The Administrator)",
+            "cast": "Clara · Koraba · Xochit",
             "pos": (1490, 760),
             "label": "ep4_apothecary",
             "cg_disaster": "images/cg_ep4_disaster.png",
@@ -126,9 +126,9 @@ init 5 python:
             "omg_title": "The Apothecary Drain at 1:14 A.M.",
             "happy_title": "Hardware Hex Verified & Timelock Shield",
             "omg_hook": (
-                "Step into Lay-Lay's candlelit apothecary. Surrounded by herbal jars, endless invoices, and a wealthy investor's "
+                "Step into Clara's candlelit apothecary. Surrounded by herbal jars, endless invoices, and a wealthy investor's "
                 "backroom bribe, one exhausted click at 1:14 a.m. hands the entire DAO treasury to a flash-loan attacker "
-                "while Ash El and Xochtl bang on the door."
+                "while Koraba and Xochit bang on the door."
             ),
             "decisions_preview": [
                 "1 · Resisting Whale Capture: Reject a wealthy investor's secret veto deal and cap voting power at 8% — or trade away community control for fast cash?",
@@ -244,7 +244,7 @@ screen constellation_map(card_fade_delays=None):
             xalign 0.5
             text "Primordia" font gui.serif_font axis {"weight": 300, "opticalsize": 28} color "#FAC443" size 28 xalign 0.5
             text "ESSENTIAL FOOD & MEDICINE" font gui.mono_font kerning 3.0 color "#EED4B4" size 15 xalign 0.5
-            text "Ash El · Lay-Lay · Xochtl" font gui.sans_font color "#578C88" size 16 xalign 0.5
+            text "Koraba · Clara · Xochit" font gui.sans_font color "#578C88" size 16 xalign 0.5
 
     ## Story cards with click-through thumbnail art (Disaster CG -> Happy CG)
     for ep_id in EPISODE_ORDER:

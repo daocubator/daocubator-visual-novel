@@ -19,9 +19,9 @@ init -5 python:
 
     # Map Character `name` (or image tag) to canonical sprite tag
     CHAR_TAG_MAP = {
-        "Ash El": "ashel",
-        "Lay-Lay": "laylay",
-        "Xochtl": "xochtl",
+        "Koraba": "ashel",
+        "Clara": "laylay",
+        "Xochit": "xochtl",
         "Maya": "maya",
         "Jordan": "jordan",
         "Alex": "alex",
@@ -337,7 +337,7 @@ image atlas generous  = At("images/atlas generous.png",  expr_generous,  char_fo
 image atlas guarded   = At("images/atlas guarded.png",   expr_guarded,   char_focus_and_light("atlas", "guarded"))
 image atlas predatory = At("images/atlas predatory.png", expr_predatory, char_focus_and_light("atlas", "predatory"))
 
-# ASH EL (6)
+# KORABA (6)
 image ashel neutral    = At("images/ashel neutral.png",    expr_neutral,    char_focus_and_light("ashel", "neutral"))
 image ashel focused    = At("images/ashel focused.png",    expr_focused,    char_focus_and_light("ashel", "focused"))
 image ashel alarmed    = At("images/ashel alarmed.png",    expr_alarmed,    char_focus_and_light("ashel", "alarmed"))
@@ -345,7 +345,7 @@ image ashel hurt       = At("images/ashel hurt.png",       expr_hurt,       char
 image ashel determined = At("images/ashel determined.png", expr_determined, char_focus_and_light("ashel", "determined"))
 image ashel proud      = At("images/ashel proud.png",      expr_proud,      char_focus_and_light("ashel", "proud"))
 
-# XOCHTL (6)
+# XOCHIT (6)
 image xochtl neutral   = At("images/xochtl neutral.png",   expr_neutral,    char_focus_and_light("xochtl", "neutral"))
 image xochtl warm      = At("images/xochtl warm.png",      expr_warm,       char_focus_and_light("xochtl", "warm"))
 image xochtl focused   = At("images/xochtl focused.png",   expr_focused,    char_focus_and_light("xochtl", "focused"))
@@ -353,7 +353,7 @@ image xochtl stern     = At("images/xochtl stern.png",     expr_stern,      char
 image xochtl hurt      = At("images/xochtl hurt.png",      expr_hurt,       char_focus_and_light("xochtl", "hurt"))
 image xochtl proud     = At("images/xochtl proud.png",     expr_proud,      char_focus_and_light("xochtl", "proud"))
 
-# LAY-LAY (6)
+# CLARA (6)
 image laylay neutral     = At("images/laylay neutral.png",     expr_neutral,     char_focus_and_light("laylay", "neutral"))
 image laylay calculating = At("images/laylay calculating.png", expr_calculating, char_focus_and_light("laylay", "calculating"))
 image laylay smirk       = At("images/laylay smirk.png",       expr_smirk,       char_focus_and_light("laylay", "smirk"))

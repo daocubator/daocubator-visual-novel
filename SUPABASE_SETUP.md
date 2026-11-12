@@ -28,6 +28,10 @@ In **Authentication → Emails → Email Templates**, edit the **Magic Link**
 template to use `{{ .Token }}` so Supabase sends a code the player can type into
 Ren'Py instead of a magic link. Supabase defaults to a six-digit email code, and
 the game accepts it. Choose a reasonable expiration and rate limit.
+The current email subject and body say **Get Rich Together** and sign off as
+**DAOcubator Team**. If the game is renamed, update the template subject and
+heading in the Supabase dashboard to match; the sender name can stay DAOcubator
+Team.
 For production, open **Authentication → Settings** and configure a transactional
 SMTP provider. Supabase's built-in mailer is for testing and has sending
 restrictions; it is limited to project team addresses and currently has a low

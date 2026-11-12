@@ -6,9 +6,9 @@
 
 define narrator = Character(None)
 define pc  = Character("[player_name]", color="#EED4B4")
-define ashel  = Character("Ash El",  color="#D3710D", image="ashel")
-define laylay = Character("Lay-Lay", color="#C2AEC7", image="laylay")
-define xochtl = Character("Xochtl",  color="#578C88", image="xochtl")
+define ashel  = Character("Koraba",  color="#D3710D", image="ashel")
+define laylay = Character("Clara", color="#C2AEC7", image="laylay")
+define xochtl = Character("Xochit",  color="#578C88", image="xochtl")
 define m   = Character("Maya",    color="#578C88", image="maya")
 define j   = Character("Jordan",  color="#D3710D", image="jordan")
 define a   = Character("Alex",    color="#B87444", image="alex")
@@ -56,7 +56,7 @@ default codex_seen   = set()
 ## Episodic Constellation state — vault: 01 Overview/Story Structure.md
 default persistent.episodes_completed = set()
 default current_episode = None
-default current_pov = "Ash El"
+default current_pov = "Koraba"
 default selected_constellation_node = None
 
 init python:

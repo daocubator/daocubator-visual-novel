@@ -18,13 +18,13 @@
     "zero_linework_rule": "Strictly zero pen, pencil, ink, or wireframe linework. Forms, architecture, lighting, and tech motifs emerge solely through wash density, stain blooms, and negative-space cutouts."
   },
   "stage_1_generation": {
-    "prompt_template": "A wide 16:9 visual novel background illustration of {scene_subject}, created entirely from delicate, ethereal tea and coffee watercolor washes on bright white heavy cotton canvas. Absolutely zero linework, no pen, no pencil, no wireframe polygon outlines, no drawn contours. {structural_wash_behavior}. {negative_space_motifs}. Coarse, chunky macro canvas fabric weave with visible cotton cross-hatch texture across the bright clean white ground. Very low contrast, pale chamomile amber and soft Earl Grey sepia washes, highly luminous and airy, fine-art analog stain painting. Pure artwork with no text.",
+    "prompt_template": "A wide 16:9 visual novel background illustration of {scene_subject}, created entirely from delicate, ethereal tea and coffee watercolor washes on a clean bright-white ground. Absolutely zero linework, no pen, no pencil, no wireframe polygon outlines, no drawn contours. {structural_wash_behavior}. {negative_space_motifs}. Very low contrast, pale chamomile amber and soft Earl Grey sepia washes, highly luminous and airy, fine-art analog stain painting with capillary bleeding, water backruns, feathered blooms, and pooled tide marks. Pure artwork with no text. Leave canvas weave and final ground tone to the Stage 2 composite.",
     "mandatory_positive_clauses": [
       "wide 16:9 visual novel background illustration",
       "delicate, ethereal wet-on-wet tea and coffee watercolor washes on bright white heavy cotton canvas",
       "capillary bleeding, water backruns, feathered blooms, and subtle coffee-ring tide marks",
       "shapes and lighting emerging strictly from translucent wash density and glowing negative-space light pockets",
-      "coarse, chunky macro canvas fabric weave with visible cotton cross-hatch texture",
+      "clean bright-white ground; leave canvas weave and final ground tone to Stage 2",
       "very low contrast, high-key, pale amber, chamomile, and soft warm sepia washes",
       "pure background artwork with zero text and zero typography"
     ],
@@ -56,15 +56,16 @@
         "negative_space_motifs": "Data blocks, hex patterns, or screen panels are represented as soft rectangular and geometric negative-space light cutouts suspended inside a pale tea wash"
       }
     },
-    "validated_example_prompt_main_menu": "A wide 16:9 visual novel background illustration of a majestic Tree of Life, created entirely from delicate, ethereal tea and coffee watercolor washes on bright white heavy cotton canvas. Absolutely zero linework, no pen, no pencil, no wireframe polygon outlines. The tree trunk and roots feature delicate capillary bleeding and branching water channels that naturally evoke organic circuit traces soaking into the fabric weave. The canopy is a soft, atmospheric cloud of pale chamomile and Earl Grey tea washes, with subtle negative-space diamond crystal shapes and soft glowing light pockets emerging from the watercolor blooms. Coarse, chunky macro canvas fabric weave with visible cotton cross-hatch texture across the bright clean white ground. Very low contrast, pale amber and soft sepia washes, highly luminous and airy, fine-art analog stain painting. Pure artwork with no text."
+    "validated_example_prompt_main_menu": "A wide 16:9 visual novel background illustration of a majestic Tree of Life, created entirely from delicate, ethereal tea and coffee watercolor washes on a clean bright-white ground. Absolutely zero linework, no pen, no pencil, no wireframe polygon outlines. The tree trunk and roots feature delicate capillary bleeding and branching water channels that naturally evoke organic circuit traces. The canopy is a soft, atmospheric cloud of pale chamomile and Earl Grey tea washes, with subtle negative-space diamond crystal shapes and soft glowing light pockets emerging from the watercolor blooms. Very low contrast, pale amber and soft sepia washes, highly luminous and airy, fine-art analog stain painting with capillary bleeding and soft tide blooms. Pure artwork with no text. Leave canvas weave and final ground tone to the Stage 2 composite."
   },
   "stage_2_canvas_composite": {
-    "description": "Synthesizes a seamless full-frame macro linen weave from Pass 1's clean canvas margin and absorbs the Stage 1 capillary wash into the canvas valleys before upscaling to 1920x1080.",
+    "description": "Applies a standalone seamless macro linen canvas texture to the Stage 1 capillary wash, calibrates the shared warm-ivory ground, absorbs pigment into the weave valleys, and upscales to 1920x1080.",
     "script_path": "scripts/apply_canvas_style.py",
     "reference_assets": {
       "pass1_macro_canvas_source": "vault/06 Assets/style_references/pass1_macro_canvas_source.jpg",
       "pass2a_capillary_wash_reference": "vault/06 Assets/style_references/pass2a_capillary_wash_reference.jpg",
-      "pass3a_approved_composite": "vault/06 Assets/style_references/pass3a_approved_composite.jpg"
+      "pass3a_approved_composite": "vault/06 Assets/style_references/pass3a_approved_composite.jpg",
+      "macro_canvas_texture": "vault/06 Assets/style_references/create-flat-evenly-lit-ada66b.png"
     },
     "parameters": {
       "tone_mix": 0.50,
@@ -78,7 +79,7 @@
         "overlap_x": 36,
         "overlap_y": 48,
         "random_seed": 42,
-        "source_strip_x_range": [1226, 1375],
+        "source_strip_x_range": [1243, 1376],
         "source_strip_y_range": [10, 630]
       },
       "upscale_1080p": {

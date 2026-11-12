@@ -12,9 +12,9 @@ Instead of a long, slow build-up, the game opens with an interactive **World Ove
 ## Core Cast & Real-World Backbone
 
 Grounded in real-world DAO post-mortems and lived experiences from collectives like *Essential Food and Medicine*, the episodic stories follow three core archetypes across shifting perspectives:
-- **[[Ash El]] (The Creator / Protagonist):** Visionary musician and community builder equipped with his instrument, who brings the labor, art, free health juice programs, and sanctuary trips—learning the hard way that *"no keys, no cheese."*
-- **[[Lay-Lay]] (The Administrator / Antagonist):** Operations and treasury manager associated with potions, herbs, and administrative keys—embodying what happens when non-creators gain un-oversighted control of multi-sig wallets or let awe curdle into jealousy.
-- **[[Xochtl]] (The Co-Creator / Shaman):** Ceremonial cacao practitioner and strategic protector equipped with her cacao cup—bridging ancestral reciprocity, co-op solidarity, and clever on-chain verification.
+- **[[Koraba]] (The Creator / Protagonist):** Visionary musician and community builder equipped with his instrument, who brings the labor, art, free health juice programs, and sanctuary trips—learning the hard way that *"no keys, no cheese."*
+- **[[Clara]] (The Administrator / Antagonist):** Operations and treasury manager associated with potions, herbs, and administrative keys—embodying what happens when non-creators gain un-oversighted control of multi-sig wallets or let awe curdle into jealousy.
+- **[[Xochit]] (The Co-Creator / Shaman):** Ceremonial cacao practitioner and strategic protector equipped with her cacao cup—bridging ancestral reciprocity, co-op solidarity, and clever on-chain verification.
 
 Alongside them appear the wider ecosystem cast (**[[Maya]]**, **[[Jordan]]**, **[[Alex]]**, **[[Vera]]**, **[[Spectre]]**, and **[[Atlas]]**).
 

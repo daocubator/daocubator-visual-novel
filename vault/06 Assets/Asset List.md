@@ -11,9 +11,9 @@ Status legend: ⬜ needed · 🎨 generated & live in `game/images/` · ✅ fina
 
 | Character | Archetype & Signature Gear | Color-Coded Pattern | Expressions | Status |
 |-----------|----------------------------|---------------------|-------------|--------|
-| **[[Ash El]]** (`ashel`) | The Creator / Protagonist — acoustic-electric folk instrument (`charango`/guitar), feather in locs, green bead necklaces | Terracotta `#E07A5F` & Indigo vertical stripes + botanical leaf line-art | `neutral`, `focused`, `alarmed`, `hurt`, `determined`, `proud` | 🎨 Rustic line-art & watercolor live |
-| **[[Lay-Lay]]** (`laylay`) | The Administrator / Antagonist — glass apothecary potion vials, dried herb bundles, multisig key & ledger tablet | Alchemical Violet `#9B7EDE` & Herbal Sage `#528C6E` interlocking key-fret pattern | `neutral`, `calculating`, `smirk`, `defensive`, `stern`, `alarmed` | 🎨 Rustic line-art & watercolor live |
-| **[[Xochtl]]** (`xochtl`) | The Co-Creator / Shaman — steaming ceremonial cacao cup, beaded headband, red/black ceremonial face paint stripes, beaded fringe earrings | Cacao Turquoise `#2EC4B6` & Bronze `#8C533E` rainbow-earth woven huipil + zig-zag cuffs | `neutral`, `warm`, `focused`, `stern`, `hurt`, `proud` | 🎨 Rustic line-art & watercolor live |
+| **[[Koraba]]** (`ashel`) | The Creator / Bridge Keeper — dark locs, layered blue wrap, beads, and kora | Deep blue, warm ochre, and antique ivory; spiral, star, and orbit motifs | `neutral`, `focused`, `alarmed`, `hurt`, `determined`, `proud` | 🎨 Existing sprite; new neutral design planned |
+| **[[Clara]]** (`laylay`) | The Registrar / Administrator — structured blonde bun, tailored office attire, lanyard, clipboard, and ledger | Charcoal, slate blue, brass, ivory, and restrained rust; binder, schedule, orbit, and star motifs | `neutral`, `calculating`, `smirk`, `defensive`, `stern`, `alarmed` | 🎨 Existing sprite; new neutral design planned |
+| **[[Xochit]]** (`xochtl`) | The Ceremonial Weaver / Co-Creator — long braids, beaded headband, red/black face paint, statement earrings, cacao bowl | Dark earth, red, ochre, ivory, and olive; woven textile and spiral motifs | `neutral`, `warm`, `focused`, `stern`, `hurt`, `proud` | 🎨 Existing sprite; new neutral design planned |
 
 ## Ensemble / Legacy Cast Sprites (560×880)
 
@@ -34,5 +34,5 @@ Status legend: ⬜ needed · 🎨 generated & live in `game/images/` · ✅ fina
 | `bg sanctuary` | Ep 1, Ep 3 | Warm flat sunlit ochre wall, wooden beam shelf, vine plant, woven indigo rug, herbs & instruments (inspired by *Efam DAO Esphera*) | 🎨 Rustic line-art & analog texture live |
 | `bg treasury_fire` | Cold Open Hooks & Bad Endings | High-contrast crimson & charcoal ink wash with fractured ledger lines and burning embers | 🎨 Rustic line-art & analog texture live |
 | `bg cacao_circle` | Ep 2 (Lisbon), Ep 3 | Ceremonial cacao table with steaming cups, woven textiles, candle glow, and Lisbon presentation stage | 🎨 Rustic line-art & analog texture live |
-| `bg apothecary` | Ep 1, Ep 4 (Lay-Lay POV) | Herbal apothecary shelves with potion bottles, dried sage bundles, and a high-contrast hardware wallet signing desk | 🎨 Rustic line-art & analog texture live |
+| `bg apothecary` | Ep 1, Ep 4 (Clara POV) | Herbal apothecary shelves with potion bottles, dried sage bundles, and a high-contrast hardware wallet signing desk | 🎨 Rustic line-art & analog texture live |
 | `bg coworking` … `bg signing` | Ensemble & Legacy Chapters | Studio, Discord, Conference, Apartment, Blockchain, Rooftop, Signing, Faction Map | 🎨 Live in `game/images/` |

@@ -1,0 +1,8 @@
+Create a flat, evenly lit macro scan of clean, light warm-ivory cotton-linen canvas, close to #F4EEE1—not tan or sepia. Keep the weave visible and crisp at one consistent scale across the entire image. Add subtle natural variation only to individual thread widths, spacing, and crossings, distributed evenly throughout. Keep the overall color, brightness, contrast, and sharpness uniform from edge to edge. This is a clean texture plate for artwork to be composited over later.
+
+[Multimodal Reference Steering Guidelines]:
+- Reference Image #1 (STYLE, BALANCED weight): Apply the aesthetic properties, tactile texture, color grading, and lighting style from Reference #1. Additional note: "Use for thread scale, crispness, and even focus. Do not copy its color or make the weave perfectly regular.".
+- Reference Image #2 (STYLE, SUBTLE weight): Subtly borrow the general mood, lighting nuance, or color accents from Reference #2. Additional note: "Use only the clean canvas areas to guide the light warm-ivory ground and overall low contrast. Ignore the tree, watercolor, stains, blooms, shadows, and soft areas.".
+
+[Negative Constraints / Do Not Include]:
+Watercolor, paint, pigment, tea or coffee stains, ink, dirt, aging, discoloration, mottling, blotches, tide marks, halos, patchy weave density, localized changes in thread size or sharpness, warped fibers, blur, soft focus, haze, shadows, gradients, vignette, uneven lighting, perspective, folds, creases, holes, objects, illustration, text, watermark
