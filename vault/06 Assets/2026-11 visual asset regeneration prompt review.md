@@ -10,7 +10,7 @@ created: 2026-11-11
 
 ## What already exists
 
-- `Asset List.md` and `background_prompts.json` inventory **13 episodic backgrounds**. The same 13 background files and **8 episode CGs** (four good/bad pairs, plus thumbnail variants) are present in both `vault/06 Assets/generated_backgrounds/` and `game/images/`.
+- The previous **13-background prompt list** was inherited from the older chapter-based narrative and mixes legacy settings with a few locations reused by the episodes. The current start flow opens the episode constellation; this regeneration scope covers its hub and four playable episodes. The legacy chapter files remain in the repo but are out of scope.
 - The existing background prompts are from the older saturated mixed-media direction. They should be treated as source material for the scene subjects, not as approved style prompts for this pass.
 - `Background Generation Guide.md`, `background_style_spec.json`, `scripts/apply_canvas_style.py`, and `style_references/pass3a_approved_composite.jpg` document the approved two-stage process: generate a light, line-free tea/coffee wash, then apply the standalone macro canvas weave and upscale to 1920×1080.
 - The selected texture-only ground is `style_references/create-flat-evenly-lit-ada66b.png`; `scripts/apply_canvas_style.py` now uses it as the shared canvas source. The earlier code-quilted texture is an unused experiment.
@@ -20,11 +20,45 @@ created: 2026-11-11
 
 | Set | Count | First pass | Output target |
 |---|---:|---|---|
-| Episodic backgrounds | 13 | Regenerate all current named backgrounds in the approved Pass 3A style | 16:9; Stage 1 around 1376×768, then composite/upscale to 1920×1080 |
+| Episode and hub backgrounds | 6 | Regenerate the locations used for hub, episode openings, and ordinary dialogue scenes; outcomes use full-art CGs | 16:9; Stage 1 around 1376×768, then composite/upscale to 1920×1080 |
 | Core character sprites | 3 | One neutral standing pose per character | Transparent 560×880 PNG, matching current sprite proportions |
+| Follow-up character expressions | 14 | Generate only the non-neutral poses used in the current episode script, per the expression map below | Transparent 560×880 PNGs, matching each neutral character design |
 | Episode CG illustrations | 8 | Four disaster / resolution pairs | Full bleed 16:9, 1920×1080; composed for the scenario selector and in-game scene |
 
 The existing CG slot names (`cg_ep1_disaster`, `cg_ep1_happy`, etc.) can stay stable while their imagery is replaced. Existing thumbnail slots should be made by crops from the final full-art image, not separately prompted, to preserve visual continuity.
+
+## Story-beat background and cast cross-check
+
+This table follows the playable scenes in `game/episodes.rpy`. The scenario selector previews the disaster CG, so each episode opens with its location background and character sprites to introduce the cast. Failed choices and successful resolutions switch to the matching full-art CG; the art already contains the characters, so sprites are not layered on top. Ordinary setup and successful decision scenes use the listed background and live sprites.
+
+| Episode | Story beat | Background or CG | Characters on screen |
+|---|---|---|---|
+| 1 · No Keys, No Cheese | Disaster hook: stranded with the lost transfer at Lisbon Airport | `bg lisbon_airport.png` | Koraba, Xochit, Clara sprites |
+| 1 | Rewind and sanctuary setup: leaked keys, shipment preparation | `bg sanctuary.png` | Koraba, Xochit, Clara sprites |
+| 1 | Decision 1: leaked-key rotation / custody | Good path: `bg sanctuary.png`; failures: `cg_ep1_disaster.png` | All three on either path |
+| 1 | Decision 2: vet the proposed new administrator | Good path: `bg sanctuary.png`; failures: `cg_ep1_disaster.png` | All three on either path |
+| 1 | Decision 3: test the Brazil transfer before sending $60,000 | Good path: `bg sanctuary.png`; failures: `cg_ep1_disaster.png` | All three on either path |
+| 1 | Resolution: verified funds and cleared crates at the airport | Happy CG: `cg_ep1_happy.png` | Koraba, Xochit, Clara in the art |
+| 2 · Frozen Pay, Empty Stage | Disaster hook: payment freeze backstage before the Lisbon Showcase opens | `bg showcase_backstage.png` | Koraba, Xochit, Clara sprites |
+| 2 | Rewind and early team setup: preparing the showcase over cacao | `bg cacao_circle.png` | Koraba, Xochit, Clara sprites |
+| 2 | Decision 1: objective escrow for the creative work | Good path: `bg cacao_circle.png`; failures: `cg_ep2_disaster.png` | All three on either path |
+| 2 | Decision 2: prove bias with the neutral-avatar submission, two days before the event | Good path: `bg showcase_backstage.png`; failures: `cg_ep2_disaster.png` | All three on either path |
+| 2 | Decision 3: rotate stewardship and prevent burnout before the event | Good path: `bg showcase_backstage.png`; failures: `cg_ep2_disaster.png` | All three on either path |
+| 2 | Resolution: game succeeds and the team celebrates at the showcase | Happy CG: `cg_ep2_happy.png` | Koraba, Xochit, Clara in the art |
+| 3 · Blood, Cacao & Paper | Disaster hook: lawsuit and token crash hit the cacao ceremony | `bg cacao_circle.png` | Koraba, Xochit, Clara sprites |
+| 3 | Rewind and founding circle: draft the cooperative agreement | `bg cacao_circle.png` | Koraba, Xochit, Clara sprites |
+| 3 | Decision 1: written vesting and cliffs | Good path: `bg cacao_circle.png`; failures: `cg_ep3_disaster.png` | All three on either path |
+| 3 | Decision 2: register the legal wrapper | Good path: `bg cacao_circle.png`; failures: `cg_ep3_disaster.png` | All three on either path |
+| 3 | Decision 3: treasury reserve and creator expense repayment | Good path: `bg cacao_circle.png`; failure: `cg_ep3_disaster.png` | All three on either path |
+| 3 | Resolution: agreements protect the cooperative six months later | Happy CG: `cg_ep3_happy.png` | Koraba, Xochit, Clara in the art |
+| 4 · One Tired Click Drained the Apothecary | Disaster hook: the treasury is drained inside Clara's apothecary | `bg apothecary.png` | Koraba, Xochit, Clara sprites |
+| 4 | Rewind and POV setup: Clara faces the admin workload | `bg apothecary.png` | Koraba, Xochit, Clara sprites |
+| 4 | Decision 1: reject the whale's secret control deal | Good path: `bg apothecary.png`; failure: `cg_ep4_disaster.png` | All three on either path |
+| 4 | Decision 2: inspect the hardware wallet's raw transaction data | Good path: `bg apothecary.png`; failure: `cg_ep4_disaster.png` | Good path: Clara + Xochit sprites; failure CG: all three |
+| 4 | Decision 3: add time-lock and snapshot-voting defenses | Good path: `bg apothecary.png`; failure: `cg_ep4_disaster.png` | All three on either path |
+| 4 | Resolution: shared responsibility and safe operations in the apothecary | Happy CG: `cg_ep4_happy.png` | Koraba, Xochit, Clara in the art |
+
+This mapping uses all eight episode CG slots for failed choices and successful resolutions, in addition to their existing use in the constellation selector and completion card. Background generation is now scoped to six assets: the playable hub, sanctuary studio, Lisbon airport, cacao circle, showcase backstage workspace, and apothecary. Dedicated showcase-stage and treasury-fire backgrounds are not needed because the outcome CGs carry those dramatic beats.
 
 ## Shared style direction
 
@@ -52,27 +86,50 @@ Combine the material treatment of the approved background (washed tea/coffee wat
 
 Append the corresponding subject and composition notes to the shared background base prompt above. Keep each environment open enough for character sprites unless noted otherwise.
 
+This list is reconciled against the four playable episodes in `game/episodes.rpy` and the active hub in `game/constellation.rpy`. It excludes old chapter-only locations and scenes carried by full-art CGs. The episode openings use backgrounds and character sprites; each failed choice and successful resolution uses its matching CG.
+
 | Output | Subject and scene-specific wash notes |
 |---|---|
-| `bg apartment.png` | A founder's small apartment at 3 AM: desk, laptop glow, mug, rain-softened city window. Suggest intimate room depth with horizontal/vertical Earl Grey washes; leave the laptop and window glow as pale negative space. Quiet and tired, not ominous-black. |
-| `bg apothecary.png` | A working herbal apothecary: shelves of bottles, dried herbs, mortar, ledger and a clear signing desk. Use vertical amber/sepia shelf washes, soft bottle-shaped light pockets, open foreground for characters. |
-| `bg blockchain.png` | An abstract chain / treasury space: branching pathways and connected blocks suggested by capillary channels and stain blooms; leave several diamond node-shaped light pockets. No literal code or wireframe. |
-| `bg cacao_circle.png` | A Lisbon gathering table prepared for cacao: cups, woven cloth, candles and a small presentation space. Rounded pooled tea rings suggest cups; warm light remains unpainted; leave character space around the table. |
-| `bg conference.png` | A public conference hall and pitch stage: distant seats, broad screen-shaped light pocket, stage wash and open speaker area. Warmly formal, with low-contrast audience silhouettes only as soft washes. |
-| `bg constellation.png` | A world overview: expansive branching tree/root network with softly suggested star/node blooms, following the approved reference's organic stain behavior. Keep the center clear enough for overlaid map nodes. |
-| `bg coworking.png` | A shared creative studio with long worktable, laptops, chairs, plants and window light. Use broad pale room-depth washes; keep the central foreground open for three sprites. |
-| `bg discord.png` | A digital community space at night suggested abstractly through stacked message-like pale rectangles, clustered avatar-like circles and a channel rail, all as soft negative-space forms within faint cool sepia/grey washes. No legible text, logos, or hard UI borders. |
-| `bg factionmap.png` | A governance map with three loosely connected communities, voting clusters and branching delegation flows. Suggest circles and flows with wash blooms and pale cutouts, not drawn diagrams or text. Keep the center quiet enough for recap UI. |
-| `bg rooftop.png` | A rooftop terrace at dawn: low city skyline, planters, rail and wide glowing horizon. Warm chamomile/amber blooms surround an open pale sky; keep standing space at the bottom. |
-| `bg sanctuary.png` | A sunlit community sanctuary studio with herbs, instruments, woven rug and wood beams. Filtered daylight as negative space, gentle ochre and tea stains, enough open floor for a three-person group. |
-| `bg signing.png` | A close-up signing set piece: hardware wallet beside a laptop, with two contrasting transaction-summary and raw-data areas implied as soft rectangular light pockets. No readable digits, buttons, text, or hard borders; focal devices emerge from pooled washes. |
-| `bg treasury_fire.png` | A disaster transition background: fractured ledger-like wash planes, scattered ember blooms and a failing treasury suggested by a darkening center, while retaining the same light ivory canvas and overall low contrast. Keep the lower dialogue area pale and quiet. |
+| `bg constellation.png` | The playable episode hub: an expansive branching tree/root network with softly suggested star/node blooms, following the approved reference's organic stain behavior. Keep clear central and edge areas for the overlaid episode nodes and UI. |
+| `bg sanctuary.png` | Episode 1's community sanctuary studio: herbs, instruments, woven rug, packing crates and wood beams, with filtered daylight and enough open floor for three sprites. This is the rewind location before the Brazil shipment. |
+| `bg lisbon_airport.png` | Episode 1's opening hook at Lisbon Airport after midnight: rain-streaked terminal glass, customs barrier and sealed crates of herbal elixirs, with open standing space for the three sprites. Keep the phone and treasury failure to dialogue; no legible background text. |
+| `bg cacao_circle.png` | Episodes 2 and 3: a ceremonial cacao gathering table with cups, woven cloth, candles, and space for the team to prepare the Lisbon showcase or discuss written agreements. Rounded pooled tea rings suggest cups; retain an open character area around the table. |
+| `bg showcase_backstage.png` | Episode 2's Lisbon venue work area: folding table, laptop, cables, road cases, and a curtain or open doorway with soft stage light beyond. Make it feel like a practical production workspace where the team can inspect Koraba's build and discuss the payment dispute; leave a clear foreground for three sprites, with no readable screens or text. |
+| `bg apothecary.png` | Episode 4's working herbal apothecary: shelves of bottles, dried herbs, mortar, ledger and a clear signing desk. Use vertical amber/sepia shelf washes, soft bottle-shaped light pockets, and open foreground for three sprites. |
 
 ## Character neutral prompt review
 
 Use one common sprite prompt from the style direction, swapping in each character's sheet and description. Proposed prompt endings: **Koraba** “neutral expression, calm attentive eyes, hands resting naturally near the kora”; **Xochit** “neutral expression, warm steady gaze, holding the cacao bowl securely at waist height”; **Clara** “neutral expression, composed gaze, holding a closed ledger against her side and clipboard in the other hand.”
 
 If the image tool cannot make a clean transparent background with the reference image, generate on flat warm white and remove the background locally after selection. Do not generate expression variants in this pass.
+
+## Character expression generation scope
+
+Audited `show` statements in `game/episodes.rpy` against image definitions in `game/direction.rpy`. The active story calls **17** distinct character poses: the three neutral poses plus **14** non-neutral follow-up poses. These are explicit at the story setup and decision beats. The failure and resolution CG scenes contain their own character art, so they do not call for additional sprite expressions. The code uses legacy image tags (`ashel` = Koraba, `xochtl` = Xochit, `laylay` = Clara); retain those filenames or update the image definitions when replacing the artwork.
+
+| Character | Expression | Used story beats |
+|---|---|---|
+| **Koraba** (`ashel`) | `neutral` | Episode 1 sanctuary rewind and administrator-vetting scene; Episode 2 showcase planning and escrow decision; Episode 3 founding circle and all agreement decisions; Episode 4 Clara's rewind setup. |
+| **Koraba** (`ashel`) | `alarmed` | The disaster hook at the start of each of the four episodes. |
+| **Koraba** (`ashel`) | `determined` | Episode 1 key-rotation and test-transfer decisions; Episode 4 flash-loan defense. |
+| **Koraba** (`ashel`) | `hurt` | Episode 2, after Clara rejects the final game module and during the bias dispute. |
+| **Koraba** (`ashel`) | `proud` | Episode 2, after the neutral-avatar proof and during cooperative restructuring. |
+| **Koraba** (`ashel`) | `focused` | Episode 4, evaluating Atlas's offer of voting control. |
+| **Xochit** (`xochtl`) | `neutral` | Episode 1 key custody and vetting; Episode 2 bias-proof decision; Episode 4 rewind into Clara's POV. |
+| **Xochit** (`xochtl`) | `hurt` | Episode 1 transfer-loss hook; Episode 3 lawsuit/token-crash hook; Episode 4 drained-apothecary hook. |
+| **Xochit** (`xochtl`) | `warm` | Episode 1 sanctuary welcome and test transfer; Episode 2 cacao planning and cooperative restructuring; Episode 3 treasury agreement. |
+| **Xochit** (`xochtl`) | `focused` | Episode 2 payment/escrow conflict; Episode 3 vesting decision; Episode 4 hardware verification and flash-loan defense. |
+| **Xochit** (`xochtl`) | `stern` | Episode 3 legal-wrapper decision; Episode 4 governance-capture decision. |
+| **Clara** (`laylay`) | `neutral` | Episode 1 vetting and transfer decisions; Episode 3 founding circle and treasury-safety agreement. |
+| **Clara** (`laylay`) | `stern` | Episode 1 airport hook; Episode 2 payment-freeze hook and bias dispute; Episode 4 governance-capture and flash-loan scenes. |
+| **Clara** (`laylay`) | `smirk` | Episode 1 sanctuary rewind/key-custody scene; Episode 2 showcase-planning and escrow decision. |
+| **Clara** (`laylay`) | `defensive` | Episode 2, after bias is exposed and the group considers shared stewardship. |
+| **Clara** (`laylay`) | `alarmed` | Episode 3 lawsuit/token-crash hook and Episode 4 drained-apothecary hook. |
+| **Clara** (`laylay`) | `calculating` | Episode 3 legal-wrapper decision; Episode 4 rewind and hardware-wallet verification. |
+
+**Not in the current generation list:** Xochit's `proud` image is defined in code and exists as an older sprite, but no current episode scene calls it. Generate it only if a future scene uses it. All 17 poses currently called by the episode script have matching legacy PNG files in `game/images/`; those are the files the new sheet-based art would replace.
+
+**Code check:** Expression changes are already assigned with `show <legacy-tag> <expression>` statements at the relevant scene and decision beats. The 17 listed calls are wired; no expression-generation work requires story-script edits unless the desired emotion or timing changes.
 
 ## Eight CG prompt concepts
 

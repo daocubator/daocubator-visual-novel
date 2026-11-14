@@ -16,23 +16,29 @@ import json
 import math
 import os
 import random
+import shutil
 import subprocess
 import tempfile
+from PIL import Image, ImageFilter
 
 REPO_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 SPEC_PATH = os.path.join(REPO_ROOT, "vault", "06 Assets", "background_style_spec.json")
-MAGICK_BIN = "/opt/homebrew/bin/magick"
+MAGICK_BIN = "/opt/homebrew/bin/magick" if os.path.exists("/opt/homebrew/bin/magick") else shutil.which("magick")
 
 
 def load_rgb(path, width, height):
-    raw = subprocess.check_output([
-        MAGICK_BIN, path,
-        "-filter", "Lanczos",
-        "-resize", f"{width}x{height}!",
-        "-depth", "8",
-        "rgb:-"
-    ])
-    return bytearray(raw)
+    if MAGICK_BIN:
+        raw = subprocess.check_output([
+            MAGICK_BIN, path,
+            "-filter", "Lanczos",
+            "-resize", f"{width}x{height}!",
+            "-depth", "8",
+            "rgb:-"
+        ])
+        return bytearray(raw)
+    with Image.open(path) as img:
+        resized = img.convert("RGB").resize((width, height), Image.Resampling.LANCZOS)
+        return bytearray(resized.tobytes())
 
 
 def get_px(buf, w, x, y):
@@ -167,30 +173,36 @@ def apply_pass3a_composite(wash_path, output_path, tone_mix=None, weave_strength
     final_h = upscale_cfg["height"]
 
     os.makedirs(os.path.dirname(os.path.abspath(output_path)), exist_ok=True)
-    with tempfile.NamedTemporaryFile(suffix=".png", delete=False) as tmp:
-        tmp_path = tmp.name
+    if MAGICK_BIN:
+        with tempfile.NamedTemporaryFile(suffix=".png", delete=False) as tmp:
+            tmp_path = tmp.name
 
-    try:
-        p = subprocess.Popen(
-            [MAGICK_BIN, "-size", f"{gen_w}x{gen_h}", "-depth", "8", "rgb:-", tmp_path],
-            stdin=subprocess.PIPE
-        )
-        p.communicate(input=bytes(out))
-        if p.returncode != 0:
-            raise RuntimeError("Failed encoding intermediate composite image")
+        try:
+            p = subprocess.Popen(
+                [MAGICK_BIN, "-size", f"{gen_w}x{gen_h}", "-depth", "8", "rgb:-", tmp_path],
+                stdin=subprocess.PIPE
+            )
+            p.communicate(input=bytes(out))
+            if p.returncode != 0:
+                raise RuntimeError("Failed encoding intermediate composite image")
 
-        subprocess.check_call([
-            MAGICK_BIN,
-            tmp_path,
-            "-filter", upscale_cfg["filter"],
-            "-resize", f"{final_w}x{final_h}!",
-            "-unsharp", upscale_cfg["unsharp_mask"],
-            "-alpha", "set",
-            "PNG32:" + output_path
-        ])
-    finally:
-        if os.path.exists(tmp_path):
-            os.remove(tmp_path)
+            subprocess.check_call([
+                MAGICK_BIN,
+                tmp_path,
+                "-filter", upscale_cfg["filter"],
+                "-resize", f"{final_w}x{final_h}!",
+                "-unsharp", upscale_cfg["unsharp_mask"],
+                "-alpha", "set",
+                "PNG32:" + output_path
+            ])
+        finally:
+            if os.path.exists(tmp_path):
+                os.remove(tmp_path)
+    else:
+        img = Image.frombytes("RGB", (gen_w, gen_h), bytes(out))
+        img_up = img.resize((final_w, final_h), Image.Resampling.LANCZOS)
+        img_sharp = img_up.filter(ImageFilter.UnsharpMask(radius=0.75, percent=45, threshold=2))
+        img_sharp.convert("RGBA").save(output_path, format="PNG")
 
     print(f"Saved Pass 3A 1920x1080 background -> {output_path}")
 

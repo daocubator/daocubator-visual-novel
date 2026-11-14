@@ -171,6 +171,24 @@ transform constellation_card_float(float_delay=0.0, fade_delay=0.0):
         ease 2.4 yoffset 0
         repeat
 
+transform constellation_card_aura_lively(float_delay=0.0, fade_delay=0.0, phase=0.0):
+    parallel:
+        alpha 0.0
+        zoom 0.99
+        pause fade_delay
+        easein 0.35 alpha 0.48
+        pause phase
+        block:
+            ease 1.2 alpha 0.98 zoom 1.04
+            ease 1.2 alpha 0.35 zoom 0.99
+            repeat
+    parallel:
+        pause float_delay
+        yoffset 0
+        ease 2.4 yoffset -7
+        ease 2.4 yoffset 0
+        repeat
+
 transform rewind_banner_flash:
     alpha 0.0
     zoom 1.10
@@ -253,17 +271,36 @@ screen constellation_map(card_fade_delays=None):
         $ float_delay = EPISODE_ORDER.index(ep_id) * 0.55
         $ fade_delay = card_fade_delays.get(ep_id, 0.0) if card_fade_delays else 0.0
         $ is_done = ep_id in (persistent.episodes_completed or set())
-        $ cg_thumb = ep["cg_happy_thumb"] if is_done else ep["cg_disaster_thumb"]
-        ## Completed stories get a soft sage aura and a clear green border.
-        frame:
+        $ card_mood = "happy" if is_done else "disaster"
+        $ card_image = "images/scenario_card_%s_%s.png" % (ep_id, card_mood)
+        ## Offset watercolor layers keep the breathing status glow close to each card.
+        $ aura_status = "cleared" if is_done else "uncleared"
+        add ("images/scenario_aura_%s_outer.png" % aura_status):
             xpos nx
             ypos ny
             xanchor 0.5
             yanchor 0.5
-            xsize 536
-            ysize 309
-            background ("#528C6E55" if is_done else "#83422522")
-            at constellation_card_float(float_delay, fade_delay)
+            xsize 600
+            ysize 340
+            at constellation_card_aura_lively(float_delay, fade_delay, 0.0)
+        add ("images/scenario_aura_%s_middle.png" % aura_status):
+            xpos nx
+            ypos ny
+            xanchor 0.5
+            yanchor 0.5
+            xoffset -4
+            xsize 600
+            ysize 340
+            at constellation_card_aura_lively(float_delay, fade_delay, 0.8)
+        add ("images/scenario_aura_%s_inner.png" % aura_status):
+            xpos nx
+            ypos ny
+            xanchor 0.5
+            yanchor 0.5
+            xoffset 3
+            xsize 600
+            ysize 340
+            at constellation_card_aura_lively(float_delay, fade_delay, 1.6)
 
         ## Keep the thumbnail and story title as the card's only content.
         button:
@@ -271,23 +308,23 @@ screen constellation_map(card_fade_delays=None):
             ypos ny
             xanchor 0.5
             yanchor 0.5
-            xsize 520
-            ysize 293
-            padding (4, 4)
-            background ("#528C6E" if is_done else "#8C533E")
-            hover_background ("#528C6E" if is_done else "#8C533E")
+            xsize 512
+            ysize 285
+            padding (0, 0)
+            background None
+            hover_background None
             at constellation_card_float(float_delay, fade_delay)
             action Show("scenario_overview_modal", ep_id=ep_id)
 
             fixed:
                 xsize 512
                 ysize 285
-                ## Center-crop the 480x154 placeholder art to a 16:9 window before scaling.
-                add im.Crop(cg_thumb, (102, 0, 276, 154)) xsize 512 ysize 285
+                ## The art and title wash share one precomposed, four-corner card surface.
+                add card_image xsize 512 ysize 285
                 frame:
                     xfill True
                     yalign 1.0
-                    background "#140702D9"
+                    background None
                     padding (14, 9)
                     text "[ep['title']]" font gui.serif_font axis {"weight": 400, "opticalsize": 42} color "#EED4B4" size 32 line_spacing -3
 

@@ -5,6 +5,8 @@
 ################################################################################
 ## Rewind & Checkpoint Retry Screens and Helpers
 
+default _outcome_cg_active = False
+
 screen rewind_overlay(headline="« REWINDING TIMELINE", subline="Dropping back before the disaster..."):
     modal True
     zorder 180
@@ -37,7 +39,8 @@ screen bad_ending_rewind_modal(failure_title, failure_summary, lesson_id):
     zorder 190
     $ ldata = get_lesson_meta(lesson_id)
 
-    add "#140702EA"
+    # Keep the episode's full-art disaster CG visible behind the outcome panel.
+    add "#14070255"
 
     frame:
         xalign 0.5
@@ -77,8 +80,10 @@ screen bad_ending_rewind_modal(failure_title, failure_summary, lesson_id):
 
 label checkpoint_bad_end(retry_label, failure_title, failure_summary, lesson_id):
     $ play_bad_music()
+    $ _outcome_cg_active = True
     call lesson(lesson_id)
     call screen bad_ending_rewind_modal(failure_title, failure_summary, lesson_id)
+    $ _outcome_cg_active = False
     if _return == "map":
         jump world_overview
     $ renpy.jump(retry_label)
@@ -175,7 +180,7 @@ label ep1_keys:
     $ play_bad_music(force=True)
 
     ## --- THE HOOK: WORST-CASE SCENARIO (IN MEDIA RES) ---
-    scene bg treasury_fire with fade
+    scene bg lisbon_airport with fade
     show ashel alarmed at left
     show xochtl hurt at center
     show laylay stern at right
@@ -228,9 +233,7 @@ label ep1_d1:
             call lesson("no_keys_no_cheese")
 
         "Let Clara hold all the money in her personal wallet — you're an artist, not a tech admin.":
-            scene bg treasury_fire with vpunch
-            show ashel hurt at left
-            show laylay stern at right
+            scene expression EPISODES[current_episode]["cg_disaster"] with vpunch
             ashel "You're right, Clara. Take all the keys so I can finish mixing the album."
             narrator "Three weeks later, while you're stranded on tour waiting for travel money, Clara decides your music budget is 'unnecessary' and pays herself a bonus instead."
             laylay "My keys, my rules, Koraba. You don't even have a key on the wallet to vote against me."
@@ -242,9 +245,7 @@ label ep1_d1:
             )
 
         "Leave the secret keys in Google Drive — just rename the file to 'recipes_backup.txt' so hackers won't look inside.":
-            scene bg treasury_fire with vpunch
-            show ashel alarmed at left
-            show xochtl hurt at center
+            scene expression EPISODES[current_episode]["cg_disaster"] with vpunch
             ashel "Let's just rename the file in Google Drive. Nobody will open 'recipes_backup.txt'."
             narrator "Hacker bots don't care what a file is named — they automatically scan every word inside shared folders for 12-word seed phrases and private keys. Eleven minutes later, your entire treasury is stolen."
             call checkpoint_bad_end(
@@ -280,9 +281,7 @@ label ep1_d2:
             call lesson("vetting_admins")
 
         "Give Kestrel full admin keys right away — questioning him would hurt the friendly mood of the group.":
-            scene bg treasury_fire with vpunch
-            show ashel hurt at left
-            show xochtl hurt at center
+            scene expression EPISODES[current_episode]["cg_disaster"] with vpunch
             ashel "We're building a family based on trust. I'll sign his full admin key."
             narrator "At 3:00 a.m. that Sunday, Kestrel uses his new admin power to empty your reserve pool into an anonymous wallet and deletes his chat account."
             xochtl "Charm is not a background check, Koraba. Blockchain wallets don't care how spiritual someone sounded at a party."
@@ -294,8 +293,7 @@ label ep1_d2:
             )
 
         "Send Kestrel the backup wallet seed phrase in a private message for a '48-hour trial' to see if he's honest.":
-            scene bg treasury_fire with vpunch
-            show ashel alarmed at left
+            scene expression EPISODES[current_episode]["cg_disaster"] with vpunch
             ashel "Here, Kestrel — take our backup seed phrase just for the weekend so we can see how you work."
             narrator "A seed phrase cannot be 'borrowed for a weekend.' Anyone who sees those 12 secret words owns the wallet forever. On Monday morning, Kestrel takes every cent."
             call checkpoint_bad_end(
@@ -334,10 +332,7 @@ label ep1_d3:
             call lesson("test_transaction")
 
         "Click 'Approve' on the full $60,000 right now so you don't miss the shipping deadline!":
-            scene bg treasury_fire with vpunch
-            show ashel hurt at left
-            show xochtl hurt at center
-            show laylay alarmed at right
+            scene expression EPISODES[current_episode]["cg_disaster"] with vpunch
             ashel "We're out of time — sending all $60,000 now!"
             narrator "The payment finishes in one second. Five minutes later, the Brazil sanctuary calls: their wallet is still empty. The address in the chat was a fake lookalike planted by a scammer."
             narrator "For three days, Clara posts desperate messages in online forums asking how to 'cancel a mistaken crypto transfer.' There is no cancel button."
@@ -349,9 +344,7 @@ label ep1_d3:
             )
 
         "Only check the first 4 letters of the address ('0x7F4c') and send all $60,000 without a test transfer.":
-            scene bg treasury_fire with vpunch
-            show ashel alarmed at left
-            show laylay alarmed at right
+            scene expression EPISODES[current_episode]["cg_disaster"] with vpunch
             ashel "The first four letters say 0x7F4c — that's good enough for me. Sending all $60,000!"
             narrator "Scammers use computer programs to create fake addresses that match the first four and last four letters of real wallets. Every cent disappears."
             call checkpoint_bad_end(
@@ -363,10 +356,7 @@ label ep1_d3:
 
     ## --- EPISODE 1 RESOLUTION ---
     $ play_menu_music(force=True)
-    scene bg sanctuary with fade
-    show ashel proud at left
-    show xochtl proud at center
-    show laylay neutral at right
+    scene expression EPISODES[current_episode]["cg_happy"] with fade
 
     narrator "At the Lisbon airport that night, all twelve crates of herbal elixirs clear customs smoothly. The Brazil sanctuary confirms all $60,000 in its account, and your 2-of-3 shared wallet keys rest safely at your side."
     xochtl "Leaked keys replaced. Scammers filtered out. One dollar tested before sixty thousand moved."
@@ -391,7 +381,7 @@ label ep2_lisbon:
     $ play_bad_music(force=True)
 
     ## --- THE HOOK: WORST-CASE SCENARIO (IN MEDIA RES) ---
-    scene bg treasury_fire with fade
+    scene bg showcase_backstage with fade
     show ashel alarmed at left
     show xochtl focused at center
     show laylay stern at right
@@ -438,9 +428,7 @@ label ep2_d1:
             call lesson("creator_vs_admin")
 
         "Let Clara decide the payment after delivery based on 'how humble Koraba's attitude feels.'":
-            scene bg treasury_fire with vpunch
-            show ashel hurt at left
-            show laylay stern at right
+            scene expression EPISODES[current_episode]["cg_disaster"] with vpunch
             xochtl "Let's just trust Clara to decide the payout in Lisbon."
             narrator "On showcase morning, jealous of the crowd cheering for Koraba's music, Clara claims his attitude is 'unaligned' and refuses to pay him a cent. Koraba walks out and the event collapses."
             call checkpoint_bad_end(
@@ -451,8 +439,7 @@ label ep2_d1:
             )
 
         "Ask Koraba to build the entire game and soundtrack for free 'for exposure' so nobody argues over money.":
-            scene bg treasury_fire with vpunch
-            show ashel hurt at left
+            scene expression EPISODES[current_episode]["cg_disaster"] with vpunch
             xochtl "What if you just build the whole Lisbon showcase for free, Koraba?"
             ashel "I can't pay the sound engineers or my rent with 'exposure,' Xochit. While the administrators take steady paychecks, the artists work for nothing?"
             narrator "Exhausted and broke, Koraba burns out four days before Lisbon, leaving an unfinished game and a broken team."
@@ -464,18 +451,18 @@ label ep2_d1:
             )
 
     ## --- DECISION 2: THE "AMY & EDWARD / JENA" AVATAR PLAY (CO-OP SOLIDARITY) ---
-    scene bg cacao_circle with dissolve
+    scene bg showcase_backstage with dissolve
     show xochtl neutral at left
     show ashel hurt at center
     show laylay stern at right
 
-    narrator "Two days before the Lisbon showcase. The main escrow paid out cleanly, but Clara just rejected Koraba's final 6,000 USDC game module in the admin portal — claiming the code and art are 'low quality and unusable.'"
+    narrator "Two days before the Lisbon showcase, you meet in the venue's backstage production room. The main escrow paid out cleanly, but Clara just rejected Koraba's final 6,000 USDC game module in the admin portal — claiming the code and art are 'low quality and unusable.'"
     ashel "She didn't even open the file! Look at the server log — zero downloads from her computer. She clicked 'Reject' thirty seconds after seeing my name on the upload because people at the welcome dinner praised my music!"
     xochtl "I see it, Koraba. Her admiration turned into jealousy, and now she's blocking anything with your name on it. But if we scream at her in public chat, she'll act like the victim and lock the whole wallet."
     ashel "Then how do we prove to the council that she's rejecting me out of pure personal bias AND get the finished work approved?"
 
 label ep2_d2:
-    scene bg cacao_circle
+    scene bg showcase_backstage
     show xochtl neutral at left
     show ashel hurt at center
     show laylay stern at right
@@ -491,9 +478,7 @@ label ep2_d2:
             call lesson("coop_solidarity")
 
         "Start a public shouting match in the festival chat group and threaten to smash the stage equipment.":
-            scene bg treasury_fire with vpunch
-            show ashel alarmed at left
-            show laylay smirk at right
+            scene expression EPISODES[current_episode]["cg_disaster"] with vpunch
             ashel "I'm going to call Clara out in the main festival chat right now!"
             laylay "Look how angry and unstable Koraba is acting, everyone! Clearly I was right to hold back the money."
             narrator "Festival sponsors pull out within an hour, and outsiders side with Clara's calm messages over Koraba's public outburst."
@@ -505,9 +490,7 @@ label ep2_d2:
             )
 
         "Stay quiet, give up the 6,000 USDC, and let Clara take stage credit for Koraba's game.":
-            scene bg treasury_fire with vpunch
-            show ashel hurt at left
-            show xochtl hurt at center
+            scene expression EPISODES[current_episode]["cg_disaster"] with vpunch
             xochtl "Just let the money go, Koraba. Keep the peace."
             narrator "At the Lisbon showcase, Clara takes the stage microphone for forty minutes as 'Lead Visionary' while Koraba sits unpaid in the back row. On Monday, Koraba quits the collective forever."
             call checkpoint_bad_end(
@@ -518,17 +501,17 @@ label ep2_d2:
             )
 
     ## --- DECISION 3: RESTRUCTURING FOR CO-OP RECIPROCITY & PREVENTING BURNOUT ---
-    scene bg cacao_circle with dissolve
+    scene bg showcase_backstage with dissolve
     show xochtl warm at left
     show ashel proud at center
     show laylay defensive at right
 
-    narrator "With the file proof visible to everyone, the whole council sees how one person holding unchecked admin power nearly ruined the Lisbon showcase."
+    narrator "Still in the venue's backstage production room, the file proof is open on the laptop. The whole council now sees how one person holding unchecked admin power nearly ruined the Lisbon showcase."
     ashel "My payment arrived and the game is ready for the main stage tonight. But if we keep the exact same setup, this same fight will happen again next month."
     xochtl "How should we redesign our roles so our cooperative truly wins together?"
 
 label ep2_d3:
-    scene bg cacao_circle
+    scene bg showcase_backstage
     show xochtl warm at left
     show ashel proud at center
     show laylay defensive at right
@@ -541,8 +524,7 @@ label ep2_d3:
             call lesson("burnout")
 
         "Fire Clara and make Koraba do 100%% of the music, coding, accounting, and admin paperwork alone.":
-            scene bg treasury_fire with vpunch
-            show ashel alarmed at center
+            scene expression EPISODES[current_episode]["cg_disaster"] with vpunch
             ashel "Give me every key, every spreadsheet, every tax form, and every creative project!"
             narrator "After three weeks of trying to write music, press herbal juices, pay invoices, and manage legal paperwork alone at 4:00 a.m., Koraba collapses from complete burnout."
             call checkpoint_bad_end(
@@ -553,8 +535,7 @@ label ep2_d3:
             )
 
         "Keep the exact same rules and just hope Clara 'promises to be nicer next time.'":
-            scene bg treasury_fire with vpunch
-            show laylay smirk at right
+            scene expression EPISODES[current_episode]["cg_disaster"] with vpunch
             laylay "I promise I'll totally be nicer at the next event!"
             narrator "Because the rules didn't change, the very next project runs into the exact same payment freeze, and half the team quits to start a rival fork."
             call checkpoint_bad_end(
@@ -566,12 +547,9 @@ label ep2_d3:
 
     ## --- EPISODE 2 RESOLUTION ---
     $ play_menu_music(force=True)
-    scene bg sanctuary with fade
-    show xochtl proud at left
-    show ashel proud at center
-    show laylay neutral at right
+    scene expression EPISODES[current_episode]["cg_happy"] with fade
 
-    narrator "That night in Lisbon, the interactive showcase brings the crowd to its feet. Koraba's live strings echo across the projection dome, Xochit welcomes two hundred new cooperative members, and the escrow payment settles automatically."
+    narrator "That night on the Lisbon showcase stage, the interactive game brings the crowd to its feet. Koraba's live strings echo across the projection dome, Xochit welcomes two hundred new cooperative members, and the escrow payment settles automatically."
     xochtl "When creators are backed by fair agreements and teamwork, we all win together."
 
     call complete_episode(
@@ -593,7 +571,7 @@ label ep3_agreements:
     $ play_bad_music(force=True)
 
     ## --- THE HOOK: WORST-CASE SCENARIO (IN MEDIA RES) ---
-    scene bg treasury_fire with fade
+    scene bg cacao_circle with fade
     show ashel alarmed at left
     show xochtl hurt at center
     show laylay alarmed at right
@@ -643,9 +621,7 @@ label ep3_d1:
             call lesson("vesting")
 
         "Do a 'Sacred 33/33/33 Handshake Split' with all tokens unlocked on Day 1 — written contracts feel too corporate!":
-            scene bg treasury_fire with vpunch
-            show ashel alarmed at left
-            show laylay stern at right
+            scene expression EPISODES[current_episode]["cg_disaster"] with vpunch
             ashel "No cliffs, no paperwork! Equal unlocked shares for everyone right now!"
             narrator "Two weeks later, an early co-founder loses interest, stops showing up, and sells his entire 33%% token share on the open market — crashing the treasury and leaving the working team with dead equity."
             call checkpoint_bad_end(
@@ -656,9 +632,7 @@ label ep3_d1:
             )
 
         "Promise to 'figure out who owns what in a year or two' after the project makes money.":
-            scene bg treasury_fire with vpunch
-            show ashel hurt at left
-            show xochtl hurt at center
+            scene expression EPISODES[current_episode]["cg_disaster"] with vpunch
             ashel "Let's not talk about ownership numbers now — we'll sort it out once we're rich!"
             narrator "The day the first $100,000 grant arrives, three founders remember three totally different verbal promises. The group tears itself apart in bitter arguments."
             call checkpoint_bad_end(
@@ -694,10 +668,7 @@ label ep3_d2:
             call lesson("partnership")
 
         "Refuse all legal companies — 'Code is Law, and government paperwork is for the old world!'":
-            scene bg treasury_fire with vpunch
-            show ashel alarmed at left
-            show xochtl hurt at center
-            show laylay alarmed at right
+            scene expression EPISODES[current_episode]["cg_disaster"] with vpunch
             ashel "We don't register with any government! Code is law!"
             narrator "Six months later, a shipping company sues the group over a damaged festival crate. Because the DAO has no legal wrapper, the judge rules it a general partnership and freezes Koraba and Xochit's personal bank accounts."
             call checkpoint_bad_end(
@@ -708,8 +679,7 @@ label ep3_d2:
             )
 
         "Have Koraba put his personal name and credit card on every venue lease to save registration fees.":
-            scene bg treasury_fire with vpunch
-            show ashel hurt at left
+            scene expression EPISODES[current_episode]["cg_disaster"] with vpunch
             ashel "I'll just sign all the festival contracts under my own name to save $2,000."
             narrator "When a festival sponsor fails to pay a $50,000 bill, debt collectors come straight after Koraba's personal guitars and apartment."
             call checkpoint_bad_end(
@@ -743,9 +713,7 @@ label ep3_d3:
             call lesson("agreements_law")
 
         "Keep 100%% of the group's money in our own volatile token and leave expense payback to 'future good vibes.'":
-            scene bg treasury_fire with vpunch
-            show ashel hurt at left
-            show xochtl hurt at center
+            scene expression EPISODES[current_episode]["cg_disaster"] with vpunch
             ashel "Let's keep 100%% of our money in our own token — trading any for stable cash looks weak!"
             narrator "When the crypto market dips, your token drops 85%% in a {b}death spiral{/b}. The group cannot pay shipping bills or pay Koraba back for the studio gear he bought."
             call checkpoint_bad_end(
@@ -757,10 +725,7 @@ label ep3_d3:
 
     ## --- EPISODE 3 RESOLUTION ---
     $ play_menu_music(force=True)
-    scene bg cacao_circle with fade
-    show ashel proud at left
-    show xochtl proud at center
-    show laylay neutral at right
+    scene expression EPISODES[current_episode]["cg_happy"] with fade
 
     narrator "Six months later, when an early speculator quits and a festival vendor disputes a bill, your written 1-year vesting cliff, Co-op legal wrapper, and 50%% USDC cash reserve protect everyone without a single crisis."
     xochtl "The cacao grounded our spirit. The written agreements protected our home."
@@ -784,7 +749,7 @@ label ep4_apothecary:
     $ play_bad_music(force=True)
 
     ## --- THE HOOK: WORST-CASE SCENARIO (IN MEDIA RES) ---
-    scene bg treasury_fire with fade
+    scene bg apothecary with fade
     show ashel alarmed at left
     show laylay alarmed at center
     show xochtl hurt at right
@@ -833,9 +798,7 @@ label ep4_d1:
             call lesson("capture")
 
         "Accept Atlas's secret deal — let the whale and administrator run everything quietly behind the scenes.":
-            scene bg treasury_fire with vpunch
-            show ashel hurt at left
-            show laylay alarmed at center
+            scene expression EPISODES[current_episode]["cg_disaster"] with vpunch
             laylay "Deal. Between his 35%% vote and my admin key, we'll run the group quietly."
             narrator "Two weeks later, Atlas uses his 35%% voting block to cancel the sanctuary budget, vote all the treasury money to his own fund, and fire Koraba, Xochit, and finally you."
             call checkpoint_bad_end(
@@ -867,8 +830,7 @@ label ep4_d2:
             call lesson("verify_hex")
 
         "Click 'Approve' on the hardware wallet without reading its tiny screen — you're tired and don't want the morning payment to be late!":
-            scene bg treasury_fire with vpunch
-            show laylay alarmed at center
+            scene expression EPISODES[current_episode]["cg_disaster"] with vpunch
             laylay "I'm too tired to read the tiny screen — clicking approve!"
             narrator "The fake link was a phishing trap. The moment you press the button on your hardware wallet, the attacker's contract takes every dollar in the apothecary vault."
             call checkpoint_bad_end(
@@ -903,9 +865,7 @@ label ep4_d3:
             call lesson("flashloan")
 
         "Allow votes to run in the exact same second they pass with no waiting period (no time-lock) so things 'move fast.'":
-            scene bg treasury_fire with vpunch
-            show laylay alarmed at left
-            show ashel alarmed at right
+            scene expression EPISODES[current_episode]["cg_disaster"] with vpunch
             laylay "We turned off time-locks so votes run in the exact same second!"
             narrator "Just like the real-world $181M Beanstalk hack, the attacker borrows the voting tokens, passes Proposal #44, steals the entire treasury, and pays back the flash loan inside a single 12-second blockchain block."
             call checkpoint_bad_end(
@@ -917,10 +877,7 @@ label ep4_d3:
 
     ## --- EPISODE 4 RESOLUTION ---
     $ play_menu_music(force=True)
-    scene bg apothecary with fade
-    show ashel proud at left
-    show laylay neutral at center
-    show xochtl proud at right
+    scene expression EPISODES[current_episode]["cg_happy"] with fade
 
     narrator "Morning sunlight warms the amber apothecary jars. Koraba sets a fresh bottle of ginger elixir beside Clara's hardware wallet, and Xochit pours three warm cups of cacao."
     laylay "I used to think holding the admin keys meant holding power over you two. Now I get it: holding keys in a cooperative means holding the shield so we can build safely together."

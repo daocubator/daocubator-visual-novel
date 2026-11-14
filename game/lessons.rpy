@@ -114,7 +114,10 @@ default persistent.lessons_unlocked = set()
 screen lesson_popup(lid):
     modal True
     zorder 100
-    add "#140702E0"
+    if _outcome_cg_active:
+        add "#14070255"
+    else:
+        add "#140702E0"
     frame:
         xalign 0.5
         yalign 0.5

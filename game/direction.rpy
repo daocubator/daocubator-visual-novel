@@ -42,6 +42,8 @@ init -5 python:
         "constellation": (0.96, 0.97, 1.02,  0.00, 1.04),  # Star-chart night canvas
         "coworking":     (1.00, 0.99, 0.96,  0.00, 1.00),  # Warm natural daylight studio
         "conference":    (1.02, 0.98, 0.92,  0.01, 1.04),  # Crisp stage spotlights
+        "showcase_backstage": (1.00, 0.98, 0.94,  0.00, 1.02),  # Warm practical venue work lights with stage spill
+        "lisbon_airport": (0.97, 0.99, 1.02, -0.01, 1.02),  # Cool rainy terminal light
         "apartment":     (0.84, 0.93, 1.08, -0.05, 1.06),  # 2:47 AM cool midnight monitor glow
         "discord":       (0.95, 0.92, 1.08,  0.00, 1.05),  # Neon cyan/magenta server ambiance
         "blockchain":    (0.88, 0.98, 1.06, -0.02, 1.10),  # High-contrast cyber node glow

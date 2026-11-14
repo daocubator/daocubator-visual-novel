@@ -1,6 +1,6 @@
 {
-  "total_spent_usd": 0.72,
-  "total_images": 24,
+  "total_spent_usd": 1.08,
+  "total_images": 36,
   "generations": [
     {
       "timestamp": "2026-10-23T22:42:52.712536Z",
@@ -193,6 +193,102 @@
       "cost_usd": 0.03,
       "cumulative_spent_usd": 0.72,
       "prompt_snippet": "Vera neutral with dual-reference: inpainted keeper + dedicated hand grip ref..."
+    },
+    {
+      "timestamp": "2026-11-14T01:17:15.535980+00:00",
+      "asset": "bg sanctuary (v3 stage1)",
+      "model": "gemini-3.1-flash-image",
+      "cost_usd": 0.03,
+      "cumulative_spent_usd": 0.75,
+      "prompt_snippet": "A wide 16:9 visual novel background illustration of an airy community sanctuary studio with hanging dried herb bundles a..."
+    },
+    {
+      "timestamp": "2026-11-14T01:27:59.736924+00:00",
+      "asset": "bg sanctuary_v3b (v3 stage1)",
+      "model": "gemini-3.1-flash-image",
+      "cost_usd": 0.03,
+      "cumulative_spent_usd": 0.78,
+      "prompt_snippet": "A wide 16:9 visual novel background illustration of an airy community sanctuary studio, created entirely from loose, atm..."
+    },
+    {
+      "timestamp": "2026-11-14T02:21:05.213137+00:00",
+      "asset": "bg lisbon_airport (v3 stage1)",
+      "model": "gemini-3.1-flash-image",
+      "cost_usd": 0.03,
+      "cumulative_spent_usd": 0.81,
+      "prompt_snippet": "A wide 16:9 visual novel background illustration of an international airport terminal and customs waiting area in Lisbon..."
+    },
+    {
+      "timestamp": "2026-11-14T02:24:34.166479+00:00",
+      "asset": "bg cacao_circle (v3 stage1)",
+      "model": "gemini-3.1-flash-image",
+      "cost_usd": 0.03,
+      "cumulative_spent_usd": 0.84,
+      "prompt_snippet": "A wide 16:9 visual novel background illustration of a serene ceremonial cacao gathering space, created entirely from loo..."
+    },
+    {
+      "timestamp": "2026-11-14T02:28:55.104293+00:00",
+      "asset": "bg showcase_backstage (v3 stage1)",
+      "model": "gemini-3.1-flash-image",
+      "cost_usd": 0.03,
+      "cumulative_spent_usd": 0.87,
+      "prompt_snippet": "A wide 16:9 visual novel background illustration of a practical backstage production workspace at a Lisbon festival venu..."
+    },
+    {
+      "timestamp": "2026-11-14T03:20:45.347232+00:00",
+      "asset": "bg showcase_stage (v3 stage1)",
+      "model": "gemini-3.1-flash-image",
+      "cost_usd": 0.03,
+      "cumulative_spent_usd": 0.9,
+      "prompt_snippet": "A wide 16:9 visual novel background illustration of an expansive Lisbon festival performance stage with a broad projecti..."
+    },
+    {
+      "timestamp": "2026-11-14T03:23:15.577443+00:00",
+      "asset": "bg apothecary (v3 stage1)",
+      "model": "gemini-3.1-flash-image",
+      "cost_usd": 0.03,
+      "cumulative_spent_usd": 0.93,
+      "prompt_snippet": "A wide 16:9 visual novel background illustration of a working herbal apothecary and signing desk, created entirely from ..."
+    },
+    {
+      "timestamp": "2026-11-14T03:30:22.734675+00:00",
+      "asset": "bg treasury_fire (v3 stage1)",
+      "model": "gemini-3.1-flash-image",
+      "cost_usd": 0.03,
+      "cumulative_spent_usd": 0.96,
+      "prompt_snippet": "A wide 16:9 visual novel background illustration of a restrained symbolic treasury collapse, featuring fractured ledger-..."
+    },
+    {
+      "timestamp": "2026-11-14T03:41:10.169517+00:00",
+      "asset": "bg treasury_fire_v3b (v3 stage1)",
+      "model": "gemini-3.1-flash-image",
+      "cost_usd": 0.03,
+      "cumulative_spent_usd": 0.99,
+      "prompt_snippet": "A wide 16:9 visual novel background illustration of a sinister, catastrophic symbolic treasury collapse and breach, crea..."
+    },
+    {
+      "timestamp": "2026-11-14T03:49:35.987588+00:00",
+      "asset": "sprite koraba neutral (v3)",
+      "model": "gemini-3.1-flash-image",
+      "cost_usd": 0.03,
+      "cumulative_spent_usd": 1.02,
+      "prompt_snippet": "Single full-body neutral standing character sprite of Koraba (The Bridge Keeper, musician and healer), strictly matching..."
+    },
+    {
+      "timestamp": "2026-11-14T04:14:54.017979+00:00",
+      "asset": "sprite xochit neutral (v3)",
+      "model": "gemini-3.1-flash-image",
+      "cost_usd": 0.03,
+      "cumulative_spent_usd": 1.05,
+      "prompt_snippet": "Single full-body neutral standing character sprite of Xochit (The Ceremonial Weaver, ceremonialist and messenger), stric..."
+    },
+    {
+      "timestamp": "2026-11-14T04:33:47.185957+00:00",
+      "asset": "sprite clara neutral (v3)",
+      "model": "gemini-3.1-flash-image",
+      "cost_usd": 0.03,
+      "cumulative_spent_usd": 1.08,
+      "prompt_snippet": "Single full-body neutral standing character sprite of Clara (The Registrar, administrator and archivist), strictly match..."
     }
   ]
 }
