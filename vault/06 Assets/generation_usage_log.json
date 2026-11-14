@@ -1,6 +1,6 @@
 {
-  "total_spent_usd": 1.08,
-  "total_images": 36,
+  "total_spent_usd": 1.14,
+  "total_images": 38,
   "generations": [
     {
       "timestamp": "2026-10-23T22:42:52.712536Z",
@@ -289,6 +289,22 @@
       "cost_usd": 0.03,
       "cumulative_spent_usd": 1.08,
       "prompt_snippet": "Single full-body neutral standing character sprite of Clara (The Registrar, administrator and archivist), strictly match..."
+    },
+    {
+      "timestamp": "2026-11-14T05:06:17.577352+00:00",
+      "asset": "sprite koraba_v3b neutral (v3)",
+      "model": "gemini-3.1-flash-image",
+      "cost_usd": 0.03,
+      "cumulative_spent_usd": 1.11,
+      "prompt_snippet": "Three-quarter-length (knees-up) standing character portrait sprite of Koraba (The Bridge Keeper, musician and healer), s..."
+    },
+    {
+      "timestamp": "2026-11-14T05:16:26.833929+00:00",
+      "asset": "sprite xochit_v3b neutral (v3)",
+      "model": "gemini-3.1-flash-image",
+      "cost_usd": 0.03,
+      "cumulative_spent_usd": 1.14,
+      "prompt_snippet": "Three-quarter-length (knees-up) standing character portrait sprite of Xochit (The Ceremonial Weaver, ceremonialist and m..."
     }
   ]
 }

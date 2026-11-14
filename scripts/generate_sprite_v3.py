@@ -32,21 +32,28 @@ CHARACTER_CONFIGS = {
         "sheet_file": "Koraba_ The Bridge Keeper Dossier.png",
         "preview_bg": "bg sanctuary.png",
         "prompt": (
-            "Single full-body neutral standing character sprite of Koraba (The Bridge Keeper, musician and healer), "
+            "Three-quarter-length (knees-up) standing character portrait sprite of Koraba (The Bridge Keeper, musician and healer), "
             "strictly matching the hand-etched woodcut/engraved illustration style, elongated geometric facial features, "
             "fine parallel line hatching, stippling, and warm antique ochre/umber/ivory/slate-blue palette of the illustrated "
             "character on the reference sheet. "
-            "Pose & Framing: Full-body standing pose (standing upright on his feet, feet included—NOT sitting cross-legged), "
-            "front-facing with a relaxed, balanced, grounded ceremonial posture. "
-            "Appearance & Attire: Dark locs tied at the crown with bead-adorned strands framing his face, elongated geometric nose "
-            "and calm attentive eyes with a neutral expression, layered woven sleeveless tunic and draped wrap/shawl with fine linear "
-            "and zig-zag woodcut patterns in warm ochre, antique ivory, and muted indigo-blue, wearing beaded necklaces and bracelets. "
-            "Signature Object: Holding his gourd-bodied kora string instrument naturally at his side/front with hands resting naturally "
-            "near the kora so both his torso and the kora remain clearly readable. "
-            "IMPORTANT ISOLATION RULES: Do NOT include the large circular halo/mandala behind his head. Do NOT include floor rugs, "
-            "bottles, herbs, flutes, drums, text, labels, or character-sheet panels. Render ONLY the single standing character with a "
-            "clean, continuous hand-etched dark black/umber outer contour line, completely isolated on a pure, flat, uniform bright "
-            "white background (#FFFFFF) with generous empty white margins above the head, below the feet, and on both sides."
+            "DYNAMIC 2/3 PROFILE VIEW & DROPPED-SHOULDER POSTURE: Standing in an unmistakable, pronounced 3/4 angled body pose "
+            "(2/3 profile view) with his torso and ribcage turned 35 to 45 degrees into depth—NOT facing dead-on straight forward. "
+            "His closer shoulder is dropped noticeably lower than the other in a relaxed, natural contrapposto stance with a gentle, "
+            "living S-curve in his posture so he feels warm, grounded, and alive rather than stiff or symmetrical. "
+            "HEAD & GAZE (2/3 PROFILE, INTERACTING WITH SCENE PARTNERS): His head is turned at a natural 2/3 profile angle "
+            "(showing more of one cheek and temple, with the bridge of his elongated geometric nose angled in 3/4 profile and a "
+            "subtle 5-degree natural head tilt), and his calm, attentive eyes look naturally forward along his 2/3 head angle "
+            "toward the other characters on stage (engaged in conversation with his companions, NOT staring directly at the camera/viewer). "
+            "ASYMMETRIC SPLIT HANDS & KORA: He holds his gourd-bodied kora string instrument diagonally across his angled torso, "
+            "with his hands at two different heights doing two distinct natural jobs: his upper hand raised to chest/collarbone height "
+            "gently fretting/cradling the wooden kora neck, and his lower hand resting lower on the curved gourd resonator at waist level. "
+            "Appearance & Attire: Dark locs tied at the crown with bead-adorned strands draping naturally over his angled shoulders, "
+            "layered woven sleeveless tunic and asymmetrically draped indigo/ochre wrap/shawl with fine linear and zig-zag woodcut "
+            "patterns, wearing beaded necklaces and bracelets. "
+            "IMPORTANT ISOLATION RULES: Do NOT include the circular halo/mandala behind his head, floor rugs, bottles, herbs, flutes, "
+            "drums, text, or labels. Render ONLY the single standing character with a clean, continuous hand-etched dark black/umber "
+            "outer contour line, completely isolated on a pure, flat, uniform bright white background (#FFFFFF) with generous empty "
+            "white margins above the head and on both left and right sides."
         ),
     },
     "xochit": {
@@ -54,23 +61,30 @@ CHARACTER_CONFIGS = {
         "sheet_file": "Xochit_ Ceremonial Weaver Character Sheet.png",
         "preview_bg": "bg cacao_circle.png",
         "prompt": (
-            "Single full-body neutral standing character sprite of Xochit (The Ceremonial Weaver, ceremonialist and messenger), "
+            "Three-quarter-length (knees-up) standing character portrait sprite of Xochit (The Ceremonial Weaver, ceremonialist and messenger), "
             "strictly matching the hand-etched woodcut/engraved illustration style, stylized geometric facial features, "
             "fine parallel line hatching, stippling, and warm antique ochre/terracotta-red/umber/ivory/olive palette of the illustrated "
             "character on the reference sheet. "
-            "Pose & Framing: Full-body standing pose (standing upright on her feet, feet included—NOT sitting cross-legged), "
-            "front-facing with a relaxed, balanced, grounded posture. "
-            "Appearance & Attire: Long dark wavy/braided hair flowing over her shoulders, geometric red-and-gold beaded headband, "
-            "large diamond-shaped beaded fringe statement earrings, signature ceremonial red and black horizontal face-paint stripes "
-            "across her cheeks and vertical red stripe on her chin/nose bridge, layered beaded necklaces, and a richly patterned "
-            "woven poncho/huipil and long skirt with diamond and step-fret textile motifs. "
-            "Expression & Signature Object: Neutral expression, warm steady gaze, holding her carved ceremonial cacao bowl (marked with "
-            "a four-point star motif) securely with both hands at chest / solar-plexus height (just like the main portrait on the reference sheet, "
-            "with no rising smoke plumes outside her silhouette) so the bowl and hands are clearly visible in an upper-body crop. "
-            "IMPORTANT ISOLATION RULES: Do NOT include the circular cosmic halo behind her head. Do NOT include background baskets, "
-            "flowers, bottles, text, labels, or character-sheet panels. Render ONLY the single standing character with a clean, "
-            "continuous hand-etched dark black/umber outer contour line, completely isolated on a pure, flat, uniform bright "
-            "white background (#FFFFFF) with generous empty white margins above the head, below the feet, and on both sides."
+            "DYNAMIC 2/3 PROFILE VIEW & DROPPED-SHOULDER POSTURE: Standing in an unmistakable, pronounced 3/4 angled body pose "
+            "(2/3 profile view) with her torso and ribcage turned 35 to 45 degrees into depth—NOT facing dead-on straight forward. "
+            "One shoulder is closer to the camera and dropped lower in a graceful, relaxed contrapposto stance with natural asymmetric "
+            "shoulder tilt so she feels expressive, warm, and alive rather than stiff or squared-on. "
+            "HEAD & GAZE (2/3 PROFILE, INTERACTING WITH SCENE PARTNERS): Her head is turned in a natural 2/3 profile view "
+            "(showing more of one side of her face and statement earring, with her nose bridge angled in 3/4 profile and a gentle "
+            "natural head tilt), and her warm, steady eyes look naturally along her 2/3 profile angle toward the other characters "
+            "in the room (interacting with her companions on stage, NOT looking directly at the camera/viewer). "
+            "ASYMMETRIC SPLIT HANDS & CACAO BOWL: Her hands are at two slightly different heights in a natural asymmetric gesture: "
+            "one hand cradling the base of her carved ceremonial cacao bowl (marked with a four-point star motif) near her solar plexus, "
+            "while her other hand is raised slightly higher near the rim/chest in a warm, welcoming ceremonial gesture (no smoke plumes "
+            "extending outside her silhouette). "
+            "Appearance & Attire: Long dark wavy/braided hair flowing asymmetrically over her shoulders, geometric red-and-gold beaded "
+            "headband, large diamond-shaped beaded fringe statement earrings (viewed in 3/4 perspective), signature ceremonial red and "
+            "black horizontal cheek face-paint stripes and vertical red chin stripe, layered beaded necklaces, and richly patterned "
+            "woven poncho/huipil with diamond and step-fret textile motifs. "
+            "IMPORTANT ISOLATION RULES: Do NOT include the circular cosmic halo behind her head, background baskets, flowers, bottles, "
+            "text, or labels. Render ONLY the single standing character with a clean, continuous hand-etched dark black/umber outer "
+            "contour line, completely isolated on a pure, flat, uniform bright white background (#FFFFFF) with generous empty white "
+            "margins above the head and on both left and right sides."
         ),
     },
     "clara": {
@@ -78,23 +92,29 @@ CHARACTER_CONFIGS = {
         "sheet_file": "Clara_ The Registrar Character Sheet.png",
         "preview_bg": "bg apothecary.png",
         "prompt": (
-            "Single full-body neutral standing character sprite of Clara (The Registrar, administrator and archivist), "
+            "Three-quarter-length (knees-up) standing character portrait sprite of Clara (The Registrar, administrator and archivist), "
             "strictly matching the hand-etched woodcut/engraved illustration style, stylized geometric facial features, "
             "fine parallel line hatching, stippling, and warm antique ochre/slate-blue/umber/ivory/terracotta palette of the illustrated "
             "character on the reference sheet. "
-            "Pose & Framing: Full-body standing pose (standing upright on her feet, feet included—NOT sitting cross-legged), "
-            "front-facing with a composed, organized, balanced posture. "
+            "DYNAMIC 2/3 PROFILE VIEW & DROPPED-SHOULDER POSTURE: Standing in an unmistakable, pronounced 3/4 angled body pose "
+            "(2/3 profile view) with her torso and ribcage turned 35 to 45 degrees into depth—NOT facing dead-on straight forward. "
+            "One shoulder is closer to the camera and dropped lower in a natural, poised contrapposto stance with asymmetric shoulder "
+            "line and relaxed weight shift so she feels observant and alive rather than stiff or symmetrical. "
+            "HEAD & GAZE (2/3 PROFILE, INTERACTING WITH SCENE PARTNERS): Her head is turned at a natural 2/3 profile angle "
+            "(showing more of the side of her face with her structured side bun prominently visible in 3/4 perspective, nose bridge "
+            "angled in 3/4 profile, and a subtle head tilt), and her composed, perceptive eyes look naturally along her 2/3 profile "
+            "angle toward the other characters in the scene (engaged with her colleagues on stage, NOT looking directly at the camera/viewer). "
+            "ASYMMETRIC SPLIT HANDS & PROPS: Her hands are at two different heights doing two distinct jobs: one arm bent to hold her "
+            "clipboard (bearing a four-point star emblem) angled across her chest, while her other hand is raised slightly higher holding "
+            "a fountain pen poised near the top corner of the clipboard (or resting on a ledger tucked under her arm at waist height). "
             "Appearance & Attire: Blonde hair styled in a neat parted updo with a structured side/low bun, pearl stud earrings, "
             "tailored slate-blue blazer with subtle engraved orbit/spiral sleeve and lapel patterns and a small four-point star lapel pin "
-            "over a crisp collared shirt, red lanyard with ID keycard badge around her neck, and matching tailored trousers/skirt with "
-            "fine linear woodcut hatching. "
-            "Expression & Signature Object: Neutral expression, composed steady gaze, holding a clipboard with a four-point star emblem "
-            "at chest height in one hand and a closed ledger/binder tucked against her upper side in the other hand so both are clearly "
-            "visible in an upper-body crop. "
-            "IMPORTANT ISOLATION RULES: Do NOT include the circular bookshelf halo/arch behind her head. Do NOT include desks, lamps, "
-            "mugs, stacks of binders, text, labels, or character-sheet panels. Render ONLY the single standing character with a clean, "
-            "continuous hand-etched dark black/umber outer contour line, completely isolated on a pure, flat, uniform bright "
-            "white background (#FFFFFF) with generous empty white margins above the head, below the feet, and on both sides."
+            "over a crisp collared shirt, red lanyard with ID keycard badge hanging naturally along her angled chest, and matching tailored "
+            "trousers/skirt with fine linear woodcut hatching. "
+            "IMPORTANT ISOLATION RULES: Do NOT include the circular bookshelf halo/arch behind her head, desks, lamps, mugs, stacks of "
+            "binders, text, or labels. Render ONLY the single standing character with a clean, continuous hand-etched dark black/umber "
+            "outer contour line, completely isolated on a pure, flat, uniform bright white background (#FFFFFF) with generous empty white "
+            "margins above the head and on both left and right sides."
         ),
     },
 }
@@ -180,12 +200,14 @@ def extract_clean_cutout(raw_path: str) -> Image.Image:
                 bg_mask[comp_mask] = 255
                 continue
 
-        # Case (a): large pure-white limb/arm/leg pass-through void
-        if area >= 140 and (cx < w * 0.44 or cx > w * 0.55 or cy > h * 0.75):
+        # Case (a): pure-white enclosed background pass-through void (between arms, instrument neck, hair, etc.)
+        if area >= 15 and not (w * 0.36 <= cx <= w * 0.58 and h * 0.14 <= cy <= h * 0.22):
             p85_g = float(np.percentile(gray[comp_mask], 85))
             p25_w = float(np.percentile(warmth[comp_mask], 25))
-            if p85_g >= 248.0 and p25_w <= 5.0 and ring_gray < 115.0:
+            if p85_g >= 246.0 and p25_w <= 8.0 and ring_gray < 225.0:
                 bg_mask[comp_mask] = 255
+                hole_dil = cv2.dilate(comp_mask.astype(np.uint8) * 255, np.ones((3, 3), np.uint8), iterations=1)
+                bg_mask[(hole_dil > 0) & (gray >= 200) & (warmth <= 15)] = 255
 
     # Secondary pass strictly for small holes inside dark outer hair curls (cy < 0.29, outside earrings/shoulders)
     hair_hole_cand = ((gray >= 195) & (bg_mask == 0)).astype(np.uint8)
@@ -264,8 +286,12 @@ def build_sprite_and_previews(rgba_cutout: Image.Image, char_key: str, suffix: s
     print(f"[SAVED] 3/4-length 560x880 sprite -> {wq_path}")
 
     # 3. Scale D (Approved Default: Extra-Large Bust/Waist-Up, 1010px tall on 1080p stage,
-    #    cropping at 56% of full-body height so head is at y=70 and details pop on screen)
-    crop_d = tight.crop((0, 0, tight.width, int(round(tight.height * 0.56))))
+    #    head at y=70, both hands and signature prop visible above the y=802 textbox,
+    #    and lower garment extending down to y=1080 behind the semi-transparent textbox)
+    #    For knees-up (3/4-length) raw renders, 0.96 of tight.height places the waist/prop
+    #    right above y=802 and the thighs behind the textbox.
+    crop_ratio_d = 0.96
+    crop_d = tight.crop((0, 0, tight.width, int(round(tight.height * crop_ratio_d))))
     target_hd = 1010
     scale_d = target_hd / crop_d.height
     wd = int(round(crop_d.width * scale_d))
@@ -349,8 +375,10 @@ def generate_character_sprite(char_name: str, custom_prompt: str = None, suffix:
                 "Task:\n"
                 f"{prompt}\n\n"
                 "Strict Negative Constraints (DO NOT INCLUDE): "
-                "sitting pose, cross-legged pose, floating halo behind head, circular background mandala, floor rug, extra props on the ground, "
-                "multiple figures, turnaround sheet layout, text, typography, labels, watermarks, photorealism, 3D rendering, gradients on background."
+                "dead-on front-facing view, flat frontal pose, symmetrical stance, squared level shoulders, stiff mannequin posture, "
+                "both hands at the same height, sitting pose, cross-legged pose, floating halo behind head, circular background mandala, "
+                "floor rug, extra props on the ground, multiple figures, turnaround sheet layout, text, typography, labels, watermarks, "
+                "photorealism, 3D rendering, gradients on background."
             )
         }
     ]

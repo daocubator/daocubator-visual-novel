@@ -572,9 +572,9 @@ label ep3_agreements:
 
     ## --- THE HOOK: WORST-CASE SCENARIO (IN MEDIA RES) ---
     scene bg cacao_circle with fade
-    show ashel alarmed at left
+    show laylay alarmed at left
     show xochtl hurt at center
-    show laylay alarmed at right
+    show ashel alarmed at right
 
     narrator "A court officer walks past the incense burner and drops a thick legal lawsuit onto the ceremonial cacao table. At the exact same moment, your phone buzzes: your group's token price just crashed 78%%."
     ashel "What is happening?! That early co-founder who quit in Week Two after making three slides — how did he just sell off thirty-three percent of all our tokens?!"
@@ -589,9 +589,9 @@ label ep3_agreements:
     )
 
     scene bg cacao_circle with fade
-    show ashel neutral at left
+    show laylay neutral at left
     show xochtl warm at center
-    show laylay neutral at right
+    show ashel neutral at right
 
     narrator "Day 3 of the project. Warm steam rises from clay cacao cups. Everyone is excited — music, herbal medicine, and big dreams are flowing fast."
     narrator "{b}Xochit{/b} places a clean three-page founder agreement and cooperative charter beside the cacao pot while {b}Clara{/b} opens the notebook."
@@ -600,17 +600,17 @@ label ep3_agreements:
 
     ## --- DECISION 1: WRITTEN VESTING & CLIFFS VS. HANDSHAKE SPLITS ---
     scene bg cacao_circle
-    show ashel neutral at left
+    show laylay neutral at left
     show xochtl focused at center
-    show laylay neutral at right
+    show ashel neutral at right
 
     xochtl "First: how will we divide ownership shares and voting tokens among the co-founders?"
 
 label ep3_d1:
     scene bg cacao_circle
-    show ashel neutral at left
+    show laylay neutral at left
     show xochtl focused at center
-    show laylay neutral at right
+    show ashel neutral at right
 
     menu:
         "Sign a written 4-year vesting agreement with a 1-year cliff — founders earn their shares gradually by staying and doing the work.":
@@ -644,9 +644,9 @@ label ep3_d1:
 
     ## --- DECISION 2: LEGAL WRAPPER VS. UNWRAPPED GENERAL PARTNERSHIP ---
     scene bg cacao_circle with dissolve
-    show ashel neutral at left
+    show laylay neutral at left
     show xochtl stern at center
-    show laylay calculating at right
+    show ashel neutral at right
 
     narrator "Next, Xochit slides the second document across the table: registration papers for a {b}Cooperative LLC / Swiss Verein legal wrapper{/b}."
     xochtl "Right now, we are renting real-world event halls, shipping herbal drinks across borders, and voting on payments. Without a registered company — a {b}legal wrapper{/b} — courts treat our group as a {b}general partnership{/b}."
@@ -655,9 +655,9 @@ label ep3_d1:
 
 label ep3_d2:
     scene bg cacao_circle
-    show ashel neutral at left
+    show laylay calculating at left
     show xochtl stern at center
-    show laylay calculating at right
+    show ashel neutral at right
 
     menu:
         "Register a formal Co-op LLC / Swiss Verein legal wrapper and written operating agreement before signing leases or moving money.":
@@ -691,18 +691,18 @@ label ep3_d2:
 
     ## --- DECISION 3: ENFORCEABLE RECOUPMENT & BARBELL TREASURY DISCIPLINE ---
     scene bg cacao_circle with dissolve
-    show ashel neutral at left
+    show laylay neutral at left
     show xochtl warm at center
-    show laylay neutral at right
+    show ashel neutral at right
 
     narrator "Xochit turns to the final page of the agreement: {b}Treasury Safety & Paying Back Creator Expenses{/b}."
     xochtl "Koraba has already spent $12,000 of his own savings on studio gear and herbal bottles, and our community token just launched. How should we manage the group's money?"
 
 label ep3_d3:
     scene bg cacao_circle
-    show ashel neutral at left
+    show laylay neutral at left
     show xochtl warm at center
-    show laylay neutral at right
+    show ashel neutral at right
 
     menu:
         "Write two clear rules into the charter: keep 50%% of the treasury in stable USDC cash (a barbell strategy) and pay back verified creator expenses automatically.":

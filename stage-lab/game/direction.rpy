@@ -96,6 +96,27 @@ init -5 python:
         except Exception:
             return []
 
+    def ease_focus_zoom(trans, target_zoom, at):
+        """Ease focus scale changes quickly at first, then gently into place."""
+        duration = 0.28
+        previous_target = getattr(trans, "_focus_zoom_target", None)
+
+        if previous_target is None:
+            trans._focus_zoom_from = getattr(trans, "zoom", 1.0)
+            trans._focus_zoom_target = target_zoom
+            trans._focus_zoom_start = at
+        elif abs(previous_target - target_zoom) > 0.0001:
+            start = trans._focus_zoom_start
+            progress = max(0.0, min(1.0, (at - start) / duration))
+            eased = 1.0 - (1.0 - progress) ** 3
+            trans._focus_zoom_from = trans._focus_zoom_from + (previous_target - trans._focus_zoom_from) * eased
+            trans._focus_zoom_target = target_zoom
+            trans._focus_zoom_start = at
+
+        progress = max(0.0, min(1.0, (at - trans._focus_zoom_start) / duration))
+        eased = 1.0 - (1.0 - progress) ** 3
+        return trans._focus_zoom_from + (trans._focus_zoom_target - trans._focus_zoom_from) * eased
+
     def char_focus_light_fn(trans, st, at, char_tag="maya", expr_name="neutral"):
         """Static transform function that applies speaker focus (zoom, brightness,
         saturation) and room + expression lighting with zero motion or bottom gaps."""
@@ -118,8 +139,8 @@ init -5 python:
                 t_zoom, t_bright, t_sat = 1.0, 0.02, 1.02
         elif active is not None and active != char_tag and multi_stage:
             # Another character is speaking in a multi-character scene -> dim listener clearly
-            t_zoom, t_bright, t_sat = 0.955, -0.18, 0.65
-            dim_mul = 0.54
+            t_zoom, t_bright, t_sat = 0.98, -0.08, 0.78
+            dim_mul = 0.72
         elif active is None and multi_stage:
             # Narrator or player speaking while multiple characters are on stage
             t_zoom, t_bright, t_sat = 0.98, -0.06, 0.88
@@ -155,7 +176,7 @@ init -5 python:
 
         # Overcompensate by +2px at the bottom so window scaling across resolutions
         # never exposes a 1px seam between the sprite and the bottom of the screen.
-        trans.zoom = t_zoom
+        trans.zoom = ease_focus_zoom(trans, t_zoom, at)
         trans.yoffset = 2
         trans.xoffset = 0
         trans.matrixcolor = (
@@ -192,11 +213,11 @@ init 5 python:
         ]
         for var_name, tag in mapping:
             ch = getattr(store, var_name, None)
-            if ch is not None and hasattr(ch, "cb_args"):
+            if ch is not None and hasattr(ch, "cb_args") and hasattr(ch, "display_args"):
                 new_cb_args = dict(ch.cb_args) if ch.cb_args else {}
                 new_cb_args["_speaker_tag"] = tag
                 ch.cb_args = new_cb_args
-                ch.callback = direction_all_char_callback
+                ch.display_args["callback"] = direction_all_char_callback
 
     _wire_speaker_callbacks()
 
