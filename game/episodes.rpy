@@ -148,6 +148,19 @@ screen episode_complete_modal(ep_id, summary_text):
                 textbutton "OPEN LESSONS CODEX" action [ShowMenu("lessons_codex"), Return("map")] style "constellation_cancel_btn"
 
 
+init python:
+    def reset_scenario_statuses():
+        """Mark every scenario uncleared again.
+
+        Points live in persistent.game_point_milestones and are never touched here,
+        so the player keeps their balance, and award_game_points() is idempotent,
+        so replaying earns nothing new. Lessons stay unlocked.
+        """
+        persistent.episodes_completed = set()
+        renpy.save_persistent()
+        renpy.restart_interaction()
+
+
 label complete_episode(ep_id, summary_text):
     $ play_menu_music()
     python:

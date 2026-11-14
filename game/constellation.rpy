@@ -41,7 +41,7 @@ init 5 python:
             "title": "No Keys, No Cheese",
             "color": "#D3710D",
             "pov": "Koraba (The Creator)",
-            "cast": "Koraba · Clara · Xochit",
+            "cast": "Xochit · Koraba · Clara",
             "pos": (430, 340),
             "label": "ep1_keys",
             "cg_disaster": "images/cg_ep1_disaster.png",
@@ -66,7 +66,7 @@ init 5 python:
             "title": "Frozen Pay, Empty Stage",
             "color": "#578C88",
             "pov": "Xochit (The Shaman) & Koraba",
-            "cast": "Xochit · Koraba · Clara",
+            "cast": "Koraba · Xochit · Clara",
             "pos": (1490, 340),
             "label": "ep2_lisbon",
             "cg_disaster": "images/cg_ep2_disaster.png",
@@ -91,7 +91,7 @@ init 5 python:
             "title": "Blood, Cacao & Paper",
             "color": "#FAC443",
             "pov": "Koraba & Xochit (Co-Creators)",
-            "cast": "Koraba · Xochit · Clara",
+            "cast": "Clara · Xochit · Koraba",
             "pos": (430, 760),
             "label": "ep3_agreements",
             "cg_disaster": "images/cg_ep3_disaster.png",
@@ -116,7 +116,7 @@ init 5 python:
             "title": "One Tired Click Drained the Apothecary",
             "color": "#C2AEC7",
             "pov": "Clara (The Administrator)",
-            "cast": "Clara · Koraba · Xochit",
+            "cast": "Koraba · Clara · Xochit",
             "pos": (1490, 760),
             "label": "ep4_apothecary",
             "cg_disaster": "images/cg_ep4_disaster.png",
@@ -195,8 +195,9 @@ transform rewind_banner_flash:
     easein 0.25 alpha 1.0 zoom 1.0
 
 transform cg_modal_bg:
-    size (1350, 432)
+    xysize (1350, 432)
     fit "cover"
+    align (0.5, 0.5)
 
 ################################################################################
 ## World Overview Hub Label
@@ -384,7 +385,10 @@ screen scenario_overview_modal(ep_id):
         background "#1E140E"
 
         ## Scenario CG (happy if good ending unlocked, otherwise disaster) + dark dimming overlay
-        add cg_img at cg_modal_bg
+        fixed:
+            xysize (1350, 432)
+            clipping True
+            add cg_img at cg_modal_bg
         add "#140702D8"
 
         ## Absorb clicks inside the modal card so they don't trigger the outside backdrop button

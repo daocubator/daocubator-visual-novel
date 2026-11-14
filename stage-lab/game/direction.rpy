@@ -384,13 +384,17 @@ image xochtl stern     = At("images/xochtl stern.png",     expr_stern,      char
 image xochtl hurt      = At("images/xochtl hurt.png",      expr_hurt,       char_focus_and_light("xochtl", "hurt"))
 image xochtl proud     = At("images/xochtl proud.png",     expr_proud,      char_focus_and_light("xochtl", "proud"))
 
-# LAY-LAY (6)
-image laylay neutral     = At("images/laylay neutral.png",     expr_neutral,     char_focus_and_light("laylay", "neutral"))
-image laylay calculating = At("images/laylay calculating.png", expr_calculating, char_focus_and_light("laylay", "calculating"))
-image laylay smirk       = At("images/laylay smirk.png",       expr_smirk,       char_focus_and_light("laylay", "smirk"))
-image laylay defensive   = At("images/laylay defensive.png",   expr_defensive,   char_focus_and_light("laylay", "defensive"))
-image laylay stern       = At("images/laylay stern.png",       expr_stern,       char_focus_and_light("laylay", "stern"))
-image laylay alarmed     = At("images/laylay alarmed.png",     expr_alarmed,     char_focus_and_light("laylay", "alarmed"))
+# LAY-LAY (6) — raw PNGs face right; normalize with sprite_face_left so base orientation matches Koraba & Xochit
+transform sprite_face_left:
+    subpixel True
+    xzoom -1.0
+
+image laylay neutral     = At("images/laylay neutral.png",     sprite_face_left, expr_neutral,     char_focus_and_light("laylay", "neutral"))
+image laylay calculating = At("images/laylay calculating.png", sprite_face_left, expr_calculating, char_focus_and_light("laylay", "calculating"))
+image laylay smirk       = At("images/laylay smirk.png",       sprite_face_left, expr_smirk,       char_focus_and_light("laylay", "smirk"))
+image laylay defensive   = At("images/laylay defensive.png",   sprite_face_left, expr_defensive,   char_focus_and_light("laylay", "defensive"))
+image laylay stern       = At("images/laylay stern.png",       sprite_face_left, expr_stern,       char_focus_and_light("laylay", "stern"))
+image laylay alarmed     = At("images/laylay alarmed.png",     sprite_face_left, expr_alarmed,     char_focus_and_light("laylay", "alarmed"))
 
 
 ################################################################################
@@ -413,6 +417,16 @@ init 10:
         subpixel True
         xalign 0.50 yalign 1.0
         xzoom 1.0 zoom 1.0 yoffset 0 xoffset 0 alpha 1.0
+
+    transform center_left:
+        subpixel True
+        xalign 0.50 yalign 1.0
+        xzoom 1.0 zoom 1.0 yoffset 0 xoffset 0 alpha 1.0
+
+    transform center_right:
+        subpixel True
+        xalign 0.50 yalign 1.0
+        xzoom -1.0 zoom 1.0 yoffset 0 xoffset 0 alpha 1.0
 
 ## Asymmetric Rule-of-Thirds Stage Slots
 transform stage_right:

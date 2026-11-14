@@ -888,6 +888,15 @@ screen preferences():
                     label _("Glossary")
                     textbutton _("Link Terms") action ToggleField(persistent, "gloss_links")
 
+                vbox:
+                    style_prefix "check"
+                    label _("Progress")
+                    textbutton _("Reset Scenario Status"):
+                        action Confirm(
+                            _("Reset all scenario statuses?\n\nOnly the cleared/uncleared status resets. You keep every point you've earned, but replaying scenarios won't earn those points again."),
+                            [Function(reset_scenario_statuses), Notify(_("Scenario statuses reset. Your points are unchanged."))]
+                        )
+
             null height (4 * gui.pref_spacing)
 
             hbox:

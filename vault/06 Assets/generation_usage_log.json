@@ -1,6 +1,6 @@
 {
-  "total_spent_usd": 1.35,
-  "total_images": 45,
+  "total_spent_usd": 2.16,
+  "total_images": 69,
   "generations": [
     {
       "timestamp": "2026-10-23T22:42:52.712536Z",
@@ -361,6 +361,198 @@
       "cost_usd": 0.03,
       "cumulative_spent_usd": 1.35,
       "prompt_snippet": "Keep the upper 74% of Reference Image 1 (the three woodcut characters Koraba, Xochit, and Clara, the wooden crates, and ..."
+    },
+    {
+      "timestamp": "2026-11-14T07:09:47.367596+00:00",
+      "asset": "cg_ep1_disaster_expA_low_diagonal_512 (v3 full-art 16:9 CG)",
+      "model": "gemini-3.1-flash-image",
+      "cost_usd": 0.015,
+      "cumulative_spent_usd": 1.365,
+      "prompt_snippet": "CAMERA & BLOCKING (Experiment A \u2014 Dramatic Low-Angle Diagonal Movie Still):\nShot from a low, tilted camera angle near th..."
+    },
+    {
+      "timestamp": "2026-11-14T07:09:57.462322+00:00",
+      "asset": "cg_ep1_disaster_expB_high_crane_512 (v3 full-art 16:9 CG)",
+      "model": "gemini-3.1-flash-image",
+      "cost_usd": 0.015,
+      "cumulative_spent_usd": 1.38,
+      "prompt_snippet": "CAMERA & BLOCKING (Experiment B \u2014 High-Angle Overhead Crane Shot / Manga Panel):\nShot from a high-angle overhead camera ..."
+    },
+    {
+      "timestamp": "2026-11-14T07:10:07.914891+00:00",
+      "asset": "cg_ep1_disaster_expC_over_shoulder_512 (v3 full-art 16:9 CG)",
+      "model": "gemini-3.1-flash-image",
+      "cost_usd": 0.015,
+      "cumulative_spent_usd": 1.395,
+      "prompt_snippet": "CAMERA & BLOCKING (Experiment C \u2014 Over-the-Shoulder Deep-Focus Split Shot):\nShot like a tense cinema thriller frame with..."
+    },
+    {
+      "timestamp": "2026-11-14T07:14:59.806876+00:00",
+      "asset": "cg_ep1_disaster_v3c_full_from_expA (v3 full-art 16:9 CG)",
+      "model": "gemini-3.1-flash-image",
+      "cost_usd": 0.03,
+      "cumulative_spent_usd": 1.425,
+      "prompt_snippet": "gemini-3.1-flash-image-preview..."
+    },
+    {
+      "timestamp": "2026-11-14T07:21:10.457157+00:00",
+      "asset": "cg_ep2_disaster_512_expA (v3 full-art 16:9 CG)",
+      "model": "gemini-3.1-flash-image",
+      "cost_usd": 0.015,
+      "cumulative_spent_usd": 1.44,
+      "prompt_snippet": "You are generating a 16:9 full-bleed cinematic visual novel outcome CG in the exact EFAM DAO woodcut-and-watercolor styl..."
+    },
+    {
+      "timestamp": "2026-11-14T07:21:17.563645+00:00",
+      "asset": "cg_ep3_disaster_512_expA (v3 full-art 16:9 CG)",
+      "model": "gemini-3.1-flash-image",
+      "cost_usd": 0.015,
+      "cumulative_spent_usd": 1.455,
+      "prompt_snippet": "You are generating a 16:9 full-bleed cinematic visual novel outcome CG in the exact EFAM DAO woodcut-and-watercolor styl..."
+    },
+    {
+      "timestamp": "2026-11-14T07:21:23.596717+00:00",
+      "asset": "cg_ep4_disaster_512_expA (v3 full-art 16:9 CG)",
+      "model": "gemini-3.1-flash-image",
+      "cost_usd": 0.015,
+      "cumulative_spent_usd": 1.47,
+      "prompt_snippet": "You are generating a 16:9 full-bleed cinematic visual novel outcome CG in the exact EFAM DAO woodcut-and-watercolor styl..."
+    },
+    {
+      "timestamp": "2026-11-14T07:34:08.912771+00:00",
+      "asset": "cg_ep3_disaster_512_expA2 (v3 full-art 16:9 CG)",
+      "model": "gemini-3.1-flash-image",
+      "cost_usd": 0.015,
+      "cumulative_spent_usd": 1.485,
+      "prompt_snippet": "You are generating a 16:9 full-bleed cinematic visual novel outcome CG in the exact EFAM DAO woodcut-and-watercolor styl..."
+    },
+    {
+      "timestamp": "2026-11-14T07:34:15.724356+00:00",
+      "asset": "cg_ep2_disaster_512_expB (v3 full-art 16:9 CG)",
+      "model": "gemini-3.1-flash-image",
+      "cost_usd": 0.015,
+      "cumulative_spent_usd": 1.5,
+      "prompt_snippet": "You are generating a 16:9 full-bleed cinematic visual novel outcome CG in the exact EFAM DAO woodcut-and-watercolor styl..."
+    },
+    {
+      "timestamp": "2026-11-14T07:34:22.509297+00:00",
+      "asset": "cg_ep3_disaster_512_expB (v3 full-art 16:9 CG)",
+      "model": "gemini-3.1-flash-image",
+      "cost_usd": 0.015,
+      "cumulative_spent_usd": 1.515,
+      "prompt_snippet": "You are generating a 16:9 full-bleed cinematic visual novel outcome CG in the exact EFAM DAO woodcut-and-watercolor styl..."
+    },
+    {
+      "timestamp": "2026-11-14T07:34:29.975849+00:00",
+      "asset": "cg_ep4_disaster_512_expB (v3 full-art 16:9 CG)",
+      "model": "gemini-3.1-flash-image",
+      "cost_usd": 0.015,
+      "cumulative_spent_usd": 1.53,
+      "prompt_snippet": "You are generating a 16:9 full-bleed cinematic visual novel outcome CG in the exact EFAM DAO woodcut-and-watercolor styl..."
+    },
+    {
+      "timestamp": "2026-11-14T07:58:56.150474+00:00",
+      "asset": "cg_ep1_disaster_woodcut_test (v3 full-art 16:9 CG)",
+      "model": "gemini-3.1-flash-image",
+      "cost_usd": 0.03,
+      "cumulative_spent_usd": 1.56,
+      "prompt_snippet": "The reference image shows the three approved characters (left Koraba, center Xochit, right Clara) in their final woodblo..."
+    },
+    {
+      "timestamp": "2026-11-14T07:59:06.212603+00:00",
+      "asset": "cg_ep3_disaster_woodcut_test (v3 full-art 16:9 CG)",
+      "model": "gemini-3.1-flash-image",
+      "cost_usd": 0.03,
+      "cumulative_spent_usd": 1.59,
+      "prompt_snippet": "The reference image shows the three approved characters (left Koraba, center Xochit, right Clara) in their final woodblo..."
+    },
+    {
+      "timestamp": "2026-11-14T08:03:52.229813+00:00",
+      "asset": "cg_ep2_disaster_512_expA_style (v3 full-art 16:9 CG)",
+      "model": "gemini-3.1-flash-image",
+      "cost_usd": 0.015,
+      "cumulative_spent_usd": 1.605,
+      "prompt_snippet": "CRITICAL STYLE: Render the image as a high\u2011contrast EFAM DAO wood\u2011cut illustration \u2013 bold black\u2011ink cross\u2011hatching on ch..."
+    },
+    {
+      "timestamp": "2026-11-14T08:03:59.925711+00:00",
+      "asset": "cg_ep2_disaster_512_expB_style (v3 full-art 16:9 CG)",
+      "model": "gemini-3.1-flash-image",
+      "cost_usd": 0.015,
+      "cumulative_spent_usd": 1.62,
+      "prompt_snippet": "CRITICAL STYLE: Render the image as a high\u2011contrast EFAM DAO wood\u2011cut illustration \u2013 bold black\u2011ink cross\u2011hatching on ch..."
+    },
+    {
+      "timestamp": "2026-11-14T08:09:06.380260+00:00",
+      "asset": "cg_ep1_disaster_t1_v4 (v3 full-art 16:9 CG)",
+      "model": "gemini-3.1-flash-image",
+      "cost_usd": 0.06,
+      "cumulative_spent_usd": 1.68,
+      "prompt_snippet": "Scene: Episode 1 Disaster \u2014 'The $60,000 Transfer Is Gone' at Lisbon Airport after midnight.\nAction & Staging (Upper Two..."
+    },
+    {
+      "timestamp": "2026-11-14T08:09:38.994956+00:00",
+      "asset": "cg_ep1_disaster_t2_v4 (v3 full-art 16:9 CG)",
+      "model": "gemini-3.1-flash-image",
+      "cost_usd": 0.06,
+      "cumulative_spent_usd": 1.74,
+      "prompt_snippet": "Scene: Episode 1 Disaster \u2014 'The $60,000 Transfer Is Gone' at Lisbon Airport after midnight.\nAction & Staging (Upper Two..."
+    },
+    {
+      "timestamp": "2026-11-14T08:12:32.409464+00:00",
+      "asset": "cg_ep2_disaster_t1_v4 (v4 full-art 16:9 CG)",
+      "model": "gemini-3.1-flash-image",
+      "cost_usd": 0.06,
+      "cumulative_spent_usd": 1.8,
+      "prompt_snippet": "Scene: Episode 2 Disaster, 'The Showcase Freezes' backstage at the Lisbon venue.\nCAMERA: Low shot over Clara's shoulder,..."
+    },
+    {
+      "timestamp": "2026-11-14T08:14:32.584143+00:00",
+      "asset": "cg_ep2_disaster_t2_v4 (v4 full-art 16:9 CG)",
+      "model": "gemini-3.1-flash-image",
+      "cost_usd": 0.06,
+      "cumulative_spent_usd": 1.86,
+      "prompt_snippet": "Scene: Episode 2 Disaster, 'The Showcase Freezes' backstage at the Lisbon venue.\nCAMERA: Low shot over Clara's shoulder,..."
+    },
+    {
+      "timestamp": "2026-11-14T08:17:58.556155+00:00",
+      "asset": "cg_ep2_disaster_full1_v4 (v4 full-art 16:9 CG)",
+      "model": "gemini-3.1-flash-image",
+      "cost_usd": 0.06,
+      "cumulative_spent_usd": 1.92,
+      "prompt_snippet": "Scene: Episode 2 Disaster, 'The Showcase Freezes' backstage at the Lisbon venue.\nCAMERA: Low shot over Clara's shoulder,..."
+    },
+    {
+      "timestamp": "2026-11-14T08:19:42.355392+00:00",
+      "asset": "cg_ep2_disaster_full2_v4 (v4 full-art 16:9 CG)",
+      "model": "gemini-3.1-flash-image",
+      "cost_usd": 0.06,
+      "cumulative_spent_usd": 1.98,
+      "prompt_snippet": "Scene: Episode 2 Disaster, 'The Showcase Freezes' backstage at the Lisbon venue.\nCAMERA: Low shot over Clara's shoulder,..."
+    },
+    {
+      "timestamp": "2026-11-14T08:22:22.435211+00:00",
+      "asset": "cg_ep3_disaster_full1_v4 (v4 full-art 16:9 CG)",
+      "model": "gemini-3.1-flash-image",
+      "cost_usd": 0.06,
+      "cumulative_spent_usd": 2.04,
+      "prompt_snippet": "Scene: Episode 3 Disaster, 'The Handshake Split Collapses' at the ceremonial cacao circle.\nCAMERA: High angle, almost to..."
+    },
+    {
+      "timestamp": "2026-11-14T08:32:13.880258+00:00",
+      "asset": "cg_ep3_disaster_full2_v4 (v4 full-art 16:9 CG)",
+      "model": "gemini-3.1-flash-image",
+      "cost_usd": 0.06,
+      "cumulative_spent_usd": 2.1,
+      "prompt_snippet": "Scene: Episode 3 Disaster, 'The Handshake Split Collapses' at the ceremonial cacao circle.\nCAMERA: Steep high angle, alm..."
+    },
+    {
+      "timestamp": "2026-11-14T08:36:35.148878+00:00",
+      "asset": "cg_ep4_disaster_full1_v4 (v4 full-art 16:9 CG)",
+      "model": "gemini-3.1-flash-image",
+      "cost_usd": 0.06,
+      "cumulative_spent_usd": 2.16,
+      "prompt_snippet": "Scene: Episode 4 Disaster, 'One Tired Click Drained the Apothecary' at 1:14 A.M.\nCAMERA: Extreme close-up, Dutch tilt, c..."
     }
   ]
 }
