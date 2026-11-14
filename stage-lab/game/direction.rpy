@@ -96,15 +96,25 @@ init -5 python:
         except Exception:
             return []
 
+    def clear_active_speaker_on_scene(layer):
+        """Avoid carrying the previous scene's speaker focus into a new lineup."""
+        if layer == "master":
+            store._active_speaker = None
+
+    config.scene_callbacks.append(clear_active_speaker_on_scene)
+
     def ease_focus_zoom(trans, target_zoom, at):
         """Ease focus scale changes quickly at first, then gently into place."""
-        duration = 0.28
+        duration = 0.40
         previous_target = getattr(trans, "_focus_zoom_target", None)
 
         if previous_target is None:
-            trans._focus_zoom_from = getattr(trans, "zoom", 1.0)
+            # Establish the initial size before the sprite first renders. The
+            # tween is reserved for later focus changes, avoiding an entry shrink.
+            trans._focus_zoom_from = target_zoom
             trans._focus_zoom_target = target_zoom
             trans._focus_zoom_start = at
+            return target_zoom
         elif abs(previous_target - target_zoom) > 0.0001:
             start = trans._focus_zoom_start
             progress = max(0.0, min(1.0, (at - start) / duration))
@@ -134,16 +144,16 @@ init -5 python:
             t_zoom, t_bright, t_sat = 1.0, 0.0, 1.0
         elif active == char_tag:
             if multi_stage:
-                t_zoom, t_bright, t_sat = 1.04, 0.04, 1.06
+                t_zoom, t_bright, t_sat = 1.025, 0.06, 1.08
             else:
                 t_zoom, t_bright, t_sat = 1.0, 0.02, 1.02
         elif active is not None and active != char_tag and multi_stage:
             # Another character is speaking in a multi-character scene -> dim listener clearly
-            t_zoom, t_bright, t_sat = 0.98, -0.08, 0.78
+            t_zoom, t_bright, t_sat = 1.0, -0.08, 0.78
             dim_mul = 0.72
         elif active is None and multi_stage:
             # Narrator or player speaking while multiple characters are on stage
-            t_zoom, t_bright, t_sat = 0.98, -0.06, 0.88
+            t_zoom, t_bright, t_sat = 1.0, -0.06, 0.88
             dim_mul = 0.80
         else:
             t_zoom, t_bright, t_sat = 1.0, 0.0, 1.0
@@ -391,12 +401,12 @@ image laylay alarmed     = At("images/laylay alarmed.png",     expr_alarmed,    
 init 10:
     transform right:
         subpixel True
-        xalign 0.82 yalign 1.0
+        xalign 0.88 yalign 1.0
         xzoom 1.0 zoom 1.0 yoffset 0 xoffset 0 alpha 1.0
 
     transform left:
         subpixel True
-        xalign 0.18 yalign 1.0
+        xalign 0.12 yalign 1.0
         xzoom -1.0 zoom 1.0 yoffset 0 xoffset 0 alpha 1.0
 
     transform center:
@@ -407,18 +417,18 @@ init 10:
 ## Asymmetric Rule-of-Thirds Stage Slots
 transform stage_right:
     subpixel True
-    xalign 0.82 yalign 1.0
+    xalign 0.88 yalign 1.0
     xzoom 1.0 zoom 1.0 yoffset 0 xoffset 0 alpha 1.0
 
 transform stage_left:
     subpixel True
-    xalign 0.18 yalign 1.0
+    xalign 0.12 yalign 1.0
     xzoom 1.0 zoom 1.0 yoffset 0 xoffset 0 alpha 1.0
 
 ## Flips a 3/4 character horizontally on stage left so they face inward toward stage right
 transform stage_left_flip:
     subpixel True
-    xalign 0.18 yalign 1.0
+    xalign 0.12 yalign 1.0
     xzoom -1.0 zoom 1.0 yoffset 0 xoffset 0 alpha 1.0
 
 transform stage_center:

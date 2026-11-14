@@ -32,28 +32,26 @@ CHARACTER_CONFIGS = {
         "sheet_file": "Koraba_ The Bridge Keeper Dossier.png",
         "preview_bg": "bg sanctuary.png",
         "prompt": (
-            "Three-quarter-length (knees-up) standing character portrait sprite of Koraba (The Bridge Keeper, musician and healer), "
-            "strictly matching the hand-etched woodcut/engraved illustration style, elongated geometric facial features, "
-            "fine parallel line hatching, stippling, and warm antique ochre/umber/ivory/slate-blue palette of the illustrated "
-            "character on the reference sheet. "
-            "DYNAMIC 2/3 PROFILE VIEW & DROPPED-SHOULDER POSTURE: Standing in an unmistakable, pronounced 3/4 angled body pose "
-            "(2/3 profile view) with his torso and ribcage turned 35 to 45 degrees into depth—NOT facing dead-on straight forward. "
-            "His closer shoulder is dropped noticeably lower than the other in a relaxed, natural contrapposto stance with a gentle, "
-            "living S-curve in his posture so he feels warm, grounded, and alive rather than stiff or symmetrical. "
-            "HEAD & GAZE (2/3 PROFILE, INTERACTING WITH SCENE PARTNERS): His head is turned at a natural 2/3 profile angle "
-            "(showing more of one cheek and temple, with the bridge of his elongated geometric nose angled in 3/4 profile and a "
-            "subtle 5-degree natural head tilt), and his calm, attentive eyes look naturally forward along his 2/3 head angle "
-            "toward the other characters on stage (engaged in conversation with his companions, NOT staring directly at the camera/viewer). "
-            "ASYMMETRIC SPLIT HANDS & KORA: He holds his gourd-bodied kora string instrument diagonally across his angled torso, "
-            "with his hands at two different heights doing two distinct natural jobs: his upper hand raised to chest/collarbone height "
-            "gently fretting/cradling the wooden kora neck, and his lower hand resting lower on the curved gourd resonator at waist level. "
-            "Appearance & Attire: Dark locs tied at the crown with bead-adorned strands draping naturally over his angled shoulders, "
-            "layered woven sleeveless tunic and asymmetrically draped indigo/ochre wrap/shawl with fine linear and zig-zag woodcut "
-            "patterns, wearing beaded necklaces and bracelets. "
+            "Three-quarter-length (knees-up) standing character sprite of Koraba (The Bridge Keeper, musician and healer), "
+            "strictly replicating the HIGHLY STYLIZED, flat-plane hand-carved woodcut / folk-icon art style and exact non-realistic "
+            "geometric facial proportions of the character on Reference Image 1. "
+            "EXTREME STYLIZED WOODCUT FACIAL GEOMETRY (CRITICAL — DO NOT HUMANIZE OR USE REALISTIC PROPORTIONS): "
+            "Must preserve the exact elongated, angular African-mask / woodcut icon face from the reference sheet: "
+            "1) Oversized, wide horizontal almond eyes spanning from temple to temple with heavy half-moon upper eyelids and concentric carved under-eye arcs; "
+            "2) Very long, razor-thin vertical geometric nose bridge running straight down the face; "
+            "3) Tiny, narrow, compact mouth set low above a sharply tapered narrow geometric chin; "
+            "4) White ceremonial stippled dots along the brow arch, nose bridge, and cheekbones, with bold parallel vertical woodcut gouge lines carving the cheeks and long slender cylindrical neck. "
+            "SUBTLE 2/3 PROFILE & DROPPED-SHOULDER POSTURE: Standing with his body and head turned at a subtle, natural 2/3 angle "
+            "(20 to 30 degrees—enough to feel natural and alive while keeping both oversized stylized almond eyes and the iconic woodcut "
+            "face geometry 100% intact), with his closer shoulder dropped noticeably lower in a relaxed contrapposto stance, and his eyes "
+            "looking naturally off-camera along his 2/3 turn toward his companions on stage (NOT staring at the viewer). "
+            "ASYMMETRIC SPLIT HANDS & KORA: Holding his gourd-bodied kora string instrument diagonally across his torso, upper hand raised "
+            "to chest height gently fretting the wooden kora neck, lower hand resting on the curved gourd resonator at waist level. "
+            "Appearance & Attire: Dark locs tied at the crown with bead-adorned strands draping over his angled shoulders, layered woven "
+            "sleeveless tunic and asymmetrically draped indigo/ochre wrap/shawl with coarse linear and zig-zag woodcut patterns, beaded necklaces and bracelets. "
             "IMPORTANT ISOLATION RULES: Do NOT include the circular halo/mandala behind his head, floor rugs, bottles, herbs, flutes, "
-            "drums, text, or labels. Render ONLY the single standing character with a clean, continuous hand-etched dark black/umber "
-            "outer contour line, completely isolated on a pure, flat, uniform bright white background (#FFFFFF) with generous empty "
-            "white margins above the head and on both left and right sides."
+            "drums, text, or labels. Render ONLY the single standing character with a bold hand-etched dark black/umber outer contour line, "
+            "completely isolated on a pure, flat, uniform bright white background (#FFFFFF) with generous empty white margins."
         ),
     },
     "xochit": {
@@ -61,30 +59,29 @@ CHARACTER_CONFIGS = {
         "sheet_file": "Xochit_ Ceremonial Weaver Character Sheet.png",
         "preview_bg": "bg cacao_circle.png",
         "prompt": (
-            "Three-quarter-length (knees-up) standing character portrait sprite of Xochit (The Ceremonial Weaver, ceremonialist and messenger), "
-            "strictly matching the hand-etched woodcut/engraved illustration style, stylized geometric facial features, "
-            "fine parallel line hatching, stippling, and warm antique ochre/terracotta-red/umber/ivory/olive palette of the illustrated "
-            "character on the reference sheet. "
-            "DYNAMIC 2/3 PROFILE VIEW & DROPPED-SHOULDER POSTURE: Standing in an unmistakable, pronounced 3/4 angled body pose "
-            "(2/3 profile view) with her torso and ribcage turned 35 to 45 degrees into depth—NOT facing dead-on straight forward. "
-            "One shoulder is closer to the camera and dropped lower in a graceful, relaxed contrapposto stance with natural asymmetric "
-            "shoulder tilt so she feels expressive, warm, and alive rather than stiff or squared-on. "
-            "HEAD & GAZE (2/3 PROFILE, INTERACTING WITH SCENE PARTNERS): Her head is turned in a natural 2/3 profile view "
-            "(showing more of one side of her face and statement earring, with her nose bridge angled in 3/4 profile and a gentle "
-            "natural head tilt), and her warm, steady eyes look naturally along her 2/3 profile angle toward the other characters "
-            "in the room (interacting with her companions on stage, NOT looking directly at the camera/viewer). "
-            "ASYMMETRIC SPLIT HANDS & CACAO BOWL: Her hands are at two slightly different heights in a natural asymmetric gesture: "
-            "one hand cradling the base of her carved ceremonial cacao bowl (marked with a four-point star motif) near her solar plexus, "
-            "while her other hand is raised slightly higher near the rim/chest in a warm, welcoming ceremonial gesture (no smoke plumes "
-            "extending outside her silhouette). "
-            "Appearance & Attire: Long dark wavy/braided hair flowing asymmetrically over her shoulders, geometric red-and-gold beaded "
-            "headband, large diamond-shaped beaded fringe statement earrings (viewed in 3/4 perspective), signature ceremonial red and "
-            "black horizontal cheek face-paint stripes and vertical red chin stripe, layered beaded necklaces, and richly patterned "
-            "woven poncho/huipil with diamond and step-fret textile motifs. "
+            "Three-quarter-length (knees-up) standing character sprite of Xochit (The Ceremonial Weaver, ceremonialist and messenger), "
+            "strictly replicating the HIGHLY STYLIZED, flat-plane hand-carved woodcut / folk-engraving art style and exact non-realistic "
+            "geometric mask-like facial proportions of the character on Reference Image 1. "
+            "EXTREME STYLIZED WOODCUT FACIAL GEOMETRY (CRITICAL — DO NOT HUMANIZE OR USE GENERIC AI/COMIC FACIAL PROPORTIONS): "
+            "Must look like it was carved by the exact same woodcut artist as Reference Image 1, preserving her iconic stylized geometric face: "
+            "1) GIANT, oversized heavy-lidded horizontal almond eyes that span nearly the ENTIRE width of her face from temple to temple, "
+            "with thick, drooping half-moon upper eyelids and bold concentric carved under-eye arcs; "
+            "2) A very long, razor-thin, straight vertical geometric nose bridge with flat woodcut planes and a tiny septum ring; "
+            "3) A tiny, petite, narrow pursed mouth (no wider than the nose tip) set low above a sharply tapered, narrow V-shaped geometric chin; "
+            "4) A long, slender, columnar cylindrical neck carved with vertical parallel woodcut striations; "
+            "5) Bold horizontal red-and-black face-paint stripes across her flat geometric cheeks and a vertical red stripe down her nose bridge and chin, "
+            "with coarse parallel diagonal woodcut hatching across her cheeks. "
+            "SUBTLE 2/3 PROFILE & DROPPED-SHOULDER POSTURE: Standing with her torso and head turned at a subtle, natural 2/3 angle "
+            "(20 to 30 degrees—preserving both of her giant temple-to-temple heavy-lidded almond eyes and her iconic triangular woodcut face "
+            "while avoiding a stiff straight-on pose), with one shoulder dropped lower in a relaxed, natural posture and her eyes looking "
+            "naturally off-camera along her 2/3 turn toward her companions on stage (NOT looking at the viewer). "
+            "ASYMMETRIC SPLIT HANDS & CACAO BOWL: One hand cradling the base of her carved ceremonial cacao bowl (marked with a four-point star motif) "
+            "at solar-plexus height, while her other hand is raised slightly higher near the rim in a natural ceremonial gesture. "
+            "Appearance & Attire: Long dark wavy/braided hair flowing over her shoulders, geometric red-and-gold beaded headband, huge diamond-shaped "
+            "beaded fringe statement earrings, layered beaded necklaces, and richly patterned woven poncho/huipil with diamond and step-fret woodcut motifs. "
             "IMPORTANT ISOLATION RULES: Do NOT include the circular cosmic halo behind her head, background baskets, flowers, bottles, "
-            "text, or labels. Render ONLY the single standing character with a clean, continuous hand-etched dark black/umber outer "
-            "contour line, completely isolated on a pure, flat, uniform bright white background (#FFFFFF) with generous empty white "
-            "margins above the head and on both left and right sides."
+            "text, or labels. Render ONLY the single standing character with a bold hand-etched dark black/umber outer contour line, "
+            "completely isolated on a pure, flat, uniform bright white background (#FFFFFF) with generous empty white margins."
         ),
     },
     "clara": {
@@ -92,29 +89,29 @@ CHARACTER_CONFIGS = {
         "sheet_file": "Clara_ The Registrar Character Sheet.png",
         "preview_bg": "bg apothecary.png",
         "prompt": (
-            "Three-quarter-length (knees-up) standing character portrait sprite of Clara (The Registrar, administrator and archivist), "
-            "strictly matching the hand-etched woodcut/engraved illustration style, stylized geometric facial features, "
-            "fine parallel line hatching, stippling, and warm antique ochre/slate-blue/umber/ivory/terracotta palette of the illustrated "
-            "character on the reference sheet. "
-            "DYNAMIC 2/3 PROFILE VIEW & DROPPED-SHOULDER POSTURE: Standing in an unmistakable, pronounced 3/4 angled body pose "
-            "(2/3 profile view) with her torso and ribcage turned 35 to 45 degrees into depth—NOT facing dead-on straight forward. "
-            "One shoulder is closer to the camera and dropped lower in a natural, poised contrapposto stance with asymmetric shoulder "
-            "line and relaxed weight shift so she feels observant and alive rather than stiff or symmetrical. "
-            "HEAD & GAZE (2/3 PROFILE, INTERACTING WITH SCENE PARTNERS): Her head is turned at a natural 2/3 profile angle "
-            "(showing more of the side of her face with her structured side bun prominently visible in 3/4 perspective, nose bridge "
-            "angled in 3/4 profile, and a subtle head tilt), and her composed, perceptive eyes look naturally along her 2/3 profile "
-            "angle toward the other characters in the scene (engaged with her colleagues on stage, NOT looking directly at the camera/viewer). "
-            "ASYMMETRIC SPLIT HANDS & PROPS: Her hands are at two different heights doing two distinct jobs: one arm bent to hold her "
-            "clipboard (bearing a four-point star emblem) angled across her chest, while her other hand is raised slightly higher holding "
-            "a fountain pen poised near the top corner of the clipboard (or resting on a ledger tucked under her arm at waist height). "
-            "Appearance & Attire: Blonde hair styled in a neat parted updo with a structured side/low bun, pearl stud earrings, "
-            "tailored slate-blue blazer with subtle engraved orbit/spiral sleeve and lapel patterns and a small four-point star lapel pin "
-            "over a crisp collared shirt, red lanyard with ID keycard badge hanging naturally along her angled chest, and matching tailored "
-            "trousers/skirt with fine linear woodcut hatching. "
+            "Three-quarter-length (knees-up) standing character sprite of Clara (The Registrar, administrator and archivist), "
+            "strictly replicating the HIGHLY STYLIZED, flat-plane hand-carved woodcut / folk-engraving art style and exact non-realistic "
+            "geometric facial proportions of the character on Reference Image 1. "
+            "EXTREME STYLIZED WOODCUT FACIAL GEOMETRY (CRITICAL — DO NOT HUMANIZE OR USE GENERIC AI/COMIC FACIAL PROPORTIONS): "
+            "Must look like it was carved by the exact same woodcut artist as Reference Image 1, preserving her iconic stylized geometric face: "
+            "1) GIANT, oversized heavy-lidded horizontal almond eyes that span nearly the ENTIRE width of her face from temple to temple, "
+            "with thick, heavy half-moon upper eyelids and bold concentric carved under-eye arcs; "
+            "2) A very long, razor-thin, straight vertical geometric nose bridge running down the center of the face; "
+            "3) A tiny, petite, narrow pursed mouth set low above a sharply tapered, narrow pointed geometric chin; "
+            "4) An ultra-long, slender, cylindrical columnar neck carved with vertical parallel woodcut hatching and a vertical dotted center line; "
+            "5) Flat geometric cheek planes carved with coarse parallel vertical/diagonal woodcut lines. "
+            "SUBTLE 2/3 PROFILE & DROPPED-SHOULDER POSTURE: Standing with her torso and head turned at a subtle, natural 2/3 angle "
+            "(20 to 30 degrees—preserving both of her giant temple-to-temple heavy-lidded almond eyes and her iconic narrow woodcut face "
+            "while avoiding a stiff straight-on pose), with one shoulder dropped lower in a relaxed, natural contrapposto posture and her eyes "
+            "looking naturally off-camera along her 2/3 turn toward her colleagues on stage (NOT looking at the viewer). "
+            "ASYMMETRIC SPLIT HANDS & PROPS: One arm bent to hold her wooden clipboard (bearing a four-point star emblem) angled across her chest, "
+            "while her other hand is raised slightly higher holding a fountain pen poised near the clipboard. "
+            "Appearance & Attire: Blonde hair styled in a neat parted woodcut updo with a large coiled side bun behind one ear, round pearl stud earrings, "
+            "tailored slate-blue blazer with engraved orbit/spiral sleeve and lapel patterns and a four-point star lapel pin over a crisp collared shirt, "
+            "red lanyard with ID keycard badge, and matching tailored trousers/skirt with fine linear woodcut hatching. "
             "IMPORTANT ISOLATION RULES: Do NOT include the circular bookshelf halo/arch behind her head, desks, lamps, mugs, stacks of "
-            "binders, text, or labels. Render ONLY the single standing character with a clean, continuous hand-etched dark black/umber "
-            "outer contour line, completely isolated on a pure, flat, uniform bright white background (#FFFFFF) with generous empty white "
-            "margins above the head and on both left and right sides."
+            "binders, text, or labels. Render ONLY the single standing character with a bold hand-etched dark black/umber outer contour line, "
+            "completely isolated on a pure, flat, uniform bright white background (#FFFFFF) with generous empty white margins."
         ),
     },
 }
@@ -285,14 +282,15 @@ def build_sprite_and_previews(rgba_cutout: Image.Image, char_key: str, suffix: s
     wq_canvas.save(wq_path)
     print(f"[SAVED] 3/4-length 560x880 sprite -> {wq_path}")
 
-    # 3. Scale D (Approved Default: Extra-Large Bust/Waist-Up, 1010px tall on 1080p stage,
-    #    head at y=70, both hands and signature prop visible above the y=802 textbox,
-    #    and lower garment extending down to y=1080 behind the semi-transparent textbox)
-    #    For knees-up (3/4-length) raw renders, 0.96 of tight.height places the waist/prop
-    #    right above y=802 and the thighs behind the textbox.
-    crop_ratio_d = 0.96
+    # 3. Scale D (Approved Default: Normalized by anatomical skull-to-chin height and eye level
+    #    so Koraba's upward-pointing crown locs don't shrink his head/torso relative to Xochit & Clara)
+    scale_d_params = {
+        "koraba": (0.76, 1055),
+        "xochit": (0.98, 990),
+        "clara": (0.92, 985),
+    }
+    crop_ratio_d, target_hd = scale_d_params.get(char_key, (0.92, 1010))
     crop_d = tight.crop((0, 0, tight.width, int(round(tight.height * crop_ratio_d))))
-    target_hd = 1010
     scale_d = target_hd / crop_d.height
     wd = int(round(crop_d.width * scale_d))
     im_d = crop_d.resize((wd, target_hd), Image.Resampling.LANCZOS)
@@ -349,7 +347,8 @@ def generate_character_sprite(char_name: str, custom_prompt: str = None, suffix:
     # so the model focuses 100% on the woodcut art style and character design!
     with Image.open(sheet_path) as sheet_im:
         sw, sh = sheet_im.size
-        art_crop = sheet_im.crop((0, 0, int(sw * 0.53), sh))
+        # Tight crop around the stylized woodcut portrait face/torso and turnaround row (excluding DAO logo & background margins)
+        art_crop = sheet_im.crop((int(sw * 0.06), int(sh * 0.05), int(sw * 0.50), int(sh * 0.99)))
         crop_ref_path = os.path.join(OUT_DIR, f"{key}_sheet_art_crop.png")
         art_crop.save(crop_ref_path)
 
@@ -371,14 +370,17 @@ def generate_character_sprite(char_name: str, custom_prompt: str = None, suffix:
         },
         {
             "text": (
-                "Reference Image 1 shows the approved hand-etched woodcut/engraved character design and turnaround illustrations.\n\n"
+                "Reference Image 1 shows the approved HIGHLY STYLIZED hand-carved woodcut/engraved character design and turnaround illustrations. "
+                "CRITICAL STYLE LOCK: You MUST preserve the exact stylized, non-realistic woodcut facial geometry of Reference Image 1 "
+                "(giant temple-to-temple heavy-lidded almond eyes, long razor-thin geometric nose, tiny narrow mouth, sharply tapered narrow chin, "
+                "long slender cylindrical neck, and coarse parallel woodcut hatching). Do NOT replace the stylized face with realistic human or generic comic facial proportions!\n\n"
                 "Task:\n"
                 f"{prompt}\n\n"
                 "Strict Negative Constraints (DO NOT INCLUDE): "
-                "dead-on front-facing view, flat frontal pose, symmetrical stance, squared level shoulders, stiff mannequin posture, "
-                "both hands at the same height, sitting pose, cross-legged pose, floating halo behind head, circular background mandala, "
-                "floor rug, extra props on the ground, multiple figures, turnaround sheet layout, text, typography, labels, watermarks, "
-                "photorealism, 3D rendering, gradients on background."
+                "realistic human facial proportions, small realistic eyes, wide mouth, realistic round cheeks, generic AI illustration face, "
+                "comic book anatomy, smooth airbrushed shading, dead-on symmetrical front-facing view, squared level shoulders, stiff mannequin posture, "
+                "sitting pose, cross-legged pose, floating halo behind head, circular background mandala, floor rug, extra props on the ground, "
+                "multiple figures, turnaround sheet layout, text, typography, labels, watermarks, photorealism, 3D rendering, gradients on background."
             )
         }
     ]

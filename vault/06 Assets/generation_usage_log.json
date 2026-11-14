@@ -1,6 +1,6 @@
 {
-  "total_spent_usd": 1.14,
-  "total_images": 38,
+  "total_spent_usd": 1.35,
+  "total_images": 45,
   "generations": [
     {
       "timestamp": "2026-10-23T22:42:52.712536Z",
@@ -305,6 +305,62 @@
       "cost_usd": 0.03,
       "cumulative_spent_usd": 1.14,
       "prompt_snippet": "Three-quarter-length (knees-up) standing character portrait sprite of Xochit (The Ceremonial Weaver, ceremonialist and m..."
+    },
+    {
+      "timestamp": "2026-11-14T05:34:38.323636+00:00",
+      "asset": "sprite clara_v3b neutral (v3)",
+      "model": "gemini-3.1-flash-image",
+      "cost_usd": 0.03,
+      "cumulative_spent_usd": 1.17,
+      "prompt_snippet": "Three-quarter-length (knees-up) standing character portrait sprite of Clara (The Registrar, administrator and archivist)..."
+    },
+    {
+      "timestamp": "2026-11-14T05:46:57.833834+00:00",
+      "asset": "sprite xochit_v3c neutral (v3)",
+      "model": "gemini-3.1-flash-image",
+      "cost_usd": 0.03,
+      "cumulative_spent_usd": 1.2,
+      "prompt_snippet": "Three-quarter-length (knees-up) standing character sprite of Xochit (The Ceremonial Weaver, ceremonialist and messenger)..."
+    },
+    {
+      "timestamp": "2026-11-14T05:48:29.216322+00:00",
+      "asset": "sprite xochit_v3d neutral (v3)",
+      "model": "gemini-3.1-flash-image",
+      "cost_usd": 0.03,
+      "cumulative_spent_usd": 1.23,
+      "prompt_snippet": "Keep the EXACT highly stylized hand-carved woodcut art style, giant heavy-lidded half-moon almond eyes, long razor-thin ..."
+    },
+    {
+      "timestamp": "2026-11-14T05:50:14.605188+00:00",
+      "asset": "sprite clara_v3c neutral (v3)",
+      "model": "gemini-3.1-flash-image",
+      "cost_usd": 0.03,
+      "cumulative_spent_usd": 1.26,
+      "prompt_snippet": "Keep the EXACT highly stylized hand-carved woodcut art style, GIANT heavy-lidded half-moon almond eyes spanning temple-t..."
+    },
+    {
+      "timestamp": "2026-11-14T05:50:24.087867+00:00",
+      "asset": "sprite koraba_v3e neutral (v3)",
+      "model": "gemini-3.1-flash-image",
+      "cost_usd": 0.03,
+      "cumulative_spent_usd": 1.29,
+      "prompt_snippet": "Keep the EXACT highly stylized hand-carved woodcut/African-mask art style, oversized heavy-lidded horizontal almond eyes..."
+    },
+    {
+      "timestamp": "2026-11-14T06:54:24.978623+00:00",
+      "asset": "cg_ep1_disaster (v3 full-art 16:9 CG)",
+      "model": "gemini-3.1-flash-image",
+      "cost_usd": 0.03,
+      "cumulative_spent_usd": 1.32,
+      "prompt_snippet": "Scene: Episode 1 Disaster \u2014 'The $60,000 Transfer Is Gone' at Lisbon Airport after midnight.\nAction & Staging (Upper Two..."
+    },
+    {
+      "timestamp": "2026-11-14T06:57:39.549550+00:00",
+      "asset": "cg_ep1_disaster_v3b (v3 full-art 16:9 CG)",
+      "model": "gemini-3.1-flash-image",
+      "cost_usd": 0.03,
+      "cumulative_spent_usd": 1.35,
+      "prompt_snippet": "Keep the upper 74% of Reference Image 1 (the three woodcut characters Koraba, Xochit, and Clara, the wooden crates, and ..."
     }
   ]
 }
