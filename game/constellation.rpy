@@ -390,7 +390,7 @@ screen scenario_overview_modal(ep_id):
             xysize (1350, 432)
             clipping True
             add cg_img at cg_modal_bg
-        add "#14070284"
+        add "#140702A0"
 
         ## Absorb clicks inside the modal card so they don't trigger the outside backdrop button
         button:
