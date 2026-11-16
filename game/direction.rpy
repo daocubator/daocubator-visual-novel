@@ -205,9 +205,31 @@ init -5 python:
 
 ## Attach speaker tracking to the Character objects defined in script.rpy
 init 5 python:
+    SPEAKER_ZORDER = 10
+
+    def raise_speaker_zorder(speaker_tag):
+        """Pop the speaking character above the other sprites by re-showing it with a
+        higher zorder (Ren'Py zorder is fixed at show time; transforms can't change it).
+        Re-showing with the same attributes and no `at` keeps position, transform and
+        focus tween state. Everyone else drops back to zorder 0."""
+        try:
+            showing = get_showing_characters()
+            if speaker_tag not in showing:
+                return
+            current = dict(renpy.get_zorder_list("master"))
+            for tag in showing:
+                want = SPEAKER_ZORDER if tag == speaker_tag else 0
+                if current.get(tag, 0) != want:
+                    attrs = renpy.get_attributes(tag, layer="master") or ()
+                    renpy.show((tag,) + tuple(attrs), zorder=want, layer="master")
+        except Exception:
+            pass
+
     def direction_all_char_callback(event, interact=True, _speaker_tag=None, **kwargs):
         if event == "begin" and interact:
             store._active_speaker = _speaker_tag
+            if _speaker_tag is not None:
+                raise_speaker_zorder(_speaker_tag)
 
     def _wire_speaker_callbacks():
         mapping = [

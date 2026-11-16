@@ -327,7 +327,7 @@ screen constellation_map(card_fade_delays=None):
                     yalign 1.0
                     background None
                     padding (14, 9)
-                    $ title_outlines = [(6, "#1E6B4566", 0, 0), (3, "#13472CCC", 0, 0), (1, "#0B1D13EE", 0, 0)] if aura_status == "happy" else [(6, "#A8241966", 0, 0), (3, "#5C100ACC", 0, 0), (1, "#140702EE", 0, 0)]
+                    $ title_outlines = [(6, "#1E6B4566", 0, 0), (3, "#13472CCC", 0, 0), (1, "#0B1D13EE", 0, 0)] if is_done else [(6, "#A8241966", 0, 0), (3, "#5C100ACC", 0, 0), (1, "#140702EE", 0, 0)]
                     text "[ep['title']]" font gui.serif_font axis {"weight": 400, "opticalsize": 42} color "#EED4B4" size 32 line_spacing -3 outlines title_outlines
 
     ## Bottom Bar — Natural Glossary Footnote Explanation + System Menu Controls
@@ -371,7 +371,7 @@ screen scenario_overview_modal(ep_id):
     button:
         xfill True
         yfill True
-        background "#140702E0"
+        background "#140702F5"
         action Hide("scenario_overview_modal")
 
     key "game_menu" action Hide("scenario_overview_modal")
@@ -390,7 +390,7 @@ screen scenario_overview_modal(ep_id):
             xysize (1350, 432)
             clipping True
             add cg_img at cg_modal_bg
-        add "#140702D8"
+        add "#14070284"
 
         ## Absorb clicks inside the modal card so they don't trigger the outside backdrop button
         button:
@@ -408,16 +408,16 @@ screen scenario_overview_modal(ep_id):
             vbox:
                 xalign 0.5
                 spacing 6
-                text "[ep['title']]" font gui.serif_font axis {"weight": 300, "opticalsize": 48} color "#EED4B4" size 44 xalign 0.5 outlines [(2, "#140702CC", 0, 0)]
+                text "[ep['title']]" font gui.serif_font axis {"weight": 300, "opticalsize": 48} color "#EED4B4" size 44 xalign 0.5 outlines [(3, "#140702E6", 0, 0)]
 
-            text "[ep['omg_hook']]" font gui.sans_font color "#DDBCAD" size 23 xsize 1160 xalign 0.5 text_align 0.5 line_spacing 6 outlines [(2, "#140702CC", 0, 0)]
+            text "[ep['omg_hook']]" font gui.sans_font color "#DDBCAD" size 23 xsize 1160 xalign 0.5 text_align 0.5 line_spacing 6 outlines [(3, "#140702E6", 0, 0)]
 
             vbox:
                 xalign 0.5
                 spacing 12
 
                 if is_done:
-                    text "• TIMELINE RESTORED — GOOD ENDING UNLOCKED" font gui.mono_font kerning 4.0 color "#578C88" size 20 xalign 0.5 outlines [(2, "#140702CC", 0, 0)]
+                    text "• TIMELINE RESTORED — GOOD ENDING UNLOCKED" font gui.mono_font kerning 4.0 color "#578C88" size 20 xalign 0.5 outlines [(3, "#140702E6", 0, 0)]
 
                 hbox:
                     spacing 28

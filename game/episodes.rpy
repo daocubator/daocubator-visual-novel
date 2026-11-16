@@ -86,7 +86,7 @@ label checkpoint_bad_end(retry_label, failure_title, failure_summary, lesson_id)
     $ _outcome_cg_active = False
     if _return == "map":
         jump world_overview
-    $ renpy.jump(retry_label)
+    $ renpy.jump(retry_label + "_choice")
     return
 
 
@@ -239,6 +239,15 @@ label ep1_d1:
     show ashel focused at center_right
     laylay "Ugh, managing crypto keys is too complicated for artists. Look, Koraba — you focus on the music and the juices. Just move all the group's money into my personal wallet. I'll hold the keys by myself and pay bills for you."
 
+
+label ep1_d1_choice:
+    ## Retry lands here: scene + sprites restored, no setup dialogue replayed.
+    scene bg sanctuary
+    show xochtl neutral at left
+    show ashel focused at center_right
+    show laylay smirk at right
+    with dissolve
+
     menu:
         "Use key rotation right now to cancel the leaked key, and move the treasury into a 2-of-3 shared multisig wallet (Koraba, Xochit, and Clara).":
             show ashel determined at center_right
@@ -285,6 +294,15 @@ label ep1_d2:
     xochtl "Wait. Has anyone checked Kestrel's past wallet history or spoken to the last two groups he worked with?"
     show ashel neutral at center_right
     laylay "Oh, don't be so suspicious, Xochit! He wore a hand-woven poncho and talked about earth-friendly finance for two hours. The vibes were amazing! Here, sign the proposal to give him full admin keys."
+
+
+label ep1_d2_choice:
+    ## Retry lands here: scene + sprites restored, no setup dialogue replayed.
+    scene bg sanctuary
+    show xochtl neutral at left
+    show ashel neutral at center_right
+    show laylay neutral at right
+    with dissolve
 
     menu:
         "Pause the vote: check Kestrel's past wallet transactions, call his previous groups, and only offer limited trial permissions first.":
@@ -333,6 +351,15 @@ label ep1_d3:
     xochtl "Hold on. Where did you copy that wallet address from, Clara?"
     show ashel determined at center_right
     laylay "From a message forwarded in our group chat! Look, the first four letters match: {b}0x7F4c...{/b} Come on, Koraba, sign it — we're out of time!"
+
+
+label ep1_d3_choice:
+    ## Retry lands here: scene + sprites restored, no setup dialogue replayed.
+    scene bg sanctuary
+    show xochtl warm at left
+    show ashel determined at center_right
+    show laylay neutral at right
+    with dissolve
 
     menu:
         "Refuse to rush: send a $1 test transaction first, confirm on a video call that the $1 arrived safely, and only then send the remaining $59,999.":
@@ -437,6 +464,15 @@ label ep2_d1:
 
     laylay "About the 18,000 USDC budget for Koraba's Lisbon game — let's not lock it into an automatic agreement. Just leave the money in my admin queue, and I'll decide how much Koraba deserves after I see how I feel in Lisbon."
 
+
+label ep2_d1_choice:
+    ## Retry lands here: scene + sprites restored, no setup dialogue replayed.
+    scene bg cacao_circle
+    show ashel neutral at left
+    show xochtl focused at center_right
+    show laylay smirk at right
+    with dissolve
+
     menu:
         "Lock the 18,000 USDC in an objective smart-contract escrow that pays out automatically when the playable game and music files are delivered.":
             show xochtl stern at center_right
@@ -482,6 +518,15 @@ label ep2_d2:
     show xochtl focused at center_left
     xochtl "I see it, Koraba. Her admiration turned into jealousy, and now she's blocking anything with your name on it. But if we scream at her in public chat, she'll act like the victim and lock the whole wallet."
     ashel "Then how do we prove to the council that she's rejecting me out of pure personal bias AND get the finished work approved?"
+
+
+label ep2_d2_choice:
+    ## Retry lands here: scene + sprites restored, no setup dialogue replayed.
+    scene bg showcase_backstage
+    show ashel hurt at left
+    show xochtl focused at center_left
+    show laylay stern at right
+    with dissolve
 
     menu:
         "Use Xochit's 'Neutral Avatar' plan: quietly resubmit Koraba's exact same game file under an anonymous teammate username ('solstice_dev_09') with Koraba's wallet address attached.":
@@ -531,6 +576,15 @@ label ep2_d3:
     ashel "My payment arrived and the game is ready for the main stage tonight. But if we keep the exact same setup, this same fight will happen again next month."
     show xochtl focused at center_right
     xochtl "How should we redesign our roles so our cooperative truly wins together?"
+
+
+label ep2_d3_choice:
+    ## Retry lands here: scene + sprites restored, no setup dialogue replayed.
+    scene bg showcase_backstage
+    show ashel proud at left
+    show xochtl focused at center_right
+    show laylay defensive at right
+    with dissolve
 
     menu:
         "Set up rotating admin signers elected by the group, peer review for creative work, and paid rest breaks after big projects so nobody burns out.":
@@ -630,6 +684,15 @@ label ep3_d1:
 
     xochtl "First: how will we divide ownership shares and voting tokens among the co-founders?"
 
+
+label ep3_d1_choice:
+    ## Retry lands here: scene + sprites restored, no setup dialogue replayed.
+    scene bg cacao_circle
+    show laylay neutral at left
+    show xochtl focused at center_right
+    show ashel neutral at right
+    with dissolve
+
     menu:
         "Sign a written 4-year vesting agreement with a 1-year cliff — founders earn their shares gradually by staying and doing the work.":
             $ equity = "vesting"
@@ -675,6 +738,15 @@ label ep3_d2:
     show xochtl stern at center_left
     laylay "Not at all. In the Ooki DAO court case, the judge ruled that an unregistered DAO is a general partnership. That means any member who voted can be held personally responsible for 100%% of the group's lawsuits and debts."
 
+
+label ep3_d2_choice:
+    ## Retry lands here: scene + sprites restored, no setup dialogue replayed.
+    scene bg cacao_circle
+    show laylay neutral at left
+    show xochtl stern at center_left
+    show ashel neutral at right
+    with dissolve
+
     menu:
         "Register a formal Co-op LLC / Swiss Verein legal wrapper and written operating agreement before signing leases or moving money.":
             $ wrapper = "verein"
@@ -716,6 +788,15 @@ label ep3_d3:
 
     narrator "Xochit turns to the final page of the agreement: {b}Treasury Safety & Paying Back Creator Expenses{/b}."
     xochtl "Koraba has already spent $12,000 of his own savings on studio gear and herbal bottles, and our community token just launched. How should we manage the group's money?"
+
+
+label ep3_d3_choice:
+    ## Retry lands here: scene + sprites restored, no setup dialogue replayed.
+    scene bg cacao_circle
+    show laylay neutral at left
+    show xochtl warm at center_right
+    show ashel neutral at right
+    with dissolve
 
     menu:
         "Write two clear rules into the charter: keep 50%% of the treasury in stable USDC cash (a barbell strategy) and pay back verified creator expenses automatically.":
@@ -804,6 +885,15 @@ label ep4_d1:
     show laylay calculating at center_left
     laylay "He wants 35%% of all our voting tokens and a secret side-agreement so he and I can push proposals through without waiting for the rest of the cooperative to vote."
 
+
+label ep4_d1_choice:
+    ## Retry lands here: scene + sprites restored, no setup dialogue replayed.
+    scene bg apothecary
+    show ashel focused at left
+    show laylay calculating at center_left
+    show xochtl stern at right
+    with dissolve
+
     menu:
         "Reject the secret deal: limit any single investor to 8%% voting power and keep all terms 100%% public to the cooperative.":
             show laylay stern at center_right
@@ -833,6 +923,14 @@ label ep4_d2:
     narrator "Night two in the apothecary. It is 1:14 a.m. You just finished bottling herbal orders and logging thirty-two contributor payments. Your eyes are burning with fatigue."
     narrator "Suddenly, an urgent direct message pops up from an account using the exact logo of your wallet app: {b}'URGENT: Wallet Sync Error. Click here and sign now or tomorrow's Brazil Sanctuary payment will fail!'{/b}"
     narrator "You click the link. Your computer screen shows a friendly button saying 'Re-Sync Wallet.' However, when you look down at the tiny screen on your physical {b}hardware wallet{/b}, the raw data ({b}hex{/b}) says `{b}setApprovalForAll{/b}` — giving an unknown contract permission to take every token in the vault!"
+
+
+label ep4_d2_choice:
+    ## Retry lands here: scene + sprites restored, no setup dialogue replayed.
+    scene bg apothecary
+    show laylay calculating at center_right
+    show xochtl focused at right
+    with dissolve
 
     menu:
         "Stop immediately: trust the hardware wallet's tiny screen, close the fake link, and wait until morning to verify with the team.":
@@ -865,6 +963,15 @@ label ep4_d3:
     ashel "Clara! How did that attacker get forty percent of the votes in twelve seconds?!"
     show laylay stern at center_right
     xochtl "He didn't buy those tokens — he borrowed them for a single transaction using a flash loan! How did you set up our voting rules, Clara?!"
+
+
+label ep4_d3_choice:
+    ## Retry lands here: scene + sprites restored, no setup dialogue replayed.
+    scene bg apothecary
+    show ashel determined at left
+    show laylay stern at center_right
+    show xochtl focused at right
+    with dissolve
 
     menu:
         "Use a mandatory 48-hour time-lock waiting period and past-snapshot voting so borrowed flash-loan tokens cannot execute an instant theft.":

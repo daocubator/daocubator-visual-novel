@@ -48,6 +48,10 @@ jobs:
           [ -d "$WEB_DIR" ] || { echo "No web/ runtime in renpy-$RENPY_VERSION-web.zip"; find /tmp/web -maxdepth 3; exit 1; }
           cp -r "$WEB_DIR" "$SDK/web"
 
+      - name: Stamp build version
+        run: |
+          printf 'init 1 python:\n    config.version = "1.0 (%s, %s)"\n' "${GITHUB_SHA::7}" "$(TZ=America/Los_Angeles date '+%Y-%m-%d %H:%M %Z')" > game/zz_version.rpy
+
       - name: Lint
         env:
           SDL_VIDEODRIVER: dummy
