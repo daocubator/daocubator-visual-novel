@@ -327,7 +327,8 @@ screen constellation_map(card_fade_delays=None):
                     yalign 1.0
                     background None
                     padding (14, 9)
-                    text "[ep['title']]" font gui.serif_font axis {"weight": 400, "opticalsize": 42} color "#EED4B4" size 32 line_spacing -3
+                    $ title_outlines = [(6, "#1E6B4566", 0, 0), (3, "#13472CCC", 0, 0), (1, "#0B1D13EE", 0, 0)] if aura_status == "happy" else [(6, "#A8241966", 0, 0), (3, "#5C100ACC", 0, 0), (1, "#140702EE", 0, 0)]
+                    text "[ep['title']]" font gui.serif_font axis {"weight": 400, "opticalsize": 42} color "#EED4B4" size 32 line_spacing -3 outlines title_outlines
 
     ## Bottom Bar — Natural Glossary Footnote Explanation + System Menu Controls
     frame:
