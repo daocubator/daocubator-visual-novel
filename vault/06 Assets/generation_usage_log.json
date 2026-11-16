@@ -1,6 +1,6 @@
 {
-  "total_spent_usd": 2.16,
-  "total_images": 69,
+  "total_spent_usd": 3.0,
+  "total_images": 108,
   "generations": [
     {
       "timestamp": "2026-10-23T22:42:52.712536Z",
@@ -553,6 +553,318 @@
       "cost_usd": 0.06,
       "cumulative_spent_usd": 2.16,
       "prompt_snippet": "Scene: Episode 4 Disaster, 'One Tired Click Drained the Apothecary' at 1:14 A.M.\nCAMERA: Extreme close-up, Dutch tilt, c..."
+    },
+    {
+      "timestamp": "2026-11-16T01:03:08.043736+00:00",
+      "asset": "cg_ep3_disaster_512 (v5 CG)",
+      "model": "gemini-3.1-flash-image",
+      "cost_usd": 0.015,
+      "cumulative_spent_usd": 2.175,
+      "prompt_snippet": "Scene: Episode 3 Disaster \u2014 'The Handshake Split Collapses' at the ceremonial cacao circle.\nCAMERA: Steep high-angle Dut..."
+    },
+    {
+      "timestamp": "2026-11-16T02:19:33.991541+00:00",
+      "asset": "cg_ep3_disaster_512 (v5 CG)",
+      "model": "gemini-3.1-flash-image",
+      "cost_usd": 0.015,
+      "cumulative_spent_usd": 2.19,
+      "prompt_snippet": "Scene: Episode 3 Disaster \u2014 'The Handshake Split Collapses' at the ceremonial cacao circle.\nCAMERA: Steep high-angle Dut..."
+    },
+    {
+      "timestamp": "2026-11-16T02:47:48.391063+00:00",
+      "asset": "cg_ep3_disaster_512_v2 (v5 CG)",
+      "model": "gemini-3.1-flash-image",
+      "cost_usd": 0.015,
+      "cumulative_spent_usd": 2.205,
+      "prompt_snippet": "Scene: Episode 3 Disaster \u2014 'The Handshake Split Collapses' at the ceremonial cacao circle.\nCAMERA: Steep high-angle Dut..."
+    },
+    {
+      "timestamp": "2026-11-16T02:49:30.874427+00:00",
+      "asset": "cg_ep3_disaster_full (v5 CG)",
+      "model": "gemini-3.1-flash-image",
+      "cost_usd": 0.03,
+      "cumulative_spent_usd": 2.235,
+      "prompt_snippet": "Scene: Episode 3 Disaster \u2014 'The Handshake Split Collapses' at the ceremonial cacao circle.\nCAMERA: Steep high-angle Dut..."
+    },
+    {
+      "timestamp": "2026-11-16T04:52:05.008561+00:00",
+      "asset": "cg_ep3_disaster_full_v2 (v5 CG)",
+      "model": "gemini-3.1-flash-image",
+      "cost_usd": 0.03,
+      "cumulative_spent_usd": 2.265,
+      "prompt_snippet": "Scene: Episode 3 Disaster \u2014 'The Handshake Split Collapses' at the ceremonial cacao circle.\nCAMERA: Steep high-angle Dut..."
+    },
+    {
+      "timestamp": "2026-11-16T04:55:09.221902+00:00",
+      "asset": "cg_ep3_disaster_full_v3 (v5 CG)",
+      "model": "gemini-3.1-flash-image",
+      "cost_usd": 0.03,
+      "cumulative_spent_usd": 2.295,
+      "prompt_snippet": "Scene: Episode 3 Disaster \u2014 'The Handshake Split Collapses' at the ceremonial cacao circle.\nCAMERA: Steep high-angle Dut..."
+    },
+    {
+      "timestamp": "2026-11-16T04:56:54.952272+00:00",
+      "asset": "cg_ep3_disaster_full_v4 (v5 CG)",
+      "model": "gemini-3.1-flash-image",
+      "cost_usd": 0.03,
+      "cumulative_spent_usd": 2.325,
+      "prompt_snippet": "Scene: Episode 3 Disaster \u2014 'The Handshake Split Collapses' at the ceremonial cacao circle.\nCAMERA: Steep high-angle Dut..."
+    },
+    {
+      "timestamp": "2026-11-16T04:58:31.805874+00:00",
+      "asset": "cg_ep3_disaster_full_v5 (v5 CG)",
+      "model": "gemini-3.1-flash-image",
+      "cost_usd": 0.03,
+      "cumulative_spent_usd": 2.355,
+      "prompt_snippet": "Scene: Episode 3 Disaster \u2014 'The Handshake Split Collapses' at the ceremonial cacao circle.\nCAMERA: Steep high-angle Dut..."
+    },
+    {
+      "timestamp": "2026-11-16T04:59:18.643985+00:00",
+      "asset": "cg_ep3_disaster_full_v6 (v5 CG)",
+      "model": "gemini-3.1-flash-image",
+      "cost_usd": 0.03,
+      "cumulative_spent_usd": 2.385,
+      "prompt_snippet": "Scene: Episode 3 Disaster \u2014 'The Handshake Split Collapses' at the ceremonial cacao circle.\nCAMERA: Steep high-angle Dut..."
+    },
+    {
+      "timestamp": "2026-11-16T05:00:22.238839+00:00",
+      "asset": "cg_ep4_disaster_512 (v5 CG)",
+      "model": "gemini-3.1-flash-image",
+      "cost_usd": 0.015,
+      "cumulative_spent_usd": 2.4,
+      "prompt_snippet": "Scene: Episode 4 Disaster \u2014 'One Tired Click Drained the Apothecary' at 1:14 A.M.\nCAMERA: Dramatic close-to-midground sh..."
+    },
+    {
+      "timestamp": "2026-11-16T05:02:22.190186+00:00",
+      "asset": "cg_ep4_disaster_full (v5 CG)",
+      "model": "gemini-3.1-flash-image",
+      "cost_usd": 0.03,
+      "cumulative_spent_usd": 2.43,
+      "prompt_snippet": "Scene: Episode 4 Disaster \u2014 'One Tired Click Drained the Apothecary' at 1:14 A.M.\nCAMERA: Dramatic close-to-midground sh..."
+    },
+    {
+      "timestamp": "2026-11-16T05:04:46.303182+00:00",
+      "asset": "cg_ep4_disaster_full_v2 (v5 CG)",
+      "model": "gemini-3.1-flash-image",
+      "cost_usd": 0.03,
+      "cumulative_spent_usd": 2.46,
+      "prompt_snippet": "Scene: Episode 4 Disaster \u2014 'One Tired Click Drained the Apothecary' at 1:14 A.M.\nCAMERA: Dramatic close-to-midground sh..."
+    },
+    {
+      "timestamp": "2026-11-16T05:05:50.898331+00:00",
+      "asset": "cg_ep2_disaster_full (v5 CG)",
+      "model": "gemini-3.1-flash-image",
+      "cost_usd": 0.03,
+      "cumulative_spent_usd": 2.49,
+      "prompt_snippet": "Scene: Episode 2 Disaster \u2014 'The Showcase Freezes' backstage at the Lisbon venue.\nCAMERA: Low over-the-shoulder shot fro..."
+    },
+    {
+      "timestamp": "2026-11-16T05:10:27.546116+00:00",
+      "asset": "cg_ep2_disaster_full_v2 (v5 CG)",
+      "model": "gemini-3.1-flash-image",
+      "cost_usd": 0.03,
+      "cumulative_spent_usd": 2.52,
+      "prompt_snippet": "Scene: Episode 2 Disaster \u2014 'The Showcase Freezes' backstage at the Lisbon venue.\nCAMERA: Low over-the-shoulder shot fro..."
+    },
+    {
+      "timestamp": "2026-11-16T05:13:27.483842+00:00",
+      "asset": "cg_ep2_disaster_512 (v5 CG)",
+      "model": "gemini-3.1-flash-image",
+      "cost_usd": 0.015,
+      "cumulative_spent_usd": 2.535,
+      "prompt_snippet": "Scene: Episode 2 Disaster \u2014 'The Showcase Freezes' backstage at the Lisbon venue.\nCAMERA: Low over-the-shoulder shot fro..."
+    },
+    {
+      "timestamp": "2026-11-16T05:15:07.444144+00:00",
+      "asset": "cg_ep2_disaster_512_v2 (v5 CG)",
+      "model": "gemini-3.1-flash-image",
+      "cost_usd": 0.015,
+      "cumulative_spent_usd": 2.55,
+      "prompt_snippet": "Scene: Episode 2 Disaster \u2014 'The Showcase Freezes' backstage at the Lisbon venue.\nCAMERA: Low over-the-shoulder shot fro..."
+    },
+    {
+      "timestamp": "2026-11-16T05:16:50.746197+00:00",
+      "asset": "cg_ep2_disaster_full_v3 (v5 CG)",
+      "model": "gemini-3.1-flash-image",
+      "cost_usd": 0.03,
+      "cumulative_spent_usd": 2.58,
+      "prompt_snippet": "Scene: Episode 2 Disaster \u2014 'The Showcase Freezes' backstage at the Lisbon venue.\nCAMERA: Low over-the-shoulder shot fro..."
+    },
+    {
+      "timestamp": "2026-11-16T05:18:27.016244+00:00",
+      "asset": "cg_ep2_disaster_full_v4 (v5 CG)",
+      "model": "gemini-3.1-flash-image",
+      "cost_usd": 0.03,
+      "cumulative_spent_usd": 2.61,
+      "prompt_snippet": "Scene: Episode 2 Disaster \u2014 'The Showcase Freezes' backstage at the Lisbon venue.\nCAMERA: Low over-the-shoulder shot fro..."
+    },
+    {
+      "timestamp": "2026-11-16T05:20:34.526909+00:00",
+      "asset": "cg_ep2_disaster_full_v5 (v5 CG)",
+      "model": "gemini-3.1-flash-image",
+      "cost_usd": 0.03,
+      "cumulative_spent_usd": 2.64,
+      "prompt_snippet": "Scene: Episode 2 Disaster \u2014 'The Showcase Freezes' backstage at the Lisbon venue.\nCAMERA: Low over-the-shoulder shot fro..."
+    },
+    {
+      "timestamp": "2026-11-16T05:22:33.643905+00:00",
+      "asset": "cg_ep1_happy_512 (v5 CG)",
+      "model": "gemini-3.1-flash-image",
+      "cost_usd": 0.015,
+      "cumulative_spent_usd": 2.655,
+      "prompt_snippet": "Scene: Episode 1 Good Outcome \u2014 'The $1 Test Transfer Lands & 2-of-3 Shared Custody' at Lisbon Airport.\nCAMERA: Tight wa..."
+    },
+    {
+      "timestamp": "2026-11-16T05:22:41.184205+00:00",
+      "asset": "cg_ep2_happy_512 (v5 CG)",
+      "model": "gemini-3.1-flash-image",
+      "cost_usd": 0.015,
+      "cumulative_spent_usd": 2.67,
+      "prompt_snippet": "Scene: Episode 2 Good Outcome \u2014 'The Work Speaks for Itself' on the Lisbon Showcase Stage.\nCAMERA: Low-angle 3/4 stage s..."
+    },
+    {
+      "timestamp": "2026-11-16T05:22:48.328026+00:00",
+      "asset": "cg_ep3_happy_512 (v5 CG)",
+      "model": "gemini-3.1-flash-image",
+      "cost_usd": 0.015,
+      "cumulative_spent_usd": 2.685,
+      "prompt_snippet": "Scene: Episode 3 Good Outcome \u2014 'The Agreement Holds' at the ceremonial cacao circle.\nCAMERA: Warm diagonal perspective ..."
+    },
+    {
+      "timestamp": "2026-11-16T05:22:56.769455+00:00",
+      "asset": "cg_ep4_happy_512 (v5 CG)",
+      "model": "gemini-3.1-flash-image",
+      "cost_usd": 0.015,
+      "cumulative_spent_usd": 2.7,
+      "prompt_snippet": "Scene: Episode 4 Good Outcome \u2014 'The Hex Is Caught in Time' in the Herbal Apothecary.\nCAMERA: Low-angle Dutch-tilt shot ..."
+    },
+    {
+      "timestamp": "2026-11-16T15:08:23.658332+00:00",
+      "asset": "cg_ep2_happy_512_v2 (v5 CG)",
+      "model": "gemini-3.1-flash-image",
+      "cost_usd": 0.015,
+      "cumulative_spent_usd": 2.715,
+      "prompt_snippet": "Scene: Episode 2 Good Outcome \u2014 'The Work Speaks for Itself' on the Lisbon Showcase Stage.\nCAMERA: Dramatic low-angle wi..."
+    },
+    {
+      "timestamp": "2026-11-16T15:42:57.544385+00:00",
+      "asset": "cg_ep2_happy_512_v3 (v5 CG)",
+      "model": "gemini-3.1-flash-image",
+      "cost_usd": 0.015,
+      "cumulative_spent_usd": 2.73,
+      "prompt_snippet": "Scene: Episode 2 Good Outcome \u2014 'The Work Speaks for Itself' on the Lisbon Showcase Stage.\nCAMERA: Extreme low-angle wor..."
+    },
+    {
+      "timestamp": "2026-11-16T15:44:27.536984+00:00",
+      "asset": "cg_ep2_happy_512_v4 (v5 CG)",
+      "model": "gemini-3.1-flash-image",
+      "cost_usd": 0.015,
+      "cumulative_spent_usd": 2.745,
+      "prompt_snippet": "Scene: Episode 2 Good Outcome \u2014 'The Work Speaks for Itself' on the Lisbon Showcase Stage.\nCAMERA: Extreme low-angle wor..."
+    },
+    {
+      "timestamp": "2026-11-16T15:46:17.314833+00:00",
+      "asset": "cg_ep2_happy_512_v5 (v5 CG)",
+      "model": "gemini-3.1-flash-image",
+      "cost_usd": 0.015,
+      "cumulative_spent_usd": 2.76,
+      "prompt_snippet": "Scene: Episode 2 Good Outcome \u2014 'The Work Speaks for Itself' on the Lisbon Showcase Stage.\nCAMERA: Extreme low-angle wor..."
+    },
+    {
+      "timestamp": "2026-11-16T15:47:20.804197+00:00",
+      "asset": "cg_ep2_happy_512_v6 (v5 CG)",
+      "model": "gemini-3.1-flash-image",
+      "cost_usd": 0.015,
+      "cumulative_spent_usd": 2.775,
+      "prompt_snippet": "Scene: Episode 2 Good Outcome \u2014 'The Work Speaks for Itself' on the Lisbon Showcase Stage.\nCAMERA: Extreme low-angle wor..."
+    },
+    {
+      "timestamp": "2026-11-16T15:47:51.358011+00:00",
+      "asset": "cg_ep2_happy_full (v5 CG)",
+      "model": "gemini-3.1-flash-image",
+      "cost_usd": 0.03,
+      "cumulative_spent_usd": 2.805,
+      "prompt_snippet": "Scene: Episode 2 Good Outcome \u2014 'The Work Speaks for Itself' on the Lisbon Showcase Stage.\nCAMERA: Extreme low-angle wor..."
+    },
+    {
+      "timestamp": "2026-11-16T15:51:10.891565+00:00",
+      "asset": "cg_ep1_happy_512_v2 (v5 CG)",
+      "model": "gemini-3.1-flash-image",
+      "cost_usd": 0.015,
+      "cumulative_spent_usd": 2.82,
+      "prompt_snippet": "Scene: Episode 1 Good Outcome \u2014 'The $1 Test Transfer Lands & 2-of-3 Shared Custody' at Lisbon Airport.\nCAMERA: Dynamic ..."
+    },
+    {
+      "timestamp": "2026-11-16T15:54:04.960913+00:00",
+      "asset": "cg_ep1_happy_512_v3 (v5 CG)",
+      "model": "gemini-3.1-flash-image",
+      "cost_usd": 0.015,
+      "cumulative_spent_usd": 2.835,
+      "prompt_snippet": "Scene: Episode 1 Good Outcome \u2014 'The $1 Test Transfer Lands & 2-of-3 Shared Custody' at Lisbon Airport.\nCAMERA: Dynamic ..."
+    },
+    {
+      "timestamp": "2026-11-16T15:55:25.137436+00:00",
+      "asset": "cg_ep1_happy_512_v4 (v5 CG)",
+      "model": "gemini-3.1-flash-image",
+      "cost_usd": 0.015,
+      "cumulative_spent_usd": 2.85,
+      "prompt_snippet": "Scene: Episode 1 Good Outcome \u2014 'The $1 Test Transfer Lands & 2-of-3 Shared Custody' at Lisbon Airport.\nCAMERA: Dynamic ..."
+    },
+    {
+      "timestamp": "2026-11-16T15:56:10.966698+00:00",
+      "asset": "cg_ep1_happy_full (v5 CG)",
+      "model": "gemini-3.1-flash-image",
+      "cost_usd": 0.03,
+      "cumulative_spent_usd": 2.88,
+      "prompt_snippet": "Scene: Episode 1 Good Outcome \u2014 'The $1 Test Transfer Lands & 2-of-3 Shared Custody' at Lisbon Airport.\nCAMERA: Dynamic ..."
+    },
+    {
+      "timestamp": "2026-11-16T15:58:06.211110+00:00",
+      "asset": "cg_ep3_happy_512_v2 (v5 CG)",
+      "model": "gemini-3.1-flash-image",
+      "cost_usd": 0.015,
+      "cumulative_spent_usd": 2.895,
+      "prompt_snippet": "Scene: Episode 3 Good Outcome \u2014 'The Agreement Holds' at the ceremonial cacao circle.\nCAMERA: Dynamic low-angle diagonal..."
+    },
+    {
+      "timestamp": "2026-11-16T16:00:33.860182+00:00",
+      "asset": "cg_ep3_happy_512_v3 (v5 CG)",
+      "model": "gemini-3.1-flash-image",
+      "cost_usd": 0.015,
+      "cumulative_spent_usd": 2.91,
+      "prompt_snippet": "Scene: Episode 3 Good Outcome \u2014 'The Agreement Holds' at the ceremonial cacao circle.\nCAMERA: Steep overhead bird's-eye ..."
+    },
+    {
+      "timestamp": "2026-11-16T16:03:55.379614+00:00",
+      "asset": "cg_ep3_happy_full (v5 CG)",
+      "model": "gemini-3.1-flash-image",
+      "cost_usd": 0.03,
+      "cumulative_spent_usd": 2.94,
+      "prompt_snippet": "Scene: Episode 3 Good Outcome \u2014 'The Agreement Holds' at the ceremonial cacao circle.\nCAMERA: Steep overhead bird's-eye ..."
+    },
+    {
+      "timestamp": "2026-11-16T16:05:39.991653+00:00",
+      "asset": "cg_ep4_happy_512_v2 (v5 CG)",
+      "model": "gemini-3.1-flash-image",
+      "cost_usd": 0.015,
+      "cumulative_spent_usd": 2.955,
+      "prompt_snippet": "Scene: Episode 4 Good Outcome \u2014 'The Hex Is Caught in Time' in the Herbal Apothecary.\nCAMERA: Dramatic, tilted low-angle..."
+    },
+    {
+      "timestamp": "2026-11-16T16:22:20.646647+00:00",
+      "asset": "cg_ep4_happy_512_v3 (v5 CG)",
+      "model": "gemini-3.1-flash-image",
+      "cost_usd": 0.015,
+      "cumulative_spent_usd": 2.97,
+      "prompt_snippet": "Scene: Episode 4 Good Outcome \u2014 'The Hex Is Caught in Time' in the Herbal Apothecary.\nCAMERA: Dramatic, tilted low-angle..."
+    },
+    {
+      "timestamp": "2026-11-16T16:42:05.056301+00:00",
+      "asset": "cg_ep4_happy_full (v5 CG)",
+      "model": "gemini-3.1-flash-image",
+      "cost_usd": 0.03,
+      "cumulative_spent_usd": 3.0,
+      "prompt_snippet": "Scene: Episode 4 Good Outcome \u2014 'The Hex Is Caught in Time' in the Herbal Apothecary.\nCAMERA: Dramatic, tilted low-angle..."
     }
   ]
 }
