@@ -162,6 +162,11 @@ init python:
 
 
 label complete_episode(ep_id, summary_text):
+    ## Fade the textbox and its final line out together before the bookkeeping
+    ## below runs; otherwise the emptied box sits on screen during the save/sync.
+    window hide Dissolve(0.5)
+    ## Hold on the bare CG until the player clicks, then show the results modal.
+    pause
     $ play_menu_music()
     python:
         if persistent.episodes_completed is None:
