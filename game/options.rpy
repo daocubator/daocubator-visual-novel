@@ -224,6 +224,10 @@ init python:
     build.classify('.dockerignore', None)
     build.classify('.gcloudignore', None)
     build.classify('game/saves/**', None)
+    build.classify('game/cache/**', None)
+    build.classify('art-originals/**', None)
+    build.classify('stage-lab/**', None)
+    build.classify('social-media/**', None)
 
     ## To archive files, classify them as 'archive'.
 

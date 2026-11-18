@@ -44,10 +44,10 @@ init 5 python:
             "cast": "Xochit · Koraba · Clara",
             "pos": (430, 340),
             "label": "ep1_keys",
-            "cg_disaster": "images/cg_ep1_disaster.png",
-            "cg_disaster_thumb": "images/cg_ep1_disaster_thumb.png",
-            "cg_happy": "images/cg_ep1_happy.png",
-            "cg_happy_thumb": "images/cg_ep1_happy_thumb.png",
+            "cg_disaster": "images/cg_ep1_disaster.webp",
+            "cg_disaster_thumb": "images/cg_ep1_disaster_thumb.webp",
+            "cg_happy": "images/cg_ep1_happy.webp",
+            "cg_happy_thumb": "images/cg_ep1_happy_thumb.webp",
             "omg_title": "The $60,000 Sanctuary Meltdown",
             "happy_title": "2-of-3 Multisig & Verified Transfer",
             "omg_hook": (
@@ -69,10 +69,10 @@ init 5 python:
             "cast": "Koraba · Xochit · Clara",
             "pos": (1490, 340),
             "label": "ep2_lisbon",
-            "cg_disaster": "images/cg_ep2_disaster.png",
-            "cg_disaster_thumb": "images/cg_ep2_disaster_thumb.png",
-            "cg_happy": "images/cg_ep2_happy.png",
-            "cg_happy_thumb": "images/cg_ep2_happy_thumb.png",
+            "cg_disaster": "images/cg_ep2_disaster.webp",
+            "cg_disaster_thumb": "images/cg_ep2_disaster_thumb.webp",
+            "cg_happy": "images/cg_ep2_happy.webp",
+            "cg_happy_thumb": "images/cg_ep2_happy_thumb.webp",
             "omg_title": "The Showcase Sabotage",
             "happy_title": "Milestone Escrow & Co-op Solidarity",
             "omg_hook": (
@@ -94,10 +94,10 @@ init 5 python:
             "cast": "Clara · Xochit · Koraba",
             "pos": (430, 760),
             "label": "ep3_agreements",
-            "cg_disaster": "images/cg_ep3_disaster.png",
-            "cg_disaster_thumb": "images/cg_ep3_disaster_thumb.png",
-            "cg_happy": "images/cg_ep3_happy.png",
-            "cg_happy_thumb": "images/cg_ep3_happy_thumb.png",
+            "cg_disaster": "images/cg_ep3_disaster.webp",
+            "cg_disaster_thumb": "images/cg_ep3_disaster_thumb.webp",
+            "cg_happy": "images/cg_ep3_happy.webp",
+            "cg_happy_thumb": "images/cg_ep3_happy_thumb.webp",
             "omg_title": "The Summons & The Dead Cap Table",
             "happy_title": "4-Year Vesting & Co-op Legal Shield",
             "omg_hook": (
@@ -119,10 +119,10 @@ init 5 python:
             "cast": "Koraba · Clara · Xochit",
             "pos": (1490, 760),
             "label": "ep4_apothecary",
-            "cg_disaster": "images/cg_ep4_disaster.png",
-            "cg_disaster_thumb": "images/cg_ep4_disaster_thumb.png",
-            "cg_happy": "images/cg_ep4_happy.png",
-            "cg_happy_thumb": "images/cg_ep4_happy_thumb.png",
+            "cg_disaster": "images/cg_ep4_disaster.webp",
+            "cg_disaster_thumb": "images/cg_ep4_disaster_thumb.webp",
+            "cg_happy": "images/cg_ep4_happy.webp",
+            "cg_happy_thumb": "images/cg_ep4_happy_thumb.webp",
             "omg_title": "The Apothecary Drain at 1:14 A.M.",
             "happy_title": "Hardware Hex Verified & Timelock Shield",
             "omg_hook": (
@@ -273,10 +273,10 @@ screen constellation_map(card_fade_delays=None):
         $ fade_delay = card_fade_delays.get(ep_id, 0.0) if card_fade_delays else 0.0
         $ is_done = ep_id in (persistent.episodes_completed or set())
         $ card_mood = "happy" if is_done else "disaster"
-        $ card_image = "images/scenario_card_%s_%s.png" % (ep_id, card_mood)
+        $ card_image = "images/scenario_card_%s_%s.webp" % (ep_id, card_mood)
         ## Offset watercolor layers keep the breathing status glow close to each card.
         $ aura_status = "cleared" if is_done else "uncleared"
-        add ("images/scenario_aura_%s_outer.png" % aura_status):
+        add ("images/scenario_aura_%s_outer.webp" % aura_status):
             xpos nx
             ypos ny
             xanchor 0.5
@@ -284,7 +284,7 @@ screen constellation_map(card_fade_delays=None):
             xsize 600
             ysize 340
             at constellation_card_aura_lively(float_delay, fade_delay, 0.0)
-        add ("images/scenario_aura_%s_middle.png" % aura_status):
+        add ("images/scenario_aura_%s_middle.webp" % aura_status):
             xpos nx
             ypos ny
             xanchor 0.5
@@ -293,7 +293,7 @@ screen constellation_map(card_fade_delays=None):
             xsize 600
             ysize 340
             at constellation_card_aura_lively(float_delay, fade_delay, 0.8)
-        add ("images/scenario_aura_%s_inner.png" % aura_status):
+        add ("images/scenario_aura_%s_inner.webp" % aura_status):
             xpos nx
             ypos ny
             xanchor 0.5
