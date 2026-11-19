@@ -86,6 +86,7 @@ echo "==> Fresh Ren'Py web build"
 [ -x "$SDK/renpy.sh" ] || { echo "Ren'Py SDK not found at $SDK (set RENPY_SDK)" >&2; exit 1; }
 rm -rf web-build
 "$SDK/renpy.sh" "$SDK/launcher" web_build . --dest ./web-build
+python3 scripts/patch_web_build.py web-build
 
 for f in web-build/index.html web-build/renpy.wasm web-build/game.zip; do
   [ -f "$f" ] || { echo "Missing $f - web build failed" >&2; exit 1; }

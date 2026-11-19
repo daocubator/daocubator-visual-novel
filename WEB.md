@@ -26,6 +26,13 @@ Stop `serve_web.py` first — it holds `web-build/` open and the build can't rep
 ~/renpy-8.5.0-sdk/renpy.sh ~/renpy-8.5.0-sdk/launcher web_build . --dest ./web-build
 ```
 
+Then add the mobile **Install** button (Ren'Py regenerates `index.html` on every build,
+so this must run after each one; `deploy.sh` and the Pages workflow already do it):
+
+```bash
+python3 scripts/patch_web_build.py web-build
+```
+
 Produces `web-build/` (index.html + renpy.wasm + renpy.data + game.zip + icons).
 The browser build's source artwork lives at the project root: `web-presplash.jpg`
 for the loading screen and `web-icon.png` for the page/PWA icons. Update those

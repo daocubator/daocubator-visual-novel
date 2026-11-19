@@ -65,6 +65,7 @@ jobs:
         run: |
           set -euo pipefail
           "$SDK/renpy.sh" "$SDK/launcher" web_build "$GITHUB_WORKSPACE" --dest "$RUNNER_TEMP/site"
+          python3 scripts/patch_web_build.py "$RUNNER_TEMP/site"
           for f in index.html renpy.wasm game.zip; do
             test -f "$RUNNER_TEMP/site/$f" || { echo "Missing $f - web build failed"; exit 1; }
           done
